@@ -1,29 +1,29 @@
-import React from "react";
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import RegistryCreate from './components/registry/RegistryCreate';
-import RegistryEdit from './components/registry/RegistryEdit';
-import RegistryDelete from './components/registry/RegistryDelete';
-import RegistryList from './components/registry/RegistryList';
-import RegistryShow from './components/registry/RegistryShow';
-import AssailantsName from "./components/registry/Questions/1assailantsName";
+import Link from './components/Link';
+import Route from './components/Route';
+import AccordionPage from './pages/AccordionPage';
+import DropdownPage from './pages/DropdownPage';
+import QuestionPage from './pages/QuestionPage';
 
-const PageOne = () => {
-  return (
-    <div>OSAR</div>
-  )
-}
+function App() {
 
-const App = () => {
   return (
     <div>
-    <BrowserRouter>
+      {/* <Link to="/accordion">Go to accordion</Link>
+      <Link to="/dropdown">Go to dropdown</Link> */}
+      <Link to="/registry">Begin</Link>
       <div>
-        <Route path='/' exact component={PageOne} />
-        <Route path="/AssailantsName" component={AssailantsName} />
+        {/* <Route path="/accordion">
+          <AccordionPage />
+        </Route>
+        <Route path="/dropdown">
+          <DropdownPage />
+        </Route> */}
+        <Route path="/registry">
+          <QuestionPage />
+        </Route>
       </div>
-    </BrowserRouter>
     </div>
   );
-};
+}
 
 export default App;
