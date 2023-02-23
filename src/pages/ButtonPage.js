@@ -1,39 +1,42 @@
-import Button from './components/Button';
-import { BiAccessibility, BiAdjust } from "react-icons/bi";
+import { GoBell, GoCloudDownload, GoDatabase } from 'react-icons/go';
+import Button from '../components/Button';
 
 function ButtonPage() {
-  const handleClick = () => {
-    console.log('Click!');
-  };
+  const handleClick = () => {};
 
   return (
     <div>
       <div>
-        <Button primary rounded onClick={handleClick}>
-          <BiAccessibility />
+        <Button
+          secondary
+          outline
+          rounded
+          className="mb-5"
+          onClick={handleClick}
+        >
+          <GoBell />
           Click me!!
         </Button>
       </div>
       <div>
-        <Button 
-          secondary 
-          onClick={handleSubmit} >
-          <BiAdjust />
+        <Button danger outline onMouseEnter={handleClick}>
+          <GoCloudDownload />
           Buy Now!
         </Button>
       </div>
       <div>
-        <Button success onMouseOver={handleMouseOver}>
+        <Button warning onMouseLeave={handleClick}>
+          <GoDatabase />
           See Deal!
-          </Button>
+        </Button>
       </div>
       <div>
-        <Button warning >
+        <Button secondary outline>
           Hide Ads!
         </Button>
       </div>
       <div>
-        <Button danger rounded>
+        <Button primary rounded>
           Something!
         </Button>
       </div>
@@ -41,4 +44,4 @@ function ButtonPage() {
   );
 }
 
-export default App;
+export default ButtonPage;

@@ -1,22 +1,22 @@
-// import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
+import { 
+    questionsReducer, 
+    forwards, 
+    backwards 
+} from './slices/questionSlice';
+import {
+    answersReducer,
+    submit,
+    back
+} from './slices/answerSlice';
 
-// const songsSlice = createSlice({
-//     name: 'song',
-//     initialState: [],
-//     reducers: {
-//         addSong(state, action) {
-//             state.push(action.payload);
-//         },
-//         removeSong(state, action) {
-//             //
-//         }
-//     }
-// });
+const store = configureStore({
+    reducer: {
+        questions: questionsReducer,
+        answers: answersReducer 
+    }
+});
 
-// const store = configureStore({
-//     reducer: {
-//         songs: songsSlice.reducer
-//     }
-// })
+export { store, forwards, backwards, back, submit };
 
-// console.log(store);
+

@@ -11,12 +11,18 @@ function QuestionPage() {
             label: 'Name of the Assailant?',
         },
         {
-            id: 'q3',
+            id: 'Last known address of Assailant',
             label: 'null',
         },
     ];
 
+
     return <Questions items={items} />;
 }
 
+const itemsList = (items) => {
+    return items.label
+};
+
+export  {itemsList};
 export default QuestionPage;
