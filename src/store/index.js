@@ -1,22 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { 
-    questionsReducer, 
-    forwards, 
-    backwards 
-} from './slices/questionSlice';
 import {
-    answersReducer,
-    submit,
-    back
-} from './slices/answerSlice';
+    changeIndex,
+    indexReducer,
+    backIndex,
+} from './slices/indexSlice';
 
 const store = configureStore({
     reducer: {
-        questions: questionsReducer,
-        answers: answersReducer 
+        index: indexReducer,
+        // form: formReducer, 
     }
 });
 
-export { store, forwards, backwards, back, submit };
+
+export { store, changeIndex, indexReducer, backIndex };
 
 
