@@ -7,7 +7,6 @@ import ModalPage from './pages/ModalPage';
 import TablePage from './pages/TablePage';
 import CounterPage from './pages/CounterPage';
 import QuestionPage from './pages/QuestionPage';
-import InputsPage from './pages/InputsPage';
 
 function App() {
   return (
@@ -35,7 +34,6 @@ function App() {
         <Route path="/counter">
           <CounterPage initialCount={10} />
         </Route>
-        <InputsPage />
       </div>
     </div>
   );

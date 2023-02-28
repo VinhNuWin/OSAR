@@ -1,20 +1,34 @@
 import { useSelector } from 'react-redux';
 
 function AnswersList() {
-    const answers = useSelector((state) => {
-        return state.answers.data;
+    const dataList = useSelector((state) => {
+        return state.index.data;
     });
-    console.log(answers)
+    console.log(dataList);
 
-    const renderedData = answers.map((answer) => {
+    const handleAnswerDelete = () => {
+
+    }
+
+    const renderedData = dataList.map((answer) => {
         return (
-            <div key={answer.id} classNamne="panel">
+            <div key={answer.id} className="panel">
                 <p>
-                    {answer.data}
+                    AnswersList
+                    {answer.fName} {answer.lName}
                 </p>
+                <button
+                    className="button is-danger"
+                    onClick={() => handleAnswerDelete()}>
+                        delete
+                    </button>
             </div>
         )
-    })
+    });
+    return <div className="answer-list">
+        {renderedData}
+        <hr />
+    </div>
 }
 
 export default AnswersList;

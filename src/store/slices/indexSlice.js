@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const indexSlice = createSlice({
     name: 'indexes',
@@ -12,9 +12,17 @@ const indexSlice = createSlice({
         },
         backIndex(state, action) {
             state.index = action.payload;
-        }
-    },
-});
+        },
+        addAnswer(state, action) {
+            //action.payload === { name:'ab', cost : 140 }
+            state.data.push({
+                fName: action.payload.fName,
+                lName: action.payload.lName,
+                id: nanoid(),
+            });
+        },
+    }
+    });
 
-export const { changeIndex, backIndex } = indexSlice.actions;
+export const { changeIndex, backIndex, addAnswer } = indexSlice.actions;
 export const indexReducer = indexSlice.reducer;

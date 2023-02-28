@@ -1,13 +1,13 @@
-import { useCallback, useState } from 'react';
+import { children } from "react";
 
-function Input({ inputs, onClick }) {
-    const [inputType, setInputType] = useState(0);
+function Input({
+    children,
+    primary,
+    secondary
+}) 
+ {
 
-    return (
-        <div>
-            {inputs[inputType].type}
-        </div>
-    )
-} 
+    return
+ }
 
-export default Input;
+ export default Input;

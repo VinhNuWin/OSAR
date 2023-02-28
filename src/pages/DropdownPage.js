@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Dropdown from '../components/Dropdown';
+import { useSelector } from 'react-redux';
 
 function DropdownPage() {
   const [selection, setSelection] = useState(null);
@@ -8,11 +9,21 @@ function DropdownPage() {
     setSelection(option);
   };
 
+  const { fName, index } = useSelector((state) => {
+    return {
+      fName: state.form.fName,
+      index: state.index.index,
+    }
+  });
+
+  console.log(fName, index);
+
   const options = [
-    { label: 'Red', value: 'red' },
-    { label: 'Green', value: 'green' },
-    { label: 'Blue', value: 'blue' },
+    { label: 'Instagram', value: {fName} },
+    { label: 'Facebook', value: 'Facebook' },
+    { label: 'Tinder', value: 'Tinder' },
   ];
+    
 
   return (
     <div className="flex">

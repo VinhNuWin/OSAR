@@ -1,61 +1,44 @@
-import { useDispatch, useSelector } from  'react-redux';
+import { useSelector } from  'react-redux';
 // import { useState, useCallback } from "react";
-import { backIndex, changeIndex } from '../store';
-import Button from './Button';
-import { items } from '../pages/QuestionPage';
+import InputPage from '../pages/InputPage';
+
 
 function Questions() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    const { index } = useSelector((state) => {
+    const { question, index } = useSelector((state) => {
         return {
             index: state.index.index,
+            question: state.form.question,
+            // fName: state.form.fName,
+            // lName: state.form.lName,
         }
     });
-    console.log(index);
-    console.log(items);
 
-    const increment = (event) => {
-        dispatch(changeIndex(parseInt(index + 1)));
-    };
-
-    const decrement = () => {
-        dispatch(backIndex(parseInt(index - 1)))
-
-        console.log(index);
-    };
 
     return (
         <div>
-            <h2>{items[index]}</h2>
-            <Button 
-            onClick={decrement}>Back
-            </Button>
-            <Button 
-            onClick={increment}>Submit
-            </Button>
+            <div>
+                <h2>{question[index]}</h2>
+            </div>
+            <div>      
+                {/* <InputPage /> */}
+                {/* <AnswerForm /> */}
+            </div>
+
+            {/* <div>
+                <Button primary 
+                onClick={decrementIndex }>Back
+                </Button>
+            </div>
+            <div>
+                <Button secondary
+                onClick={incrementIndex}>Submit
+                </Button>
+            </div> */}
         </div>
     )
 }
-    // const {name, cost} = useSelector((state) => {
-    //     return {
-    //         name: state.form.name,
-    //         cost: state.form.cost,
-    //     }
-    // });
-
-    // const handleAnswerChange = (event) => {
-    //     dispatch(changeName(event.target.value));
-    // };
-    // const handleCostChange = (event) => {
-    //     const carCost = parseInt(event.target.value) || 0;
-    //     dispatch(changeCost(carCost));
-    //   };
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-
-    //     dispatch(addAnswer({name, cost}));
-    // };
 
     
 //     return (
