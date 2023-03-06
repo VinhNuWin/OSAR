@@ -9,6 +9,7 @@ function Sidebar() {
     { label: 'Questions', path: '/registry'},
     { label: 'Table', path: '/table' },
     { label: 'Counter', path: '/counter' },
+    { label: 'TestPage', path: '/test'},
   ];
 
   const renderedLinks = links.map((link) => {

@@ -20,7 +20,6 @@ function AnswersList() {
                 <button
                     className="button is-danger"
                     onClick={() => handleAnswerDelete()}>
-                        delete
                     </button>
             </div>
         )
