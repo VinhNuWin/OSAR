@@ -37,7 +37,7 @@ function DropdownPage({ raceEthnicity, socialMedia }) {
 
   return (
     <div className="flex">
-      <Dropdown options={(socialMedia)} value={selection} onChange={handleSelect} />
+      <Dropdown options={(socialMedia, raceEthnicity)} value={selection} onChange={handleSelect} />
     </div>
   );
 }

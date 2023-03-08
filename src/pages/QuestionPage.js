@@ -4,13 +4,12 @@ import AnswerCard from '../components/AnswerCard';
 const items = 
     [
     'Assailants Name',
-    'Aliases(Instagram, Tinder, etc.)',
     'Race/Ethnicity',
     'Sex',
     'Address',
     'Work',
     'Cell',
-    'Email',
+    'Assailants Email',
     'Assailants Defining Characteristics (i.e. tattoos, scrars, physical disabilities, etc.',
     'Location of Assault',
     'Date and Time of Incident',
@@ -25,7 +24,8 @@ const items =
     'Use of weapons',
     'Use of Restraints',
     'Name of Survivor',
-    'Email'
+    'Email',
+    'Thank you'
     ];
 
 
@@ -51,7 +51,9 @@ function QuestionPage() {
     return (
         <div>
             <Questions />
-            <AnswerCard socialMedia={socialMedia} raceEthnicity={raceEthnicity} />
+            <AnswerCard 
+            raceEthnicity={raceEthnicity}
+            socialMedia={socialMedia} />
          </div>
     )
 };

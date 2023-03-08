@@ -4,14 +4,16 @@ const formSlice = createSlice({
   name: 'form',
   initialState: {
     question: [
-        'Assailants Name',
-        'Aliases(Instagram, Tinder, etc.)',
+        
+      
+      
+      'Assailants Name',
         'Race/Ethnicity',
-        'Sex',
-        'Address',
-        'Work',
-        'Cell',
-        'Email',
+        'Sex of Assailant',
+        'Assailants Address',
+        'Assailants place of work',
+        'Phone Number',
+        'Assailants Email',
         'Assailants Defining Characteristics (i.e. tattoos, scrars, physical disabilities, etc.',
         'Location of Assault',
         'Date and Time of Incident',
@@ -26,7 +28,7 @@ const formSlice = createSlice({
         'Use of weapons',
         'Use of Restraints',
         'Name of Survivor',
-        'Email'
+        'Email of Survivor'
     ],
     fName: (''),
     lName: (''),
