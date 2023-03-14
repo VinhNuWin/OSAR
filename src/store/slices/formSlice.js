@@ -4,17 +4,14 @@ const formSlice = createSlice({
   name: 'form',
   initialState: {
     question: [
-        
-      
-      
-      'Assailants Name',
+        'Assailants Name',
         'Race/Ethnicity',
-        'Sex of Assailant',
+        'Gender',
         'Assailants Address',
         'Assailants place of work',
         'Phone Number',
         'Assailants Email',
-        'Assailants Defining Characteristics (i.e. tattoos, scrars, physical disabilities, etc.',
+        'Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.',
         'Location of Assault',
         'Date and Time of Incident',
         'Was Alcohol Involved',
@@ -30,29 +27,64 @@ const formSlice = createSlice({
         'Name of Survivor',
         'Email of Survivor'
     ],
-    fName: (''),
-    lName: (''),
-    name: '',
-    cost: 0
-  },
+    first: '',
+    last: '',
+    race: '',
+    assailant: {
+      gender: '',
+      name: {
+        first: '',
+        last: '',
+        social: '',
+      },
+      location: {
+        street: '',
+        city: '',
+        state: '',
+        postcode: '',
+      },
+      email: '',
+      phoneNumber: '',
+      workAddress: {
+        street2: '',
+        city2: '',
+        state2: '',
+        postcode2: '',
+      },
+      definingCharacteristics: [],
+    },
+    incidentDetails: {
+      date: '',
+      time: '',
+      location: {
+        street3: '',
+        city3: '',
+        state3: '',
+        postcode3: '',
+      },
+      alcohol: '',
+      drugs: '',
+      asleep: '',
+      threats: '',
+      resistance: '',
+      assaultDescription: '',
+      areasOfSexualContact: '',
+      weapons: '',
+      restraints: '',
+    },
+    nameOfSurvivor: '',
+    emailRegistry: '',
   reducers: {
-    nextQuestion(state, action) {
-      state.question = action.payload;
+    changeValue(state, action){
+      state.first = action.payload;    
     },
-    previousQuestion(state, action) {
-      state.question = action.payload;
+    changeValue2(state, action){
+      state.last = action.payload;    
     },
-    changeFName(state, action) {
-      state.fName = action.payload;
-    },
-    changeLName(state, action){
-      state.lName = action.payload;
-    },
-    changeName(state, action){
-      state.name = action.payload;
-    }
   },
+}
+
 });
 
-export const { nextQuestion, previousQuestion, changeFName, changeLName, changeName, changeCost } = formSlice.actions;
+export const { addAnswers, nextQuestion, previousQuestion, changeFName, changeLName, changeValue, changeValue2 } = formSlice.actions;
 export const formReducer = formSlice.reducer;

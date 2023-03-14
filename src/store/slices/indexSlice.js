@@ -13,16 +13,16 @@ const indexSlice = createSlice({
         backIndex(state, action) {
             state.index = action.payload;
         },
-        addAnswer(state, action) {
-            //action.payload === { name:'ab', cost : 140 }
-            state.data.push({
-                fName: action.payload.fName,
-                lName: action.payload.lName,
-                id: nanoid(),
-            });
-        },
+        addAnswers(state, action){
+            const newAnswer = {
+                id: state.index,
+                assailant: action.payload.assailant,
+                address: action.payload.address,
+            };
+            state.data.push(newAnswer);
+          },
     }
     });
 
-export const { changeIndex, backIndex, addAnswer } = indexSlice.actions;
+export const { changeIndex, backIndex, addAnswer, addAnswers } = indexSlice.actions;
 export const indexReducer = indexSlice.reducer;

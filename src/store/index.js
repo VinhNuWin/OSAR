@@ -4,6 +4,7 @@ import {
     changeIndex,
     backIndex,
     addAnswer,
+    addAnswers
 } from './slices/indexSlice';
 import {
     formReducer,
@@ -11,6 +12,8 @@ import {
     previousQuestion,
     changeFName,
     changeLName,
+    changeValue,
+    changeValue2,
 } from './slices/formSlice';
 
 const store = configureStore({
@@ -32,6 +35,9 @@ export {
     previousQuestion,
     changeFName,
     changeLName,
+    changeValue,
+    changeValue2,
+    addAnswers
  };
 
 
