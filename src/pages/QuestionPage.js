@@ -22,7 +22,7 @@ import TestCard from '../components/TestCard';
 function QuestionPage() {
     
     return (
-        <div className='w-full'>
+        <div className='place-content-end'>
             <Questions />
             <AnswerCard />
             {/* <TestCard /> */}

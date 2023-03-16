@@ -32,23 +32,18 @@ const footerStyle = {
 };
 
 function App() {
+
   return (
-    <Space
-    direction="vertical"
-    style={{
-      width: '100%',
-    }}
-    size={[0, 48]}
-  >
-    <Layout>
-      <Header className="texty-demo" style={headerStyle}>
-        </Header>
-      <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
-          <QuestionPage style={contentStyle}/>
+    <div className='bg-site bg-no-repeat bg-cover overflow-hidden '>
+      <h1 className='grid place-content-center text-2xl'><Texty
+      duration={1000}
+      delay={500}
+      >OSAR</Texty>
+      </h1>
+      <div className="grid place-content-center h-96">
+          <QuestionPage className='' />
       </div>
-      <Footer style={footerStyle}>Registry</Footer>
-    </Layout>
-    </Space>
+      </div>
   );
 }
 

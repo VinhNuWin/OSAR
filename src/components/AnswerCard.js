@@ -97,7 +97,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
     };
 
     return (
-        <div className="w-full" >
+        <div className="w-full content-center" >
             {index === 0 ? (
                     <Form >
                        <div>

@@ -17,7 +17,7 @@ function Questions() {
 
 
     return (
-        <div>
+        <div class='content-center'>
             <h2>{question[index]}</h2>
         </div>
     )
