@@ -1,6 +1,5 @@
 import Questions from '../components/Questions';
 import AnswerCard from '../components/AnswerCard';
-import TestCard from '../components/TestCard';
 
     const socialMedia = [
         { label: 'Instagram', value: 'Instagram' },
@@ -23,9 +22,10 @@ function QuestionPage() {
     
     return (
         <div className='place-content-end'>
-            <Questions />
+  
+              <Questions />
+
             <AnswerCard />
-            {/* <TestCard /> */}
          </div>
     )
 };

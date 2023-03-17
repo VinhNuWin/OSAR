@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addAnswers, addAnswer, changeValue, changeValue2, changeIndex, backIndex } from '../store';
+import { addAnswers, changeIndex, backIndex } from '../store';
 // import Button from './inputComponents/Button';
 import { 
     Radio,
@@ -72,13 +72,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
         console.log({address});
     };
 
-    // const handleAssSubmit = ({ assailant }) => {
-    //     dispatch(addAnswers({assailant}));
-    //     console.log({assailant});
-    // }
-
     console.log({data});
-    // console.log({assailant});
 
     const options = [
         { label: 'Asian', value: 'asian' },

@@ -35,11 +35,6 @@ function App() {
 
   return (
     <div className='bg-site bg-no-repeat bg-cover overflow-hidden '>
-      <h1 className='grid place-content-center text-2xl'><Texty
-      duration={1000}
-      delay={500}
-      >OSAR</Texty>
-      </h1>
       <div className="grid place-content-center h-96">
           <QuestionPage className='' />
       </div>

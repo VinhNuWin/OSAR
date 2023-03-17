@@ -10,15 +10,13 @@ function Questions() {
         return {
             index: state.index.index,
             question: state.form.question,
-            // fName: state.form.fName,
-            // lName: state.form.lName,
         }
     });
 
 
     return (
-        <div class='content-center'>
-            <h2>{question[index]}</h2>
+        <div class='subpixel-antialiased text-5xl'>
+            <h1>{question[index]}</h1>
         </div>
     )
 }
