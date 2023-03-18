@@ -10,9 +10,9 @@ const el = document.getElementById('root');
 const root = ReactDOM.createRoot(el);
 
 root.render(
-    // <NavigationProvider>
+    <NavigationProvider>
         <Provider store={store}>
          <App />
         </Provider>
-    // </NavigationProvider>
+    </NavigationProvider>
 )

@@ -22,10 +22,8 @@ function QuestionPage() {
     
     return (
         <div className='place-content-end'>
-  
               <Questions />
-
-            <AnswerCard />
+              <AnswerCard />
          </div>
     )
 };

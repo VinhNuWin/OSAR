@@ -1,44 +1,21 @@
 import QuestionPage from './pages/QuestionPage';
-import { Layout, Space } from 'antd';
 import HomePage from './pages/HomePage';
-
-
-const { Header, Footer, Sider, Content } = Layout;
-const headerStyle = {
-  textAlign: 'center',
-  color: '#fff',
-  height: 64,
-  paddingInline: 50,
-  lineHeight: '64px',
-  backgroundColor: '#7dbcea',
-};
-const contentStyle = {
-  textAlign: 'center',
-  minHeight: 120,
-  lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#108ee9',
-};
-const siderStyle = {
-  textAlign: 'center',
-  lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#3ba0e9',
-};
-const footerStyle = {
-  textAlign: 'center',
-  color: '#fff',
-  backgroundColor: '#7dbcea',
-};
+// import Route from "./components/Route";
+import Button from 'antd';
+import ButtonPage from './pages/ButtonPage';
+import Link from './components/Link';
+import { render } from 'less';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 function App() {
 
   return (
-    <div className='bg-site bg-no-repeat bg-cover overflow-hidden '>
-      <div className="grid place-content-center h-96">
-        <HomePage className= 'text-5xl' />
-      </div>
-      </div>
+        <Router>
+            <Routes>
+              <Route path="/" element={<HomePage />}/>
+              <Route path="/registry" element={<QuestionPage />}/>
+            </Routes>
+          </Router>
   );
 }
 
