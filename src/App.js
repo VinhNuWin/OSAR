@@ -1,7 +1,7 @@
 import QuestionPage from './pages/QuestionPage';
 import { Layout, Space } from 'antd';
-import Texty from 'rc-texty';
-import 'rc-texty/assets/index.css';
+import HomePage from './pages/HomePage';
+
 
 const { Header, Footer, Sider, Content } = Layout;
 const headerStyle = {
@@ -36,7 +36,7 @@ function App() {
   return (
     <div className='bg-site bg-no-repeat bg-cover overflow-hidden '>
       <div className="grid place-content-center h-96">
-          <QuestionPage className='' />
+        <HomePage className= 'text-5xl' />
       </div>
       </div>
   );
