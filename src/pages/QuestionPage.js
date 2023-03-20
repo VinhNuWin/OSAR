@@ -1,12 +1,6 @@
 import Questions from '../components/Questions';
 import AnswerCard from '../components/AnswerCard';
 
-    const socialMedia = [
-        { label: 'Instagram', value: 'Instagram' },
-        { label: 'Facebook', value: 'Facebook' },
-        { label: 'Tinder', value: 'Tinder' },
-        { label: 'Email', value: 'Email' },
-      ];
         
       const raceEthnicity = [
         {label: 'White', value: 'White'},
@@ -22,7 +16,7 @@ function QuestionPage() {
     
     return (
         <div className='place-content-end'>
-              <Questions />
+              <Questions className='h-96' />
               <AnswerCard />
          </div>
     )

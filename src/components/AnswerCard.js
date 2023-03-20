@@ -1,61 +1,57 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addAnswers, changeIndex, backIndex } from '../store';
+import { addAnswer, changeIndex, backIndex, removeAnswer } from '../store';
 // import Button from './inputComponents/Button';
 import { 
     Radio,
     Button,
-    Checkbox,
     DatePicker,
     Form,
     Input,
     InputNumber,
     Select,
-    Switch,
-    TreeSelect,
+    Space,
 } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-// import { changeValue } from '../store/slices/formSlice';
-// import PropTypes from 'prop-types';
+;
 
-function AnswerForm({ raceEthnicity, socialMedia }) {
+function AnswerForm() {
     const dispatch = useDispatch();
 
-    const { index, data } = useSelector((state) => {
+    const { index, incident, registry } = useSelector((state) => {
         return {
             index: state.index.index,
-            data: state.index.data,
-        }
-    })
+            registry: state.registry,
+            incident: state.registry,
+        };
+    });
 
-    const { RangePicker } = DatePicker;
-    const { TextArea } = Input;
+    console.log(registry);
+
 
     const incrementIndex = (e) => {
         console.log('default prevented');
         e.preventDefault();
 
         dispatch(changeIndex(parseInt(index + 1)));
-        dispatch(addAnswers({ assailant: assailant, id: index, address: address }));
+        dispatch(addAnswer(value));
     };
+
+    console.log();
 
     const decrementIndex = (e) => {
         dispatch(backIndex(parseInt(index - 1)));
 
+        dispatch(removeAnswer(value))
         if(index <= 0) {
             return (
                 dispatch(changeIndex(parseInt(0)))
             )
         };
     };
-    const [ assailant, setAssailant ] = useState([
-        {fullName: ''},
-        {race: ''},
-        {gender: ''},
-    ]);
 
 
     const [ value, setValue ] = useState();
+    console.log(value);
 
     const [ address, setAddress ] = useState({ 
         streetAddress: '',
@@ -65,16 +61,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
         country: ''
     });
 
-    
-
-    const handleOnSubmit = ({address}) => {
-        dispatch(addAnswers({address}));
-        console.log({address});
-    };
-
-    console.log({data});
-
-    const options = [
+    const ethnicity = [
         { label: 'Asian', value: 'asian' },
         { label: 'Black', value: 'black' }
     ];
@@ -83,184 +70,120 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
         { label: 'AL', value: 'Alabama' },
         { label: 'CA', value: 'California' },
         { label: 'DE', value: 'Delaware' },
-    ]
-
-    const handleOnChange = (option) => {
-        setValue(option);
-        console.log(value);
-    };
+    ];
 
     return (
-        <div className="w-full content-center" >
-            {index === 0 ? (
-                    <Form >
-                       <div>
-                       <input
-                           type='text'
-                           placeholder='Add Answer..'                          
-                           value={assailant.fullName}
-                           onChange={(e) => setAssailant({ fullName: e.target.value})}
-                           ></input>
-                       </div>
-                       <div>
-                       <Button 
-                       type='ghost'
-                       onClick={decrementIndex}
-                       >
-                           Back
-                       </Button>
-                       <Button 
-                       type='primary'
-                       onClick={incrementIndex}
-                       >
-                           Next
-                       </Button>
-                       </div>
-                   </Form>
-            ) : index === 1 ? (
-                <div>
-                    <Form >
-                        <Form.Item label="Ethnicity" name={'Ethnicity'}>
-                            <Select options= {options}
-                                    value= {value}
-                                    onChange={(option) => setAssailant({ ...assailant, race: (option)})}
-                                    />
-                        </Form.Item>
-                        <Button 
-                       type='ghost'
-                       onClick={decrementIndex}
-                       >
-                           Back
-                       </Button>
-                       <Button 
-                       type='primary'
-                       onClick={incrementIndex}
-                       >
-                           Next
-                       </Button>
-                    </Form>
-                    </div>
-            ) : index === 2 ? (
-            <form>
-                <div>
-                    <Radio.Group onChange={(e) => setAssailant({ ...assailant, gender: e.target.value })} size="large">
-                        <Radio.Button value="Male">Male</Radio.Button>
-                        <Radio.Button value="Female">Female</Radio.Button>
-                    </Radio.Group>
-                    <div>
-                        <Button 
-                            className="button is-link"
-                            onClick={decrementIndex}
-                            >Back
-                        </Button>
-                        <Button 
-                            className="button is-link"
-                            onClick={incrementIndex}
-                            >Next
-                        </Button>
-                    </div>
-                </div>
-            </form>
-            ) : index === 3 ? (
-                <div>       
-                        <Form
-                            labelCol={{ span: 140, }}
-                            wrapperCol={{ span: 140, }}
-                            layout="horizontal"
-                            style={{ maxWidth: 600, }}
-                            >
-                        <Form.Item label="Address Line">
-                          <Input 
-                          width='100%'
-                          size="large"
-                          className='block w-full text-sm text-slate-500'
-                            type='text'
-                            value={address.streetAddress}
-                            onChange={e => setAddress({ ...address, address: e.target.value})}
-                            />
-                        </Form.Item>
-                        <Form.Item label="City">
-                          <Input 
-                            type='text'
-                            value={address.city}
-                          onChange={e => setAddress({ ...address, city: e.target.value})}
-                          />
-                        </Form.Item>
-                        <Form.Item label="State">
-                          <Select
-                            onChange={o => setAddress({ state: {o}})}
-                            >
-                            <Select.Option options={states} value={value}>Al</Select.Option>
-                          </Select>
-                        </Form.Item>
-                        <Form.Item label="Postal Code">
-                          <InputNumber 
-                          value={address.postal}
-                          onChange={e => setAddress({ ...address, postal: e.target.value})}
-                          />
-                        </Form.Item>
-                        <Button 
-                            className="button is-link"
-                            onClick={decrementIndex}
-                            >Back
-                            </Button>
-                            <Button 
-                                className="button is-link"
-                                onClick={incrementIndex}
-                                >Next
-                            </Button>
-                        </Form>
-                    </div>
-            ) : index === 4 ? (      
-                    <div>       
-                        <Form
-                            labelCol={{ span: 140, }}
-                            wrapperCol={{ span: 140, }}
-                            layout="horizontal"
-                            style={{ maxWidth: 600, }}
-                            onSubmit={handleOnSubmit}
-                            >
-                        <Form.Item label="Address Line">
-                          <Input 
-                            type='text' 
-                            value={address.address}
-                            onChange={e => setAddress({ address: e.target.value})}
-                            />
-                        </Form.Item>
-                        <Form.Item label="City">
-                          <Input 
-                          value={address.city}
-                          onChange={e => setAddress({ city: e.target.value})}
-                          />
-                        </Form.Item>
-                        <Form.Item label="State">
-                          <Select
-                            value={value}
-                            onChange={e => setAddress({ state: {value}})}
-                            >
-                            <Select.Option value="al">Al</Select.Option>
-                            <Select.Option value="ak">AK</Select.Option>
-                            <Select.Option value="ca">CA</Select.Option>
-                          </Select>
-                        </Form.Item>
-                        <Form.Item label="Postal Code">
-                          <InputNumber 
-                          onChange={e => setAddress({ postal: e.target.value})}
-                          />
-                        </Form.Item>
-                        <Button 
-                            className="button is-link"
-                            onClick={decrementIndex}
-                            >Back
-                            </Button>
-                            <Button 
-                                className="button is-link"
-                                onClick={(incrementIndex)}
-                                >Next
-                            </Button>
-                        </Form>
-                    </div>
-            ) : index === 5 ? (
+        <div className="w-full text-center border border-red-400" >
+            {index === 0 ? ( //when did the incident occur
+              <div>
+                <Space direction="vertical" size={12}>
+                    <DatePicker showTime value={incident.value}
+                    onChange={(DatePicker) => setValue({date: DatePicker.$d})}/>
+                </Space>
+              <div>
+                  <Button 
+                      className="button is-link"
+                      onClick={decrementIndex}
+                      >Back
+                  </Button>
+                  <Button 
+                      className="button is-link"
+                      onClick={(incrementIndex)}
+                      >Next
+                  </Button>
+              </div>
+          </div>
+            ) : index === 1 ? ( // Where did the incident occur?
+            <div>      
+            <Form
+            labelCol={{ span: 140, }}
+            wrapperCol={{ span: 140, }}
+            layout="horizontal"
+            style={{ maxWidth: 600, }}
+            >
+        <Form.Item label="Address Line">
+          <Input 
+          width='100%'
+          size="large"
+          className='block w-full text-sm text-slate-500'
+            type='text'
+            value={incident.streetAddress}
+            onChange={e => setValue({ ...value, streetAddress: e.target.value})}
+            />
+        </Form.Item>
+        <Form.Item label="City">
+          <Input 
+            id='city'
+            type='text'
+            value={incident.city}
+          onChange={e => setValue({ ...value, city: e.target.value})}
+          />
+        </Form.Item>
+        <Form.Item label="State">
+          <Select
+            onChange={state => setValue({ ...value, state: {state}})}
+            >
+            <Select.Option options={states} value={address.value}>Al</Select.Option>
+          </Select>
+        </Form.Item>
+        <Form.Item label="Postal Code">
+          <InputNumber 
+          value={address.postal}
+          onChange={e => setValue({ ...value, postal: e.target.value})}
+          />
+        </Form.Item>
+        <Button 
+            className="button is-link"
+            onClick={decrementIndex}
+            >Back
+            </Button>
+            <Button 
+                className="button is-link"
+                onClick={incrementIndex}
+                >Next
+            </Button>
+        </Form>
+    </div>
+  
+            ) : index === 2 ? ( // Was Alcohol Involved 
+            <div>                        
+            <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
+                <Radio.Button value="Yes">Yes</Radio.Button>
+                <Radio.Button value="No">No</Radio.Button>
+            </Radio.Group>
+            <div>
+                <Button 
+                    className="button is-link"
+                    onClick={decrementIndex}
+                    >Back
+                </Button>
+                <Button 
+                    className="button is-link"
+                    onClick={(incrementIndex)}
+                    >Next
+                </Button>
+            </div>
+        </div>   
+            ) : index === 3 ? ( // Were Drugs Involved 
+            <div>                        
+            <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
+                <Radio.Button value="Yes">Yes</Radio.Button>
+                <Radio.Button value="No">No</Radio.Button>
+            </Radio.Group>
+            <div>
+                <Button 
+                    className="button is-link"
+                    onClick={decrementIndex}
+                    >Back
+                </Button>
+                <Button 
+                    className="button is-link"
+                    onClick={(incrementIndex)}
+                    >Next
+                </Button>
+            </div>
+        </div>   
+            ) : index === 4 ? ( // Was Survivor Asleep at time of Incident
                 <div>
                     <Form.Item
                         name="phone"
@@ -292,7 +215,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                             </Button>
                         </div>
                     </div>
-            ) : index === 6 ? (
+            ) : index === 5 ? ( // Were there verbal threats to the survivor
                 <div>
                     <Form>
                      <Form.Item
@@ -326,10 +249,20 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                     </div>
                     </Form>
                 </div>
-            ) : index === 7 ? (
+            ) : index === 6 ? ( // Was resistance offered by survivor
                 <div>
                     <Form>
-                     <Form.Item>
+                    <Form.Item label="Ethnicity">
+                          <Select
+                            value={value}
+                            onChange={e => setAddress({ state: {value}})}
+                            >
+                            <Select.Option value="al">Al</Select.Option>
+                            <Select.Option value="ak">AK</Select.Option>
+                            <Select.Option value="ca">CA</Select.Option>
+                          </Select>
+                        </Form.Item>
+                     {/* <Form.Item>
                         <input
                         name="characteristics"
                         type='text'
@@ -337,7 +270,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                         value={value}
                         onChange={(event) => setValue(event.target.value)}
                         ></input>
-                    </Form.Item>
+                    </Form.Item> */}
                     <div>
                         <Button 
                             className="button is-link"
@@ -352,50 +285,64 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                     </div>
                     </Form>
                 </div>
-            ) : index === 8 ? (
-                    <div>
-                        <Form.Item
-                            name="location of incident"
-                            label="location of incident"
-                            >
-                            <Input placeholder="Please input your name" />
-                        </Form.Item>
-                        <div>
-                            <Button 
-                                className="button is-link"
-                                onClick={decrementIndex}
-                                >Back
-                            </Button>
-                            <Button 
-                                className="button is-link"
-                                onClick={(incrementIndex)}
-                                >Next
-                            </Button>
-                        </div>
-                    </div>
-            ) : index === 9 ? (
-                    <div>
-                        <Form>
-                            <Form.Item label="DatePicker">
-                              <DatePicker 
-                              onChange={(event) => setValue(event.target.value)}
-                              />
-                            </Form.Item>
-                        </Form>
-                        <div>
-                            <Button 
-                                className="button is-link"
-                                onClick={decrementIndex}
-                                >Back
-                            </Button>
-                            <Button 
-                                className="button is-link"
-                                onClick={(incrementIndex)}
-                                >Next
-                            </Button>
-                        </div>
-                    </div>
-            ) : index === 10 ? (
+            ) : index === 7 ? ( // Details of the assault
+            <div>                        
+            <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
+                <Radio.Button value="Male">Male</Radio.Button>
+                <Radio.Button value="Female">Female</Radio.Button>
+            </Radio.Group>
+            <div>
+                <Button 
+                    className="button is-link"
+                    onClick={decrementIndex}
+                    >Back
+                </Button>
+                <Button 
+                    className="button is-link"
+                    onClick={(incrementIndex)}
+                    >Next
+                </Button>
+            </div>
+        </div>       
+            
+            // <div>
+                    //     <Form.Item
+                    //         name="location of incident"
+                    //         label="location of incident"
+                    //         >
+                    //         <Input placeholder="Please input your name" />
+                    //     </Form.Item>
+                    //     <div>
+                    //         <Button 
+                    //             className="button is-link"
+                    //             onClick={decrementIndex}
+                    //             >Back
+                    //         </Button>
+                    //         <Button 
+                    //             className="button is-link"
+                    //             onClick={(incrementIndex)}
+                    //             >Next
+                    //         </Button>
+                    //     </div>
+                    // </div>
+            ) : index === 8 ? ( // Areas of sexual contact
+            <div>
+            <Form>
+            </Form>
+            <div>
+                <Button 
+                    className="button is-link"
+                    onClick={decrementIndex}
+                    >Back
+                </Button>
+                <Button 
+                    className="button is-link"
+                    onClick={(incrementIndex)}
+                    >Next
+                </Button>
+            </div>
+        </div>
+            ) : index === 9 ? ( // Did the survivor receive a Sexual Assault Evidence Kit(i.e Rape Kit) 
                     <div>
                         <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
                             <Radio.Button value="Yes">Yes</Radio.Button>
@@ -414,7 +361,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                             </Button>
                         </div>
                     </div>
-            ) : index === 11 ? (
+            ) : index === 10 ? ( // Use of weapons
                     <div>
                         <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
                             <Radio.Button value="Yes">Yes</Radio.Button>
@@ -433,7 +380,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                             </Button>
                         </div>
                     </div>                                       
-            ) : index === 12 ? (
+            ) : index === 11 ? ( // Use of Restraints 
                     <div>                        
                         <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
                             <Radio.Button value="Yes">Yes</Radio.Button>
@@ -452,7 +399,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                             </Button>
                         </div>
                     </div>    
-            ) : index === 13 ? (
+            ) : index === 12 ? ( // Assailants Gender
                 <div>                        
                     <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
                         <Radio.Button value="Yes">Yes</Radio.Button>
@@ -471,7 +418,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                         </Button>
                     </div>
                 </div>                
-            ) : index === 14 ? (
+            ) : index === 13 ? ( // Assailants Race/Ethnicity
                 <div>                        
                     <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
                         <Radio.Button value="Yes">Yes</Radio.Button>
@@ -490,7 +437,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                         </Button>
                     </div>
                 </div>
-            ) : index === 15 ? (
+            ) : index === 14 ? ( // Do you know the assailants name?
                 <div>                        
                     <Form.Item
                        name="short description"
@@ -513,7 +460,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                         </Button>
                     </div>
                 </div>           
-            ) : index === 16 ? (
+            ) : index === 15 ? ( // Do you know the assailants address?
                 <div>                        
                     <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
                         <Radio.Button value="Yes">Yes</Radio.Button>
@@ -532,7 +479,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                         </Button>
                     </div>
                 </div>   
-            ) : index === 17 ? (
+            ) : index === 16 ? ( // Do you know the assailants phone number?
                 <div>                        
                     <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
                         <Radio.Button value="Yes">Yes</Radio.Button>
@@ -551,7 +498,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                         </Button>
                     </div>
                 </div>   
-            ) : index === 18 ? (
+            ) : index === 17 ? ( // Do you know the assailants place of work?
                 <div>                        
                     <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
                         <Radio.Button value="Yes">Yes</Radio.Button>
@@ -570,7 +517,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                         </Button>
                     </div>
                 </div>   
-            ) : index === 19 ? (
+            ) : index === 18 ? ( // Do you know the assailants email?
                 <div>                        
                     <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
                         <Radio.Button value="Yes">Yes</Radio.Button>
@@ -589,7 +536,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                         </Button>
                     </div>
                 </div>   
-            ) : index === 20 ? (
+            ) : index === 19 ? ( // Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.) 
                 <div>                        
                     <Form.Item
                         name="Name of Survivor"
@@ -611,7 +558,7 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                         </Button>
                     </div>
                 </div>   
-            ) : index === 21 ? (
+            ) : index === 20 ? ( // Name of Survivor
                 <div>                        
                     <Form.Item
                         name="email"
@@ -644,10 +591,10 @@ function AnswerForm({ raceEthnicity, socialMedia }) {
                         </Button>
                     </div>
                 </div>
-            ) : index === 21 ? ( 
+            ) : index === 21 ? ( // Email of Survivor 
                 <div>
                     An confidential copy of the registry has been sent to your email
-                </div>                 
+                </div>             
             ) : index === null (
             )
                 }

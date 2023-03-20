@@ -3,26 +3,39 @@ import {
     indexReducer,
     changeIndex,
     backIndex,
-    addAnswer,
+    // addAnswer,
     addAnswers
 } from './slices/indexSlice';
 import {
     formReducer,
-    nextQuestion,
-    previousQuestion,
-    changeFName,
-    changeLName,
     changeValue,
     changeValue2,
 } from './slices/formSlice';
+import {
+    addAnswer, 
+    removeAnswer,
+    registryReducer,
+} from './slices/registrySlice';
 
 const store = configureStore({
     reducer: {
         index: indexReducer,
-        form: formReducer, 
+        form: formReducer,
+        registry: registryReducer, 
+
     }
 });
 
+// const startingState = store.getState();
+// console.log(JSON.stringify(startingState));
+
+// store.dispatch({
+//   type: "registry/addAnswer",
+//   payload: "NewSong!!!"
+// });
+
+// const finalState = store.getState().registry;
+// console.log(JSON.stringify(finalState));
 
 export {
     store, 
@@ -31,13 +44,11 @@ export {
     backIndex,
     addAnswer,
     formReducer,
-    nextQuestion,
-    previousQuestion,
-    changeFName,
-    changeLName,
     changeValue,
     changeValue2,
-    addAnswers
+    addAnswers,
+    removeAnswer,
+    registryReducer
  };
 
 

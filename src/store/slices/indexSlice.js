@@ -1,10 +1,18 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
         index: 0,
-        data: []
+        incident: [],
+        // assailant: [],
+        // survivor: [],
+        // data: [
+        //     {incident: []},
+        //     {assailant: []},
+        //     {address: []}
+        // ]
+
     },
     reducers: {
         changeIndex(state, action) {
@@ -16,11 +24,15 @@ const indexSlice = createSlice({
         addAnswers(state, action){
             const newAnswer = {
                 id: state.index,
-                assailant: action.payload.assailant,
-                address: action.payload.address,
+                incident: action.payload,
+                // assailant: action.payload.assailant,
+                // address: action.payload.address,
             };
-            state.data.push(newAnswer);
+            state.push(newAnswer);
           },
+        removeSong(state, action) {
+            state.pop(action.payload);
+        }
     }
     });
 

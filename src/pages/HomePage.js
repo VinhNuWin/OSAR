@@ -2,11 +2,7 @@ import { useAnimation, motion } from "framer-motion";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { useInView } from "react-intersection-observer";
-import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
-import Route from "../components/Route";
-import Link from "../components/Link";
-import QuestionPage from "./QuestionPage";
 
 const Title = styled.h2`
   font-size: 3rem;
@@ -95,13 +91,18 @@ export default function AnimatedTitle() {
         );
       })}
     </Title>
-      <Button
+      <motion.button
+      whileHover={{
+        scale: 1,
+        // textShadow: "0px 0px 8px rgb(0,0,0)",
+        boxShadow: "0px 0px 8px rgb(0,0,0)"
+      }}
       onClick={() => {
         navigate("/registry");
       }}
       >
         Begin Registry
-      </Button>
+      </motion.button>
     </div>
   );
 }

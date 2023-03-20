@@ -4,99 +4,41 @@ const formSlice = createSlice({
   name: 'form',
   initialState: {
     question: [
-      'When did the incident occur?',
-      'Where did the incident occur?',
-      'Do you know',
-        'the assailants name?',
-        'the assailants address?',
-        'the assailants place of work?',
-        'the assailants phone number?',
-        'any of their social media names?',
-        'assailants email?',
-        
-
-
-        'Assailants Name',
-        'Race/Ethnicity',
-        'Gender',
-        'Assailants Address',
-        'Assailants place of work',
-        'Phone Number',
-        'Assailants Email',
-        'Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.',
-        'Location of Assault',
-        'Date and Time of Incident',
-        'Was Alcohol Involved',
-        'Were Drugs Involved',
-        'Was Survivor Asleep at time of Incident',
-        'Were there verbal threats to the survivor',
-        'Was resistance offered by survivor',
-        'Details of the assault',
-        'Areas of sexual contact',
-        'Did the survivor receive a Sexual Assault Evidence Kit(i.e Rape Kit)',
-        'Use of weapons',
-        'Use of Restraints',
-        'Name of Survivor',
-        'Email of Survivor'
+      'When did the incident occur?', //0
+      'Where did the incident occur?', //1
+      'Was Alcohol Involved', //3
+      'Were Drugs Involved', //4
+      'Was Survivor Asleep at time of Incident', //5
+      'Were there verbal threats to the survivor', //6
+      'Was resistance offered by survivor', //7
+      'Details of the assault', //8
+      'Areas of sexual contact', //9
+      'Did the survivor receive a Sexual Assault Evidence Kit(i.e Rape Kit)', //10
+      'Use of weapons', //11
+      'Use of Restraints', //12
+      'Assailants Gender', //13
+      'Assailants Race/Ethnicity', //14
+      'Do you know the assailants name?', //15
+      'Do you know the assailants address?', //16
+      'Do you know the assailants phone number?', //17
+      'Do you know the assailants place of work?', //18
+      'Do you know the assailants email?', //19
+      'Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.)', //20
+      'Name of Survivor', //21
+      'Email of Survivor', //22
     ],
-    first: '',
-    last: '',
-    race: '',
-    assailant: {
-      gender: '',
-      name: {
-        first: '',
-        last: '',
-        social: '',
-      },
-      location: {
-        street: '',
-        city: '',
-        state: '',
-        postcode: '',
-      },
-      email: '',
-      phoneNumber: '',
-      workAddress: {
-        street2: '',
-        city2: '',
-        state2: '',
-        postcode2: '',
-      },
-      definingCharacteristics: [],
-    },
-    incidentDetails: {
-      date: '',
-      time: '',
-      location: {
-        street3: '',
-        city3: '',
-        state3: '',
-        postcode3: '',
-      },
-      alcohol: '',
-      drugs: '',
-      asleep: '',
-      threats: '',
-      resistance: '',
-      assaultDescription: '',
-      areasOfSexualContact: '',
-      weapons: '',
-      restraints: '',
-    },
-    nameOfSurvivor: '',
-    emailRegistry: '',
+   
   reducers: {
     changeValue(state, action){
       state.first = action.payload;    
     },
     changeValue2(state, action){
-      state.last = action.payload;    
+      state.last = action.payload;
     },
   },
 }
 
 });
 
-export const { addAnswers, nextQuestion, previousQuestion, changeFName, changeLName, changeValue, changeValue2 } = formSlice.actions;
+export const { changeValue, changeValue2 } = formSlice.actions;
 export const formReducer = formSlice.reducer;

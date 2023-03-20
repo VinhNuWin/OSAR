@@ -15,8 +15,8 @@ function Questions() {
 
 
     return (
-        <div class='subpixel-antialiased text-5xl'>
-            <h1>{question[index]}</h1>
+        <div className='text-5xl py-48 justify-center text-center h-96 border border-green-400'>
+            <h1 className=''>{question[index]}</h1>
         </div>
     )
 }
