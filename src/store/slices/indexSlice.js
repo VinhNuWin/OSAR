@@ -5,6 +5,8 @@ const indexSlice = createSlice({
     initialState: {
         index: 0,
         incident: [],
+        assailant: [],
+        survivor: [],
         // assailant: [],
         // survivor: [],
         // data: [

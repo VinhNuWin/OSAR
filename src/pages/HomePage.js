@@ -60,7 +60,11 @@ export default function AnimatedTitle() {
   };
   
   return (
-    <div className="grid place-content-center h-96">
+    <motion.div className="grid place-content-center h-96"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: .5, duration: 4.5 }}
+      >
     <Title aria-label={text} role="heading">
       {text.split(" ").map((word, index) => {
         return (
@@ -92,6 +96,9 @@ export default function AnimatedTitle() {
       })}
     </Title>
       <motion.button
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 3, duration: 3.0}}
       whileHover={{
         scale: 1,
         // textShadow: "0px 0px 8px rgb(0,0,0)",
@@ -103,6 +110,6 @@ export default function AnimatedTitle() {
       >
         Begin Registry
       </motion.button>
-    </div>
+    </motion.div>
   );
 }
