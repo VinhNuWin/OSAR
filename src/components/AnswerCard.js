@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, setCheck } from 'react';
 import '../styles.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addAnswer, changeIndex, backIndex, removeAnswer } from '../store';
-// import Button from './inputComponents/Button';
 import { 
     Radio,
     Button,
@@ -17,6 +16,7 @@ import {
 
 function AnswerForm() {
     const dispatch = useDispatch();
+    const [ visible, setVisible ] = useState(false);
 
     const { index, incident, registry, assailant, survivor } = useSelector((state) => {
         return {
@@ -37,6 +37,7 @@ function AnswerForm() {
 
         dispatch(changeIndex(parseInt(index + 1)));
         dispatch(addAnswer(value));
+        setVisible(false);
     };
 
     console.log();
@@ -147,10 +148,20 @@ function AnswerForm() {
             ) : index === 2 ? ( // Was Alcohol Involved 
                 <div>                        
                     <Radio.Group defaultValue="" size="large" onChange={(event) => setValue({ wasAlcoholInvolved: event.target.value})}>
-                        <Radio.Button value="Yes">Yes</Radio.Button>
-                        <Radio.Button value="No">No</Radio.Button>
+                        <Radio.Button value="Yes" 
+                        onClick={() => setVisible(true)} >Yes</Radio.Button>
+                        <Radio.Button value="No"
+                        onClick={() => setVisible(false)}>No</Radio.Button>                        
                     </Radio.Group>
                 <div>
+                {visible && 
+                                    <Form>                      
+                                    <Form.Item>
+                                       <Input 
+                                       placeholder="Please input assailants name"
+                                       onChange={(event) => setValue({ assailant: event.target.value})} />
+                                    </Form.Item>
+                                    </Form>}
                     <Button 
                         className="button is-link"
                         onClick={decrementIndex}
@@ -167,7 +178,7 @@ function AnswerForm() {
             <div>                        
                 <Radio.Group defaultValue="" size="large" onChange={(event) => setValue({ wereDrugsInvolved: event.target.value})}>
                     <Radio.Button value="Yes">Yes</Radio.Button>
-                    <Radio.Button value="No">No</Radio.Button>
+                    <Radio.Button value="No" >No</Radio.Button>
                 </Radio.Group>
             <div>
                 <Button 
@@ -387,15 +398,18 @@ function AnswerForm() {
                     </div>
                     </Form>
                 </div>
-            ) : index === 14 ? ( // Do you know the assailants name?
+            ) : index === 14 ? ( // Do you know the assailants name? **onClick Visible**
                 <div>
                     <div>
                         <Radio.Group defaultValue="" size="large" onChange={(event) => setValue(event.target.value)}>
-                            <Radio.Button value="Yes">Yes</Radio.Button>
-                            <Radio.Button value="No">No</Radio.Button>
+                            <Radio.Button value="Yes"
+                            onClick={() => setVisible(true)} 
+                            >Yes</Radio.Button>
+                            <Radio.Button value="No"
+                            onClick={() => setVisible(false)} >No</Radio.Button>
                         </Radio.Group>
                     </div>
-                        <Form>                      
+                       { visible && <Form>                      
                             <Form.Item>
                                <Input 
                                placeholder="Please input assailants name"
@@ -413,7 +427,7 @@ function AnswerForm() {
                                     >Next
                                 </Button>    
                             </div>
-                        </Form>  
+                        </Form> } 
                 </div>           
             ) : index === 15 ? ( // Do you know the assailants address?
                     <div>
