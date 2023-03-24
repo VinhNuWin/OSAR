@@ -1,6 +1,6 @@
 import { useSelector } from  'react-redux';
 import AnswerCard from './AnswerCard';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 
 function Questions() {
@@ -25,13 +25,16 @@ function Questions() {
 
 
     return (
+        <AnimatePresence>
         <motion.div className='text-5xl py-48 justify-center text-center h-96 border border-green-400'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }} 
         transition= {{ delay: 1.5, type: 'spring'}}
+        key={index}
         >
             <h1 className=''>{question[index]}</h1>
         </motion.div>
+        </AnimatePresence>
     )
 }
 
