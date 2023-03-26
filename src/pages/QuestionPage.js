@@ -5,8 +5,8 @@ import Loader from '../components/Loader';
 function QuestionPage() {
     
     return (
-        <div className='place-content-end'>
-              <Questions className='h-96' />
+        <div className=''>
+              <Questions />
               <AnswerCard />
          </div>
     )
