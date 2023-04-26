@@ -27,18 +27,17 @@ const formSlice = createSlice({
       'Name of Survivor', //21
       'Email of Survivor', //22
     ],
-   
-  reducers: {
-    changeValue(state, action){
-      state.first = action.payload;    
-    },
-    changeValue2(state, action){
-      state.last = action.payload;
+    user: {
+      incident: {},
+      assailant: {},
     },
   },
+  reducers: {
+    addUserId: (state, action) => {
+      state.user = action.payload
+  },
 }
-
 });
 
-export const { changeValue, changeValue2 } = formSlice.actions;
+export const { addUserId } = formSlice.actions;
 export const formReducer = formSlice.reducer;

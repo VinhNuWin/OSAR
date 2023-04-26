@@ -1,40 +1,34 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addAnswers } from '../store';
-import RadioButton from './inputComponents/RadioButton';
+import "../styles.css";
+import { useState } from "react";
+import { motion, Variants } from "framer-motion";
+import { Form, Item, Input, Select, InputNumber } from 'antd';
+import QuestionPage from "../pages/QuestionPage";
+import Questions from "./Questions";
+import AnswerCard from "./AnswerCard";
+import ReportList from "./ReportList";
 
+const addressForm = [
+    { id: 1, }
+]
 
-function TestCard() {
-    const [value, setValue] = useState();
+export default function TestCard() {
 
-    const dispatch = useDispatch();
+  const handleRegistry = () => {
+    return <ReportList />
+  }
 
-    const handleOnSubmit = (event) => {
-        console.log("default prevented")
-        event.preventDefault();
-
-
-        dispatch(addAnswers({
-            title: value,
-        }));
-
-        console.log(value);
-    };
-
-    return (
-        <form>
-            <div>
-            {/* <input
-                type='text'
-                placeholder='Add Answer..'
-                value={value}
-                onChange={(event) => setValue(event.target.value)}
-                ></input> */}
+  return (
+       <div className="container">
+          <div className="container-question">
+            {/* <Questions /> */}
+            <button
+              onclick={handleRegistry} />
+            <div className="container-input">
+            {/* <AnswerCard /> */}
+            <ReportList />
             </div>
-            <RadioButton className='btn-radio' onSubmit={handleOnSubmit}>
-                Submit
-            </RadioButton>
-        </form>
-    )
+          </div>
+       </div>
+       
+  );
 }
-export default TestCard;

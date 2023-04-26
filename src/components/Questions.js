@@ -31,14 +31,15 @@ function Questions() {
 
     return (
         <AnimatePresence>
-            <motion.div className='question-card text-4xl py-24'
+            <motion.div 
+            className='container-question'
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
                 key={index}
                 exit="exit"
                 >
-                    <h1 className=''>{question[index]}</h1>
+                    <h1 className='text-4xl'>{question[index]}</h1>
             </motion.div>
             {/* <TestCard/> */}
         </AnimatePresence>

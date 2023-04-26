@@ -1,15 +1,16 @@
 import QuestionPage from './pages/QuestionPage';
-import HomePage from './pages/HomePage';
-import Logo from './components/Logo';
+import HomePage from './components/HomePage';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import TestCard from './components/TestCard';
 
 function App() {
 
   return (
         <Router>
             <Routes>
-              <Route path="/" element={<Logo />}/>
+              <Route path="/" element={<HomePage />}/>
               <Route path="/registry" element={<QuestionPage />}/>
+              <Route path="/testcard" element={<TestCard />}/>
             </Routes>
           </Router>
   );

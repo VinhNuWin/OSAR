@@ -1,41 +1,45 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
     indexReducer,
     changeIndex,
     backIndex,
-    // addAnswer,
-    addAnswers
+    addAnswers,
+    addEmail,
+    changeDate
 } from './slices/indexSlice';
 import {
     formReducer,
-    changeValue,
-    changeValue2,
+    addUserId
 } from './slices/formSlice';
 import {
     addAnswer, 
     removeAnswer,
     registryReducer,
 } from './slices/registrySlice';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { reportApi }  from './apis/reportApi';
+import { usersApi } from './apis/userApi';
 
 const store = configureStore({
     reducer: {
         index: indexReducer,
         form: formReducer,
         registry: registryReducer, 
-
+        [reportApi.reducerPath]: reportApi.reducer,
+        [usersApi.reducerPath]: usersApi.reducer
+    },
+    middleware: (getDefaultMiddleware) => {
+        return getDefaultMiddleware({
+            serializableCheck: false,
+        })
+            .concat(reportApi.middleware)
+            .concat(usersApi.middleware);
     }
 });
 
-// const startingState = store.getState();
-// console.log(JSON.stringify(startingState));
+window.store = store;
 
-// store.dispatch({
-//   type: "registry/addAnswer",
-//   payload: "NewSong!!!"
-// });
-
-// const finalState = store.getState().registry;
-// console.log(JSON.stringify(finalState));
+setupListeners(store.dispatch);
 
 export {
     store, 
@@ -44,11 +48,13 @@ export {
     backIndex,
     addAnswer,
     formReducer,
-    changeValue,
-    changeValue2,
+    addEmail,
     addAnswers,
     removeAnswer,
-    registryReducer
+    registryReducer,
+    changeDate,
+    addUserId
  };
 
-
+export { useFetchReportQuery } from './apis/reportApi';
+export { useCreateUserMutation, useGetUserQuery } from './apis/userApi';

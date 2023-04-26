@@ -1,0 +1,21 @@
+{
+    "reporter": [
+        {
+            "id": 1,
+            "email": "Vinh"
+        },
+        {
+            "id": 2,
+            "email": "Emily"
+        }
+    ],
+    "incident": [
+        {
+            "id": 10,
+            "date": "April 1 2023",
+            "location": "D&B",
+            "reporterId": 1
+        }
+    ],
+    "assailant": []
+}

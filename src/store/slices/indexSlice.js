@@ -4,17 +4,7 @@ const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
         index: 0,
-        incident: [],
-        assailant: [],
-        survivor: [],
-        // assailant: [],
-        // survivor: [],
-        // data: [
-        //     {incident: []},
-        //     {assailant: []},
-        //     {address: []}
-        // ]
-
+        email: '',
     },
     reducers: {
         changeIndex(state, action) {
@@ -24,19 +14,16 @@ const indexSlice = createSlice({
             state.index = action.payload;
         },
         addAnswers(state, action){
-            const newAnswer = {
-                id: state.index,
-                incident: action.payload,
-                // assailant: action.payload.assailant,
-                // address: action.payload.address,
-            };
-            state.push(newAnswer);
+            state.push(action.payload);
           },
         removeSong(state, action) {
             state.pop(action.payload);
-        }
+        },
+        addEmail(state, action){
+            state.email = action.payload;
+          },
     }
     });
 
-export const { changeIndex, backIndex, addAnswer, addAnswers } = indexSlice.actions;
+export const { changeDate, changeIndex, backIndex, addAnswers, addEmail } = indexSlice.actions;
 export const indexReducer = indexSlice.reducer;
