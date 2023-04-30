@@ -1,18 +1,24 @@
 import QuestionPage from './pages/QuestionPage';
 import HomePage from './components/HomePage';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import TestCard from './components/TestCard';
+import { BrowserRouter as Router, Routes, Route, useNavigate, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
+
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route>
+      <Route path="/" element={<HomePage />}/>
+      <Route path="/registry" element={<QuestionPage />}/>
+    </Route>
+  )
+)
 
 function App() {
 
   return (
-        <Router>
-            <Routes>
-              <Route path="/" element={<HomePage />}/>
-              <Route path="/registry" element={<QuestionPage />}/>
-              <Route path="/testcard" element={<TestCard />}/>
-            </Routes>
-          </Router>
+    <ChakraProvider>
+      <RouterProvider router={router} />
+    </ChakraProvider>
   );
 }
 

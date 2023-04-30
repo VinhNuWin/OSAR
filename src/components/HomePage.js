@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import '../styles.css';
+import { motion, isValidMotionProp } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
-import TestPage from '../pages/TestPage';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addUserId } from '../store';
 import axios from 'axios';
+import { Button, Stack, FormControl, FormLabel, FormHelperText, Input, Box, SimpleGrid } from '@chakra-ui/react';
+import { Container, chakra, shouldForwardProp } from '@chakra-ui/react';
+
+const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+  });
 
 const svgVariants = {
     hidden: { rotate: -180 },
@@ -18,12 +24,12 @@ const pathVariants = {
     hidden: {
         opacity: 0,
         pathLength: 0,
-        fill: "rgba(255, 255, 255, 255)"
+        fill: "rgba(250, 0, 250, 0)"
     },
     visible: {
         opacity: 1,
         pathLength: 1,
-        fill: "rgba(28,47,80, 0.3)",
+        fill: "rgba(1,0,0,1)",
         transition: {
             duration: 4,
             ease: "easeInOut",
@@ -53,8 +59,9 @@ const HomePage = () => {
 
 
     return (
-        <header className='bg-color-dusk'>
-            <motion.div className='logo grid place-content-center h-96'>
+        <header className='center wrapper bg-color-grey'>
+            <Box pt='92px' className='flex-container'>
+                <motion.div className='logo-wrapper'>
                 <motion.svg width="373" height="109" viewBox="0 0 373 109" fill="none" xmlns="http://www.w3.org/2000/svg"
                    variants={svgVariants}
                    initial="hidden"
@@ -88,29 +95,38 @@ const HomePage = () => {
                     variants={pathVariants}/>
                     </motion.svg>
                 </motion.div>
-                <form>
-                    <input
-                    value={email}
-                    onChange={(e) => {setEmail(e.target.value)}}
-                    />
-                <motion.Button
-                    className='btn-logo grid place-content-center inset-x-0 bottom-0 '
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 2, duration: 3.0}}
-                    whileHover={{
-                      scale: 1.1,
-                      // textShadow: "0px 0px 8px rgb(0,0,0)",
-                      boxShadow: "0px 0px 8px rgb(0,0,0)"
-                    }}
-                    type="button"
-                    onClick={addUser}
-                    >
-                      Begin Registry
-                    </motion.Button>
-                </form>
+            </Box>
+                <Stack direction='vertical'>
+                    <Box pl='' pt='20%' w='100%'>
+                        <FormControl>
+                          <FormLabel>Email address</FormLabel>
+                          <Input 
+                            value={email}
+                            onChange={(e) => {setEmail(e.target.value)}}
+                            rules={[
+                                {
+                                  type: 'email',
+                                  message: 'The input is not valid E-mail!',
+                                },
+                                {
+                                  required: true,
+                                  message: 'Please input your E-mail!',
+                                },
+                              ]}
+                            />
+                          <FormHelperText>We'll never share your email.</FormHelperText>
+                        </FormControl>
+                            <Box pos='relative' className='center flex-container'>
+                                <Button 
+                                colorScheme='teal'
+                                onClick={addUser}
+                                >
+                                    Begin Registry
+                                </Button>
+                            </Box>
+                    </Box>
+                </Stack>
         </header>
-        
     )
 }
 

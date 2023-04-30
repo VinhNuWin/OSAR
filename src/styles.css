@@ -1,96 +1,63 @@
 body {
-  /* background-color: black; */
   background-color: rgb(247,249,252);
-  /* border: 1px solid black; */
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  border-left: 2px solid rgb(208,213,220);
-  border-right: 2px solid rgb(208,213,220);
-  margin: auto;
-  padding-top: 10px;
-  height: 100vh;
-}
-
-.container-question {
+.wrapper{
   display: grid;
-  height: 30vh;
-  /* width: 70vh; */
+  width: 100%;
+  max-width: 740px;
+  margin: 0 auto;
+  height: 760px;
+  padding: 5%;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.center2 {
+  /* border: 3px solid lightgreen; */
+  height: 300px;
   text-align: center;
-  font-weight: 600;
-  padding-top: 5%;
-  border: 2px solid salmon;
+  width: 100%;
+  padding-top: 10%;
 }
-
-.container-input {
-  display: flex;
-  justify-content: center;
-  height: 10vh;
-  padding-top: 10px;
-  border: 1px solid blueviolet;
+.center {
+  height: auto;
   margin: auto;
+  width: 50%;
+  padding-top: 5%;
 }
 
-.input-btn {
-  display: flex;
-  background-color: white;
-  border: white;
-  color: black;
-  padding: 10px 80px;
-  box-shadow: 0 3px 2px rgba(0,0,0,0.1);
-  margin: 5px;
+.border {
+
+  width: 100%;
+  height: 300px;
 }
 
-.next-btn {
-  display: grid;
-
-  position: absolute;
-  left: 36%;
-  bottom: 18%;
-  background-color: rgb(98,91,246);
-  padding: 10px 175px;
-  color: white;
-  border-radius: 2;
-  border: 1px solid rgb(98,91,246);
-  -webkit-box-shadow:  0 5px 5px #666;
-  font-weight: 600;
-
-}
-
-.back-btn {
-  /* display: flex;
-  position: fixed;
-  bottom: 10%;
-  left: 36.3%; */
-  padding: 5px 50px;
-  border: 2px solid rgb(98,91,246);
-  color: rgb(98,91,246);
-  font-weight: 600 ;
-}
-
-.address-container {
-  box-shadow: 0 3px 2px rgba(0,0,0,0.1);
-}
-
-.skip-btn {
-  padding: 5px 50px;
-  color: rgb(98,91,246);
-  border: 0
-}
-
-.back-skip-container {
-  display: flex;
-  position: absolute;
-  bottom: 11%;
-  left: 42%;
-  
-}
-.answer-container {
-  display: flex;
-  justify-content: center;
+.button {
+  /* border: 2px solid green; */
   position: relative;
+  text-align: center;
+  width: 100%;
+  height: 50%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 100%;
+}
 
+.answerCard {
+  /* border: 2px solid red; */
+  height: 200px;
+  text-align: center;
+  width: 540px;
+  padding-top: none;
+}
+
+form.false {
+  visibility: hidden;
+}
+
+form.true {
+  visibility: visible;
 }

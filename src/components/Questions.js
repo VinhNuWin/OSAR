@@ -1,7 +1,5 @@
 import { useSelector } from  'react-redux';
-import AnswerCard from './AnswerCard';
 import { motion, AnimatePresence } from 'framer-motion';
-import TestCard from './TestCard';
 
 
 function Questions() {
@@ -13,7 +11,7 @@ function Questions() {
         },
         visible: {
             opacity: 1,
-            transition: { delay: 0.1, type: 'spring', stiffness: 5 }
+            transition: { delay: 0.5, type: 'spring', stiffness: 2 }
         },
         exit: {
             x: '-100vw',
@@ -32,16 +30,15 @@ function Questions() {
     return (
         <AnimatePresence>
             <motion.div 
-            className='container-question'
+                className=''
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
                 key={index}
                 exit="exit"
                 >
-                    <h1 className='text-4xl'>{question[index]}</h1>
+                <h1 className='text-5xl'>{question[index]}</h1>
             </motion.div>
-            {/* <TestCard/> */}
         </AnimatePresence>
 
     )

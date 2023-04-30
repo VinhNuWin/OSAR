@@ -9,7 +9,7 @@ const getAllAssailants = async(req, res) => {
     res.status(200).json(assailant);
 };
 
-const getAssailant = async (req,res) => {
+const getAssailant = async(req, res) => {
     const { id } = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -27,6 +27,7 @@ const getAssailant = async (req,res) => {
 
 const createAssailant = async (req,res) => {
     const {assailantsGender, userId, assailantsRaceEthnicity, assailantsName, streetAddress, assailantsWork, city, state, zipcode, assailantPhone, assailantsEmail, assailantsDefiningCharacteristics} = req.body.assailant;
+    console.log('createAssailant reached');
 
     if (!mongoose.Types.ObjectId.isValid(userId)) {
         return res.status(404).json({error: 'No such incident'})

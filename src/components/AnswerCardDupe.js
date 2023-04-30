@@ -2,17 +2,18 @@ import { useState, setCheck } from 'react';
 import '../styles.css';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex, backIndex } from '../store';
+import { addAnswer, addAnswers, changeIndex, backIndex, removeAnswer, changeDate } from '../store';
 import { 
     Radio,
+    Button,
     DatePicker,
     Form,
     Input,
     InputNumber,
     Select,
+    Space,
 } from 'antd';
 import axios from 'axios';
-import { Button, ButtonGroup } from '@chakra-ui/react';
 
 function AnswerCard() {
     const { store, index, _id, } = useSelector((state) => {
@@ -151,32 +152,56 @@ function AnswerCard() {
         <div>
             {index === 0 ? ( //when did the incident occur "date"
                 <div className=''>
+                    <div className='input-card'>
                         <DatePicker className='flex justify-center center'
                             showTime 
                             onChange={(DatePicker) => setIncident({...incident, date: DatePicker.$d})}
                             />
-                </div>
+                        </div>
+                            <motion.div className='flex justify-center'
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                key={index}
+                                exit="exit"
+                                >
+                                <Button 
+                                    className="btn m-2"
+                                    type="default"
+                                    size="large"
+                                    onClick={decrementIndex}
+                                    >Back
+                                </Button>
+                                <Button 
+                                    className="btn m-2"
+                                    size="large"
+                                    onClick={incrementIndex}
+                                    >Next
+                                </Button>
+                            </motion.div>
+                    </div>
             ) : index === 1 ? ( // do you remember where the incident occured? "incidentLocation"
                 <div className=''>
-                    <div className=''>                            
-                        <Radio.Group className='' size="large" >
+                    <div className='input-card m-auto'>                            
+                        <Radio.Group className='row' size="large" >
                             <Radio.Button value="No"
                                 onClick={() => setVisible(false)}>No</Radio.Button>
                             <Radio.Button value="Yes" 
                                 onClick={() => setVisible(true)} >Yes</Radio.Button>                        
                         </Radio.Group>
-                            <div>
+                            <div className=''>
                                 {visible && 
                                     <Form
-                                        className='row'
+                                        className='center m-9'
                                         labelCol={{ span: 140, }}
                                         wrapperCol={{ span: 140, }}
                                         layout="horizontal"
                                         style={{ maxWidth: 600, }}
-                                        >            
+                                        >
+                                        <div className=''>
                                             <Form.Item label="Address Line">
                                                 <Input 
-                                                    width='250px'
+                                                    width='100%'
                                                     size="large"
                                                     className='block w-full text-sm text-slate-500'
                                                     type='text'
@@ -199,34 +224,47 @@ function AnswerCard() {
                                                     <Select.Option options={states} value={value}>Al</Select.Option>
                                                 </Select>
                                             </Form.Item>
+                                        </div>
                                     </Form>}
                             </div>
                         </div>
-                        {/* <motion.div className='button'
+                        <motion.div className='btn-card'
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
                             key={index}
                             exit="exit"
                             >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
+                            <Button 
+                                className="btn m-2 h-16rem"
+                                type="default"
+                                size="large"
+                                onClick={decrementIndex}
+                                >Back
+                            </Button>
+                            <Button 
+                                className="btn m-2"
+                                size="large"
+                                onClick={incrementIndex}
+                                >Next
+                            </Button>
+                        </motion.div>
                 </div>
             ) : index === 2 ? ( // Was Alcohol Involved "alcoholInvolved"
-                <div>
-                    <div>                            
+                <div className='flex flex-col'>
+                    <div className='input-card flex justify-center'>                            
+                        {/* <input 
+                        type="radio"
+                        name='wasAlcoholInvolved'
+                        value='No'
+                        onClick={() => setIncident({...incident, wasAlcoholInvolved: 'Yes'})}
+                        />
+                        <input 
+                        type="radio"
+                        name='wasAlcoholInvolved'
+                        value='Yes'
+                        onClick={() => setIncident({...incident, wasAlcoholInvolved: 'No'})}
+                        /> */}
                         <Radio.Group className='row' size="large" >
                             <Radio.Button 
                                 onClick={() => setIncident({...incident, wasAlcoholInvolved: false})}>No</Radio.Button>
@@ -234,61 +272,61 @@ function AnswerCard() {
                                 onClick={() => setIncident({...incident, wasAlcoholInvolved: true})}>Yes</Radio.Button>                        
                         </Radio.Group>
                     </div>
-                    {/* <div>
-                        <motion.div className='button'
+                <div>
+                        <motion.div className='justify-center'
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
                             key={index}
                             exit="exit"
                             >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div>
-                    </div> */}
-                </div>
-            ) : index === 3 ? ( // Were Drugs Involved "drugsInvolved"
-                <div className=''>      
-                    <div>                  
-                        <Radio.Group className='row' size="large" >
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, wereDrugsInvolved: false})}>No</Radio.Button>
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, wereDrugsInvolved: true})}>Yes</Radio.Button>                        
-                        </Radio.Group>
-                    </div>
-                    {/* <motion.div className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                        <ButtonGroup
-                        className=''
-                        colorScheme='teal'
-                        size='lg'>
                             <Button 
+                                className="btn m-2"
+                                type="default"
+                                size="large"
                                 onClick={decrementIndex}
                                 >Back
                             </Button>
                             <Button 
+                                className="btn m-2"
+                                size="large"
                                 onClick={incrementIndex}
                                 >Next
                             </Button>
-                        </ButtonGroup>
-                    </motion.div> */}
+                        </motion.div>
+                        </div>
+                    </div>
+            ) : index === 3 ? ( // Were Drugs Involved "drugsInvolved"
+                <div className=''>      
+                    <div className="input-card flex justify-center">                  
+                    <Radio.Group className='row' size="large" >
+                        <Radio.Button 
+                            onClick={() => setIncident({...incident, wereDrugsInvolved: false})}>No</Radio.Button>
+                        <Radio.Button 
+                            onClick={() => setIncident({...incident, wereDrugsInvolved: true})}>Yes</Radio.Button>                        
+                    </Radio.Group>
+                </div>
+                    <motion.div className='flex justify-center'
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        key={index}
+                        exit="exit"
+                        >
+                            <Button 
+                            className="btn m-2"
+                            type="default"
+                            size="large"
+                            onClick={decrementIndex}
+                            >Back
+                            </Button>
+                            <Button 
+                            className="btn m-2"
+                            size="large"
+                            onClick={incrementIndex}
+                            >Next
+                            </Button>
+                    </motion.div>
                 </div>   
             ) : index === 4 ? ( // Was Survivor Asleep at time of Incident "survivorAsleep"
                 <div className=''>      
@@ -300,28 +338,28 @@ function AnswerCard() {
                                 onClick={() => setIncident({...incident, wasSurvivorAsleepTimeOfIncident: true})}>Yes</Radio.Button>                        
                         </Radio.Group>
                     </div>
-                    {/* <motion.div className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                        <ButtonGroup
-                        className=''
-                        colorScheme='teal'
-                        size='lg'>
-                            <Button 
-                                onClick={decrementIndex}
-                                >Back
-                            </Button>
-                            <Button 
-                                onClick={incrementIndex}
-                                >Next
-                            </Button>
-                        </ButtonGroup>
-                    </motion.div> */}
-                </div>   
+                            <motion.div className='flex justify-center'
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                key={index}
+                                exit="exit"
+                                >
+                                    <Button 
+                                    className="btn m-2"
+                                    type="default"
+                                    size="large"
+                                    onClick={decrementIndex}
+                                    >Back
+                                    </Button>
+                                    <Button 
+                                    className="btn m-2"
+                                    size="large"
+                                    onClick={incrementIndex}
+                                    >Next
+                                    </Button>
+                            </motion.div>
+                    </div>   
             ) : index === 5 ? ( // Were there verbal threats to the survivor
                 <div>      
                     <div className="input-card flex justify-center">                          
@@ -332,27 +370,27 @@ function AnswerCard() {
                                 onClick={() => setIncident({...incident, verbalThreatsToSurvivor: true})}>Yes</Radio.Button>                        
                         </Radio.Group>
                     </div>
-                    {/* <motion.div className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                        <ButtonGroup
-                        className=''
-                        colorScheme='teal'
-                        size='lg'>
-                            <Button 
+                        <motion.div className='flex justify-center'
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate="visible"
+                            key={index}
+                            exit="exit"
+                            >
+                                <Button 
+                                className="btn m-2"
+                                type="default"
+                                size="large"
                                 onClick={decrementIndex}
                                 >Back
-                            </Button>
-                            <Button 
+                                </Button>
+                                <Button 
+                                className="btn m-2"
+                                size="large"
                                 onClick={incrementIndex}
                                 >Next
-                            </Button>
-                        </ButtonGroup>
-                    </motion.div> */}
+                                </Button>
+                        </motion.div>
                 </div>   
             ) : index === 6 ? ( // Was resistance offered by survivor
                 <div>      
@@ -364,27 +402,27 @@ function AnswerCard() {
                                 onClick={() => setIncident({...incident, resistanceOfferedBySurvivor: true})}>Yes</Radio.Button>                        
                         </Radio.Group>
                     </div>
-                    {/* <motion.div className='button'
+                    <motion.div className='flex justify-center'
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
                         key={index}
                         exit="exit"
                         >
-                        <ButtonGroup
-                        className=''
-                        colorScheme='teal'
-                        size='lg'>
-                            <Button 
-                                onClick={decrementIndex}
-                                >Back
-                            </Button>
-                            <Button 
-                                onClick={incrementIndex}
-                                >Next
-                            </Button>
-                        </ButtonGroup>
-                    </motion.div> */}
+                        <Button 
+                            className="btn m-2"
+                            type="default"
+                            size="large"
+                            onClick={decrementIndex}
+                            >Back
+                        </Button>
+                        <Button 
+                            className="btn m-2"
+                            size="large"
+                            onClick={incrementIndex}
+                            >Next
+                        </Button>
+                    </motion.div>
                 </div>   
             ) : index === 7 ? ( // Details of the assault
                 <div className=''>
@@ -414,27 +452,27 @@ function AnswerCard() {
                                 </Form.Item>
                                 </div>
                                 </Form>}
-                                {/* <motion.div className='button'
-                                variants={containerVariants}
-                                initial="hidden"
-                                animate="visible"
-                                key={index}
-                                exit="exit"
-                                >
-                                    <ButtonGroup
-                                    className=''
-                                    colorScheme='teal'
-                                    size='lg'>
+                                    <motion.div className='flex justify-center'
+                                        variants={containerVariants}
+                                        initial="hidden"
+                                        animate="visible"
+                                        key={index}
+                                        exit="exit"
+                                        >
                                         <Button 
+                                            className="btn m-2"
+                                            type="default"
+                                            size="large"
                                             onClick={decrementIndex}
                                             >Back
                                         </Button>
                                         <Button 
+                                            className="btn m-2"
+                                            size="large"
                                             onClick={incrementIndex}
                                             >Next
                                         </Button>
-                                    </ButtonGroup>
-                                </motion.div> */}
+                                    </motion.div>
                         </div>
                     </div>
             ) : index === 8 ? ( // Areas of sexual contact **
@@ -468,27 +506,27 @@ function AnswerCard() {
                                 </div>
                             </Form>}
                     </div>
-                    {/* <motion.div className='button'
+                    <motion.div className='flex justify-center'
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
                         key={index}
                         exit="exit"
                         >
-                        <ButtonGroup
-                        className=''
-                        colorScheme='teal'
-                        size='lg'>
-                            <Button 
-                                onClick={decrementIndex}
-                                >Back
-                            </Button>
-                            <Button 
-                                onClick={incrementIndex}
-                                >Next
-                            </Button>
-                        </ButtonGroup>
-                    </motion.div> */}
+                        <Button 
+                            className="btn m-2"
+                            type="default"
+                            size="large"
+                            onClick={decrementIndex}
+                            >Back
+                        </Button>
+                        <Button 
+                            className="btn m-2"
+                            size="large"
+                            onClick={incrementIndex}
+                            >Next
+                        </Button>
+                    </motion.div>
                 </div>
             ) : index === 9 ? ( // Did the survivor receive a Sexual Assault Evidence Kit(i.e Rape Kit) 
                 <div>
@@ -500,28 +538,27 @@ function AnswerCard() {
                                 onClick={() => setIncident({...incident, rapeKit: true})}>Yes</Radio.Button>                        
                         </Radio.Group>
                         </div>
-                        {/* <motion.div 
-                        className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
+                        <motion.div className='flex justify-center'
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate="visible"
+                            key={index}
+                            exit="exit"
+                            >
+                            <Button 
+                                className="btn m-2"
+                                type="default"
+                                size="large"
+                                onClick={decrementIndex}
+                                >Back
+                            </Button>
+                            <Button 
+                                className="btn m-2"
+                                size="large"
+                                onClick={incrementIndex}
+                                >Next
+                            </Button>
+                        </motion.div>
                 </div>
             ) : index === 10 ? ( // Use of weapons
                 <div>
@@ -533,28 +570,27 @@ function AnswerCard() {
                                 onClick={() => setIncident({...incident, useOfWeaponsFromAssailant: true})}>Yes</Radio.Button>                        
                         </Radio.Group>
                     </div>
-                    {/* <motion.div 
-                        className='button'
+                    <motion.div className='flex justify-center'
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
                         key={index}
                         exit="exit"
                         >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
+                        <Button 
+                            className="btn m-2"
+                            type="default"
+                            size="large"
+                            onClick={decrementIndex}
+                            >Back
+                        </Button>
+                        <Button 
+                            className="btn m-2"
+                            size="large"
+                            onClick={incrementIndex}
+                            >Next
+                        </Button>
+                    </motion.div>
                 </div>                                       
             ) : index === 11 ? ( // Use of Restraints 
                 <div>
@@ -566,28 +602,27 @@ function AnswerCard() {
                                 onClick={() => setIncident({...incident, useOfRestraintFromAssailant: true})}>Yes</Radio.Button>                        
                         </Radio.Group>
                     </div>
-                    {/* <motion.div 
-                        className='button'
+                    <motion.div className='flex justify-center'
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
                         key={index}
                         exit="exit"
                         >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
+                    <Button 
+                        className="btn m-2"
+                        type="default"
+                        size="large"
+                        onClick={decrementIndex}
+                        >Back
+                    </Button>
+                    <Button 
+                        className="btn m-2"
+                        size="large"
+                        onClick={addIncident}
+                        >Next
+                    </Button>
+                </motion.div>
             </div>           
             ) : index === 12 ? ( // Assailants Gender
                 <div>
@@ -599,28 +634,27 @@ function AnswerCard() {
                             onChange={() => setAssailant({...assailant, gender: 'male'})}>Male</Radio.Button>
                         </Radio.Group>
                     </div>
-                    {/* <motion.div 
-                        className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
+                        <motion.div className='flex justify-center'
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate="visible"
+                            key={index}
+                            exit="exit"
+                            >
+                            <Button 
+                                className="btn m-2"
+                                type="default"
+                                size="large"
+                                onClick={decrementIndex}
+                                >Back
+                            </Button>
+                            <Button 
+                                className="btn m-2"
+                                size="large"
+                                onClick={incrementIndex}
+                                >Next
+                            </Button>
+                        </motion.div>
                 </div>                           
             ) : index === 13 ? ( // Assailants Race/Ethnicity
                 <div className='input-style'>                        
@@ -635,28 +669,27 @@ function AnswerCard() {
                                 </Select>
                             </Form.Item>
                             </div>
-                            {/* <motion.div 
-                            className='button'
+                        <motion.div className='flex justify-center'
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
                             key={index}
                             exit="exit"
                             >
-                                <ButtonGroup
-                                className=''
-                                colorScheme='teal'
-                                size='lg'>
-                                    <Button 
-                                        onClick={decrementIndex}
-                                        >Back
-                                    </Button>
-                                    <Button 
-                                        onClick={incrementIndex}
-                                        >Next
-                                    </Button>
-                                </ButtonGroup>
-                            </motion.div> */}
+                            <Button 
+                                className="btn m-2"
+                                type="default"
+                                size="large"
+                                onClick={decrementIndex}
+                                >Back
+                            </Button>
+                            <Button 
+                                className="btn m-2"
+                                size="large"
+                                onClick={incrementIndex}
+                                >Next
+                            </Button>
+                        </motion.div>
                     </Form>
                 </div>
             ) : index === 14 ? ( // Do you know the assailants name?
@@ -687,28 +720,27 @@ function AnswerCard() {
                                 </Form>}
                             </div>
                         </div>
-                        {/* <motion.div 
-                            className='button'
+                        <motion.div className='btn-card'
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
                             key={index}
                             exit="exit"
                             >
-                                <ButtonGroup
-                                className=''
-                                colorScheme='teal'
-                                size='lg'>
-                                    <Button 
-                                        onClick={decrementIndex}
-                                        >Back
-                                    </Button>
-                                    <Button 
-                                        onClick={incrementIndex}
-                                        >Next
-                                    </Button>
-                                </ButtonGroup>
-                            </motion.div> */}
+                            <Button 
+                                className="btn m-2 h-16rem"
+                                type="default"
+                                size="large"
+                                onClick={decrementIndex}
+                                >Back
+                            </Button>
+                            <Button 
+                                className="btn m-2"
+                                size="large"
+                                onClick={incrementIndex}
+                                >Next
+                            </Button>
+                        </motion.div>
                 </div>                
             ) : index === 15 ? ( // Do you know the assailants address?
                 <div>
@@ -766,28 +798,27 @@ function AnswerCard() {
                                 </Form>}
                             </div>
                         </div>
-                        {/* <motion.div 
-                            className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                                <ButtonGroup
-                                className=''
-                                colorScheme='teal'
-                                size='lg'>
-                                    <Button 
-                                        onClick={decrementIndex}
-                                        >Back
-                                    </Button>
-                                    <Button 
-                                        onClick={incrementIndex}
-                                        >Next
-                                    </Button>
-                                </ButtonGroup>
-                            </motion.div> */}
+                            <motion.div className='btn-card'
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                key={index}
+                                exit="exit"
+                                >
+                                <Button 
+                                    className="btn m-2"
+                                    type="default"
+                                    size="large"
+                                    onClick={decrementIndex}
+                                    >Back
+                                </Button>
+                                <Button 
+                                    className="btn m-2"
+                                    size="large"
+                                    onClick={incrementIndex}
+                                    >Next
+                                </Button>
+                            </motion.div>
                     </div>
             ) : index === 16 ? ( // Do you know the assailants phone number?
                 <div>
@@ -817,28 +848,27 @@ function AnswerCard() {
                                 </Form>}
                             </div>   
                         </div>                
-                        {/* <motion.div 
-                            className='button'
+                        <motion.div className='btn-card'
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
                             key={index}
                             exit="exit"
                             >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
+                            <Button 
+                                className="btn m-2"
+                                type="default"
+                                size="large"
+                                onClick={decrementIndex}
+                                >Back
+                            </Button>
+                            <Button 
+                                className="btn m-2"
+                                size="large"
+                                onClick={incrementIndex}
+                                >Next
+                            </Button>
+                        </motion.div>
                     </div>   
             ) : index === 17 ? ( // Do you know the assailants place of work?
                 <div>
@@ -868,28 +898,27 @@ function AnswerCard() {
                                     </Form>}
                                 </div>
                             </div>   
-                            {/* <motion.div 
-                                className='button'
+                        <motion.div className='btn-card'
                                 variants={containerVariants}
                                 initial="hidden"
                                 animate="visible"
                                 key={index}
                                 exit="exit"
                                 >
-                                <ButtonGroup
-                                className=''
-                                colorScheme='teal'
-                                size='lg'>
-                                    <Button 
-                                        onClick={decrementIndex}
-                                        >Back
-                                    </Button>
-                                    <Button 
-                                        onClick={incrementIndex}
-                                        >Next
-                                    </Button>
-                                </ButtonGroup>
-                            </motion.div> */}
+                                <Button 
+                                    className="btn m-2"
+                                    type="default"
+                                    size="large"
+                                    onClick={decrementIndex}
+                                    >Back
+                                </Button>
+                                <Button 
+                                    className="btn m-2"
+                                    size="large"
+                                    onClick={incrementIndex}
+                                    >Next
+                                </Button>
+                        </motion.div>
                     </div> 
             ) : index === 18 ? ( // Do you know the assailants email?
                 <div>
@@ -913,28 +942,27 @@ function AnswerCard() {
                                     </Form>}
                             </div>
                         </div>   
-                        {/* <motion.div 
-                            className='button'
+                        <motion.div className='btn-card'
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
                             key={index}
                             exit="exit"
                             >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
+                        <Button 
+                                className="btn m-2"
+                                type="default"
+                                size="large"
+                                onClick={decrementIndex}
+                                >Back
+                        </Button>
+                        <Button 
+                            className="btn m-2"
+                            size="large"
+                            onClick={incrementIndex}
+                            >Next
+                        </Button>
+                    </motion.div>
                 </div>
             ) : index === 19 ? ( // Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.) **
                 <div>
@@ -964,28 +992,27 @@ function AnswerCard() {
                             </Form>}
                         </div>
                     </div>
-                    {/* <motion.div 
-                            className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
+                    <motion.div className='btn-card'
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        key={index}
+                        exit="exit"
+                        >
+                        <Button 
+                            className="btn m-2 h-16rem"
+                            type="default"
+                            size="large"
+                            onClick={decrementIndex}
+                            >Back
+                        </Button>
+                        <Button 
+                            className="btn m-2"
+                            size="large"
+                            onClick={addAssailant}
+                            >Next
+                        </Button>
+                    </motion.div>
                 </div>      
             ) : index === 20 ? ( // Name of Survivor
                 <div className='input-style'>                        
@@ -998,28 +1025,27 @@ function AnswerCard() {
                                onChange={(e) => setSurvivor({ userId: _id, survivor: e.target.value})} />
                             </Form.Item>     
                     </Form> 
-                    {/* <motion.div 
-                            className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
+                    <motion.div className='btn-card'
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        key={index}
+                        exit="exit"
+                        >
+                        <Button 
+                            className="btn m-2 h-16rem"
+                            type="default"
+                            size="large"
+                            onClick={decrementIndex}
+                            >Back
+                        </Button>
+                        <Button 
+                            className="btn m-2"
+                            size="large"
+                            onClick={addAssailant}
+                            >Next
+                        </Button>
+                    </motion.div>
                 </div>
             ) : index === 21 ? ( // Submit Registry
                     <div>
