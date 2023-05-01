@@ -90,7 +90,7 @@ function AnswerCard() {
     };
 
     const addIncident = async () => {
-        const response = await axios.post(`http://localhost:3001/incidents`, {
+        const response = await axios.post(`https://osar-api.org.onrender.com/incidents`, {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -101,7 +101,7 @@ function AnswerCard() {
     };
 
     const addAssailant = async () => {
-        const response = await axios.post('http://localhost:3001/assailants', {
+        const response = await axios.post('https://osar-api.org.onrender.com/assailants', {
             headers: {
                 'Content-Type': 'application/json'
             },

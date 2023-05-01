@@ -44,7 +44,7 @@ const HomePage = () => {
     const [email, setEmail] = useState('');
 
     const addUser = async () => {
-        const response = await axios.post('http://localhost:3001/users', {
+        const response = await axios.post('https://osar-org.onrender.com/users', {
             email: email
         });
         console.log(response);
