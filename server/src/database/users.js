@@ -1,7 +1,9 @@
+require('dotenv').config()
 const { ObjectId } = require('mongodb');
 const User = require('../models/User')
 const db = require('./db');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken')
 
 const getAllUsers = async(req, res) => {
     const users = await User.find({})
@@ -27,13 +29,17 @@ const getUser = async (req,res) => {
 
 const createUser = async (req,res) => {
     const { email } = req.body;
+    const userEmail = { email }
     
+    // const accessToken = jwt.sign(userEmail, process.env.ACCESS_TOKEN_SECRET)
+
     try {
         const user = await User.create({email})
-        res.status(201).send({ status: 'OK', data: user });
+        return res.status(201).send({ status: 'OK', data: user });
     } catch (error) {
         res.status(400).json({error: error.message})
     }
+    
 };
 
 const updateUser = async (req,res) => {

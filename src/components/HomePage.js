@@ -44,7 +44,7 @@ const HomePage = () => {
     const [email, setEmail] = useState('');
 
     const addUser = async () => {
-        const response = await axios.post('https://osar-org.onrender.com/users', {
+        const response = await axios.post('https://osar-api.onrender.com/users', {
             email: email
         });
         console.log(response);
@@ -54,7 +54,6 @@ const HomePage = () => {
         });
         dispatch(addUserId(updatedUser));
         console.log(updatedUser);
-        navigate("/registry");
     };
 
 
