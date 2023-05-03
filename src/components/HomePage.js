@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import '../styles.css';
 import { motion, isValidMotionProp } from 'framer-motion';
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { addUserId } from '../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUserId, changeIndex } from '../store';
 import axios from 'axios';
 import { Button, Stack, FormControl, FormLabel, FormHelperText, Input, Box, SimpleGrid } from '@chakra-ui/react';
 import { Container, chakra, shouldForwardProp } from '@chakra-ui/react';
@@ -39,12 +38,23 @@ const pathVariants = {
 
 const HomePage = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
+
+    const { index } = useSelector((state) => {
+        return {
+        index: state.index.index,
+        }
+    })
 
     const [email, setEmail] = useState('');
 
     const addUser = async () => {
         const response = await axios.post('https://osar-api.onrender.com/users', {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
+            },
             email: email
         });
         console.log(response);
@@ -53,6 +63,7 @@ const HomePage = () => {
             _id: response.data.data._id
         });
         dispatch(addUserId(updatedUser));
+        dispatch(changeIndex(parseInt(index + 1)));
         console.log(updatedUser);
     };
 

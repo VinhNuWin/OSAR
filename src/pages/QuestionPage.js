@@ -3,8 +3,16 @@ import AnswerCard from '../components/AnswerCard';
 import ButtonCard from '../components/ButtonCard';
 import { motion } from 'framer-motion';
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import HomePage from '../components/HomePage';
+import { useSelector } from 'react-redux';
 
 function QuestionPage() {
+
+    const { index } = useSelector((state) => {
+        return {
+        index: state.index.index,
+        }
+    })
     
     const containerVariants = {
         hidden: {
@@ -22,7 +30,12 @@ function QuestionPage() {
 
 
     return (
-       
+        <div>
+        {index === 0 ? ( //when did the incident occur "date"
+            <div className=''>
+                    <HomePage />
+            </div>
+        ) : index > 0 ?
         <div className="wrapper">
             <Card className="">
             <CardHeader className="center2">
@@ -34,7 +47,6 @@ function QuestionPage() {
                 animate="visible"
                 exit="exit"
                 >
-            {/* <div className="answerCard center"> */}
                 <AnswerCard />
             </motion.div>
             <div className="button">
@@ -42,6 +54,13 @@ function QuestionPage() {
             </div>
             </Card>
         </div>
+         : index === null (
+            <div>
+            An error has accord
+            </div>
+        )
+            }
+            </div>
     )
 };
 
