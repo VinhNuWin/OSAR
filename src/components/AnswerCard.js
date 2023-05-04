@@ -149,14 +149,14 @@ function AnswerCard() {
 
     return (
         <div>
-            {index === 0 ? ( //when did the incident occur "date"
+            {index === 1 ? ( //when did the incident occur "date"
                 <div className=''>
                         <DatePicker className='flex justify-center center'
                             showTime 
                             onChange={(DatePicker) => setIncident({...incident, date: DatePicker.$d})}
                             />
                 </div>
-            ) : index === 1 ? ( // do you remember where the incident occured? "incidentLocation"
+            ) : index === 2 ? ( // do you remember where the incident occured? "incidentLocation"
                 <div className=''>
                     <div className=''>                            
                         <Radio.Group className='' size="large" >
@@ -224,7 +224,7 @@ function AnswerCard() {
                             </ButtonGroup>
                         </motion.div> */}
                 </div>
-            ) : index === 2 ? ( // Was Alcohol Involved "alcoholInvolved"
+            ) : index === 3 ? ( // Was Alcohol Involved "alcoholInvolved"
                 <div>
                     <div>                            
                         <Radio.Group className='row' size="large" >
@@ -258,7 +258,7 @@ function AnswerCard() {
                         </motion.div>
                     </div> */}
                 </div>
-            ) : index === 3 ? ( // Were Drugs Involved "drugsInvolved"
+            ) : index === 4 ? ( // Were Drugs Involved "drugsInvolved"
                 <div className=''>      
                     <div>                  
                         <Radio.Group className='row' size="large" >
@@ -290,7 +290,7 @@ function AnswerCard() {
                         </ButtonGroup>
                     </motion.div> */}
                 </div>   
-            ) : index === 4 ? ( // Was Survivor Asleep at time of Incident "survivorAsleep"
+            ) : index === 5 ? ( // Was Survivor Asleep at time of Incident "survivorAsleep"
                 <div className=''>      
                     <div className="input-card flex justify-center">                  
                         <Radio.Group className='row' size="large" >
@@ -322,7 +322,7 @@ function AnswerCard() {
                         </ButtonGroup>
                     </motion.div> */}
                 </div>   
-            ) : index === 5 ? ( // Were there verbal threats to the survivor
+            ) : index === 6 ? ( // Were there verbal threats to the survivor
                 <div>      
                     <div className="input-card flex justify-center">                          
                         <Radio.Group className='row' size="large" >
@@ -354,7 +354,7 @@ function AnswerCard() {
                         </ButtonGroup>
                     </motion.div> */}
                 </div>   
-            ) : index === 6 ? ( // Was resistance offered by survivor
+            ) : index === 7 ? ( // Was resistance offered by survivor
                 <div>      
                     <div className="input-card flex justify-center">                          
                         <Radio.Group className='row' size="large" >
@@ -386,7 +386,7 @@ function AnswerCard() {
                         </ButtonGroup>
                     </motion.div> */}
                 </div>   
-            ) : index === 7 ? ( // Details of the assault
+            ) : index === 8 ? ( // Details of the assault
                 <div className=''>
                     <Radio.Group className='row' size="large" >
                         <Radio.Button value="No"
@@ -437,7 +437,7 @@ function AnswerCard() {
                                 </motion.div> */}
                         </div>
                     </div>
-            ) : index === 8 ? ( // Areas of sexual contact **
+            ) : index === 9 ? ( // Areas of sexual contact **
                 <div>
                     <Radio.Group className='row' size="large" >
                         <Radio.Button value="No"
@@ -490,7 +490,7 @@ function AnswerCard() {
                         </ButtonGroup>
                     </motion.div> */}
                 </div>
-            ) : index === 9 ? ( // Did the survivor receive a Sexual Assault Evidence Kit(i.e Rape Kit) 
+            ) : index === 10 ? ( // Did the survivor receive a Sexual Assault Evidence Kit(i.e Rape Kit) 
                 <div>
                     <div className='input-card flex justify-center'>       
                         <Radio.Group className='row' size="large" >
@@ -523,7 +523,7 @@ function AnswerCard() {
                             </ButtonGroup>
                         </motion.div> */}
                 </div>
-            ) : index === 10 ? ( // Use of weapons
+            ) : index === 11 ? ( // Use of weapons
                 <div>
                     <div className="input-card flex justify-center">
                         <Radio.Group className='row' size="large" >
@@ -556,7 +556,7 @@ function AnswerCard() {
                             </ButtonGroup>
                         </motion.div> */}
                 </div>                                       
-            ) : index === 11 ? ( // Use of Restraints 
+            ) : index === 12 ? ( // Use of Restraints 
                 <div>
                     <div className="input-card flex justify-center">
                         <Radio.Group className='row' size="large" >
@@ -589,7 +589,7 @@ function AnswerCard() {
                             </ButtonGroup>
                         </motion.div> */}
             </div>           
-            ) : index === 12 ? ( // Assailants Gender
+            ) : index === 13 ? ( // Assailants Gender
                 <div>
                     <div className="input-card flex justify-center">
                         <Radio.Group size="large">
@@ -622,7 +622,7 @@ function AnswerCard() {
                             </ButtonGroup>
                         </motion.div> */}
                 </div>                           
-            ) : index === 13 ? ( // Assailants Race/Ethnicity
+            ) : index === 14 ? ( // Assailants Race/Ethnicity
                 <div className='input-style'>                        
                      <Form>
                         <div className='input-card'>
@@ -659,7 +659,7 @@ function AnswerCard() {
                             </motion.div> */}
                     </Form>
                 </div>
-            ) : index === 14 ? ( // Do you know the assailants name?
+            ) : index === 15 ? ( // Do you know the assailants name?
                 <div>
                     <div className='input-card m-auto'>                            
                         <Radio.Group className='row' size="large">
@@ -710,7 +710,7 @@ function AnswerCard() {
                                 </ButtonGroup>
                             </motion.div> */}
                 </div>                
-            ) : index === 15 ? ( // Do you know the assailants address?
+            ) : index === 16 ? ( // Do you know the assailants address?
                 <div>
                     <div className='input-card m-auto'>                            
                         <Radio.Group className='row' size="large">
@@ -789,7 +789,7 @@ function AnswerCard() {
                                 </ButtonGroup>
                             </motion.div> */}
                     </div>
-            ) : index === 16 ? ( // Do you know the assailants phone number?
+            ) : index === 17 ? ( // Do you know the assailants phone number?
                 <div>
                     <div className='input-card m-auto'>                        
                         <Radio.Group className='row' size="large">
@@ -840,7 +840,7 @@ function AnswerCard() {
                             </ButtonGroup>
                         </motion.div> */}
                     </div>   
-            ) : index === 17 ? ( // Do you know the assailants place of work?
+            ) : index === 18 ? ( // Do you know the assailants place of work?
                 <div>
                     <div className='input-card m-auto'>                        
                         <Radio.Group className='row' size="large" >
@@ -891,7 +891,7 @@ function AnswerCard() {
                                 </ButtonGroup>
                             </motion.div> */}
                     </div> 
-            ) : index === 18 ? ( // Do you know the assailants email?
+            ) : index === 19 ? ( // Do you know the assailants email?
                 <div>
                     <div className='input-card m-auto'>                        
                         <Radio.Group className='row' size="large">
@@ -936,7 +936,7 @@ function AnswerCard() {
                             </ButtonGroup>
                         </motion.div> */}
                 </div>
-            ) : index === 19 ? ( // Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.) **
+            ) : index === 20 ? ( // Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.) **
                 <div>
                     <div className='input-card m-auto'>                            
                         <Radio.Group className='row' size="large">
@@ -987,7 +987,7 @@ function AnswerCard() {
                             </ButtonGroup>
                         </motion.div> */}
                 </div>      
-            ) : index === 20 ? ( // Name of Survivor
+            ) : index === 21 ? ( // Name of Survivor
                 <div className='input-style'>                        
                     <Form className='input-card center'>
                         <Form.Item label='Survivor'>                 
@@ -1021,7 +1021,7 @@ function AnswerCard() {
                             </ButtonGroup>
                         </motion.div> */}
                 </div>
-            ) : index === 21 ? ( // Submit Registry
+            ) : index === 22 ? ( // Submit Registry
                     <div>
                         <h2>Thank you for your submission, Your registry has been filed and a timestamped copy will be sent to the the email provided.</h2>
                     </div>  
