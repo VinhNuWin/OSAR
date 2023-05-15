@@ -4,8 +4,8 @@ import { motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUserId, changeIndex } from '../store';
 import axios from 'axios';
-import { Button, Stack, FormControl, FormLabel, FormHelperText, Input, Box, SimpleGrid } from '@chakra-ui/react';
-import { Container, chakra, shouldForwardProp } from '@chakra-ui/react';
+import { Button, Stack, FormControl, FormLabel, FormHelperText, Input, Box } from '@chakra-ui/react';
+import { chakra, shouldForwardProp, Text } from '@chakra-ui/react';
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -28,7 +28,7 @@ const pathVariants = {
     visible: {
         opacity: 1,
         pathLength: 1,
-        fill: "rgba(1,0,0,1)",
+        fill: "rgb(97, 202, 146)",
         transition: {
             duration: 4,
             ease: "easeInOut",
@@ -38,7 +38,6 @@ const pathVariants = {
 
 const HomePage = () => {
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
 
     const { index } = useSelector((state) => {
         return {
@@ -49,29 +48,30 @@ const HomePage = () => {
     const [email, setEmail] = useState('');
 
     const addUser = async () => {
-        const response = await axios.post('https://osar-api.onrender.com/users', {
-            headers: {
-                'Content-Type' : 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
-            },
-            email: email
-        });
-        console.log(response);
-        const updatedUser = ({
-            email: email,
-            _id: response.data.data._id
-        });
-        dispatch(addUserId(updatedUser));
+        // const response = await axios.post('https://osar-api.onrender.com/users', {
+        //     headers: {
+        //         'Content-Type' : 'application/json',
+        //         'Access-Control-Allow-Origin': '*',
+        //         'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
+        //     },
+        //     email: email
+        // });
+        // console.log(response);
+        // const updatedUser = ({
+        //     email: email,
+        //     _id: response.data.data._id
+        // });
+        // dispatch(addUserId(updatedUser));
         dispatch(changeIndex(parseInt(index + 1)));
-        console.log(updatedUser);
+        // console.log(updatedUser);
     };
 
 
     return (
+        <div className='Osar'>
         <header className='center wrapper bg-color-grey'>
             <Box pt='92px' className='flex-container'>
-                <motion.div className='logo-wrapper'>
+                <motion.div className='logo-wrapper m-auto'>
                 <motion.svg width="373" height="109" viewBox="0 0 373 109" fill="none" xmlns="http://www.w3.org/2000/svg"
                    variants={svgVariants}
                    initial="hidden"
@@ -106,12 +106,16 @@ const HomePage = () => {
                     </motion.svg>
                 </motion.div>
             </Box>
-                <Stack direction='vertical'>
-                    <Box pl='' pt='20%' w='100%'>
-                        <FormControl>
-                          <FormLabel>Email address</FormLabel>
+                <Stack >
+                    <div className='text-center mt-10'>
+                        <Text fontSize='20px' color='white'>Anonymous Assault Registry</Text>
+                    </div>
+                    <Box pl='' pt='10' w='100%' className=''>
+                        <FormControl >
+                          <FormLabel color='rgb(97, 202, 146)'>Email address</FormLabel>
                           <Input 
                             value={email}
+                            bg='white'
                             onChange={(e) => {setEmail(e.target.value)}}
                             rules={[
                                 {
@@ -126,17 +130,21 @@ const HomePage = () => {
                             />
                           <FormHelperText>We'll never share your email.</FormHelperText>
                         </FormControl>
-                            <Box pos='relative' className='center flex-container'>
+                            <Box pos='center' className='button-container pt-40'>
+                                <div className='button-center'>
                                 <Button 
-                                colorScheme='teal'
+                                className=''
+                                color='rgb(97, 202, 146)'
                                 onClick={addUser}
                                 >
-                                    Begin Registry
+                                    Create Registry
                                 </Button>
+                                </div>
                             </Box>
                     </Box>
                 </Stack>
         </header>
+        </div>
     )
 }
 

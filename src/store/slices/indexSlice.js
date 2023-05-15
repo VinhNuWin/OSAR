@@ -21,7 +21,7 @@ const indexSlice = createSlice({
         },
         addEmail(state, action){
             state.email = action.payload;
-          },
+        },
     }
     });
 

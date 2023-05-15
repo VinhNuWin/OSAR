@@ -3,6 +3,7 @@ import '../styles.css';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, backIndex } from '../store';
+import { containerVariants, dropUpVariants } from './containerVariants';
 import { 
     Radio,
     DatePicker,
@@ -12,7 +13,8 @@ import {
     Select,
 } from 'antd';
 import axios from 'axios';
-import { Button, ButtonGroup } from '@chakra-ui/react';
+import Example from './RadioCard';
+import { Button, Box, InputGroup, InputLeftElement } from '@chakra-ui/react';
 
 function AnswerCard() {
     const { store, index, _id, } = useSelector((state) => {
@@ -44,31 +46,37 @@ function AnswerCard() {
         useOfRestraintFromAssailant: false,
     });
 
-    console.log(incident);
+    // console.log(incident);
 
     const [ assailant, setAssailant ] = useState({
         userId: _id,
         gender: '',
         raceEthnicity: '',
-        fullName: '',
+        firstName: '',
+        lastName:'',
         streetAddress: '',
         work: '',
         city: '',
         state: '',
-        zipcode: 0,
+        streetAddressWork: '',
+        cityWork: '',
+        stateWork: '',
+        zipcodeWork: 0,
         phone: 0,
         email: '',
         definingCharacteristics: '',
     });
 
-    console.log(assailant);
+    // console.log(assailant);
 
     const [survivor, setSurvivor] = useState({
         userId: _id,
         survivor: '',
     });
 
-    console.log(survivor);
+    // console.log(survivor);
+
+const questionIndex = index;
 
     const incrementIndex = (e) => {
         console.log('default prevented');
@@ -111,7 +119,7 @@ function AnswerCard() {
         dispatch(changeIndex(parseInt(index + 1)));
     }
 
-    const [ value, setValue ] = useState('');
+    const [ value, setValue ] = useState(false);
 
     const ethnicities = [
         { label: 'White', value: 'White' },
@@ -131,49 +139,45 @@ function AnswerCard() {
     ];
 
     const TextArea = Input;
-    const containerVariants = {
-        hidden: {
-            opacity: 0,
-        },
-        visible: {
-            opacity: 1,
-            transition: { delay: 0.1, type: 'spring', stiffness: 5 }
-        },
-        exit: {
-            x: '-100vw',
-            transition: { ease: 'easeInOut' }
-        }
-        };
-
-
 
     return (
-        <div>
-            {index === 1 ? ( //when did the incident occur "date"
-                <div className=''>
-                        <DatePicker className='flex justify-center center'
+        <center>
+        <div className='pt-10 h-96 center'>
+            <AnimatePresence>
+            { questionIndex === 1  ? ( //when did the incident occur "date"
+            <div>
+                <div>    
+                        <DatePicker className='center'
                             showTime 
                             onChange={(DatePicker) => setIncident({...incident, date: DatePicker.$d})}
                             />
                 </div>
-            ) : index === 2 ? ( // do you remember where the incident occured? "incidentLocation"
-                <div className=''>
-                    <div className=''>                            
-                        <Radio.Group className='' size="large" >
-                            <Radio.Button value="No"
-                                onClick={() => setVisible(false)}>No</Radio.Button>
-                            <Radio.Button value="Yes" 
-                                onClick={() => setVisible(true)} >Yes</Radio.Button>                        
-                        </Radio.Group>
-                            <div>
+            </div>
+            ) : questionIndex === 2 ? ( // do you remember where the incident occured? "incidentLocation"
+            <div>
+                    <motion.div>
+                        <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                          No
+                        </Button>
+                        <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                          Yes
+                        </Button>
+                            <div className='h-320 w-200 pt-4'>
                                 {visible && 
+                                <motion.div                 
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exitAnimation"
+                                >
                                     <Form
-                                        className='row'
+                                        className='row p-5'
                                         labelCol={{ span: 140, }}
                                         wrapperCol={{ span: 140, }}
                                         layout="horizontal"
                                         style={{ maxWidth: 600, }}
-                                        >            
+                                        >   
+                                        <motion.Box as='motion.div' variants={dropUpVariants} >    
                                             <Form.Item label="Address Line">
                                                 <Input 
                                                     width='250px'
@@ -184,6 +188,8 @@ function AnswerCard() {
                                                     onChange={(e) => setIncident({...incident, [e.target.name]: e.target.value})}
                                                     />
                                             </Form.Item>
+                                        </motion.Box>
+                                        <motion.Box as='motion.div' variants={dropUpVariants} >         
                                             <Form.Item label="City">
                                                 <Input 
                                                     type='text'
@@ -191,6 +197,8 @@ function AnswerCard() {
                                                     onChange={(e) => setIncident({...incident, [e.target.name]: e.target.value})}
                                                     />
                                             </Form.Item>
+                                        </motion.Box>
+                                        <motion.Box as='motion.div' variants={dropUpVariants} >    
                                             <Form.Item label="State">
                                                 <Select
                                                     name='state'
@@ -199,201 +207,76 @@ function AnswerCard() {
                                                     <Select.Option options={states} value={value}>Al</Select.Option>
                                                 </Select>
                                             </Form.Item>
-                                    </Form>}
-                            </div>
-                        </div>
-                        {/* <motion.div className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
-                </div>
-            ) : index === 3 ? ( // Was Alcohol Involved "alcoholInvolved"
-                <div>
-                    <div>                            
-                        <Radio.Group className='row' size="large" >
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, wasAlcoholInvolved: false})}>No</Radio.Button>
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, wasAlcoholInvolved: true})}>Yes</Radio.Button>                        
-                        </Radio.Group>
-                    </div>
-                    {/* <div>
-                        <motion.div className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
+                                        </motion.Box>
+                                        <motion.Box as='motion.div' variants={dropUpVariants} > 
+                                            <Form.Item label="Postal Code">
+                                                <InputNumber 
+                                                value={value}
+                                                name='zipcode'
+                                                onChange={e => setIncident({...incident, [e.target.name]: e.target.value})}
+                                                />
+                                            </Form.Item>
+                                        </motion.Box>
+                                    </Form>
+                                    </motion.div>}
+                            </div>            
                         </motion.div>
-                    </div> */}
-                </div>
-            ) : index === 4 ? ( // Were Drugs Involved "drugsInvolved"
-                <div className=''>      
-                    <div>                  
-                        <Radio.Group className='row' size="large" >
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, wereDrugsInvolved: false})}>No</Radio.Button>
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, wereDrugsInvolved: true})}>Yes</Radio.Button>                        
-                        </Radio.Group>
+                        </div>
+            ) : questionIndex === 3 ? ( // Was Alcohol Involved "alcoholInvolved"
+                <motion.div>
+                    <div>                
+                        <Button variant='brandPrimary' onClick={() => setIncident({...incident, wasAlcoholInvolved: false})}>
+                          No
+                        </Button>
+                        <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, wasAlcoholInvolved: true})}>
+                          Yes
+                        </Button>
                     </div>
-                    {/* <motion.div className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                        <ButtonGroup
-                        className=''
-                        colorScheme='teal'
-                        size='lg'>
-                            <Button 
-                                onClick={decrementIndex}
-                                >Back
-                            </Button>
-                            <Button 
-                                onClick={incrementIndex}
-                                >Next
-                            </Button>
-                        </ButtonGroup>
-                    </motion.div> */}
-                </div>   
-            ) : index === 5 ? ( // Was Survivor Asleep at time of Incident "survivorAsleep"
-                <div className=''>      
-                    <div className="input-card flex justify-center">                  
-                        <Radio.Group className='row' size="large" >
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, wasSurvivorAsleepTimeOfIncident: false})}>No</Radio.Button>
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, wasSurvivorAsleepTimeOfIncident: true})}>Yes</Radio.Button>                        
-                        </Radio.Group>
+                </motion.div>
+            ) : questionIndex === 4 ? ( // Were Drugs Involved "drugsInvolved"    
+                    <div>              
+                        <Button variant='brandPrimary' onClick={() => setIncident({...incident, wereDrugsInvolved: false})}>
+                              No
+                        </Button>
+                        <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, wereDrugsInvolved: true})}>
+                              Yes
+                        </Button>    
                     </div>
-                    {/* <motion.div className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                        <ButtonGroup
-                        className=''
-                        colorScheme='teal'
-                        size='lg'>
-                            <Button 
-                                onClick={decrementIndex}
-                                >Back
-                            </Button>
-                            <Button 
-                                onClick={incrementIndex}
-                                >Next
-                            </Button>
-                        </ButtonGroup>
-                    </motion.div> */}
+            ) : questionIndex === 5 ? ( // Was Survivor Asleep at time of Incident "survivorAsleep"
+                <div className=''>          
+                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, wasSurvivorAsleepTimeOfIncident: false})}>
+                              No
+                    </Button>
+                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, wasSurvivorAsleepTimeOfIncident: true})}>
+                              Yes
+                    </Button>               
                 </div>   
-            ) : index === 6 ? ( // Were there verbal threats to the survivor
-                <div>      
-                    <div className="input-card flex justify-center">                          
-                        <Radio.Group className='row' size="large" >
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, verbalThreatsToSurvivor: false})}>No</Radio.Button>
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, verbalThreatsToSurvivor: true})}>Yes</Radio.Button>                        
-                        </Radio.Group>
+            ) : questionIndex === 6 ? ( // Were there verbal threats to the survivor
+                <div>
+                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, verbalThreatsToSurvivor: false})}>
+                              No
+                    </Button>
+                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, verbalThreatsToSurvivor: true})}>
+                              Yes
+                    </Button>                                
+                </div>   
+            ) : questionIndex === 7 ? ( // Was resistance offered by survivor
+                <div>
+                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, resistanceOfferedBySurvivor: false})}>
+                              No
+                    </Button>
+                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, resistanceOfferedBySurvivor: true})}>
+                              Yes
+                    </Button>          
                     </div>
-                    {/* <motion.div className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                        <ButtonGroup
-                        className=''
-                        colorScheme='teal'
-                        size='lg'>
-                            <Button 
-                                onClick={decrementIndex}
-                                >Back
-                            </Button>
-                            <Button 
-                                onClick={incrementIndex}
-                                >Next
-                            </Button>
-                        </ButtonGroup>
-                    </motion.div> */}
-                </div>   
-            ) : index === 7 ? ( // Was resistance offered by survivor
-                <div>      
-                    <div className="input-card flex justify-center">                          
-                        <Radio.Group className='row' size="large" >
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, resistanceOfferedBySurvivor: false})}>No</Radio.Button>
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, resistanceOfferedBySurvivor: true})}>Yes</Radio.Button>                        
-                        </Radio.Group>
-                    </div>
-                    {/* <motion.div className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                        <ButtonGroup
-                        className=''
-                        colorScheme='teal'
-                        size='lg'>
-                            <Button 
-                                onClick={decrementIndex}
-                                >Back
-                            </Button>
-                            <Button 
-                                onClick={incrementIndex}
-                                >Next
-                            </Button>
-                        </ButtonGroup>
-                    </motion.div> */}
-                </div>   
-            ) : index === 8 ? ( // Details of the assault
+            ) : questionIndex === 8 ? ( // Details of the assault
                 <div className=''>
-                    <Radio.Group className='row' size="large" >
-                        <Radio.Button value="No"
-                            onClick={() => setVisible(false)}>No</Radio.Button>
-                        <Radio.Button value="Yes" 
-                            onClick={() => setVisible(true)} >Yes</Radio.Button>                        
-                    </Radio.Group>
+                    <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                              No
+                    </Button>
+                    <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                              Yes
+                    </Button>     
                     <div className=''>
                         {visible && 
                             <Form>
@@ -409,220 +292,55 @@ function AnswerCard() {
                                     type='text'
                                     name='detailsOfTheAssault'
                                     onChange={e => setIncident({...incident, [e.target.name]: e.target.value})}
-                                    placeholder="In your own words a brief description"
+                                    placeholder="In your own words a brief description of the event"
                                     />
                                 </Form.Item>
                                 </div>
                                 </Form>}
-                                {/* <motion.div className='button'
-                                variants={containerVariants}
-                                initial="hidden"
-                                animate="visible"
-                                key={index}
-                                exit="exit"
-                                >
-                                    <ButtonGroup
-                                    className=''
-                                    colorScheme='teal'
-                                    size='lg'>
-                                        <Button 
-                                            onClick={decrementIndex}
-                                            >Back
-                                        </Button>
-                                        <Button 
-                                            onClick={incrementIndex}
-                                            >Next
-                                        </Button>
-                                    </ButtonGroup>
-                                </motion.div> */}
                         </div>
                     </div>
-            ) : index === 9 ? ( // Areas of sexual contact **
+            ) : questionIndex === 9 ? ( // Areas of sexual contact ** add staggered button selections
                 <div>
-                    <Radio.Group className='row' size="large" >
-                        <Radio.Button value="No"
-                            onClick={() => setVisible(false)}>No</Radio.Button>
-                        <Radio.Button value="Yes" 
-                            onClick={() => setVisible(true)} >Yes</Radio.Button>                        
-                    </Radio.Group>
                     <div className=''>
-                        {visible && 
-                            <Form
-                                className='center m-9'
-                                labelCol={{ span: 140, }}
-                                wrapperCol={{ span: 140, }}
-                                layout="horizontal"
-                                style={{ maxWidth: 600, }}
-                                >
-                                <div className=''>
-                                    <Form.Item label="List the personal areas involved in the assault">
-                                        <Input 
-                                            width='100%'
-                                            size="large"
-                                            className='block w-full text-sm text-slate-500'
-                                            type='text'
-                                            name='areasOfSexualContact'
-                                            onChange={(e) => setIncident({...incident, [e.target.name]: e.target.value})}
-                                            />
-                                    </Form.Item>
-                                </div>
-                            </Form>}
                     </div>
-                    {/* <motion.div className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                        <ButtonGroup
-                        className=''
-                        colorScheme='teal'
-                        size='lg'>
-                            <Button 
-                                onClick={decrementIndex}
-                                >Back
-                            </Button>
-                            <Button 
-                                onClick={incrementIndex}
-                                >Next
-                            </Button>
-                        </ButtonGroup>
-                    </motion.div> */}
                 </div>
-            ) : index === 10 ? ( // Did the survivor receive a Sexual Assault Evidence Kit(i.e Rape Kit) 
+            ) : questionIndex === 10 ? ( // Did the survivor receive a Sexual Assault Evidence Kit(i.e Rape Kit) 
                 <div>
-                    <div className='input-card flex justify-center'>       
-                        <Radio.Group className='row' size="large" >
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, rapeKit: false})}>No</Radio.Button>
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, rapeKit: true})}>Yes</Radio.Button>                        
-                        </Radio.Group>
-                        </div>
-                        {/* <motion.div 
-                        className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
+                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, rapeKit: false})}>
+                              No
+                    </Button>
+                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, rapeKit: true})}>
+                              Yes
+                    </Button>         
                 </div>
-            ) : index === 11 ? ( // Use of weapons
+            ) : questionIndex === 11 ? ( // Use of weapons
                 <div>
-                    <div className="input-card flex justify-center">
-                        <Radio.Group className='row' size="large" >
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, useOfWeaponsFromAssailant: false})}>No</Radio.Button>
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, useOfWeaponsFromAssailant: true})}>Yes</Radio.Button>                        
-                        </Radio.Group>
-                    </div>
-                    {/* <motion.div 
-                        className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
-                </div>                                       
-            ) : index === 12 ? ( // Use of Restraints 
+                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, useOfWeaponsFromAssailant: false})}>
+                              No
+                    </Button>
+                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, useOfWeaponsFromAssailant: true})}>
+                              Yes
+                    </Button>   
+                </div>                        
+            ) : questionIndex === 12 ? ( // Use of Restraints 
                 <div>
-                    <div className="input-card flex justify-center">
-                        <Radio.Group className='row' size="large" >
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, useOfRestraintFromAssailant: false})}>No</Radio.Button>
-                            <Radio.Button 
-                                onClick={() => setIncident({...incident, useOfRestraintFromAssailant: true})}>Yes</Radio.Button>                        
-                        </Radio.Group>
-                    </div>
-                    {/* <motion.div 
-                        className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
-            </div>           
-            ) : index === 13 ? ( // Assailants Gender
+                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, useOfRestraintFromAssailant: false})}>
+                              No
+                    </Button>
+                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, useOfRestraintFromAssailant: true})}>
+                              Yes
+                    </Button> 
+                </div>        
+            ) : questionIndex === 13 ? ( // Assailants Gender
                 <div>
-                    <div className="input-card flex justify-center">
-                        <Radio.Group size="large">
-                            <Radio.Button 
-                            onChange={() => setAssailant({...assailant, gender: 'female'})}>Female</Radio.Button>
-                            <Radio.Button 
-                            onChange={() => setAssailant({...assailant, gender: 'male'})}>Male</Radio.Button>
-                        </Radio.Group>
-                    </div>
-                    {/* <motion.div 
-                        className='button'
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        key={index}
-                        exit="exit"
-                        >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
-                </div>                           
-            ) : index === 14 ? ( // Assailants Race/Ethnicity
+                    <Button variant='brandPrimary' onChange={() => setAssailant({...assailant, gender: 'female'})}>
+                              Female
+                    </Button>
+                    <Button className='mt-4' variant='brandPrimary' onChange={() => setAssailant({...assailant, gender: 'male'})}>
+                              Male
+                    </Button> 
+                </div>                     
+            ) : questionIndex === 14 ? ( // Assailants Race/Ethnicity
                 <div className='input-style'>                        
                      <Form>
                         <div className='input-card'>
@@ -634,123 +352,111 @@ function AnswerCard() {
                                     <Select.Option options={ethnicities} value={value}>White</Select.Option>
                                 </Select>
                             </Form.Item>
-                            </div>
-                            {/* <motion.div 
-                            className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                                <ButtonGroup
-                                className=''
-                                colorScheme='teal'
-                                size='lg'>
-                                    <Button 
-                                        onClick={decrementIndex}
-                                        >Back
-                                    </Button>
-                                    <Button 
-                                        onClick={incrementIndex}
-                                        >Next
-                                    </Button>
-                                </ButtonGroup>
-                            </motion.div> */}
+                        </div>
                     </Form>
                 </div>
-            ) : index === 15 ? ( // Do you know the assailants name?
+            ) : questionIndex === 15 ? ( // Do you know the assailants name?
                 <div>
-                    <div className='input-card m-auto'>                            
-                        <Radio.Group className='row' size="large">
-                            <Radio.Button className='' value="No"
-                                onClick={() => setVisible(false)}>No</Radio.Button>
-                            <Radio.Button value="Yes" 
-                                onClick={() => setVisible(true)} >Yes</Radio.Button>
-                        </Radio.Group>
-                            <div className=''>
+                    <motion.div>
+                        <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                          No
+                        </Button>
+                        <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                          Yes
+                        </Button>
+                            <div className='h-320 w-200 pt-4'>
                                 {visible && 
+                                <motion.div                 
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exitAnimation"
+                                >
                                     <Form
-                                    className='center'
-                                    labelCol={{ span: 140, }}
-                                    wrapperCol={{ span: 140, }}
-                                    layout="horizontal"
-                                    style={{ maxWidth: 600, }}
-                                    >
-                                    <div className=''>
-                                    <Form.Item>
-                                       <Input 
-                                       placeholder="Please input assailants name"
-                                       onChange={(event) => setAssailant({ ...assailant, fullName: event.target.value})} />
-                                    </Form.Item>
-                                    </div>
-                                </Form>}
-                            </div>
-                        </div>
-                        {/* <motion.div 
-                            className='button'
+                                        className='row p-5'
+                                        labelCol={{ span: 140, }}
+                                        wrapperCol={{ span: 140, }}
+                                        layout="horizontal"
+                                        style={{ maxWidth: 600, }}
+                                        >   
+                                        <motion.Box as='motion.div' variants={dropUpVariants} >    
+                                            <Form.Item label="First Name">
+                                                <Input 
+                                                    width='250px'
+                                                    size="large"
+                                                    className='block w-full text-sm text-slate-500'
+                                                    type='text'
+                                                    name='firstName'
+                                                    onChange={(e) => setAssailant({ ...assailant, fullName: e.target.value})}
+                                                    />
+                                            </Form.Item>
+                                        </motion.Box>
+                                        <motion.Box as='motion.div' variants={dropUpVariants} >    
+                                            <Form.Item label="Last Name">
+                                                <Input 
+                                                    width='250px'
+                                                    size="large"
+                                                    className='block w-full text-sm text-slate-500'
+                                                    type='text'
+                                                    name='lastName'
+                                                    onChange={(e) => setAssailant({ ...assailant, lastName: e.target.value})}
+                                                    />
+                                            </Form.Item>
+                                        </motion.Box>
+                                    </Form>
+                                    </motion.div>}
+                            </div>            
+                        </motion.div>
+                </div>                
+            ) : questionIndex === 16 ? ( // Do you know the assailants address?
+            <div>
+                <motion.div>
+                    <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                      No
+                    </Button>
+                    <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                      Yes
+                    </Button>
+                        <div className='h-320 w-200'>
+                            {visible && 
+                            <motion.div                 
                             variants={containerVariants}
                             initial="hidden"
                             animate="visible"
-                            key={index}
-                            exit="exit"
+                            exit="exitAnimation"
                             >
-                                <ButtonGroup
-                                className=''
-                                colorScheme='teal'
-                                size='lg'>
-                                    <Button 
-                                        onClick={decrementIndex}
-                                        >Back
-                                    </Button>
-                                    <Button 
-                                        onClick={incrementIndex}
-                                        >Next
-                                    </Button>
-                                </ButtonGroup>
-                            </motion.div> */}
-                </div>                
-            ) : index === 16 ? ( // Do you know the assailants address?
-                <div>
-                    <div className='input-card m-auto'>                            
-                        <Radio.Group className='row' size="large">
-                            <Radio.Button value="No"
-                                onClick={() => setVisible(false)}>No</Radio.Button>
-                            <Radio.Button value="Yes" 
-                                onClick={() => setVisible(true)} >Yes</Radio.Button> 
-                        </Radio.Group>
-                            <div>
-                                {visible && 
-                                    <Form
-                                    className='center'
+                                <Form
+                                    className='row p-5'
                                     labelCol={{ span: 140, }}
                                     wrapperCol={{ span: 140, }}
                                     layout="horizontal"
-                                    style={{ maxWidth: 600, }}
-                                    >
-                                    <div className=''>
+                                    >   
+                                    <motion.Box as='motion.div' variants={dropUpVariants} >    
                                         <Form.Item label="Address Line">
                                             <Input 
-                                                width='100%'
+                                                width='250px'
                                                 size="large"
                                                 className='block w-full text-sm text-slate-500'
                                                 type='text'
-                                                value={value}
                                                 name='streetAddress'
-                                                onChange={e => setAssailant({ ...assailant, [e.target.name]: e.target.value})}
+                                                onChange={(e) => setAssailant({...assailant, [e.target.name]: e.target.value})}
                                                 />
                                         </Form.Item>
+                                    </motion.Box>
+                                    <motion.Box as='motion.div' variants={dropUpVariants} >         
                                         <Form.Item label="City">
                                             <Input 
-                                                name='city'
                                                 type='text'
-                                                value={value}
-                                                onChange={e => setAssailant({ ...assailant, [e.target.name]: e.target.value})}
+                                                name='city'
+                                                onChange={(e) => setAssailant({...assailant, [e.target.name]: e.target.value})}
                                                 />
                                         </Form.Item>
-                                        <Form.Item label="state">
+                                    </motion.Box>
+                                    <motion.Box as='motion.div' variants={dropUpVariants} >    
+                                        <Form.Item label="State">
                                             <Select
-                                                onChange={state => setAssailant({...assailant, state: {state}})}
+                                                name='state'
+                                                onChange={state => setAssailant({ ...assailant, state: state})}
                                                 >
                                                 <Select.Option options={states} value={value}>Al</Select.Option>
                                             </Select>
@@ -762,189 +468,141 @@ function AnswerCard() {
                                                 onChange={e => setAssailant({...assailant, [e.target.name]: e.target.value})}
                                                 />
                                         </Form.Item>
-                                    </div>
-                                </Form>}
-                            </div>
-                        </div>
-                        {/* <motion.div 
-                            className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                                <ButtonGroup
-                                className=''
-                                colorScheme='teal'
-                                size='lg'>
-                                    <Button 
-                                        onClick={decrementIndex}
-                                        >Back
-                                    </Button>
-                                    <Button 
-                                        onClick={incrementIndex}
-                                        >Next
-                                    </Button>
-                                </ButtonGroup>
-                            </motion.div> */}
+                                    </motion.Box>
+                                </Form>
+                            </motion.div>}
+                    </div>            
+                </motion.div>
                     </div>
-            ) : index === 17 ? ( // Do you know the assailants phone number?
+            ) : questionIndex === 17 ? ( // Do you know the assailants phone number?
                 <div>
-                    <div className='input-card m-auto'>                        
-                        <Radio.Group className='row' size="large">
-                            <Radio.Button value="No"
-                                onClick={() => setVisible(false)}>No</Radio.Button>
-                            <Radio.Button value="Yes" 
-                                onClick={() => setVisible(true)} >Yes</Radio.Button>
-                        </Radio.Group>
-                            <div className=''>
+                    <motion.div>
+                        <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                          No
+                        </Button>
+                        <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                          Yes
+                        </Button>
                                 {visible && 
-                                    <Form
-                                    className='center'
-                                    labelCol={{ span: 140, }}
-                                    wrapperCol={{ span: 140, }}
-                                    layout="horizontal"
-                                    style={{ maxWidth: 600, }}
+                                <motion.div                 
+                                    variants={containerVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="exitAnimation"
                                     >
-                                    <div className='m-9'>
-                                        <Form.Item>
-                                           <Input 
-                                           placeholder="Please input assailants phone number"
-                                           onChange={(event) => setAssailant({...assailant, phone: event.target.value})} />
-                                        </Form.Item>
-                                    </div>
-                                </Form>}
+                                    <motion.Box as='motion.div' variants={dropUpVariants} >    
+                                    <InputGroup className='pt-5'>
+                                        <InputLeftElement pointerEvents='none'>
+                                            {/* <PhoneIcon color='gray.300' /> */}
+                                        </InputLeftElement>
+                                    <Input type='tel' placeholder='Phone number' onChange={(event) => setAssailant({...assailant, phone: event.target.value})} />
+                                    </InputGroup>
+                                </motion.Box>
+                                </motion.div>}
+                                </motion.div>
                             </div>   
-                        </div>                
-                        {/* <motion.div 
-                            className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
-                    </div>   
-            ) : index === 18 ? ( // Do you know the assailants place of work?
-                <div>
-                    <div className='input-card m-auto'>                        
-                        <Radio.Group className='row' size="large" >
-                            <Radio.Button value="false"
-                                onClick={() => setVisible(false)}>No</Radio.Button>
-                            <Radio.Button value="True" 
-                                onClick={() => setVisible(true)} >Yes</Radio.Button>
-                        </Radio.Group>
-                            <div className=''>
-                                    {visible && 
-                                        <Form
-                                        className='center'
-                                        labelCol={{ span: 140, }}
-                                        wrapperCol={{ span: 140, }}
-                                        layout="horizontal"
-                                        style={{ maxWidth: 600, }}
-                                        >
-                                        <div className='m-9'>
-                                            <Form.Item>
-                                               <Input 
-                                               placeholder="Please input assailants place of work"
-                                               onChange={(event) => setAssailant({...assailant, assailantsWork: event.target.value})} />
-                                            </Form.Item>
-                                        </div>
-                                    </Form>}
-                                </div>
-                            </div>   
-                            {/* <motion.div 
-                                className='button'
-                                variants={containerVariants}
-                                initial="hidden"
-                                animate="visible"
-                                key={index}
-                                exit="exit"
-                                >
-                                <ButtonGroup
-                                className=''
-                                colorScheme='teal'
-                                size='lg'>
-                                    <Button 
-                                        onClick={decrementIndex}
-                                        >Back
-                                    </Button>
-                                    <Button 
-                                        onClick={incrementIndex}
-                                        >Next
-                                    </Button>
-                                </ButtonGroup>
-                            </motion.div> */}
-                    </div> 
-            ) : index === 19 ? ( // Do you know the assailants email?
-                <div>
-                    <div className='input-card m-auto'>                        
-                        <Radio.Group className='row' size="large">
-                            <Radio.Button value="No"
-                                onClick={() => setVisible(false)}>No</Radio.Button>
-                            <Radio.Button value="Yes" 
-                                onClick={() => setVisible(true)} >Yes</Radio.Button>
-                        </Radio.Group>
-                            <div className='m-12'>
+            ) : questionIndex === 18 ? ( // Do you know the assailants place of work?
+            <div>
+            <motion.div>
+                <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                  No
+                </Button>
+                <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                  Yes
+                </Button>
+                    <div className='h-320 w-200'>
+                        {visible && 
+                        <motion.div                 
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exitAnimation"
+                        >
+                            <Form
+                                className='row p-5'
+                                labelCol={{ span: 140, }}
+                                wrapperCol={{ span: 140, }}
+                                layout="horizontal"
+                                >   
+                                <motion.Box as='motion.div' variants={dropUpVariants} >    
+                                    <Form.Item label="Address Line">
+                                        <Input 
+                                            width='250px'
+                                            size="large"
+                                            className='block w-full text-sm text-slate-500'
+                                            type='text'
+                                            name='streetAddressWork'
+                                            onChange={(e) => setAssailant({...assailant, [e.target.name]: e.target.value})}
+                                            />
+                                    </Form.Item>
+                                </motion.Box>
+                                <motion.Box as='motion.div' variants={dropUpVariants} >         
+                                    <Form.Item label="City">
+                                        <Input 
+                                            type='text'
+                                            name='cityWork'
+                                            onChange={(e) => setAssailant({...assailant, [e.target.name]: e.target.value})}
+                                            />
+                                    </Form.Item>
+                                </motion.Box>
+                                <motion.Box as='motion.div' variants={dropUpVariants} >    
+                                    <Form.Item label="State">
+                                        <Select
+                                            name='stateWork'
+                                            onChange={state => setAssailant({ ...assailant, stateWork: state})}
+                                            >
+                                            <Select.Option options={states} value={value}>Al</Select.Option>
+                                        </Select>
+                                    </Form.Item>
+                                    <Form.Item label="Postal Code">
+                                        <InputNumber 
+                                            value={value}
+                                            name='zipcodeWork'
+                                            onChange={e => setAssailant({...assailant, [e.target.name]: e.target.value})}
+                                            />
+                                    </Form.Item>
+                                </motion.Box>
+                            </Form>
+                        </motion.div>}
+                </div>            
+            </motion.div>
+        </div>
+            ) : questionIndex === 19 ? ( // Do you know the assailants email?
+            <div>
+                    <motion.div>
+                        <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                          No
+                        </Button>
+                        <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                          Yes
+                        </Button>
                                 {visible && 
-                                    <Form>
-                                        <Form.Item
-                                           name="email"
-                                           label="E-mail"
-                                           onChange={(event) => setAssailant({...assailant, email: event.target.value})}
-                                           >
-                                           <Input />
-                                       </Form.Item>
-                                    </Form>}
-                            </div>
-                        </div>   
-                        {/* <motion.div 
-                            className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
-                </div>
-            ) : index === 20 ? ( // Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.) **
+                                <motion.div                 
+                                    variants={containerVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="exitAnimation"
+                                    >
+                                    <motion.Box as='motion.div' variants={dropUpVariants} >    
+                                    <InputGroup className='pt-5'>
+                                        <InputLeftElement pointerEvents='none'>
+                                            {/* <PhoneIcon color='gray.300' /> */}
+                                        </InputLeftElement>
+                                    <Input type='email' placeholder='Email' onChange={(event) => setAssailant({...assailant, email: event.target.value})} />
+                                    </InputGroup>
+                                </motion.Box>
+                            </motion.div>}
+                        </motion.div>
+                    </div>   
+            ) : questionIndex === 20 ? ( // Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.) **
                 <div>
                     <div className='input-card m-auto'>                            
-                        <Radio.Group className='row' size="large">
-                            <Radio.Button className='' value="false"
-                                onClick={() => setVisible(false)}>No</Radio.Button>
-                            <Radio.Button value="true" 
-                                onClick={() => setVisible(true)} >Yes</Radio.Button>
-                        </Radio.Group>
+                        <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                          No
+                        </Button>
+                        <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                          Yes
+                        </Button>
                             <div className=''>
                                 {visible && 
                                     <Form
@@ -964,30 +622,8 @@ function AnswerCard() {
                             </Form>}
                         </div>
                     </div>
-                    {/* <motion.div 
-                            className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
                 </div>      
-            ) : index === 21 ? ( // Name of Survivor
+            ) : questionIndex === 21 ? ( // Name of Survivor
                 <div className='input-style'>                        
                     <Form className='input-card center'>
                         <Form.Item label='Survivor'>                 
@@ -998,30 +634,8 @@ function AnswerCard() {
                                onChange={(e) => setSurvivor({ userId: _id, survivor: e.target.value})} />
                             </Form.Item>     
                     </Form> 
-                    {/* <motion.div 
-                            className='button'
-                            variants={containerVariants}
-                            initial="hidden"
-                            animate="visible"
-                            key={index}
-                            exit="exit"
-                            >
-                            <ButtonGroup
-                            className=''
-                            colorScheme='teal'
-                            size='lg'>
-                                <Button 
-                                    onClick={decrementIndex}
-                                    >Back
-                                </Button>
-                                <Button 
-                                    onClick={incrementIndex}
-                                    >Next
-                                </Button>
-                            </ButtonGroup>
-                        </motion.div> */}
                 </div>
-            ) : index === 22 ? ( // Submit Registry
+            ) : questionIndex === 22 ? ( // Submit Registry
                     <div>
                         <h2>Thank you for your submission, Your registry has been filed and a timestamped copy will be sent to the the email provided.</h2>
                     </div>  
@@ -1031,7 +645,9 @@ function AnswerCard() {
                 </div>
             )
                 }
+                </AnimatePresence>
                 </div>
+                </center>
     )
 }
 

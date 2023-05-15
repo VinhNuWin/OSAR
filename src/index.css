@@ -2,20 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+input {
+  background: #fff;
+  color: #525865;
+  border-radius: 4px;
+  border: 1px solid #d1d1d1;
+  box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.07);
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.45;
+  outline: none;
+  padding: 0.6em 1.45em 0.7em;
+  -webkit-transition: .18s ease-out;
+  -moz-transition: .18s ease-out;
+  -o-transition: .18s ease-out;
+  transition: .18s ease-out;
+}
+input:hover {
+  box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
+}
+input:focus {
+  color: #4b515d;
+  border: 1px solid #B8B6B6;
+  box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
 
-body{
-    background: rgb(255, 255,255);
-    /* background: radial-gradient(circle, rgba(100,0,123,1) 0%, rgba(62,20,86,1) 100%); */
-    overflow: hidden;
-  }
-button{
-    color: Black;
-    padding: 10px 30px;
-    font-size: 1em;
-    background: transparent;
-    border-radius: 5px;
-    border: 1px solid black;
-    margin: 40px auto 0;
-    cursor: pointer;
-    opacity: 0.7;
-  }

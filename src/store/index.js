@@ -5,7 +5,7 @@ import {
     backIndex,
     addAnswers,
     addEmail,
-    changeDate
+    changeDate,
 } from './slices/indexSlice';
 import {
     formReducer,
@@ -53,7 +53,7 @@ export {
     removeAnswer,
     registryReducer,
     changeDate,
-    addUserId
+    addUserId,
  };
 
 export { useFetchReportQuery } from './apis/reportApi';

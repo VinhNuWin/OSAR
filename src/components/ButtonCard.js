@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, ButtonGroup } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, backIndex } from '../store';
@@ -51,13 +51,17 @@ function ButtonCard() {
     });
 
     const incrementIndex = (e) => {
-        console.log('default prevented');
         e.preventDefault();
 
         dispatch(changeIndex(parseInt(index + 1)));
         setVisible(false);
         setValue('');
     };
+
+    const skipIndex = (e) => {
+        dispatch(changeIndex(parseInt(index + 1)));
+        setVisible(false);
+    }
 
     const decrementIndex = (e) => {
         dispatch(backIndex(parseInt(index - 1)));
@@ -76,7 +80,7 @@ function ButtonCard() {
             },
             incident: incident
         });
-        console.log(response); 
+        // console.log(response); 
         dispatch(changeIndex(parseInt(index + 1)));
     };
 
@@ -87,48 +91,60 @@ function ButtonCard() {
             },
             assailant: assailant
         });
-        console.log(response);
+        // console.log(response);
         dispatch(changeIndex(parseInt(index + 1)));
     };
 
     const containerVariants = {
+        //initial
         hidden: {
             opacity: 0,
+            y: 50
         },
+        //animate
         visible: {
             opacity: 1,
-            transition: { delay: 0.5, type: 'spring', stiffness: 2 }
+            y: 0,
+            duration: .1,
+            transition: { ease: 'easeInOut' }
         },
-        exit: {
-            x: '-100vw',
+        exitAnimation: {
+            opacity: 0,
+            y: -50,
             transition: { ease: 'easeInOut' }
         }
         };
 
-
-
     return (
-        <motion.div className=''
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            key={index}
-            exit="exit"
+        <AnimatePresence>
+        <motion.div 
+            className='button'
             >
             <ButtonGroup
             className=''
-            colorScheme='blue'
+            colorScheme='green'
             size='lg'>
                 <Button 
+                    variant='backButton'
                     onClick={decrementIndex}
                     >Back
                 </Button>
                 <Button 
+                    variant='nextButton'
                     onClick={incrementIndex}
                     >Next
                 </Button>
             </ButtonGroup>
+            <Button 
+            className='ml-96 pt-5'
+                variant='skipButton'
+                onClick={skipIndex}
+                >SKIP
+                </Button>
         </motion.div>
+
+        </AnimatePresence>
+        
     )
 }
 

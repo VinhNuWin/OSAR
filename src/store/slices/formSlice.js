@@ -4,6 +4,7 @@ const formSlice = createSlice({
   name: 'form',
   initialState: {
     question: [
+      '',
       'When did the incident occur?', //0
       'Do you remember where the incident occured?', //1
       'Was Alcohol Involved', //3
@@ -25,7 +26,7 @@ const formSlice = createSlice({
       'Do you know the assailants email?', //19
       'Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.)', //20
       'Name of Survivor', //21
-      'Email of Survivor', //22
+      'Registry Complete', //22
     ],
     user: {
       incident: {},

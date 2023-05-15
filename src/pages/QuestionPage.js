@@ -1,65 +1,65 @@
+import '../styles.css';
 import Questions from '../components/Questions';
 import AnswerCard from '../components/AnswerCard';
 import ButtonCard from '../components/ButtonCard';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { AnimatePresence, isValidMotionProp, stagger } from 'framer-motion';
+import { Button, Container, chakra, shouldForwardProp, Box} from '@chakra-ui/react';
 import HomePage from '../components/HomePage';
 import { useSelector } from 'react-redux';
+import { containerVariants, dropUpVariants, homePageVariants } from '../components/containerVariants';
+
+
+const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+  });
 
 function QuestionPage() {
-
-    const { index } = useSelector((state) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const { index, question} = useSelector((state) => {
         return {
-        index: state.index.index,
+            question: state.form.question,
+            index: state.index.index,
         }
-    })
-    
-    const containerVariants = {
-        hidden: {
-            opacity: 0,
-        },
-        visible: {
-            opacity: 1,
-            transition: { delay: 0.5, type: 'spring', stiffness: 3 }
-        },
-        exit: {
-            x: '-100vw',
-            transition: { ease: 'easeInOut' }
-        }
-        };
+    });
 
+    const questionPageIndex = index;
 
     return (
-        <div>
-        {index === 0 ? ( //when did the incident occur "date"
-            <div className=''>
-                    <HomePage />
-            </div>
-        ) : index > 0 ?
-        <div className="wrapper">
-            <Card className="">
-            <CardHeader className="center2">
-                <Questions />
-            </CardHeader>
-            <motion.div className='answerCard center'
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                >
-                <AnswerCard />
-            </motion.div>
-            <div className="button">
-                <ButtonCard />
-            </div>
-            </Card>
-        </div>
-         : index === null (
-            <div>
-            An error has accord
-            </div>
-        )
-            }
+          <div>
+                    {questionPageIndex === 0 ? ( 
+                        <motion.div 
+                        key={questionPageIndex}
+                        variants={homePageVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exitAnimation"
+                        >
+                            <HomePage />
+                        </motion.div>
+                    ) : questionPageIndex >= 0 ?
+                    <motion.div 
+                        key={questionPageIndex}
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exitAnimation"
+                        className="wrapper"
+                        >
+                            <Questions />
+                            <AnswerCard variants={dropUpVariants} />
+                            <ButtonCard className='button'/>
+                    </motion.div>
+                    : questionPageIndex === 22 (
+                        <div>
+                        <div>
+                            <h2>Thank you for your submission, Your registry has been filed and a timestamped copy will be sent to the the email provided.</h2>
+                        </div>  
+                        <Button>Finish</Button>
+                        </div>
+                        )
+                    }
             </div>
     )
 };

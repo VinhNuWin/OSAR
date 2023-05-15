@@ -6,8 +6,6 @@ import { Provider } from "react-redux";
 import { NavigationProvider } from './context/navigation';
 import { store } from "./store";
 
-// if (process.env.NODE_ENV === 'production') disableReactDevTools();
-
 const el = document.getElementById('root');
 const root = ReactDOM.createRoot(el);
 
