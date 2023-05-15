@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, backIndex } from '../store';
 import { containerVariants, dropUpVariants } from './containerVariants';
 import { 
-    Radio,
     DatePicker,
     Form,
     Input,
