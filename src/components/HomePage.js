@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles.css';
 import { motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUserId, changeIndex } from '../store';
+import { addUserId, changeIndex, addEmail, addRegistryId } from '../store';
 import axios from 'axios';
 import { Button, Stack, FormControl, FormLabel, FormHelperText, Input, Box } from '@chakra-ui/react';
 import { chakra, shouldForwardProp, Text } from '@chakra-ui/react';
@@ -39,33 +39,35 @@ const pathVariants = {
 const HomePage = () => {
     const dispatch = useDispatch();
 
-    const { index } = useSelector((state) => {
+    const { index, email, _id } = useSelector((state) => {
         return {
         index: state.index.index,
+        email: state.index.registry.email,
+        _id: state.index.registry.incident._id,
         }
     })
 
-    const [email, setEmail] = useState('');
+    // const [email, setEmail] = useState('');
 
     const addUser = async () => {
-        // const response = await axios.post('https://osar-api.onrender.com/users', {
-        //     headers: {
-        //         'Content-Type' : 'application/json',
-        //         'Access-Control-Allow-Origin': '*',
-        //         'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
-        //     },
-        //     email: email
-        // });
-        // console.log(response);
-        // const updatedUser = ({
-        //     email: email,
-        //     _id: response.data.data._id
-        // });
-        // dispatch(addUserId(updatedUser));
+        const response = await axios.post('https://osar-api.onrender.com/users', {
+            headers: {
+                'Content-Type' : 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
+            },
+            email: email
+        });
+        console.log(response);
+        const userId = response.data.data._id;
+
+        dispatch(addRegistryId(userId));
         dispatch(changeIndex(parseInt(index + 1)));
-        // console.log(updatedUser);
+        console.log(userId);
     };
 
+    console.log({email});
+    console.log()
 
     return (
         <div className='Osar'>
@@ -116,7 +118,7 @@ const HomePage = () => {
                           <Input 
                             value={email}
                             bg='white'
-                            onChange={(e) => {setEmail(e.target.value)}}
+                            onChange={(e) => {dispatch(addEmail( e.target.value))}}
                             rules={[
                                 {
                                   type: 'email',

@@ -67,5 +67,6 @@ const incidentSchema = new Schema(
     { timestamps: true }
 );
 
+
 const Incident = mongoose.model('IncidentReport', incidentSchema);
 module.exports = Incident;

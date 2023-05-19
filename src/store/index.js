@@ -6,6 +6,8 @@ import {
     addAnswers,
     addEmail,
     changeDate,
+    updateIncident,
+    addRegistryId
 } from './slices/indexSlice';
 import {
     formReducer,
@@ -54,6 +56,8 @@ export {
     registryReducer,
     changeDate,
     addUserId,
+    updateIncident,
+    addRegistryId
  };
 
 export { useFetchReportQuery } from './apis/reportApi';

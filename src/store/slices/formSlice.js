@@ -17,7 +17,7 @@ const formSlice = createSlice({
       'Did the survivor receive a Sexual Assault Evidence Kit(i.e Rape Kit)', //10
       'Use of weapons', //11
       'Use of Restraints', //12
-      'Assailants Gender', //13
+      'Assailants Gender', //13 assailant
       'Assailants Race/Ethnicity', //14
       'Do you know the assailants name?', //15
       'Do you know the assailants address?', //16
@@ -33,11 +33,6 @@ const formSlice = createSlice({
       assailant: {},
     },
   },
-  reducers: {
-    addUserId: (state, action) => {
-      state.user = action.payload
-  },
-}
 });
 
 export const { addUserId } = formSlice.actions;

@@ -41,12 +41,13 @@ const createIncident = async (req,res) => {
 };
 
 const updateIncident = async (req,res) => {
-    const {id} = req.params;
+    const id = req.params.id;
     try{
-    const updateIncident = await Incident.findById(id);
+    const updateIncident = await Incident.findByIdAndUpdate(id);
         res.send(updateIncident);
-        console.log(updateIncident);
+        console.log(id);
     }catch (err){
+        console.log('id not found');
         console.log(err);
     }
 

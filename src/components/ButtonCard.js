@@ -5,58 +5,23 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, backIndex } from '../store';
 
-function ButtonCard() {
-    const { store, index, _id, } = useSelector((state) => {
+function ButtonCard( ) {
+    const { store, index, _id, email, incident, assailant } = useSelector((state) => {
         return {
             store: state,
             index: state.index.index,
-            _id: state.form.user._id
+            _id: state.form.user._id,
+            email: state.index.email,
+            incident: state.index.registry.incident,
+            assailant: state.index.registry.assailant,
+
         };
     });
 
     const dispatch = useDispatch();
     const [ visible, setVisible ] = useState(false);
-    const [ value, setValue ] = useState()
-    const [ incident, setIncident ] = useState({
-        userId: _id,
-        date: '',
-        location: '',
-        streetAddress: '',
-        city: '',
-        state: '',
-        postal: 0,
-        wasAlcoholInvolved: false,
-        wereDrugsInvolved: false,
-        wasSurvivorAsleepTimeOfIncident: false,
-        verbalThreatsToSurvivor: false,
-        resistanceOfferedBySurvivor: false,
-        detailsOfTheAssault: '',
-        areasOfSexualContact: '',
-        useOfWeaponsFromAssailant: false,
-        useOfRestraintFromAssailant: false,
-    });
-    const [ assailant, setAssailant ] = useState({
-        userId: _id,
-        gender: '',
-        raceEthnicity: '',
-        fullName: '',
-        streetAddress: '',
-        work: '',
-        city: '',
-        state: '',
-        zipcode: 0,
-        phone: 0,
-        email: '',
-        definingCharacteristics: '',
-    });
-
-    const incrementIndex = (e) => {
-        e.preventDefault();
-
-        dispatch(changeIndex(parseInt(index + 1)));
-        setVisible(false);
-        setValue('');
-    };
+    const [ value, setValue ] = useState();
+    
 
     const skipIndex = (e) => {
         dispatch(changeIndex(parseInt(index + 1)));
@@ -73,27 +38,57 @@ function ButtonCard() {
         };
     };
 
-    const addIncident = async () => {
-        const response = await axios.post(`http://localhost:3001/incidents`, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            incident: incident
-        });
-        // console.log(response); 
-        dispatch(changeIndex(parseInt(index + 1)));
-    };
+    const handleRegistryInputs = async () => {
+        if( index === 1 ) {
+            const response = await axios.post(`https://osar-api.onrender.com/incidents`, {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
+                },
+                incident: incident,
+            });
+            console.log(response); 
+            dispatch(changeIndex(parseInt(index + 1)));
+        };
+        if( index === 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10 || 11 || 12 ) {
+            const response = await axios.put(`https://osar-api.onrender.com/incidents/:id`, {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
+                },
+                incident: incident
+            });
+            dispatch(changeIndex(parseInt(index + 1)));
+            console.log('index was changed'); 
+        };
+        if( index === 13 ) {
+            const response = await axios.post(`https://osar-api.onrender.com/assailants`, {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
+                },
+                assailant: assailant
+            });
+            console.log(response); 
+            dispatch(changeIndex(parseInt(index + 1)));
+        };
+        if( index === 14 || 15 || 16 || 17 || 18 || 19 || 20 || 21 ) {
+            const response = await axios.put(`https://osar-api.onrender.com/assailants/:id`, {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
+                },
+                assailant: assailant
+            });
+            console.log(response); 
+            dispatch(changeIndex(parseInt(index + 1)));
+        };
+    }
 
-    const addAssailant = async () => {
-        const response = await axios.post('http://localhost:3001/assailants', {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            assailant: assailant
-        });
-        // console.log(response);
-        dispatch(changeIndex(parseInt(index + 1)));
-    };
 
     const containerVariants = {
         //initial
@@ -131,7 +126,7 @@ function ButtonCard() {
                 </Button>
                 <Button 
                     variant='nextButton'
-                    onClick={incrementIndex}
+                    onClick={handleRegistryInputs}
                     >Next
                 </Button>
             </ButtonGroup>

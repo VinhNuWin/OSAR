@@ -1,8 +1,9 @@
 import { useState, setCheck } from 'react';
 import '../styles.css';
+import ButtonCard from './ButtonCard';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex, backIndex } from '../store';
+import { changeIndex, backIndex, updateIncident } from '../store';
 import { containerVariants, dropUpVariants } from './containerVariants';
 import { 
     DatePicker,
@@ -13,20 +14,21 @@ import {
 } from 'antd';
 import axios from 'axios';
 import Example from './RadioCard';
-import { Button, Box, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import { Button, Box, InputGroup, InputLeftElement, ButtonGroup } from '@chakra-ui/react';
 
 function AnswerCard() {
-    const { store, index, _id, } = useSelector((state) => {
+    const { store, index, _id, incident } = useSelector((state) => {
         return {
             store: state,
             index: state.index.index,
-            _id: state.form.user._id
+            _id: state.form.user._id,
+            incident: state.index.registry.incident,
         };
     });
 
     const dispatch = useDispatch();
     const [ visible, setVisible ] = useState(false);
-    const [ incident, setIncident ] = useState({
+    const [  setIncident ] = useState({
         userId: _id,
         date: '',
         location: '',
@@ -45,7 +47,7 @@ function AnswerCard() {
         useOfRestraintFromAssailant: false,
     });
 
-    // console.log(incident);
+    console.log(incident);
 
     const [ assailant, setAssailant ] = useState({
         userId: _id,
@@ -97,9 +99,11 @@ const questionIndex = index;
     };
 
     const addIncident = async () => {
-        const response = await axios.post(`https://osar-api.org.onrender.com/incidents`, {
+        const response = await axios.post(`https://osar-api.onrender.com/incidents`, {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type' : 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
             },
             incident: incident
         });
@@ -148,7 +152,7 @@ const questionIndex = index;
                 <div>    
                         <DatePicker className='center'
                             showTime 
-                            onChange={(DatePicker) => setIncident({...incident, date: DatePicker.$d})}
+                            onChange={(DatePicker) => dispatch(updateIncident({...incident, date: DatePicker.$d}))}
                             />
                 </div>
             </div>
@@ -184,8 +188,7 @@ const questionIndex = index;
                                                     className='block w-full text-sm text-slate-500'
                                                     type='text'
                                                     name='streetAddress'
-                                                    onChange={(e) => setIncident({...incident, [e.target.name]: e.target.value})}
-                                                    />
+                                                    onChange={(e) => dispatch(updateIncident({...incident, [e.target.name]: e.target.value}))}/>
                                             </Form.Item>
                                         </motion.Box>
                                         <motion.Box as='motion.div' variants={dropUpVariants} >         
@@ -193,15 +196,14 @@ const questionIndex = index;
                                                 <Input 
                                                     type='text'
                                                     name='city'
-                                                    onChange={(e) => setIncident({...incident, [e.target.name]: e.target.value})}
-                                                    />
+                                                    onChange={(e) => dispatch(updateIncident({...incident, [e.target.name]: e.target.value}))}/>
                                             </Form.Item>
                                         </motion.Box>
                                         <motion.Box as='motion.div' variants={dropUpVariants} >    
                                             <Form.Item label="State">
                                                 <Select
                                                     name='state'
-                                                    onChange={state => setIncident({ ...incident, state: state})}
+                                                    // onChange={(state) => useDispatch(updateIncident({ ...incident, state: state}))}
                                                     >
                                                     <Select.Option options={states} value={value}>Al</Select.Option>
                                                 </Select>
@@ -212,8 +214,7 @@ const questionIndex = index;
                                                 <InputNumber 
                                                 value={value}
                                                 name='zipcode'
-                                                onChange={e => setIncident({...incident, [e.target.name]: e.target.value})}
-                                                />
+                                                onChange={e => dispatch(updateIncident({...incident, [e.target.name]: e.target.value}))}/>
                                             </Form.Item>
                                         </motion.Box>
                                     </Form>
@@ -224,10 +225,10 @@ const questionIndex = index;
             ) : questionIndex === 3 ? ( // Was Alcohol Involved "alcoholInvolved"
                 <motion.div>
                     <div>                
-                        <Button variant='brandPrimary' onClick={() => setIncident({...incident, wasAlcoholInvolved: false})}>
+                        <Button variant='brandPrimary' onClick={() => dispatch(updateIncident({...incident, wasAlcoholInvolved: false}))}>
                           No
                         </Button>
-                        <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, wasAlcoholInvolved: true})}>
+                        <Button className='mt-4' variant='brandPrimary' onClick={() => dispatch(updateIncident({...incident, wasAlcoholInvolved: true}))}>
                           Yes
                         </Button>
                     </div>
