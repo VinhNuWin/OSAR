@@ -47,14 +47,12 @@ const HomePage = () => {
         }
     })
 
-    // const [email, setEmail] = useState('');
-
     const addUser = async () => {
         const response = await axios.post('https://osar-api.onrender.com/users', {
             headers: {
                 'Content-Type' : 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
+                'Access-Control-Allow-Method': 'POST',
             },
             email: email
         });

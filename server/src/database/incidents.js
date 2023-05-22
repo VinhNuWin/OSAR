@@ -33,7 +33,7 @@ const createIncident = async (req,res) => {
     }
         const incidentReport = await Incident.create({date, userId, city, state, streetAddress, wasAlcoholInvolved, wereDrugsInvolved, wasSurvivorAsleepTimeOfIncident, verbalThreatsToSurvivor, resistanceOfferedBySurvivor, detailsOfTheAssault, areasOfSexualContact, useOfWeaponsFromAssailant, useOfRestraintFromAssailant})
         res.status(201).send({ status: 'OK', data: incidentReport });
-        console.log(req.body);
+        console.log(incidentReport);
     
     if (!incidentReport) {
         res.status(200).json(incidentReport)
@@ -41,21 +41,36 @@ const createIncident = async (req,res) => {
 };
 
 const updateIncident = async (req,res) => {
-    const id = req.params.id;
-    try{
-    const updateIncident = await Incident.findByIdAndUpdate(id);
-        res.send(updateIncident);
-        console.log(id);
-    }catch (err){
-        console.log('id not found');
-        console.log(err);
+    const { id } = req.params
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'no such incident'})
     }
 
-    console.log('PUT endpoint reached');
-    console.log(id);
-    console.log(req.body);
-    console.log(req.params)
+    const incident = await Incident.findOneAndUpdate({_id: id}, {
+        ...req.body
+    })
+    res.status(200).json(incident);
 
+    if (!incident) {
+        return res.status(400).json({error: 'No such incident'})
+    }
 };
 
-module.exports = { getAllIncidents, createIncident, updateIncident, getIncident };
+const deleteIncident = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such incident'})
+    }
+
+    const incident = await Incident.findOneAndDelete({_id: id})
+
+    if (!incident) {
+        return res.status(400).json({ error: 'no such incident'})
+    }
+
+    res.status(200).json(incident)
+}
+
+module.exports = { getAllIncidents, createIncident, updateIncident, getIncident, deleteIncident };

@@ -1,9 +1,9 @@
-import { useState, setCheck } from 'react';
+import { useState } from 'react';
 import '../styles.css';
 import ButtonCard from './ButtonCard';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex, backIndex, updateIncident } from '../store';
+import { changeIndex, backIndex, updateIncident, updateAssailant, addSurvivor } from '../store';
 import { containerVariants, dropUpVariants } from './containerVariants';
 import { 
     DatePicker,
@@ -13,11 +13,10 @@ import {
     Select,
 } from 'antd';
 import axios from 'axios';
-import Example from './RadioCard';
-import { Button, Box, InputGroup, InputLeftElement, ButtonGroup } from '@chakra-ui/react';
+import { Button, Text, InputGroup, InputLeftElement, ButtonGroup } from '@chakra-ui/react';
 
 function AnswerCard() {
-    const { store, index, _id, incident } = useSelector((state) => {
+    const { index, _id, incident } = useSelector((state) => {
         return {
             store: state,
             index: state.index.index,
@@ -135,20 +134,63 @@ const questionIndex = index;
 
     const states = [
         { label: 'AL', value: 'Alabama' },
-        { label: 'AR', value: 'Arkansas' },
+        { label: 'AK', value: 'Alaska' },
         { label: 'AZ', value: 'Arizona' },
+        { label: 'AR', value: 'Arkansas' },
         { label: 'CA', value: 'California' },
+        { label: 'CO', value: 'Colorado' },
+        { label: 'CT', value: 'Connecticut' },
         { label: 'DE', value: 'Delaware' },
+        { label: 'FL', value: 'Florida' },
+        { label: 'GA', value: 'Georgia' },
+        { label: 'HI', value: 'Hawaii' },
+        { label: 'ID', value: 'Idaho' },
+        { label: 'IL', value: 'Illinois' },
+        { label: 'IN', value: 'Indiana' },
+        { label: 'IA', value: 'Iowa' },
+        { label: 'KS', value: 'Kansas' },
+        { label: 'KY', value: 'Kentucky' },
+        { label: 'LA', value: 'Louisiana' },
+        { label: 'ME', value: 'Maine' },
+        { label: 'MD', value: 'Maryland' },
+        { label: 'MA', value: 'Massachusetts' },
+        { label: 'MI', value: 'Michigan' },
+        { label: 'MN', value: 'Minnesota' },
+        { label: 'MS', value: 'Mississippi' },
+        { label: 'MO', value: 'Missouri' },
+        { label: 'MT', value: 'Montana' },
+        { label: 'NE', value: 'Nebraska' },
+        { label: 'NV', value: 'Nevada' },
+        { label: 'NH', value: 'New Hampshire' },
+        { label: 'NJ', value: 'New Jersey' },
+        { label: 'NM', value: 'New Mexico' },
+        { label: 'NY', value: 'New York' },
+        { label: 'ND', value: 'North Dakota' },
+        { label: 'OH', value: 'Ohio' },
+        { label: 'OK', value: 'Oklahoma' },
+        { label: 'OR', value: 'Oregon' },
+        { label: 'PA', value: 'Pennsylvania' },
+        { label: 'RI', value: 'Rhode Island' },
+        { label: 'SC', value: 'South Carolina' },
+        { label: 'TN', value: 'Tennessee' },
+        { label: 'TX', value: 'Texas' },
+        { label: 'UT', value: 'Utah' },
+        { label: 'VT', value: 'Vermont' },
+        { label: 'VA', value: 'Virginia' },
+        { label: 'WA', value: 'Washington' },
+        { label: 'WV', value: 'West Virginia' },
+        { label: 'WI', value: 'Wisconsin' },
+        { label: 'WY', value: 'Wyoming' },
     ];
 
     const TextArea = Input;
 
     return (
-        <center>
-        <div className='pt-10 h-96 center'>
+        <center className=''>
+        <div className='pt-10 h-96'>
             <AnimatePresence>
             { questionIndex === 1  ? ( //when did the incident occur "date"
-            <div>
+            <div className=''>
                 <div>    
                         <DatePicker className='center'
                             showTime 
@@ -157,15 +199,14 @@ const questionIndex = index;
                 </div>
             </div>
             ) : questionIndex === 2 ? ( // do you remember where the incident occured? "incidentLocation"
-            <div>
-                    <motion.div>
-                        <Button variant='brandPrimary' onClick={() => setVisible(false)}>
-                          No
+                    <motion.div className='flex-box ml-12'>
+                        <Button variant='booleanButton' onClick={() => setVisible(false)}>
+                            <Text>No</Text>
                         </Button>
-                        <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
-                          Yes
+                        <Button variant='booleanButton' onClick={() => setVisible(true)}>
+                            <Text>Yes</Text>
                         </Button>
-                            <div className='h-320 w-200 pt-4'>
+                            <div className='h-320 w-200'>
                                 {visible && 
                                 <motion.div                 
                                 variants={containerVariants}
@@ -221,64 +262,56 @@ const questionIndex = index;
                                     </motion.div>}
                             </div>            
                         </motion.div>
-                        </div>
             ) : questionIndex === 3 ? ( // Was Alcohol Involved "alcoholInvolved"
-                <motion.div>
-                    <div>                
-                        <Button variant='brandPrimary' onClick={() => dispatch(updateIncident({...incident, wasAlcoholInvolved: false}))}>
+                <motion.div className='flex-box'>
+                    {/* <div>                 */}
+                        <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wasAlcoholInvolved: false}))}>
                           No
                         </Button>
-                        <Button className='mt-4' variant='brandPrimary' onClick={() => dispatch(updateIncident({...incident, wasAlcoholInvolved: true}))}>
+                        <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wasAlcoholInvolved: true}))}>
                           Yes
                         </Button>
-                    </div>
+                    {/* </div> */}
                 </motion.div>
             ) : questionIndex === 4 ? ( // Were Drugs Involved "drugsInvolved"    
-                    <div>              
-                        <Button variant='brandPrimary' onClick={() => setIncident({...incident, wereDrugsInvolved: false})}>
+                <div className='flex-box'>              
+                        <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wereDrugsInvolved: false}))}>
                               No
                         </Button>
-                        <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, wereDrugsInvolved: true})}>
+                        <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wereDrugsInvolved: true}))}>
                               Yes
                         </Button>    
                     </div>
             ) : questionIndex === 5 ? ( // Was Survivor Asleep at time of Incident "survivorAsleep"
-                <div className=''>          
-                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, wasSurvivorAsleepTimeOfIncident: false})}>
+                <div className='flex-box'>          
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wasSurvivorAsleepTimeOfIncident: false}))}>
                               No
                     </Button>
-                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, wasSurvivorAsleepTimeOfIncident: true})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wasSurvivorAsleepTimeOfIncident: true}))}>
                               Yes
                     </Button>               
                 </div>   
             ) : questionIndex === 6 ? ( // Were there verbal threats to the survivor
                 <div>
-                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, verbalThreatsToSurvivor: false})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, verbalThreatsToSurvivor: false}))}>
                               No
                     </Button>
-                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, verbalThreatsToSurvivor: true})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, verbalThreatsToSurvivor: true}))}>
                               Yes
                     </Button>                                
                 </div>   
             ) : questionIndex === 7 ? ( // Was resistance offered by survivor
                 <div>
-                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, resistanceOfferedBySurvivor: false})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, resistanceOfferedBySurvivor: false}))}>
                               No
                     </Button>
-                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, resistanceOfferedBySurvivor: true})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, resistanceOfferedBySurvivor: true}))}>
                               Yes
                     </Button>          
                     </div>
             ) : questionIndex === 8 ? ( // Details of the assault
-                <div className=''>
-                    <Button variant='brandPrimary' onClick={() => setVisible(false)}>
-                              No
-                    </Button>
-                    <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
-                              Yes
-                    </Button>     
+                <div className=''>   
                     <div className=''>
-                        {visible && 
                             <Form>
                                 <div>
                                 <Form.Item>
@@ -291,52 +324,61 @@ const questionIndex = index;
                                     }}
                                     type='text'
                                     name='detailsOfTheAssault'
-                                    onChange={e => setIncident({...incident, [e.target.name]: e.target.value})}
+                                    onChange={e => dispatch(updateIncident({...incident, [e.target.name]: e.target.value}))}
                                     placeholder="In your own words a brief description of the event"
                                     />
                                 </Form.Item>
                                 </div>
-                                </Form>}
+                                </Form>
                         </div>
                     </div>
             ) : questionIndex === 9 ? ( // Areas of sexual contact ** add staggered button selections
                 <div>
-                    <div className=''>
+                    <div className='flex-box'>
+                                    <Button variant='selectButton'>
+                                        <Text>Oral</Text>
+                                    </Button>
+                                    <Button variant='selectButton'>
+                                        <Text>Vaginal</Text>
+                                    </Button>
+                                    <Button variant='selectButton'>
+                                        <Text>Anal</Text>
+                                    </Button>
                     </div>
                 </div>
             ) : questionIndex === 10 ? ( // Did the survivor receive a Sexual Assault Evidence Kit(i.e Rape Kit) 
                 <div>
-                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, rapeKit: false})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, rapeKit: false}))}>
                               No
                     </Button>
-                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, rapeKit: true})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, rapeKit: true}))}>
                               Yes
                     </Button>         
                 </div>
             ) : questionIndex === 11 ? ( // Use of weapons
                 <div>
-                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, useOfWeaponsFromAssailant: false})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, useOfWeaponsFromAssailant: false}))}>
                               No
                     </Button>
-                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, useOfWeaponsFromAssailant: true})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, useOfWeaponsFromAssailant: true}))}>
                               Yes
                     </Button>   
                 </div>                        
             ) : questionIndex === 12 ? ( // Use of Restraints 
                 <div>
-                    <Button variant='brandPrimary' onClick={() => setIncident({...incident, useOfRestraintFromAssailant: false})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, useOfRestraintFromAssailant: false}))}>
                               No
                     </Button>
-                    <Button className='mt-4' variant='brandPrimary' onClick={() => setIncident({...incident, useOfRestraintFromAssailant: true})}>
+                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, useOfRestraintFromAssailant: true}))}>
                               Yes
                     </Button> 
                 </div>        
             ) : questionIndex === 13 ? ( // Assailants Gender
                 <div>
-                    <Button variant='brandPrimary' onChange={() => setAssailant({...assailant, gender: 'female'})}>
+                    <Button variant='booleanButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'female'}))}>
                               Female
                     </Button>
-                    <Button className='mt-4' variant='brandPrimary' onChange={() => setAssailant({...assailant, gender: 'male'})}>
+                    <Button variant='booleanButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'male'}))}>
                               Male
                     </Button> 
                 </div>                     
@@ -358,10 +400,10 @@ const questionIndex = index;
             ) : questionIndex === 15 ? ( // Do you know the assailants name?
                 <div>
                     <motion.div>
-                        <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                        <Button variant='booleanButton' onClick={() => setVisible(false)}>
                           No
                         </Button>
-                        <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                        <Button variant='booleanButton' onClick={() => setVisible(true)}>
                           Yes
                         </Button>
                             <div className='h-320 w-200 pt-4'>
@@ -387,7 +429,7 @@ const questionIndex = index;
                                                     className='block w-full text-sm text-slate-500'
                                                     type='text'
                                                     name='firstName'
-                                                    onChange={(e) => setAssailant({ ...assailant, fullName: e.target.value})}
+                                                    onChange={(e) => dispatch(updateAssailant({ ...assailant, fullName: e.target.value}))}
                                                     />
                                             </Form.Item>
                                         </motion.Box>
@@ -399,7 +441,7 @@ const questionIndex = index;
                                                     className='block w-full text-sm text-slate-500'
                                                     type='text'
                                                     name='lastName'
-                                                    onChange={(e) => setAssailant({ ...assailant, lastName: e.target.value})}
+                                                    onChange={(e) => dispatch(updateAssailant({ ...assailant, lastName: e.target.value}))}
                                                     />
                                             </Form.Item>
                                         </motion.Box>
@@ -411,10 +453,10 @@ const questionIndex = index;
             ) : questionIndex === 16 ? ( // Do you know the assailants address?
             <div>
                 <motion.div>
-                    <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                    <Button variant='booleanButton' onClick={() => setVisible(false)}>
                       No
                     </Button>
-                    <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                    <Button variant='booleanButton' onClick={() => setVisible(true)}>
                       Yes
                     </Button>
                         <div className='h-320 w-200'>
@@ -439,7 +481,7 @@ const questionIndex = index;
                                                 className='block w-full text-sm text-slate-500'
                                                 type='text'
                                                 name='streetAddress'
-                                                onChange={(e) => setAssailant({...assailant, [e.target.name]: e.target.value})}
+                                                onChange={(e) => dispatch(updateAssailant({...assailant, [e.target.name]: e.target.value}))}
                                                 />
                                         </Form.Item>
                                     </motion.Box>
@@ -448,7 +490,7 @@ const questionIndex = index;
                                             <Input 
                                                 type='text'
                                                 name='city'
-                                                onChange={(e) => setAssailant({...assailant, [e.target.name]: e.target.value})}
+                                                onChange={(e) => dispatch(updateAssailant({...assailant, [e.target.name]: e.target.value}))}
                                                 />
                                         </Form.Item>
                                     </motion.Box>
@@ -456,7 +498,7 @@ const questionIndex = index;
                                         <Form.Item label="State">
                                             <Select
                                                 name='state'
-                                                onChange={state => setAssailant({ ...assailant, state: state})}
+                                                onChange={state => dispatch(updateAssailant({ ...assailant, state: state}))}
                                                 >
                                                 <Select.Option options={states} value={value}>Al</Select.Option>
                                             </Select>
@@ -465,7 +507,7 @@ const questionIndex = index;
                                             <InputNumber 
                                                 value={value}
                                                 name='zipcode'
-                                                onChange={e => setAssailant({...assailant, [e.target.name]: e.target.value})}
+                                                onChange={e => dispatch(updateAssailant({...assailant, [e.target.name]: e.target.value}))}
                                                 />
                                         </Form.Item>
                                     </motion.Box>
@@ -477,10 +519,10 @@ const questionIndex = index;
             ) : questionIndex === 17 ? ( // Do you know the assailants phone number?
                 <div>
                     <motion.div>
-                        <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                        <Button variant='booleanButton' onClick={() => setVisible(false)}>
                           No
                         </Button>
-                        <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                        <Button variant='booleanButton' onClick={() => setVisible(true)}>
                           Yes
                         </Button>
                                 {visible && 
@@ -495,7 +537,7 @@ const questionIndex = index;
                                         <InputLeftElement pointerEvents='none'>
                                             {/* <PhoneIcon color='gray.300' /> */}
                                         </InputLeftElement>
-                                    <Input type='tel' placeholder='Phone number' onChange={(event) => setAssailant({...assailant, phone: event.target.value})} />
+                                    <Input type='tel' placeholder='Phone number' onChange={(event) => dispatch(updateAssailant({...assailant, phone: event.target.value}))} />
                                     </InputGroup>
                                 </motion.Box>
                                 </motion.div>}
@@ -504,10 +546,10 @@ const questionIndex = index;
             ) : questionIndex === 18 ? ( // Do you know the assailants place of work?
             <div>
             <motion.div>
-                <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                <Button variant='booleanButton' onClick={() => setVisible(false)}>
                   No
                 </Button>
-                <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                <Button variant='booleanButton' onClick={() => setVisible(true)}>
                   Yes
                 </Button>
                     <div className='h-320 w-200'>
@@ -532,7 +574,7 @@ const questionIndex = index;
                                             className='block w-full text-sm text-slate-500'
                                             type='text'
                                             name='streetAddressWork'
-                                            onChange={(e) => setAssailant({...assailant, [e.target.name]: e.target.value})}
+                                            onChange={(e) => dispatch(updateAssailant({...assailant, [e.target.name]: e.target.value}))}
                                             />
                                     </Form.Item>
                                 </motion.Box>
@@ -541,7 +583,7 @@ const questionIndex = index;
                                         <Input 
                                             type='text'
                                             name='cityWork'
-                                            onChange={(e) => setAssailant({...assailant, [e.target.name]: e.target.value})}
+                                            onChange={(e) => dispatch(updateAssailant({...assailant, [e.target.name]: e.target.value}))}
                                             />
                                     </Form.Item>
                                 </motion.Box>
@@ -549,7 +591,7 @@ const questionIndex = index;
                                     <Form.Item label="State">
                                         <Select
                                             name='stateWork'
-                                            onChange={state => setAssailant({ ...assailant, stateWork: state})}
+                                            onChange={state => dispatch(updateAssailant({ ...assailant, stateWork: state}))}
                                             >
                                             <Select.Option options={states} value={value}>Al</Select.Option>
                                         </Select>
@@ -558,7 +600,7 @@ const questionIndex = index;
                                         <InputNumber 
                                             value={value}
                                             name='zipcodeWork'
-                                            onChange={e => setAssailant({...assailant, [e.target.name]: e.target.value})}
+                                            onChange={e => dispatch(updateAssailant({...assailant, [e.target.name]: e.target.value}))}
                                             />
                                     </Form.Item>
                                 </motion.Box>
@@ -570,10 +612,10 @@ const questionIndex = index;
             ) : questionIndex === 19 ? ( // Do you know the assailants email?
             <div>
                     <motion.div>
-                        <Button variant='brandPrimary' onClick={() => setVisible(false)}>
+                        <Button variant='booleanButton' onClick={() => setVisible(false)}>
                           No
                         </Button>
-                        <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                        <Button variant='booleanButton' onClick={() => setVisible(true)}>
                           Yes
                         </Button>
                                 {visible && 
@@ -588,7 +630,7 @@ const questionIndex = index;
                                         <InputLeftElement pointerEvents='none'>
                                             {/* <PhoneIcon color='gray.300' /> */}
                                         </InputLeftElement>
-                                    <Input type='email' placeholder='Email' onChange={(event) => setAssailant({...assailant, email: event.target.value})} />
+                                    <Input type='email' placeholder='Email' onChange={(event) => dispatch(updateAssailant({...assailant, email: event.target.value}))} />
                                     </InputGroup>
                                 </motion.Box>
                             </motion.div>}
@@ -597,10 +639,10 @@ const questionIndex = index;
             ) : questionIndex === 20 ? ( // Assailants Defining Characteristics (i.e. tattoos, scars, physical disabilities, etc.) **
                 <div>
                     <div className='input-card m-auto'>                            
-                        <Button variant='brandPrimary' onClick={() => setVisible(false)}>
-                          No
+                        <Button variant='booleanButton' onClick={() => setVisible(false)}>
+                          <Text>No</Text>
                         </Button>
-                        <Button className='mt-4' variant='brandPrimary' onClick={() => setVisible(true)}>
+                        <Button variant='booleanButton' onClick={() => setVisible(true)}>
                           Yes
                         </Button>
                             <div className=''>
@@ -616,7 +658,7 @@ const questionIndex = index;
                                     <Form.Item>
                                        <Input 
                                        placeholder="Please input defining characteristics"
-                                       onChange={(event) => setAssailant({...assailant, definingCharacteristics: event.target.value})} />
+                                       onChange={(event) => dispatch(updateAssailant({...assailant, definingCharacteristics: event.target.value}))} />
                                     </Form.Item>
                                 </div>
                             </Form>}
@@ -631,7 +673,7 @@ const questionIndex = index;
                                value={survivor.value}
                                placeholder="Name of Survivor"
                                name='survivor'
-                               onChange={(e) => setSurvivor({ userId: _id, survivor: e.target.value})} />
+                               onChange={(e) => dispatch(addSurvivor({ survivor: e.target.value}))} />
                             </Form.Item>     
                     </Form> 
                 </div>

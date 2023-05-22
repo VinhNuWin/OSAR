@@ -35,8 +35,8 @@ const questionIndex = index;
 
     return (
         <AnimatePresence mode='wait' >
-            <div>     
-            <h1 className='questions text-5xl' variants={dropUpVariants} > 
+            <div className='questions'>     
+            <h1  variants={dropUpVariants} > 
                 {question[questionIndex]}</h1>
             </div>
         </AnimatePresence>

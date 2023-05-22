@@ -6,9 +6,11 @@ const indexSlice = createSlice({
         index: 0,
         email: '',
         registry: {
+            survivor: '',
             email: '',
             _id: '',
             incident: {
+                _id: '',
                 userId: '',
                 date: '',
                 location: '',
@@ -27,6 +29,8 @@ const indexSlice = createSlice({
                 useOfRestraintFromAssailant: false,
             },
             assailant: {
+                _id: '',
+                userId: '',
                 gender: '',
                 raceEthnicity: '',
                 firstName: '',
@@ -52,11 +56,8 @@ const indexSlice = createSlice({
         backIndex(state, action) {
             state.index = action.payload;
         },
-        addAnswers(state, action){
-            state.push(action.payload);
-          },
-        removeSong(state, action) {
-            state.pop(action.payload);
+        addSurvivor(state, action) {
+            state.registry.survivor = action.payload;
         },
         addEmail(state, action){
             state.registry.email = action.payload;
@@ -64,12 +65,33 @@ const indexSlice = createSlice({
         addRegistryId(state, action) {
             state.registry._id = action.payload;
             state.registry.incident.userId = action.payload;
+            state.registry.assailant.userId = action.payload;
+        },
+        addIncidentId(state, action) {
+            state.registry.incident._id = action.payload;
+        },
+        addAssailantId(state, action) {
+            state.registry.assailant._id = action.payload;
         },
         updateIncident(state, action){
             state.registry.incident = action.payload;
         },
+        updateAssailant(state, action) {
+            state.registry.assailant = action.payload;
+        },
     }
     });
 
-export const { changeDate, changeIndex, backIndex, addAnswers, addEmail, updateIncident, addRegistryId } = indexSlice.actions;
+export const { 
+    changeDate, 
+    changeIndex, 
+    backIndex,
+    addSurvivor,
+    addEmail, 
+    updateIncident, 
+    addRegistryId, 
+    addIncidentId, 
+    addAssailantId,
+    updateAssailant 
+} = indexSlice.actions;
 export const indexReducer = indexSlice.reducer;

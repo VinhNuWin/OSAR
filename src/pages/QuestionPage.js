@@ -2,6 +2,7 @@ import '../styles.css';
 import Questions from '../components/Questions';
 import AnswerCard from '../components/AnswerCard';
 import ButtonCard from '../components/ButtonCard';
+import MultiSelect from '../components/MultiSelect';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { AnimatePresence, isValidMotionProp, stagger } from 'framer-motion';
@@ -27,7 +28,7 @@ function QuestionPage() {
     const questionPageIndex = index;
 
     return (
-          <div>
+          <div className='Registry'>
                     {questionPageIndex === 0 ? ( 
                         <motion.div 
                         key={questionPageIndex}
@@ -45,11 +46,11 @@ function QuestionPage() {
                         initial="hidden"
                         animate="visible"
                         exit="exitAnimation"
-                        className="wrapper"
+                        className="wrapper "
                         >
-                            <Questions />
+                            <Questions  />
                             <AnswerCard variants={dropUpVariants} />
-                            <ButtonCard className='button'/>
+                            <ButtonCard />
                     </motion.div>
                     : questionPageIndex === 22 (
                         <div>

@@ -3,11 +3,14 @@ import {
     indexReducer,
     changeIndex,
     backIndex,
-    addAnswers,
+    addSurvivor,
     addEmail,
     changeDate,
     updateIncident,
-    addRegistryId
+    addRegistryId,
+    addIncidentId,
+    addAssailantId,
+    updateAssailant
 } from './slices/indexSlice';
 import {
     formReducer,
@@ -48,16 +51,18 @@ export {
     indexReducer,
     changeIndex,
     backIndex,
-    addAnswer,
+    addSurvivor,
     formReducer,
     addEmail,
-    addAnswers,
     removeAnswer,
     registryReducer,
     changeDate,
     addUserId,
     updateIncident,
-    addRegistryId
+    addRegistryId,
+    addIncidentId,
+    addAssailantId,
+    updateAssailant
  };
 
 export { useFetchReportQuery } from './apis/reportApi';

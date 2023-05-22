@@ -1,4 +1,3 @@
-require('dotenv').config()
 const { ObjectId } = require('mongodb');
 const User = require('../models/User')
 const db = require('./db');
@@ -30,8 +29,6 @@ const getUser = async (req,res) => {
 const createUser = async (req,res) => {
     const { email } = req.body;
     const userEmail = { email }
-    
-    // const accessToken = jwt.sign(userEmail, process.env.ACCESS_TOKEN_SECRET)
 
     try {
         const user = await User.create({email})

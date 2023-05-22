@@ -3,18 +3,17 @@ import { Button, ButtonGroup } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex, backIndex } from '../store';
+import { changeIndex, backIndex, addIncidentId, addAssailantId } from '../store';
 
 function ButtonCard( ) {
-    const { store, index, _id, email, incident, assailant } = useSelector((state) => {
+    const { survivor, index, _id, email, incident, assailant, userId } = useSelector((state) => {
         return {
-            store: state,
+            survivor: state.index.registry,
             index: state.index.index,
-            _id: state.form.user._id,
+            _id: state.index.registry.incident._id,
             email: state.index.email,
             incident: state.index.registry.incident,
             assailant: state.index.registry.assailant,
-
         };
     });
 
@@ -22,6 +21,17 @@ function ButtonCard( ) {
     const [ visible, setVisible ] = useState(false);
     const [ value, setValue ] = useState();
     
+    let newIndex = (index + 1);
+
+    const incrementIndex = (e) => {
+        console.log('default prevented');
+        e.preventDefault();
+
+        dispatch(changeIndex(parseInt(newIndex)));
+        setVisible(false);
+        setValue('');
+    };
+
 
     const skipIndex = (e) => {
         dispatch(changeIndex(parseInt(index + 1)));
@@ -48,22 +58,25 @@ function ButtonCard( ) {
                 },
                 incident: incident,
             });
-            console.log(response); 
+            console.log(response);
+            const incidentId = response.data.data._id;
+            dispatch(addIncidentId(incidentId)); 
             dispatch(changeIndex(parseInt(index + 1)));
-        };
-        if( index === 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10 || 11 || 12 ) {
-            const response = await axios.put(`https://osar-api.onrender.com/incidents/:id`, {
+
+        } else if ( index === 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10 || 11 || 12 ) {
+            const response = await axios.patch(`https://osar-api.onrender.com/incidents/${_id}`, {
                 headers: {
                     'Content-Type' : 'application/json',
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
                 },
-                incident: incident
+                incident: incident,
+                _id: _id
             });
-            dispatch(changeIndex(parseInt(index + 1)));
+            dispatch(changeIndex(parseInt(newIndex)));
             console.log('index was changed'); 
-        };
-        if( index === 13 ) {
+            console.log(response);
+        } else if ( index === 13 ) {
             const response = await axios.post(`https://osar-api.onrender.com/assailants`, {
                 headers: {
                     'Content-Type' : 'application/json',
@@ -73,16 +86,30 @@ function ButtonCard( ) {
                 assailant: assailant
             });
             console.log(response); 
+            const assailantId = response.data.data._id;
+            dispatch(addAssailantId(assailantId)); 
             dispatch(changeIndex(parseInt(index + 1)));
-        };
-        if( index === 14 || 15 || 16 || 17 || 18 || 19 || 20 || 21 ) {
-            const response = await axios.put(`https://osar-api.onrender.com/assailants/:id`, {
+        } else if ( index === 14 || 15 || 16 || 17 || 18 || 19 || 20 ) {
+            const response = await axios.patch(`https://osar-api.onrender.com/assailants/${_id}`, {
                 headers: {
                     'Content-Type' : 'application/json',
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
                 },
-                assailant: assailant
+                assailant: assailant,
+                _id: _id
+            });
+            console.log(response); 
+            dispatch(changeIndex(parseInt(index + 1)));
+        } else if ( index === 21 ) {
+            const response = await axios.patch(`https://osar-api.onrender.com/users/${_id}`, {
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
+                },
+                survivor: survivor,
+                _id: _id
             });
             console.log(response); 
             dispatch(changeIndex(parseInt(index + 1)));
@@ -113,29 +140,37 @@ function ButtonCard( ) {
     return (
         <AnimatePresence>
         <motion.div 
-            className='button'
+            className='container'
             >
             <ButtonGroup
-            className=''
-            colorScheme='green'
-            size='lg'>
+            className=''>
+                <div className='flex-box'>
+                    <div className='w-40'>
                 <Button 
                     variant='backButton'
                     onClick={decrementIndex}
+                    width={{ base: '50%', md: '50%', xl: '100%'}}
                     >Back
                 </Button>
+                </div>
+                <div className=''>
+                <Button 
+                    variant='skipButton'
+                    onClick={skipIndex}
+                    >SKIP
+                </Button>
+                </div>
+                <div className='w-40'>
                 <Button 
                     variant='nextButton'
                     onClick={handleRegistryInputs}
+                    width={{ base: '50%', md: '50%', xl: '100%'}}
                     >Next
                 </Button>
+                </div>
+                </div>
             </ButtonGroup>
-            <Button 
-            className='ml-96 pt-5'
-                variant='skipButton'
-                onClick={skipIndex}
-                >SKIP
-                </Button>
+
         </motion.div>
 
         </AnimatePresence>
