@@ -1,6 +1,7 @@
 import QuestionPage from './pages/QuestionPage';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { buttonTheme } from "./components/componentThemes/buttonTheme";
+import Home from './components/ContentBox/Home';
 
 function App() {
 
@@ -12,7 +13,8 @@ function App() {
   
   return (
     <ChakraProvider theme={theme}>
-      <QuestionPage />
+      <Home />
+      {/* <QuestionPage /> */}
     </ChakraProvider>
   );
 }
