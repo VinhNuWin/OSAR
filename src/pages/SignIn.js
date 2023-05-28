@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles.css';
+// import Button from '../components/buttons/Button';
 import { motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUserId, changeIndex, addEmail, addRegistryId } from '../store';
+import { changeIndex, addEmail, addRegistryId } from '../store';
 import axios from 'axios';
-import { Button, Stack, FormControl, FormLabel, FormHelperText, Input, Box } from '@chakra-ui/react';
-import { chakra, shouldForwardProp, Text } from '@chakra-ui/react';
+import { Button, Stack, FormControl, FormLabel, FormHelperText, Input, Box, Text, chakra, shouldForwardProp } from '@chakra-ui/react';
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -15,7 +15,6 @@ const svgVariants = {
     hidden: { rotate: -180 },
     visible: {
         rotate: 0,
-        // transition: { duration : 1 }
     }
 };
 
@@ -36,18 +35,18 @@ const pathVariants = {
     }
 };
 
-const HomePage = () => {
+function SignIn() {
     const dispatch = useDispatch();
 
-    const { index, email, _id } = useSelector((state) => {
+    const { index, email } = useSelector((state) => {
         return {
         index: state.index.index,
         email: state.index.registry.email,
-        _id: state.index.registry.incident._id,
         }
     })
 
     const addUser = async () => {
+        console.log('adduser clicked');
         const response = await axios.post('https://osar-api.onrender.com/users', {
             headers: {
                 'Content-Type' : 'application/json',
@@ -61,11 +60,9 @@ const HomePage = () => {
 
         dispatch(addRegistryId(userId));
         dispatch(changeIndex(parseInt(index + 1)));
-        console.log(userId);
     };
 
     console.log({email});
-    console.log()
 
     return (
         <div className='Osar'>
@@ -131,12 +128,8 @@ const HomePage = () => {
                           <FormHelperText>We'll never share your email.</FormHelperText>
                         </FormControl>
                             <Box pos='center' className='button-container pt-40'>
-                                <div className='button-center'>
-                                <Button 
-                                className=''
-                                color='rgb(97, 202, 146)'
-                                onClick={addUser}
-                                >
+                                <div className=''>
+                                <Button onClick={addUser}>
                                     Create Registry
                                 </Button>
                                 </div>
@@ -148,4 +141,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage;
+export default SignIn;

@@ -16,31 +16,38 @@ const brandPrimary = defineStyle({
 });
 
 const nextButton = defineStyle({
-  
+  borderRadius: 0,
   size:'md',
-  height:'48px',
-  width:'300px',
+  height:'60%',
+  width:'20%',
   border:'2px',
-  borderColor:'green.500',
-  bg:'rgb(97, 202, 146)',
-  borderColor:'green',
+  borderColor:'white',
+  marginTop: '5%',
+  marginRight: '5%',
   color:'white',
-  _hover:{ bg: '#ebedf0' },
+  _hover:{ 
+    bg: '#ebedf0',
+    color: 'black' 
+  },
   _focus:{
     boxShadow: 'outline',
   }
 });
 
 const backButton = defineStyle({
+  borderRadius: 0,
   size:'md',
-  height:'48px',
-  width:'300px',
+  height:'60%',
+  width:'20%',
   border:'2px',
-  borderColor:'green.500',
-  bg:'white',
-  borderColor:'rgb(97, 202, 146)',
-  color:'rgb(97, 202, 146)',
-  _hover:{ bg: '#ebedf0' },
+  borderColor:'white',
+  marginBottom: '5%',
+  marginLeft: '5%',
+  color:'white',
+  _hover:{ 
+    bg: '#ebedf0',
+    color: 'black' 
+  },
   _focus:{
     boxShadow:
       'grey',
@@ -68,15 +75,15 @@ const skipButton = defineStyle({
 });
 
 const booleanButton = defineStyle({
-  size:'md',
+  // size:'md',
+  margin: 1,
   height:'50px',
-  width:'100px',
+  width:'50vw',
   borderRadius: '5px',
   border:'2px',
-  borderColor:'green.500',
   bg:'white',
-  borderColor:'green',
-  color:'rgb(97, 202, 146)',
+  borderColor:'white',
+  color:'black',
   _focus:{
     boxShadow: 'outline',
   }
@@ -88,9 +95,8 @@ const selectButton = defineStyle({
   width:'100px',
   borderRadius: '10px',
   border:'2px',
-  borderColor:'green.500',
   bg:'white',
-  borderColor:'green',
+  borderColor:'white',
   color:'rgb(97, 202, 146)',
   _hover:{ bg: '#ebedf0' },
   _active:{

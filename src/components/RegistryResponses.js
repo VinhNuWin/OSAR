@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import '../styles.css';
-import ButtonCard from './ButtonCard';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex, backIndex, updateIncident, updateAssailant, addSurvivor } from '../store';
+import { updateIncident, updateAssailant, addSurvivor } from '../store';
 import { containerVariants, dropUpVariants } from './containerVariants';
 import { 
     DatePicker,
@@ -12,10 +11,10 @@ import {
     InputNumber,
     Select,
 } from 'antd';
-import axios from 'axios';
-import { Button, Text, InputGroup, InputLeftElement, ButtonGroup } from '@chakra-ui/react';
+import { Button, Text, InputGroup, InputLeftElement } from '@chakra-ui/react';
 
-function AnswerCard() {
+
+function RegistryResponses() {
     const { index, _id, incident } = useSelector((state) => {
         return {
             store: state,
@@ -77,49 +76,6 @@ function AnswerCard() {
     // console.log(survivor);
 
 const questionIndex = index;
-
-    const incrementIndex = (e) => {
-        console.log('default prevented');
-        e.preventDefault();
-
-        dispatch(changeIndex(parseInt(index + 1)));
-        setVisible(false);
-        setValue('');
-    };
-
-    const decrementIndex = (e) => {
-        dispatch(backIndex(parseInt(index - 1)));
-
-        if(index <= 0) {
-            return (
-                dispatch(changeIndex(parseInt(0)))
-            )
-        };
-    };
-
-    const addIncident = async () => {
-        const response = await axios.post(`https://osar-api.onrender.com/incidents`, {
-            headers: {
-                'Content-Type' : 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Method': 'GET,PUT,POST,DELETE',
-            },
-            incident: incident
-        });
-        console.log(response); 
-        dispatch(changeIndex(parseInt(index + 1)));
-    };
-
-    const addAssailant = async () => {
-        const response = await axios.post('https://osar-api.org.onrender.com/assailants', {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            assailant: assailant
-        });
-        console.log(response);
-        dispatch(changeIndex(parseInt(index + 1)));
-    }
 
     const [ value, setValue ] = useState(false);
 
@@ -186,20 +142,17 @@ const questionIndex = index;
     const TextArea = Input;
 
     return (
-        <center className=''>
-        <div className='pt-10 h-96'>
+        <div className=''>
             <AnimatePresence>
-            { questionIndex === 1  ? ( //when did the incident occur "date"
-            <div className=''>
+            { questionIndex === 1 ? ( //when did the incident occur "date"
                 <div>    
                         <DatePicker className='center'
                             showTime 
                             onChange={(DatePicker) => dispatch(updateIncident({...incident, date: DatePicker.$d}))}
                             />
                 </div>
-            </div>
             ) : questionIndex === 2 ? ( // do you remember where the incident occured? "incidentLocation"
-                    <motion.div className='flex-box ml-12'>
+                    <motion.div className='flex-box'>
                         <Button variant='booleanButton' onClick={() => setVisible(false)}>
                             <Text>No</Text>
                         </Button>
@@ -689,10 +642,9 @@ const questionIndex = index;
                 }
                 </AnimatePresence>
                 </div>
-                </center>
     )
 }
 
-export default AnswerCard;
+export default RegistryResponses;
 
  

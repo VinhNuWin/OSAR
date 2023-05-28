@@ -14,19 +14,17 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  /* margin-top: -70px; */
   height: 100vh;
 }
 
 .Registry {
   background-image: 
   url(
-  "/src/images/1.png");
+  "/src/images/Osar-bg1.png");
   background-size: "cover";
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  /* margin-top: -70px; */
   height: 100vh;
 }
 
@@ -37,11 +35,9 @@
 .wrapper{
   display: flex;
   flex-direction: column;
-  /* grid-auto-rows: 150px; */
   width: 100%;
-  max-width: 800px;
   margin: 0 auto;
-  height: 760px;
+  height: 100%;
   padding: 0%;
 }
 
@@ -53,14 +49,18 @@
 }
 
 .container{
-  width: 800px;
+  width: 100%;
+  margin: auto;
+  width: 55%;
+  height: 80%;
+  flex-wrap: wrap;
+  align-content: space-between;
 }
 
 .flex-box {
+  /* border: 3px solid red; */
   display: flex;
-  /* align-items: center; */
-  justify-content: space-around;
-  width: 800px;
+  flex-direction: column;
 }
 
 .flex-box-2 {
@@ -69,22 +69,70 @@
   width: 800px;
 }
 
-.border {
-  border: 3px solid lightgreen;
+.question-card {
+  /* border: 3px solid red; */
+  background-blend-mode: color-dodge;
+  border-radius: 20px;
+  width: 64.15%;
+  height: 47.5%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
-.border2 {
-  border: 3px solid pink;
+.faq-card {
+  /* border: 3px solid yellow; */
+  width: 30.8%;
+  border-radius: 20px;
+  height: 47.5%;
+  margin-left: 4.5%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
-.border3 {
-  border: 3px solid blue;
+
+.answer-card {
+  /* border: 3px solid green; */
+  direction: column;
+  flex-wrap: wrap;
+  border-radius: 20px;
+  width: 100%;
+  height: 47.5%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.input-card {
+  /* border: 3px solid lightgreen; */
+  align-items: center;
+  justify-content: center;
+  height: 55%;
+  width: 100%;
 }
 
 .button {
-  border: 3px solid lightgreen;
+  /* border: 3px solid lightgreen; */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  height: 20%;
+  width: 100%;
+}
+
+.button2 {
+  /* border: 3px solid lightgreen; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 20%;
+  width: 100%;
 }
 /* h1{
   font-size: 60px;
@@ -98,13 +146,13 @@
 
 @media screen and (min-width: 768px) {
   h1 {
-    font-size: 40px;
+    font-size: 20px;
   }
 }
 
 @media screen and (min-width: 960px) {
   h1 {
-    font-size: 50px;
+    font-size: 20px;
   }
 }
 

@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import { Button, ButtonGroup } from '@chakra-ui/react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {Button} from '@chakra-ui/react';
+import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex, backIndex, addIncidentId, addAssailantId } from '../store';
+import { changeIndex, addIncidentId, addAssailantId } from "../../store";
 
-function ButtonCard( ) {
-    const { survivor, index, _id, email, incident, assailant, userId } = useSelector((state) => {
+export default function NextButton() {
+    const dispatch = useDispatch();
+    const { survivor, index, _id, incident, assailant } = useSelector((state) => {
         return {
             survivor: state.index.registry,
             index: state.index.index,
@@ -16,39 +15,11 @@ function ButtonCard( ) {
             assailant: state.index.registry.assailant,
         };
     });
-
-    const dispatch = useDispatch();
-    const [ visible, setVisible ] = useState(false);
-    const [ value, setValue ] = useState();
+    const newIndex = (index + 1);
     
-    let newIndex = (index + 1);
-
-    const incrementIndex = (e) => {
-        console.log('default prevented');
-        e.preventDefault();
-
-        dispatch(changeIndex(parseInt(newIndex)));
-        setVisible(false);
-        setValue('');
-    };
-
-
-    const skipIndex = (e) => {
-        dispatch(changeIndex(parseInt(index + 1)));
-        setVisible(false);
-    }
-
-    const decrementIndex = (e) => {
-        dispatch(backIndex(parseInt(index - 1)));
-
-        if(index <= 0) {
-            return (
-                dispatch(changeIndex(parseInt(0)))
-            )
-        };
-    };
 
     const handleRegistryInputs = async () => {
+        console.log('nextbuttonclicked');
         if( index === 1 ) {
             const response = await axios.post(`https://osar-api.onrender.com/incidents`, {
                 headers: {
@@ -61,7 +32,7 @@ function ButtonCard( ) {
             console.log(response);
             const incidentId = response.data.data._id;
             dispatch(addIncidentId(incidentId)); 
-            dispatch(changeIndex(parseInt(index + 1)));
+            dispatch(changeIndex(parseInt(newIndex)));
 
         } else if ( index === 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 10 || 11 || 12 ) {
             const response = await axios.patch(`https://osar-api.onrender.com/incidents/${_id}`, {
@@ -73,7 +44,7 @@ function ButtonCard( ) {
                 incident: incident,
                 _id: _id
             });
-            dispatch(changeIndex(parseInt(newIndex)));
+            dispatch(changeIndex(parseInt((newIndex))));
             console.log('index was changed'); 
             console.log(response);
         } else if ( index === 13 ) {
@@ -88,7 +59,7 @@ function ButtonCard( ) {
             console.log(response); 
             const assailantId = response.data.data._id;
             dispatch(addAssailantId(assailantId)); 
-            dispatch(changeIndex(parseInt(index + 1)));
+            dispatch(changeIndex(newIndex));
         } else if ( index === 14 || 15 || 16 || 17 || 18 || 19 || 20 ) {
             const response = await axios.patch(`https://osar-api.onrender.com/assailants/${_id}`, {
                 headers: {
@@ -100,7 +71,7 @@ function ButtonCard( ) {
                 _id: _id
             });
             console.log(response); 
-            dispatch(changeIndex(parseInt(index + 1)));
+            dispatch(changeIndex(index + 1));
         } else if ( index === 21 ) {
             const response = await axios.patch(`https://osar-api.onrender.com/users/${_id}`, {
                 headers: {
@@ -112,70 +83,16 @@ function ButtonCard( ) {
                 _id: _id
             });
             console.log(response); 
-            dispatch(changeIndex(parseInt(index + 1)));
+            dispatch(changeIndex(index + 1));
         };
     }
 
-
-    const containerVariants = {
-        //initial
-        hidden: {
-            opacity: 0,
-            y: 50
-        },
-        //animate
-        visible: {
-            opacity: 1,
-            y: 0,
-            duration: .1,
-            transition: { ease: 'easeInOut' }
-        },
-        exitAnimation: {
-            opacity: 0,
-            y: -50,
-            transition: { ease: 'easeInOut' }
-        }
-        };
-
+    
     return (
-        <AnimatePresence>
-        <motion.div 
-            className='container'
-            >
-            <ButtonGroup
-            className=''>
-                <div className='flex-box'>
-                    <div>
-                <Button 
-                    variant='backButton'
-                    onClick={decrementIndex}
-                    width={{ base: '50%', md: '50%', xl: '100%'}}
-                    >Back
-                </Button>
-                </div>
-                <div className=''>
-                <Button 
-                    variant='skipButton'
-                    onClick={skipIndex}
-                    >SKIP
-                </Button>
-                </div>
-                <div className='w-40'>
-                <Button 
-                    variant='nextButton'
-                    onClick={handleRegistryInputs}
-                    width={{ base: '50%', md: '50%', xl: '100%'}}
-                    >Next
-                </Button>
-                </div>
-                </div>
-            </ButtonGroup>
-
-        </motion.div>
-
-        </AnimatePresence>
-        
+        <Button 
+        variant='nextButton'
+        onClick={handleRegistryInputs}
+        >Next
+        </Button> 
     )
 }
-
-export default ButtonCard;

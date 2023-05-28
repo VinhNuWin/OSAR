@@ -1,13 +1,10 @@
 import '../styles.css';
-import Questions from '../components/Questions';
-import AnswerCard from '../components/AnswerCard';
-import ButtonCard from '../components/ButtonCard';
-import MultiSelect from '../components/MultiSelect';
+import Registry from './Registry';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { AnimatePresence, isValidMotionProp, stagger } from 'framer-motion';
 import { Button, Container, chakra, shouldForwardProp, Box} from '@chakra-ui/react';
-import HomePage from '../components/HomePage';
+import SignIn from './SignIn';
 import { useSelector } from 'react-redux';
 import { containerVariants, dropUpVariants, homePageVariants } from '../components/containerVariants';
 
@@ -16,7 +13,7 @@ const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
   });
 
-function QuestionPage() {
+function HomePage() {
     const [activeIndex, setActiveIndex] = useState(0);
     const { index, question} = useSelector((state) => {
         return {
@@ -37,22 +34,20 @@ function QuestionPage() {
                         animate="visible"
                         exit="exitAnimation"
                         >
-                            <HomePage />
+                            <SignIn />
                         </motion.div>
-                    ) : questionPageIndex >= 0 ?
+                    ) : questionPageIndex >= 1 ? (
                     <motion.div 
                         key={questionPageIndex}
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
                         exit="exitAnimation"
-                        className="wrapper "
+                        className="wrapper"
                         >
-                            <Questions  />
-                            <AnswerCard variants={dropUpVariants} />
-                            <ButtonCard />
+                            <Registry />
                     </motion.div>
-                    : questionPageIndex === 22 (
+                    ) : questionPageIndex === 22 (
                         <div>
                         <div>
                             <h2>Thank you for your submission, Your registry has been filed and a timestamped copy will be sent to the the email provided.</h2>
@@ -65,6 +60,6 @@ function QuestionPage() {
     )
 };
 
-export default QuestionPage;
+export default HomePage;
 
 

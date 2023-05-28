@@ -1,8 +1,9 @@
 import { useSelector } from  'react-redux';
 import { useState } from 'react';
-import { motion, AnimatePresence, isValidMotionProp } from 'framer-motion';
+import { AnimatePresence, isValidMotionProp } from 'framer-motion';
 import { ChakraBox } from './animation';
 import { dropUpVariants } from './containerVariants';
+import { Flex, Text } from '@chakra-ui/react';
 
 function Questions() {
     
@@ -35,10 +36,10 @@ const questionIndex = index;
 
     return (
         <AnimatePresence mode='wait' >
-            <div className='questions'>     
-            <h1  variants={dropUpVariants} > 
-                {question[questionIndex]}</h1>
-            </div>
+            <Flex className='questions'>     
+            <Text fontSize='12px' variants={dropUpVariants} > 
+                {question[questionIndex]}</Text>
+            </Flex>
         </AnimatePresence>
     )
 }
