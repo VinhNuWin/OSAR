@@ -1,6 +1,6 @@
 import {Button} from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { backIndex, changeIndex } from "../../store";
+import { changeIndex } from "../../store";
 
 
 export default function BackButton() {
@@ -18,8 +18,8 @@ export default function BackButton() {
 
     return (
         <Button 
-        skip
+        variant='skip'
         onClick={skipIndex}
-        />
+        >Skip</Button>
     )
 }

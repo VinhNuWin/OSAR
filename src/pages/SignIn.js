@@ -1,11 +1,11 @@
 import React from 'react';
 import '../styles.css';
-// import Button from '../components/buttons/Button';
 import { motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, addEmail, addRegistryId } from '../store';
 import axios from 'axios';
-import { Button, Stack, FormControl, FormLabel, FormHelperText, Input, Box, Text, chakra, shouldForwardProp } from '@chakra-ui/react';
+import { Flex, Button, Stack, FormControl, FormLabel, FormHelperText, Input, Box, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
+import { EmailIcon } from '@chakra-ui/icons';
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -65,11 +65,11 @@ function SignIn() {
     console.log({email});
 
     return (
-        <div className='Osar'>
-        <header className='center wrapper bg-color-grey'>
-            <Box pt='92px' className='flex-container'>
-                <motion.div className='logo-wrapper m-auto'>
-                <motion.svg width="373" height="109" viewBox="0 0 373 109" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <Flex className='Osar'>
+            <Stack className='signin-container'>
+                    <Flex justify='center' >
+                        <motion.div className=''>
+                            <motion.svg width="373" height="109" viewBox="0 0 373 109" fill="none" xmlns="http://www.w3.org/2000/svg"
                    variants={svgVariants}
                    initial="hidden"
                    animate="visible"
@@ -100,44 +100,50 @@ function SignIn() {
                     <motion.path d="M372 106.37H360.588L353.474 79.6939C352.091 74.5563 350.51 70.5549 348.732 67.6897C346.953 64.8246 344.483 62.7498 341.321 61.4654C338.258 60.0822 334.059 59.3906 328.724 59.3906H304.714V106.37H294.043V2.63019H338.505C348.188 2.63019 355.549 5.05078 360.588 9.89197C365.726 14.7331 368.295 21.5503 368.295 30.3435C368.295 37.7535 366.516 43.6814 362.959 48.1274C359.501 52.4746 354.561 55.1916 348.139 56.2784C352.486 57.8592 355.845 60.4774 358.217 64.133C360.687 67.7885 362.861 72.9755 364.738 79.6939L372 106.37ZM337.32 50.795C343.742 50.795 348.732 49.066 352.289 45.608C355.845 42.15 357.624 37.3089 357.624 31.0845C357.624 24.7613 355.845 19.8707 352.289 16.4127C348.732 12.9548 343.742 11.2258 337.32 11.2258H304.714V50.795H337.32Z" 
                     stroke="black"
                     variants={pathVariants}/>
-                    </motion.svg>
-                </motion.div>
-            </Box>
-                <Stack >
-                    <div className='text-center mt-10'>
-                        <Text fontSize='20px' color='white'>Anonymous Assault Registry</Text>
-                    </div>
-                    <Box pl='' pt='10' w='100%' className=''>
+                            </motion.svg>
+                        </motion.div>
+                    </Flex>
+
+                    <Flex className='signin-container2'>
+                        <Text fontSize='24px' color='white'>Documented Voices Against Assault</Text>
+                    </Flex>
+
+                    <center>
+                    <Flex className='signin-container2'>
                         <FormControl >
-                          <FormLabel color='rgb(97, 202, 146)'>Email address</FormLabel>
-                          <Input 
-                            value={email}
-                            bg='white'
-                            onChange={(e) => {dispatch(addEmail( e.target.value))}}
-                            rules={[
-                                {
-                                  type: 'email',
-                                  message: 'The input is not valid E-mail!',
-                                },
-                                {
-                                  required: true,
-                                  message: 'Please input your E-mail!',
-                                },
-                              ]}
-                            />
-                          <FormHelperText>We'll never share your email.</FormHelperText>
+                            <FormLabel color='rgb(97, 202, 146)'>Email address</FormLabel>
+                                <InputGroup>
+                                  <InputLeftElement pointerEvents='none'>
+                                    <EmailIcon />
+                                  </InputLeftElement>
+                                <Input 
+                                  value={email}
+                                  bg='white'
+                                  onChange={(e) => {dispatch(addEmail( e.target.value))}}
+                                  rules={[
+                                      {
+                                        type: 'email',
+                                        message: 'The input is not valid E-mail!',
+                                      },
+                                      {
+                                        required: true,
+                                        message: 'Please input your E-mail!',
+                                      },
+                                    ]}
+                                  />
+                                </InputGroup>
+                            <FormHelperText>We'll never share your email.</FormHelperText>
                         </FormControl>
-                            <Box pos='center' className='button-container pt-40'>
-                                <div className=''>
+                            <Flex className='signin-container2'>
                                 <Button onClick={addUser}>
                                     Create Registry
                                 </Button>
-                                </div>
-                            </Box>
-                    </Box>
-                </Stack>
-        </header>
-        </div>
+                            </Flex>
+                            
+                    </Flex>
+                </center>
+                    </Stack>
+        </Flex>
     )
 }
 

@@ -4,11 +4,13 @@ import FAQ from '../components/ContentBox/FAQ';
 import RegistryResponses from '../components/RegistryResponses';
 import NextButton from '../components/buttons/NextButton';
 import BackButton from '../components/buttons/BackButton';
+import ReportSummary from '../views/drawer/ReportSummary';
 
 export default function Registry() {
 
     return (
         <Flex height="100%">
+
             <Flex className='container'>
                 <Flex className='question-card'>
                         <QuestionCard />
@@ -28,6 +30,11 @@ export default function Registry() {
                     </Flex>
                 </Flex>
             </Flex>
+
+            <Flex className='icon-container '>
+                <ReportSummary />
+            </Flex>
+
         </Flex>
     )
 }

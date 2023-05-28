@@ -1,23 +1,18 @@
-import '../styles.css';
 import Registry from './Registry';
-import { useEffect, useState } from 'react';
+import RegistryComplete from './RegistryComplete';
 import { motion } from 'framer-motion';
-import { AnimatePresence, isValidMotionProp, stagger } from 'framer-motion';
-import { Button, Container, chakra, shouldForwardProp, Box} from '@chakra-ui/react';
+import { Button, Text, Flex } from '@chakra-ui/react';
 import SignIn from './SignIn';
 import { useSelector } from 'react-redux';
-import { containerVariants, dropUpVariants, homePageVariants } from '../components/containerVariants';
+import { containerVariants, homePageVariants } from '../data/containerVariants';
 
-
-const ChakraBox = chakra(motion.div, {
-    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
-  });
+// const ChakraBox = chakra(motion.div, {
+//     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+//   });
 
 function HomePage() {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const { index, question} = useSelector((state) => {
+    const { index } = useSelector((state) => {
         return {
-            question: state.form.question,
             index: state.index.index,
         }
     });
@@ -47,15 +42,14 @@ function HomePage() {
                         >
                             <Registry />
                     </motion.div>
-                    ) : questionPageIndex === 22 (
-                        <div>
-                        <div>
-                            <h2>Thank you for your submission, Your registry has been filed and a timestamped copy will be sent to the the email provided.</h2>
-                        </div>  
-                        <Button>Finish</Button>
-                        </div>
+                    ) : questionPageIndex === 16 (
+                        <Flex>
+                            <Text>Hi</Text>
+                            <RegistryComplete />
+                        </Flex>  
                         )
                     }
+   
             </div>
     )
 };

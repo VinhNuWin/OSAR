@@ -2,10 +2,9 @@
   background-image: 
   url(
   "/src/images/HomePage.png");
-  display: flex;
-  justify-content: center;
   max-width:100%;
-  width:100%;
+  max-height: 100%;
+  height: 100vh;
   background-size: 100vh;
   background-size: cover;
   background-position: center;
@@ -14,7 +13,6 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
 }
 
 .Registry {
@@ -32,13 +30,34 @@
   background-color: rgb(247,247,247);
 }
 
+.signin-container {
+  height: 70%;
+  margin-left: 35%;
+  margin-top: 5%;
+  padding: 3%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.signin-container2 {
+  height: 25%;
+  padding-top: 10%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .wrapper{
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0 auto;
-  height: 100%;
-  padding: 0%;
+  height: 90%;
+}
+
+.border {
+    border: 3px solid red;
 }
 
 .questions {
@@ -55,6 +74,13 @@
   height: 80%;
   flex-wrap: wrap;
   align-content: space-between;
+}
+
+.icon-container {
+  position: absolute;
+  /* flex-wrap: wrap; */
+  bottom: 10%;
+  right: 10%;
 }
 
 .flex-box {
@@ -89,7 +115,6 @@
   height: 47.5%;
   margin-left: 4.5%;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -103,7 +128,6 @@
   width: 100%;
   height: 47.5%;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
