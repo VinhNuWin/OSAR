@@ -5,6 +5,7 @@ import { Button, Text, Flex } from '@chakra-ui/react';
 import SignIn from './SignIn';
 import { useSelector } from 'react-redux';
 import { containerVariants, homePageVariants } from '../data/containerVariants';
+import MissionStatement from '../views/modals/MissionStatement';
 
 // const ChakraBox = chakra(motion.div, {
 //     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -31,6 +32,16 @@ function HomePage() {
                         >
                             <SignIn />
                         </motion.div>
+                    ) : questionPageIndex === 16 ? ( 
+                        <motion.div 
+                        key={questionPageIndex}
+                        variants={homePageVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exitAnimation"
+                        >
+                            <RegistryComplete />
+                        </motion.div>
                     ) : questionPageIndex >= 1 ? (
                     <motion.div 
                         key={questionPageIndex}
@@ -40,13 +51,10 @@ function HomePage() {
                         exit="exitAnimation"
                         className="wrapper"
                         >
+                            <MissionStatement />
                             <Registry />
                     </motion.div>
-                    ) : questionPageIndex === 16 (
-                        <Flex>
-                            <Text>Hi</Text>
-                            <RegistryComplete />
-                        </Flex>  
+                    ) : null (
                         )
                     }
    

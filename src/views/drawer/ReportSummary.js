@@ -6,32 +6,45 @@ import {
     DrawerOverlay,
     DrawerContent,
     useDisclosure,
-    IconButton
+    IconButton,
   } from '@chakra-ui/react';
 import { HiOutlineDocumentReport } from 'react-icons/hi';
+import TabComponent from '../tabs/TabComponent';
+
+const itemVariants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 300, damping: 24 }
+  },
+  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
+};
+
+
 
 export default function ReportSummary() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
   
     return (
       <Flex>
+  
         <IconButton 
         aria-label='Report Summary' 
         size='lg'
         variant='outline'
-        colorScheme='whiteAlpha'
+        colorScheme='rgb(73, 79, 86)'
         icon={<HiOutlineDocumentReport />} 
-        onClick={onOpen}>
+        onClick={onOpen}
+        animate={isOpen ? "open" : "closed"}
+        >
           Open
         </IconButton>
-        <Drawer placement='left' onClose={onClose} isOpen={isOpen}>
+        <Drawer placement='left' onClose={onClose} isOpen={isOpen} >
           <DrawerOverlay />
-          <DrawerContent>
-            <DrawerHeader borderBottomWidth='1px'>Report Summary</DrawerHeader>
-            <DrawerBody>
-              <p>Some contents...</p>
-              <p>Some contents...</p>
-              <p>Some contents...</p>
+          <DrawerContent >
+            <DrawerHeader borderBottomWidth='1px' className='drawer-container'>Report Summary</DrawerHeader>
+            <DrawerBody className='drawer-container' >
+              <TabComponent />
             </DrawerBody>
           </DrawerContent>
         </Drawer>

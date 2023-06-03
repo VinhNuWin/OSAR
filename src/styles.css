@@ -13,12 +13,14 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  justify-content: center;
+  padding-top: 5%;
 }
 
 .Registry {
   background-image: 
   url(
-  "/src/images/Osar-bg1.png");
+  "/src/images/DVAA-bg.png");
   background-size: "cover";
   background-size: cover;
   background-position: center;
@@ -32,7 +34,7 @@
 
 .signin-container {
   height: 70%;
-  margin-left: 35%;
+  /* margin-left: 35%; */
   margin-top: 5%;
   padding: 3%;
   background: rgba(255, 255, 255, 0.05);
@@ -47,6 +49,22 @@
   padding-top: 10%;
   flex-wrap: wrap;
   justify-content: center;
+
+}
+
+.signin-container3 {
+  height: 70%;
+  padding-top: 10%;
+  padding: 3%;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 .wrapper{
@@ -61,10 +79,11 @@
 }
 
 .questions {
-  flex-wrap: nowrap;
-  text-align: center;
-  font-weight: bold;
-  margin-top: auto;
+  flex-wrap: wrap;
+  /* text-align: center; */
+  /* font-weight: bold; */
+  margin-top: 5%;
+  margin-left: 5%;
 }
 
 .container{
@@ -139,6 +158,11 @@
   justify-content: center;
   height: 55%;
   width: 100%;
+}
+
+.drawer-container {
+  background-color: rgb(51,51,51);
+  color: aqua;
 }
 
 .button {

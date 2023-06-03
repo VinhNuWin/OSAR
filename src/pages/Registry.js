@@ -4,12 +4,13 @@ import FAQ from '../components/ContentBox/FAQ';
 import RegistryResponses from '../components/RegistryResponses';
 import NextButton from '../components/buttons/NextButton';
 import BackButton from '../components/buttons/BackButton';
+import SkipButton from '../components/buttons/SkipButton';
 import ReportSummary from '../views/drawer/ReportSummary';
 
 export default function Registry() {
 
     return (
-        <Flex height="100%">
+        <Flex height="100%" className=''>
 
             <Flex className='container'>
                 <Flex className='question-card'>
@@ -27,6 +28,7 @@ export default function Registry() {
                     </Flex>
                     <Flex className='button2'>
                         <BackButton />
+                        <SkipButton />
                     </Flex>
                 </Flex>
             </Flex>
@@ -34,7 +36,6 @@ export default function Registry() {
             <Flex className='icon-container '>
                 <ReportSummary />
             </Flex>
-
         </Flex>
     )
 }

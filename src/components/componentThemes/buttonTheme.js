@@ -6,12 +6,13 @@ const brandPrimary = defineStyle({
     height:'40px',
     width:'600px',
     border:'2px',
-    borderColor:'green.500',
+    borderColor:'rgb(73, 79, 86)',
     bg:'white',
-    borderColor:'green',
+    borderColor:'rgb(73, 79, 86)',
     color:'rgb(97, 202, 146)',
     _focus:{
       boxShadow: 'outline',
+      color: 'rgb(73, 79, 86)',
     }
 });
 
@@ -21,10 +22,10 @@ const nextButton = defineStyle({
   height:'60%',
   width:'20%',
   border:'2px',
-  borderColor:'white',
+  borderColor:'rgb(73, 79, 86)',
   marginTop: '5%',
   marginRight: '5%',
-  color:'white',
+  color:'rgb(73, 79, 86)',
   _hover:{ 
     bg: '#ebedf0',
     color: 'black' 
@@ -40,10 +41,10 @@ const backButton = defineStyle({
   height:'60%',
   width:'20%',
   border:'2px',
-  borderColor:'white',
+  borderColor:'rgb(73, 79, 86)',
   marginBottom: '5%',
   marginLeft: '5%',
-  color:'white',
+  color:'rgb(73, 79, 86)',
   _hover:{ 
     bg: '#ebedf0',
     color: 'black' 
@@ -82,7 +83,7 @@ const booleanButton = defineStyle({
   borderRadius: '5px',
   border:'2px',
   bg:'white',
-  borderColor:'white',
+  borderColor:'rgb(73, 79, 86)',
   color:'black',
   _focus:{
     boxShadow: 'outline',

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateIncident, updateAssailant, addSurvivor } from '../store';
 import { Form } from 'antd';
 import { Button, Text, Select, Input, Flex } from '@chakra-ui/react';
-import NameModal from '../views/modals/NameModal'; 
 import AssailantNameModal from '../views/modals/AssailantNameModal';
 import AddressModal from '../views/modals/AddressModal';
 import { CloseIcon, CheckIcon } from '@chakra-ui/icons';
@@ -205,13 +204,13 @@ function RegistryResponses() {
                     <AssailantNameModal />
                     <motion.div>
                         <Button variant='booleanButton'>
-
+                        <CloseIcon w={8} boxSize={4} color='red.500' m='1%'/>
                           No
                         </Button>  
                     </motion.div>
                 </div>                
             ) : questionIndex === 15 ? ( // Name of Survivor
-                <div className='input-style'>                        
+                <div className=''>                        
                     <Form className='input-card'>
                         <Form.Item>                 
                             <Input 
@@ -221,10 +220,8 @@ function RegistryResponses() {
                             </Form.Item>     
                     </Form> 
                 </div>
-            ) : index === null ( 
-                <div>
-                An error has accord
-                </div>
+            ) : questionIndex === null (
+                
             )
                 }
                 </AnimatePresence>

@@ -3,38 +3,38 @@ import { createSlice } from '@reduxjs/toolkit';
 const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
-        index: 0,
+        index: 3,
         email: '',
         registry: {
             survivor: '',
-            email: '',
-            _id: '',
+            email: 'Vinhn333',
+            _id: '123',
             incident: {
-                _id: '',
-                userId: '',
-                date: '',
-                location: '',
-                streetAddress: '',
-                city: '',
-                state: '',
-                postal: 0,
-                wasAlcoholInvolved: false,
-                wereDrugsInvolved: false,
-                wasSurvivorAsleepTimeOfIncident: false,
-                verbalThreatsToSurvivor: false,
-                resistanceOfferedBySurvivor: false,
-                detailsOfTheAssault: '',
-                areasAssaulted: '',
-                useOfWeaponsFromAssailant: false,
-                useOfRestraintFromAssailant: false,
+                _id: '0',
+                userId: '1',
+                location: '2',
+                date: 'March, 6 1984',
+                streetAddress: 'streetaddress',
+                city: '5',
+                state: '6',
+                postal: 7,
+                wasAlcoholInvolved: 'alcohol', //false
+                wereDrugsInvolved: 'drugs', //false
+                wasSurvivorAsleepTimeOfIncident: 'asleep', //false
+                verbalThreatsToSurvivor: 'threats', //false
+                resistanceOfferedBySurvivor: 'resistance', //false
+                detailsOfTheAssault: '234', //false
+                areasAssaulted: '9ihu',
+                useOfWeaponsFromAssailant: 'weapons', //false
+                useOfRestraintFromAssailant: 'restraint', //false
             },
             assailant: {
                 _id: '',
                 userId: '',
-                gender: '',
-                raceEthnicity: '',
-                firstName: '',
-                lastName:'',
+                gender: 'male',
+                raceEthnicity: 'asian',
+                firstName: 'Vinh',
+                lastName:'Nguyen',
             }
         },
     },

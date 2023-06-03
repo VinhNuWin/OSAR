@@ -15,6 +15,7 @@ import {
   } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateAssailant } from '../../store';
+import { CheckIcon } from '@chakra-ui/icons';
 
 export default function AssailantNameModal() {
     const dispatch = useDispatch();
@@ -30,7 +31,11 @@ export default function AssailantNameModal() {
   
     return (
       <>
-        <Button variant='booleanButton' onClick={onOpen}>Yes</Button>
+
+        <Button variant='booleanButton' onClick={onOpen}>
+          <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
+          Yes
+        </Button>
   
         <Modal
           initialFocusRef={initialRef}

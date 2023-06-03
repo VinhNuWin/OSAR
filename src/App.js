@@ -2,7 +2,6 @@ import HomePage from './pages/HomePage';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { buttonTheme } from "./components/componentThemes/buttonTheme";
 
-
 function App() {
 
   const theme = extendTheme({

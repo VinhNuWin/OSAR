@@ -19,8 +19,7 @@ const formSlice = createSlice({
       'Assailants Gender', //12 assailant
       'Assailants Race/Ethnicity', //13
       'Do you know the assailants name?', //14
-      'Name of Survivor', //15
-      'Registry Complete', //16
+      'Name of Survivor' //15
     ],
     user: {
       incident: {},
