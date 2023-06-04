@@ -3,10 +3,11 @@ import { createSlice } from '@reduxjs/toolkit';
 const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
-        index: 3,
+        index: 1,
         email: '',
         registry: {
             survivor: '',
+            genderSurvivor:'',
             email: 'Vinhn333',
             _id: '123',
             incident: {
@@ -48,6 +49,9 @@ const indexSlice = createSlice({
         addSurvivor(state, action) {
             state.registry.survivor = action.payload;
         },
+        updateRegistry(state, action) {
+            state.registry = action.payload;
+        },
         addEmail(state, action){
             state.registry.email = action.payload;
         },
@@ -76,6 +80,7 @@ export const {
     changeIndex, 
     backIndex,
     addSurvivor,
+    updateRegistry,
     addEmail, 
     updateIncident, 
     addRegistryId, 

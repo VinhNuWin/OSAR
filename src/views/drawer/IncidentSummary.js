@@ -5,6 +5,10 @@ import {
     Stack,
     Heading,
     Divider,
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter
   } from '@chakra-ui/react';
 import { HiOutlineDocumentReport } from 'react-icons/hi';
 
@@ -62,72 +66,84 @@ console.log(incidentArrayList[0]);
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
       >
         <Stack>
-        <motion.li variants={itemVariants}>Date</motion.li>
+
+          <motion.li variants={itemVariants}>Date</motion.li> 
+        </Stack>
+
+        <Stack>
         <Heading size='md'>{incidentArrayList[3]}</Heading>
-        </Stack>
-
-        <Stack>
+        <Divider/>
         <motion.li variants={itemVariants}>Location</motion.li>
+        </Stack>
+  
+
+        <Stack>
         <Heading size='md'>{incidentArrayList[2]}</Heading>
-        </Stack>
         <Divider/>
-
-        <Stack>
         <motion.li variants={itemVariants}>Alcohol Involved</motion.li>
-        <Heading size='md'>{incidentArrayList[8]}</Heading>
-        {/* <Heading size='md'>{incidentArrayList[4] === true ? "Yes" : "No"}</Heading> */}
         </Stack>
-        <Divider/>
+
 
         <Stack>
+        <Heading size='md'>{incidentArrayList[4] === true ? "Yes" : "No"}</Heading>
+        <Divider/>
         <motion.li variants={itemVariants}>Drugs Involved</motion.li>
-        <Heading size='md'>{incidentArrayList[9]}</Heading>
-        <Heading size='md'>{incidentArrayList[9] === true ? "Yes" : "No"}</Heading>
         </Stack>
-        <Divider/>
+    
 
         <Stack>
+        <Heading size='md'>{incidentArrayList[9] === true ? "Yes" : "No"}</Heading>
+        <Divider/>
         <motion.li variants={itemVariants}>Asleep</motion.li>
+      
+        </Stack>
+
+
+        <Stack>
         <Heading size='md'>{incidentArrayList[10] === true ? "Yes" : "No"}</Heading>
-        </Stack>
         <Divider/>
-
-        <Stack>
         <motion.li variants={itemVariants}>Threatened</motion.li>
+        </Stack>
+
+
+        <Stack>
         <Heading size='md'>{incidentArrayList[11] === true ? "Yes" : "No"}</Heading>
-        </Stack>
         <Divider/>
-
-        <Stack>
         <motion.li variants={itemVariants}>Resistance</motion.li>
+        </Stack>
+
+
+        <Stack>
         <Heading size='md'>{incidentArrayList[12] === true ? "Yes" : "No"}</Heading>
-        </Stack>
         <Divider/>
-
-        <Stack>
         <motion.li variants={itemVariants}>Details of Assault</motion.li>
+        </Stack>
+
+
+        <Stack>
         <Heading size='md'>{incidentArrayList[13]}</Heading>
-        </Stack>
         <Divider/>
-
-        <Stack>
         <motion.li variants={itemVariants}>Areas Assaulted</motion.li>
+        </Stack>
+
+
+        <Stack>
         <Heading size='md'>{incidentArrayList[14]}</Heading>
-        <Heading size='md'>{incidentArrayList[9] === true ? "Yes" : "No"}</Heading>
-        </Stack>
         <Divider/>
-
-        <Stack>
         <motion.li variants={itemVariants}>Weapons</motion.li>
-        <Heading size='md'>{incidentArrayList[15] === true ? "Yes" : "No"}</Heading>
         </Stack>
-        <Divider/>
+
 
         <Stack>
+        <Heading size='md'>{incidentArrayList[15] === true ? "Yes" : "No"}</Heading>
+        <Divider/>
         <motion.li variants={itemVariants}>Restraints</motion.li>
+        </Stack>
+
+        <Stack>
         <Heading size='md'>{incidentArrayList[16] === true ? "Yes" : "No"}</Heading>
         </Stack>
-        <Divider/>
+
       </motion.ul>
     </motion.div>
   

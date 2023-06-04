@@ -23,7 +23,7 @@ export default function Registry() {
                     <Flex className='button'>
                         <NextButton />
                     </Flex>
-                    <Flex className='input-card'>
+                    <Flex className='input-card '>
                         <RegistryResponses />
                     </Flex>
                     <Flex className='button2'>

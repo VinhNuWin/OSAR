@@ -1,20 +1,21 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateIncident, updateAssailant, addSurvivor } from '../store';
+import { updateIncident, updateAssailant, addSurvivor, updateRegistry } from '../store';
 import { Form } from 'antd';
-import { Button, Text, Select, Input, Flex } from '@chakra-ui/react';
+import { Button, Text, Select, Input, Flex, Stack, Card, CardHeader } from '@chakra-ui/react';
 import AssailantNameModal from '../views/modals/AssailantNameModal';
 import AddressModal from '../views/modals/AddressModal';
 import { CloseIcon, CheckIcon } from '@chakra-ui/icons';
 
 function RegistryResponses() {
-    const { index, incident, assailant } = useSelector((state) => {
+    const { index, incident, assailant, registry } = useSelector((state) => {
         return {
             store: state,
             index: state.index.index,
             _id: state.form.user._id,
             incident: state.index.registry.incident,
-            assailant: state.index.registry.assailant
+            assailant: state.index.registry.assailant,
+            registry: state.index.registry
         };
     });
 
@@ -23,7 +24,7 @@ function RegistryResponses() {
     const TextArea = Input;
 
     console.log(incident);
-    // console.log(assailant);
+    console.log(assailant);
     // console.log(survivor);
 
 
@@ -82,7 +83,7 @@ function RegistryResponses() {
                     </Button>            
                 </div>   
             ) : questionIndex === 6 ? ( // Were there verbal threats to the survivor
-                <div>
+                <div className='flex-box'>
                     <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, verbalThreatsToSurvivor: true}))}>
                         <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
                               Yes
@@ -93,7 +94,7 @@ function RegistryResponses() {
                     </Button>
                 </div>   
             ) : questionIndex === 7 ? ( // Was resistance offered by survivor
-                <div>
+                <div className='flex-box'>
                     <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, resistanceOfferedBySurvivor: true}))}>
                         <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
                               Yes
@@ -168,36 +169,39 @@ function RegistryResponses() {
                     </Button>
                 </div>        
             ) : questionIndex === 12 ? ( // Assailants Gender
-                <div>
-                    <Button variant='booleanButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'male'}))}>
+                <motion.div>
+                    <Button variant='selectButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'male'}))}>
                               Male
                     </Button>
-                    <Button variant='booleanButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'female'}))}>
+                    <Button variant='selectButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'female'}))}>
                               Female
                     </Button>
-                    <Button variant='booleanButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'non-binary'}))}>
+                    <Button variant='selectButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'non-binary'}))}>
                               Non-Binary
                     </Button>  
-                </div>                     
+                    <Button variant='selectButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'unknown'}))}>
+                              Unknown
+                    </Button> 
+                </motion.div>                     
             ) : questionIndex === 13 ? ( // Assailants Race/Ethnicity
-                <div className='input-style'>                        
-                     <Form>
-                        <div className='input-card'>
-                            <Form.Item label="Ethnicity">
+                <div className=''>  
+                            <Card>
+                                <CardHeader size='sm'> 
+     
                                 <Select
-                                    name='ethnicity'
+                                    placeholder='Ethnicity'
+                                    name='raceEthnicity'
                                     onChange={(e) => dispatch(updateAssailant({ ...assailant, raceEthnicity: e.target.value}))}
                                     >
-                                    <options value='white'>White</options>
-                                    <options value='black/african'>Black or African American</options>
-                                    <options value='americanIndian/alaskanNative'>American Indian or Alaskan Native</options>
-                                    <options value='hawaiian/pacificIslander'>Native Hawaiian or Pacific Islander</options>
-                                    <options value='asian'>Asian</options>
-                                    <options value='hispanic/latino'>Hispanic or Latino</options>
-                                </Select>
-                            </Form.Item>
-                        </div>
-                    </Form>
+                                    <option value='white'>White</option>
+                                    <option value='black/african'>Black or African American</option>
+                                    <option value='americanIndian/alaskanNative'>American Indian or Alaskan Native</option>
+                                    <option value='hawaiian/pacificIslander'>Native Hawaiian or Pacific Islander</option>
+                                    <option value='asian'>Asian</option>
+                                    <option value='hispanic/latino'>Hispanic or Latino</option>
+                                </Select>  
+                                </CardHeader>     
+                            </Card>     
                 </div>
             ) : questionIndex === 14 ? ( // Do you know the assailants name?
                 <div>
@@ -220,6 +224,21 @@ function RegistryResponses() {
                             </Form.Item>     
                     </Form> 
                 </div>
+            ) : questionIndex === 16 ? ( // Assailants Gender
+                <motion.div>
+                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registry, genderSurvivor: 'male'}))}>
+                              Male
+                    </Button>
+                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registry, genderSurvivor: 'female'}))}>
+                              Female
+                    </Button>
+                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registry, genderSurvivor: 'non-binary'}))}>
+                              Non-Binary
+                    </Button>  
+                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registry, genderSurvivor: 'unknown'}))}>
+                              Unknown
+                    </Button> 
+                </motion.div>  
             ) : questionIndex === null (
                 
             )

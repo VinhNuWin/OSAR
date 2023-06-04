@@ -48,7 +48,7 @@ export default function TabComponent(){
 
   
         <motion.div
-            // key={activeTab}
+            className='summary-container'
             animate={activeTab ? "open" : "closed"}
             transition={{ duration: 0.5 }}
             >

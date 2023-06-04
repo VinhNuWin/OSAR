@@ -7,7 +7,7 @@ import {
     Card,
     Avatar,
     Text,
-    CircularProgress,
+    CircularProgress, 
     CircularProgressLabel,
     Center,
     AbsoluteCenter,
@@ -26,6 +26,7 @@ import {
     CardBody
   } from '@chakra-ui/react';
 import RegistryStepper from '../../components/RegistryStepper';
+import RegistryProgressCircle from '../../components/RegistryProgressCircle';
 
 const itemVariants = {
   open: {
@@ -59,7 +60,6 @@ console.log(_id);
   <motion.div
       initial="closed"
       animate={!activeTab ? "open" : "closed"}
-      className="menu "
     >
       <motion.ul
         variants={{
@@ -84,27 +84,26 @@ console.log(_id);
         }}
         style={{ pointerEvents: activeTab ? "auto" : "none" }}
       >
-        <div className='mt-10'>
+        <div >
         <Card maxW='md'
         variant='filled'>
           <CardBody>
             <center>
           <Avatar src='https://bit.ly/broken-link' />
-          <Text>{userEmail}</Text>
-          <Text>{_id}</Text>
+            <Flex className='profile-card'>
+              <Text>Email: {userEmail}</Text>
+            </Flex>
+            <Flex className='profile-card'>
+            <Text>RegistryId: {_id}</Text>
+            </Flex>
           </center>
+       
           </CardBody>
         </Card>
         </div>
 
-        <Stack>
-        <motion.li variants={itemVariants}>User</motion.li>
-        <Heading size='md'></Heading>
-        </Stack>
-
-
-
         <RegistryStepper />
+        <RegistryProgressCircle />
         
       </motion.ul>
     </motion.div>

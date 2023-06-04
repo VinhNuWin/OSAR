@@ -10,6 +10,7 @@ import {
     StepTitle,
     Stepper,
     useSteps,
+    Flex
   } from '@chakra-ui/react';
 
   const steps = [
@@ -21,10 +22,14 @@ import {
   export default function RegistryStepper() {
     const { activeStep } = useSteps({
       index: 1,
-      count: 15,
-    })
+      count: steps.length,
+    });
+
+    console.log(activeStep);
+
   
     return (
+      <Flex className='registry-stepper'>
       <Stepper index={activeStep} orientation='vertical' height='400px' gap='0'>
         {steps.map((step, index) => (
           <Step key={index}>
@@ -45,6 +50,7 @@ import {
           </Step>
         ))}
       </Stepper>
+      </Flex>
     )
   }
   

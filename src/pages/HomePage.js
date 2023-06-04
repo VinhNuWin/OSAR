@@ -32,7 +32,7 @@ function HomePage() {
                         >
                             <SignIn />
                         </motion.div>
-                    ) : questionPageIndex === 16 ? ( 
+                    ) : questionPageIndex === 17 ? ( 
                         <motion.div 
                         key={questionPageIndex}
                         variants={homePageVariants}

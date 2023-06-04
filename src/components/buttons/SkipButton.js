@@ -18,7 +18,7 @@ export default function BackButton() {
 
     return (
         <Button 
-        variant='skip'
+        variant='skipButton'
         onClick={skipIndex}
         >Skip</Button>
     )

@@ -23,8 +23,7 @@ const nextButton = defineStyle({
   width:'20%',
   border:'2px',
   borderColor:'rgb(73, 79, 86)',
-  marginTop: '5%',
-  marginRight: '5%',
+  margin: '5%',
   color:'rgb(73, 79, 86)',
   _hover:{ 
     bg: '#ebedf0',
@@ -42,8 +41,7 @@ const backButton = defineStyle({
   width:'20%',
   border:'2px',
   borderColor:'rgb(73, 79, 86)',
-  marginBottom: '5%',
-  marginLeft: '5%',
+  margin: '5%',
   color:'rgb(73, 79, 86)',
   _hover:{ 
     bg: '#ebedf0',
@@ -57,10 +55,11 @@ const backButton = defineStyle({
 
 const skipButton = defineStyle({
   size:'md',
-  height:'48px',
-  width:'100px',
+  height:'60%',
+  width:'20%',
   color:'rgb(97, 202, 146)',
-  _focus:{
+  marginRight: '5%',
+    _focus:{
     boxShadow: 'outline',
   },
   _hover:{ bg: '#ebedf0' },
@@ -92,12 +91,15 @@ const booleanButton = defineStyle({
 
 const selectButton = defineStyle({
   size:'md',
+  flexDirection: 'wrap',
+  direction: 'row',
   height:'40px',
-  width:'100px',
+  width:'25vw',
+  margin: '2%',
   borderRadius: '10px',
   border:'2px',
   bg:'white',
-  borderColor:'white',
+  borderColor:'rgb(73, 79, 86)',
   color:'rgb(97, 202, 146)',
   _hover:{ bg: '#ebedf0' },
   _active:{
