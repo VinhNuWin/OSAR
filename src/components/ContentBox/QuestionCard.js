@@ -1,4 +1,4 @@
-import { Flex, Button, Box, Text, IconButton } from '@chakra-ui/react';
+import { Flex, Text, IconButton } from '@chakra-ui/react';
 import { useSelector } from  'react-redux';
 import { RepeatIcon } from '@chakra-ui/icons';
 import DidYouKnow from '../DidYouKnow';
@@ -22,7 +22,7 @@ export default function QuestionCard () {
 
     return (
         <Flex direction='column'>
-        <Flex direction='' className='questions'>
+        <Flex direction='column' className='questions'>
             <Text fontSize='2xl' color='rgb(73, 79, 86)'>Questions</Text>
             <Text fontSize='4xl' color='rgb(73, 79, 86)'>{questions}</Text>
         </Flex>

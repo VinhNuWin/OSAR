@@ -1,11 +1,7 @@
 import { Flex, Text } from '@chakra-ui/react';
 import { 
     assaultFacts,
-    genderFacts,
     locationFacts,
-    longTermFacts,
-    assailantFacts,
-    weaponsFacts,
     whyNoReportFacts 
 } from "../data/assaultFacts";
 import { useSelector, useEffect } from 'react-redux';
@@ -27,13 +23,21 @@ export default function DidYouKnow() {
 
     return (
         <Flex>
-        { index === 1 ? (
+        { index === 2 ? (
+            <Flex>
+                <Text>{randomFact(locationFacts)}</Text>
+            </Flex>
+        ) : index === 16 ? (
+            <Flex>
+                <Text>{randomFact(whyNoReportFacts)}</Text>
+            </Flex>
+        ) : index >= 1 ? (
             <Flex>
                 <Text>{randomFact(assaultFacts)}</Text>
             </Flex>
-        ) : index === 2 ? (
+        ) : index >= 12 ? (
             <Flex>
-                <Text>{randomFact(locationFacts)}</Text>
+                <Text>{randomFact(assaultFacts)}</Text>
             </Flex>
         ) : index === null (
             <Flex>

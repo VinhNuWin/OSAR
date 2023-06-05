@@ -3,39 +3,39 @@ import { createSlice } from '@reduxjs/toolkit';
 const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
-        index: 1,
-        email: '',
+        index: 0,
+        // email: '',
         registry: {
             survivor: '',
             genderSurvivor:'',
-            email: 'Vinhn333',
-            _id: '123',
+            email: '',
+            _id: '',
             incident: {
-                _id: '0',
-                userId: '1',
-                location: '2',
-                date: 'March, 6 1984',
-                streetAddress: 'streetaddress',
-                city: '5',
-                state: '6',
-                postal: 7,
-                wasAlcoholInvolved: 'alcohol', //false
-                wereDrugsInvolved: 'drugs', //false
-                wasSurvivorAsleepTimeOfIncident: 'asleep', //false
-                verbalThreatsToSurvivor: 'threats', //false
-                resistanceOfferedBySurvivor: 'resistance', //false
-                detailsOfTheAssault: '234', //false
-                areasAssaulted: '9ihu',
-                useOfWeaponsFromAssailant: 'weapons', //false
-                useOfRestraintFromAssailant: 'restraint', //false
+                _id: '',
+                userId: '',
+                location: '',
+                date: '',
+                streetAddress: '1070 temple',
+                city: 'long',
+                state: 'CA',
+                postal: '90804',
+                wasAlcoholInvolved: 'false', //false
+                wereDrugsInvolved: 'false', //false
+                wasSurvivorAsleepTimeOfIncident: 'false', //false
+                verbalThreatsToSurvivor: 'false', //false
+                resistanceOfferedBySurvivor: 'false', //false
+                detailsOfTheAssault: 'false', //false
+                areasAssaulted: '',
+                useOfWeaponsFromAssailant: 'false', //false
+                useOfRestraintFromAssailant: 'false', //false
             },
             assailant: {
                 _id: '',
                 userId: '',
-                gender: 'male',
-                raceEthnicity: 'asian',
-                firstName: 'Vinh',
-                lastName:'Nguyen',
+                gender: '',
+                raceEthnicity: '',
+                firstName: '',
+                lastName:'',
             }
         },
     },

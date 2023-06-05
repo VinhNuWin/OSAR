@@ -2,11 +2,22 @@ export const assaultFacts = [
     'Every 73 seconds, an American is sexually assaulted.',
     'Ages 12-34 are the highest risk years for rape and sexual assault.',
     'More than 1 in 3 women and nearly 1 in 4 men have experienced sexual violence involving physical contact at some point in their lives.',
-    'Approximately 1 in 5 women in the U.S. reported completed or attempted rape at some point in their lifetime. About 1 in 14 men was made to penetrate someone else (attempted or completed) at some point in their lifetime.',
+    'Approximately 1 in 5 women in the U.S. reported completed or attempted rape at some point in their lifetime. About 1 in 14 men in their lifetime.',
     '21% of TGQN (transgender, genderqueer, nonconforming) college students have been sexually assaulted, compared to 18% of non-TGQN females, and 4% of non-TGQN males.',
-    'American Indians are twice as likely to experience a rape/sexual assault compared to all races. 41% of sexual assaults against American Indians are committed by a stranger; 34% by an acquaintance; and 25% by an intimate or family member.',
+    '41% of sexual assaults against American Indians are committed by a stranger; 34% by an acquaintance; and 25% by an intimate or family member.',
     'An estimated 80,600 inmates each year experience sexual violence while in prison or jail. (Source) Victims of sexual violence who are incarcerated are most likely to be assaulted by jail or prison staff.',
-    'The likelihood that a person suffers suicidal or depressive thoughts increases after sexual violence. Sexual violence also affects victims’ relationships with their family, friends, and co-workers.',
+    'The likelihood that a person suffers suicidal or depressive thoughts increases after sexual violence. Sexual violence also affects victims relationships with their family, friends, and co-workers.',
+    '11% of sexual assaults involved a weapon.',
+    'Personal weapons, such as hands, feet or teeth, are used in against victims in 2 out of 3 cases.',
+    '5.8% of students have experienced stalking since entering college.',
+    'Among undergraduate students, 26.4% of females and 6.8% of males experience rape or sexual assault through drugs, alcohol, or incapacitation.',
+    '94% of women who are sexually assaulted experience symptoms of post-traumatic stress disorder (PTSD) during the two weeks following the rape.',
+    '30% of women report symptoms of PTSD 9 months after the rape.',
+    '33% of women who are sexually assaulted contemplate suicide.',
+    '13% of women who are sexually assaulted attempt suicide.',
+    'Approximately 70% of rape or sexual assault victims experience moderate to severe distress, a larger percentage than for any other violent crime.',
+    '67% of survivors who were victimized by a stranger experience professional or emotional issues, including moderate to severe distress, or increased problems at work or school.',
+    '79% of survivors who were victimized by a family member, close friend or acquaintance experience professional or emotional issues, including moderate to severe distress, or increased problems at work or school.'
 ]
 
 export const genderFacts = [
@@ -33,13 +44,7 @@ export const locationFacts = [
 ]
 
 export const longTermFacts = [
-'94% of women who are sexually assaulted experience symptoms of post-traumatic stress disorder (PTSD) during the two weeks following the rape.',
-'30% of women report symptoms of PTSD 9 months after the rape.',
-'33% of women who are sexually assaulted contemplate suicide.',
-'13% of women who are sexually assaulted attempt suicide.',
-'Approximately 70% of rape or sexual assault victims experience moderate to severe distress, a larger percentage than for any other violent crime.',
-'67% of survivors who were victimized by a stranger experience professional or emotional issues, including moderate to severe distress, or increased problems at work or school.',
-'79% of survivors who were victimized by a family member, close friend or acquaintance experience professional or emotional issues, including moderate to severe distress, or increased problems at work or school.'
+
 ]
 
 export const assailantFacts = [
@@ -51,14 +56,6 @@ export const assailantFacts = [
     '50% of assaults are from someone age 30 and older.',
     '25% of assaults are between the ages of 21-29.',
     '10% of assaults are perpetrated by two or more offenders.'
-]
-
-export const weaponsFacts = [
-    '11% of sexual assaults involved a weapon.',
-    'Personal weapons, such as hands, feet or teeth, are used in against victims in 2 out of 3 cases.',
-    '5.8% of students have experienced stalking since entering college.',
-    'Among undergraduate students, 26.4% of females and 6.8% of males experience rape or sexual assault through drugs, alcohol, or incapacitation.',
-    
 ]
 
 export const whyNoReportFacts = [

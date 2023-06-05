@@ -1,8 +1,7 @@
-import { Flex, Box, Text, CircularProgress, CircularProgressLabel } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import {
-    extendTheme,
     Container,
     Heading,
     Button,
