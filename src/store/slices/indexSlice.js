@@ -15,10 +15,10 @@ const indexSlice = createSlice({
                 userId: '',
                 location: '',
                 date: '',
-                streetAddress: '1070 temple',
-                city: 'long',
-                state: 'CA',
-                postal: '90804',
+                streetAddress: '',
+                city: '',
+                state: '',
+                postal: '',
                 wasAlcoholInvolved: 'false', //false
                 wereDrugsInvolved: 'false', //false
                 wasSurvivorAsleepTimeOfIncident: 'false', //false
