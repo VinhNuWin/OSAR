@@ -22,7 +22,7 @@ export default function DidYouKnow() {
     });
 
     return (
-        <Flex>
+        <Flex className='div-a'>
         { index === 2 ? (
             <Flex>
                 <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }} >{randomFact(locationFacts)}</Text>
@@ -33,7 +33,7 @@ export default function DidYouKnow() {
             </Flex>
         ) : index >= 1 ? (
             <Flex>
-                <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }} >{randomFact(assaultFacts)}</Text>
+                <Text fontSize={{ base: '8px', md: '10px', lg: '12px' }} >{randomFact(assaultFacts)}</Text>
             </Flex>
         ) : index >= 12 ? (
             <Flex>

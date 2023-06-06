@@ -9,10 +9,10 @@ import ReportSummary from '../views/drawer/ReportSummary';
 import { useMediaQuery } from '@chakra-ui/react';
 
 export default function Registry() {
-    const [ isLargerThan1280, isLargerThan320 ] = useMediaQuery([
-        '(min-width: 1280)',
-        '(min-width: 320)',
-    ]);
+    // const [ isLargerThan1280, isLargerThan320 ] = useMediaQuery([
+    //     '(min-width: 568)',
+    //     '(min-width: 320)',
+    // ]);
 
     return (
         <Flex height="100%" className=''>
