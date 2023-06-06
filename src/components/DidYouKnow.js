@@ -25,19 +25,19 @@ export default function DidYouKnow() {
         <Flex>
         { index === 2 ? (
             <Flex>
-                <Text>{randomFact(locationFacts)}</Text>
+                <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }} >{randomFact(locationFacts)}</Text>
             </Flex>
         ) : index === 16 ? (
             <Flex>
-                <Text>{randomFact(whyNoReportFacts)}</Text>
+                <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }} >{randomFact(whyNoReportFacts)}</Text>
             </Flex>
         ) : index >= 1 ? (
             <Flex>
-                <Text>{randomFact(assaultFacts)}</Text>
+                <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }} >{randomFact(assaultFacts)}</Text>
             </Flex>
         ) : index >= 12 ? (
             <Flex>
-                <Text>{randomFact(assaultFacts)}</Text>
+                <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }} >{randomFact(assaultFacts)}</Text>
             </Flex>
         ) : index === null (
             <Flex>

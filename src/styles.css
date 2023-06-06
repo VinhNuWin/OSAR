@@ -28,9 +28,9 @@
   height: 100vh;
 }
 
-.body {
+/* .body {
   background-color: rgb(247,247,247);
-}
+} */
 
 .signin-container {
   height: 70%;
@@ -220,8 +220,8 @@
 } */
 
 @media screen and (min-width: 320px) {
-  h1 {
-    font-size: 30px;
+  body {
+    background-color: aqua;
   }
 }
 

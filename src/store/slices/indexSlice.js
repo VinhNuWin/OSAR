@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
-        index: 0,
+        index: 1,
         // email: '',
         registry: {
             survivor: '',
