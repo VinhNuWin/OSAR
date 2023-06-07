@@ -1,128 +1,11 @@
-import React from 'react';
-import '../styles.css';
-import { motion, isValidMotionProp } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex, addEmail, addRegistryId } from '../store';
-import axios from 'axios';
-import { Flex, Button, Stack, FormControl, FormLabel, FormHelperText, Input, Box, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
-import { EmailIcon } from '@chakra-ui/icons';
 
-const ChakraBox = chakra(motion.div, {
-    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
-  });
 
-const svgVariants = {
-    hidden: { rotate: -180 },
-    visible: {
-        rotate: 0,
-    }
-};
-
-const pathVariants = {
-    hidden: {
-        opacity: 0,
-        pathLength: 0,
-        fill: "rgba(250, 0, 250, 0)"
-    },
-    visible: {
-        opacity: 1,
-        pathLength: 1,
-        fill: "rgb(97, 202, 146)",
-        transition: {
-            duration: 4,
-            ease: "easeInOut",
-        }
-    }
-};
-
-function SignIn() {
-    const dispatch = useDispatch();
-
-    const { index, email } = useSelector((state) => {
-        return {
-        index: state.index.index,
-        email: state.index.registry.email,
-        }
-    })
-
-    const addUser = async () => {
-        console.log('adduser clicked');
-        const response = await axios.post('https://osar-api.onrender.com/users', {
-            headers: {
-                'Content-Type' : 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Method': 'POST',
-            },
-            email: email
-        });
-        console.log(response);
-        const userId = response.data.data._id;
-
-        dispatch(addRegistryId(userId));
-        dispatch(changeIndex(parseInt(index + 1)));
-    };
-
-    console.log({email});
-
-    const transition = { duration: 4, yoyo: Infinity, ease: "easeInOut" }
+export default function DvaaSvg() {
 
     return (
-        <Flex className='Osar'>
-            <Stack className='signin-container'>
-                    <Flex justify='center' >
-                        <motion.div className=''>
-                        <div className="container">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="451" height="437">
-                                <motion.path
-                                  d="M 14.339844 -35.847656 L 2.96875 -35.847656 L 2.96875 0 L 14.339844 0 C 25.914062 0 31.75 -6.503906 31.75 -17.921875 C 31.75 -29.394531 25.914062 -35.847656 14.339844 -35.847656 Z M 13.980469 -3.789062 L 7.21875 -3.789062 L 7.21875 -32.109375 L 13.980469 -32.109375 C 23.351562 -32.109375 27.449219 -27.5 27.449219 -17.921875 C 27.449219 -8.347656 23.351562 -3.789062 13.980469 -3.789062 Z M 13.980469 -3.789062 "
-                                  fill="transparent"
-                                  strokeWidth="2"
-                                  stroke="rgba(255, 255, 255, 0.69)"
-                                  strokeLinecap="round"
-                                  initial={{ pathLength: 0 }}
-                                  animate={{ pathLength: 1 }}
-                                  transition={transition}
-                                />
-                                {/* <motion.path
-                                  d="M 16.28125 0 L -1.4375 -42.25 L 9.421875 -42.25 L 20.078125 -14.484375 L 30.71875 -42.25 L 41.578125 -42.25 L 23.859375 0 Z M 16.28125 0"
-                                  fill="transparent"
-                                  strokeWidth="2"
-                                  stroke="rgba(255, 255, 255, 0.69)"
-                                  strokeLinecap="round"
-                                  initial={{ pathLength: 0 }}
-                                  animate={{ pathLength: 1 }}
-                                  transition={transition}
-                                />
-                                <motion.path
-                                  d="M 3.078125 -42.25 L 15.3125 -42.25 C 21.175781 -42.25 26.191406 -40.238281 30.359375 -36.21875 C 34.523438 -32.207031 36.609375 -27.179688 36.609375 -21.140625 C 36.609375 -15.066406 34.535156 -10.023438 30.390625 -6.015625 C 26.242188 -2.003906 21.21875 0 15.3125 0 L 3.078125 0 Z M 12.703125 -8.609375 L 14.1875 -8.609375 C 17.695312 -8.609375 20.570312 -9.789062 22.8125 -12.15625 C 25.050781 -14.53125 26.1875 -17.507812 26.21875 -21.09375 C 26.21875 -24.675781 25.097656 -27.660156 22.859375 -30.046875 C 20.628906 -32.441406 17.738281 -33.640625 14.1875 -33.640625 L 12.703125 -33.640625 Z M 12.703125 -8.609375" 
-                                  fill="transparent"
-                                  strokeWidth="2"
-                                  stroke="rgba(255, 255, 255, 0.69)"
-                                  strokeLinecap="round"
-                                  initial={{ pathLength: 0 }}
-                                  animate={{ pathLength: 1 }}
-                                  transition={transition}
-                                />
-                                <motion.path
-                                  d="M 3.078125 -42.25 L 15.3125 -42.25 C 21.175781 -42.25 26.191406 -40.238281 30.359375 -36.21875 C 34.523438 -32.207031 36.609375 -27.179688 36.609375 -21.140625 C 36.609375 -15.066406 34.535156 -10.023438 30.390625 -6.015625 C 26.242188 -2.003906 21.21875 0 15.3125 0 L 3.078125 0 Z M 12.703125 -8.609375 L 14.1875 -8.609375 C 17.695312 -8.609375 20.570312 -9.789062 22.8125 -12.15625 C 25.050781 -14.53125 26.1875 -17.507812 26.21875 -21.09375 C 26.21875 -24.675781 25.097656 -27.660156 22.859375 -30.046875 C 20.628906 -32.441406 17.738281 -33.640625 14.1875 -33.640625 L 12.703125 -33.640625 Z M 12.703125 -8.609375" 
-                                  fill="transparent"
-                                  strokeWidth="2"
-                                  stroke="rgba(255, 255, 255, 0.69)"
-                                  strokeLinecap="round"
-                                  initial={{ pathLength: 0 }}
-                                  animate={{ pathLength: 1 }}
-                                  transition={transition}
-                                />
-                                 */}
-                              </svg>
-                              <motion.div
-                                className="box"
-                                initial={{ offsetDistance: "0%", scale: 2.5 }}
-                                animate={{ offsetDistance: "100%", scale: 1 }}
-                                transition={transition}
-                              />
-                            </div>
-                            {/* <motion.svg width="500" height="500" viewBox="0 0 375 374.999991" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <Flex justify='center' >
+            <motion.div className=''>
+                <motion.svg width="373" height="109" viewBox="0 0 373 109" fill="none" xmlns="http://www.w3.org/2000/svg"
                    variants={svgVariants}
                    initial="hidden"
                    animate="visible"
@@ -153,54 +36,14 @@ function SignIn() {
                     <motion.path d="M372 106.37H360.588L353.474 79.6939C352.091 74.5563 350.51 70.5549 348.732 67.6897C346.953 64.8246 344.483 62.7498 341.321 61.4654C338.258 60.0822 334.059 59.3906 328.724 59.3906H304.714V106.37H294.043V2.63019H338.505C348.188 2.63019 355.549 5.05078 360.588 9.89197C365.726 14.7331 368.295 21.5503 368.295 30.3435C368.295 37.7535 366.516 43.6814 362.959 48.1274C359.501 52.4746 354.561 55.1916 348.139 56.2784C352.486 57.8592 355.845 60.4774 358.217 64.133C360.687 67.7885 362.861 72.9755 364.738 79.6939L372 106.37ZM337.32 50.795C343.742 50.795 348.732 49.066 352.289 45.608C355.845 42.15 357.624 37.3089 357.624 31.0845C357.624 24.7613 355.845 19.8707 352.289 16.4127C348.732 12.9548 343.742 11.2258 337.32 11.2258H304.714V50.795H337.32Z" 
                     stroke="black"
                     variants={pathVariants}/>
-                            </motion.svg> */}
-                        </motion.div>
-                    </Flex>
+                    </motion.svg>
+                </motion.div>
+            </Flex>
 
-                    <Flex className='signin-container2'>
-                        <Text fontSize='24px' color='white'>Documented Voices Against Assault</Text>
-                    </Flex>
-
-                    <center>
-                    <Flex className='signin-container2'>
-                        <FormControl >
-                            <FormLabel color='rgb(97, 202, 146)'>Email address</FormLabel>
-                                <InputGroup>
-                                  <InputLeftElement pointerEvents='none'>
-                                    <EmailIcon />
-                                  </InputLeftElement>
-                                <Input 
-                                  value={email}
-                                  bg='white'
-                                  onChange={(e) => {dispatch(addEmail( e.target.value))}}
-                                  rules={[
-                                      {
-                                        type: 'email',
-                                        message: 'The input is not valid E-mail!',
-                                      },
-                                      {
-                                        required: true,
-                                        message: 'Please input your E-mail!',
-                                      },
-                                    ]}
-                                  />
-                                </InputGroup>
-                            <FormHelperText>We'll never share your email.</FormHelperText>
-                        </FormControl>
-                            <Flex className='signin-container2'>
-                                <Button onClick={addUser}>
-                                    Create Registry
-                                </Button>
-                            </Flex>
-                            
-                    </Flex>
-                </center>
-                    </Stack>
-        </Flex>
     )
 }
 
-export default SignIn;
+
 
 
 {/* <Flex justify='center' >

@@ -16,18 +16,16 @@ export default function QuestionCard () {
     const questionIndex = index;
     const questions = question[questionIndex];
 
-    useEffect(() => {
-        {}
-    }, [fact])
-
     return (
         <Flex direction='column'>
         <Flex wrap='nowrap' direction='column' className='questions'>
             <Text fontSize={{ base: '14px', md: '20px', lg: '26px' }} color='rgb(73, 79, 86)'>Questions</Text>
             <Text className='div-c' fontSize={{ base: '20px', md: '24px', lg: '32px' }} color='rgb(73, 79, 86)'>{questions}</Text>
         </Flex>
-
-        <Flex className='did-you-know'>
+        <Flex>
+            <DidYouKnow />
+        </Flex>
+        {/* <Flex className='did-you-know'>
             <Flex>
             <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }}>Did you know.. </Text>
             <IconButton 
@@ -42,7 +40,7 @@ export default function QuestionCard () {
             <Flex>
                 <DidYouKnow />
             </Flex>
-        </Flex>
+        </Flex> */}
         </Flex>
     )
 }
