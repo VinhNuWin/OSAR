@@ -7,6 +7,7 @@ import BackButton from '../components/buttons/BackButton';
 import SkipButton from '../components/buttons/SkipButton';
 import ReportSummary from '../views/drawer/ReportSummary';
 import { useMediaQuery } from '@chakra-ui/react';
+import DidYouKnow from '../components/DidYouKnow';
 
 export default function Registry() {
     // const [ isLargerThan1280, isLargerThan320 ] = useMediaQuery([
@@ -17,8 +18,13 @@ export default function Registry() {
     return (
         <Flex height="100%" className=''>
             <Flex className='container'>
-                <Flex className='question-card'>
+                <Flex direction='column' className='question-container'>
+                        <Flex className='question-card'>
                         <QuestionCard />
+                        </Flex>
+                        <Flex className=''>
+                            <DidYouKnow />
+                        </Flex>
                 </Flex>
                 <Flex className='faq-card'>
                         <FAQ />

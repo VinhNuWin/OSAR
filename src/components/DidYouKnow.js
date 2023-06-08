@@ -32,7 +32,7 @@ export default function DidYouKnow() {
 
     return (
 
-        <Flex className='did-you-know'>
+        <Flex className='did-you-know-container'>
         <Flex>
         <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }}>Did you know.. </Text>
         <IconButton 

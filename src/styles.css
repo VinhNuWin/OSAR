@@ -159,7 +159,7 @@
   color: white;
 }
 
-.question-card {
+.question-container {
   border-radius: 20px;
   width: 64.15%;
   height: 47.5%;
@@ -169,21 +169,25 @@
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
 }
+.question-card {
+  width: 100%;
+  height: 60%;
+}
 
 .questions {
   flex-wrap: wrap;
   width: 90%;
   height: 50%;
-  margin: auto;
+  margin-top: 3%;
+  margin-left:5%;
 }
 
-.did-you-know {
-  width: 90%;
+.did-you-know-container {
+  height: 30%;
+  width: 80%;
   flex-direction: column;
-  height: 35%;
+  margin-top: 1%;
   margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 5%;
 }
 
 .button {
@@ -205,7 +209,7 @@
 }
 
 .div-a {
-  line-height: normal;
+  /* line-height: normal; */
 }
 
 .div-b {
@@ -226,20 +230,20 @@
 
 .mobile-top-container {
   height: 40%;
+  justify-content: center;
 }
 
-.mobile-top-container2 {
+.mobile-middle-container {
   height: 40%;
+  justify-content: center;
 }
 
-.mobile-top-container3 {
+.mobile-bottom-container {
   height: 20%;
 }
 
 @media screen and (min-width: 320px) {
-  body {
-    background-color: aqua;
-  }
+
 }
 
 @media screen and (min-width: 768px) {
@@ -264,4 +268,52 @@
   h1 {
     font-size: 60px;
   }
+}
+
+/* body {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.example-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.box {
+  border: 3px solid red;
+  border: 2px;
+  border-radius: 30px;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: calc(50% - -50px / 2);
+  left: calc(50% - 150px / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-icon {
+  width: 80%;
+  height: 80%;
+}
+
+.refresh {
+  padding: 10px;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
