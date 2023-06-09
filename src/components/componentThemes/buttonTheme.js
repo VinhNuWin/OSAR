@@ -17,10 +17,9 @@ const brandPrimary = defineStyle({
 });
 
 const nextButton = defineStyle({
-  borderRadius: 0,
   size:'md',
   height:'60%',
-  width:'20%',
+  width:'70%',
   border:'2px',
   borderColor:'rgb(73, 79, 86)',
   margin: '5%',

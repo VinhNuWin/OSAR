@@ -2,6 +2,7 @@ import {Button} from '@chakra-ui/react';
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 import { changeIndex, addIncidentId, addAssailantId } from "../../store";
+import MobileView from '../../views/MobileView';
 
 export default function NextButton() {
     const dispatch = useDispatch();
@@ -101,7 +102,7 @@ export default function NextButton() {
     
     return (
         <Button 
-        variant='nextButton'
+        variant={ !MobileView ? 'nextButton' : 'backButton' }
         onClick={handleRegistryInputs}
         >Next
         </Button> 

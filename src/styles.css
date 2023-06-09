@@ -228,18 +228,34 @@
   height: 100vh;
 }
 
+.mobile-header-container {
+  height: 10%;
+  justify-content: end;
+  margin-right: 5%;
+  margin-top: 5%;
+}
+
 .mobile-top-container {
-  height: 40%;
+  height: 30%;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 15%;
 }
 
 .mobile-middle-container {
-  height: 40%;
+  height: 30%;
   justify-content: center;
 }
 
 .mobile-bottom-container {
   height: 20%;
+  justify-content: center;
+}
+
+.mobile-skip {
+  justify-content: end;
+  padding-right: 22%;
 }
 
 @media screen and (min-width: 320px) {

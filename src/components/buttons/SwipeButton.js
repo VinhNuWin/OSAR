@@ -1,7 +1,15 @@
 import * as React from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { animationControls, animate, motion, useMotionValue, useTransform, animateValue } from "framer-motion";
+import { changeIndex, addIncidentId, addAssailantId } from "../../store";
 
 export default function SwipeButton() {
+  const { index } = useSelector((state) => {
+    return {
+      index: state.index.index
+    }
+  })
+  const dispatch = useDispatch();
   const x = useMotionValue(0);
   const xInput = [-100, 0, 100];
   const background = useTransform(x, xInput, [
