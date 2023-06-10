@@ -10,74 +10,63 @@ import {
     Tag
   } from "@chakra-ui/react";
   import FaqCarousel from '../../views/carousel/FaqCarousel';
+import ThingsToConsider from '../../data/ThingsToConsider';
 
 export default function FAQ () {
     const { index } = useSelector((state) => {
         return {
             index: state.index.index
         }
-    })
+    });
 
-    const [data, setData] = useState([]);
+    const [ faqs, setFaqs ] = useState([
+      {
+          question: 'Emotional well-being',
+          response: 'You may feel that reporting would be too overwhelming or retraumatizing.',
+      },
+      {
+          question: 'Fear of retaliation',
+          response: 'You may have concerns about potential retaliation from the perpetrator or others associated with them.'
+      },
+      {
+          question: 'Privacy concerns',
+          response: 'Reporting can involve sharing personal details, and you may value your privacy and wish to keep the assault private.', 
+      },
+      {
+          question: 'Lack of evidence',
+          response: 'You might feel that theres insufficient evidence to support your case, making the reporting process more challenging.', 
+      },
+      {
+          question: 'Fear of disbelief',
+          response: 'You may worry about not being believed or facing skepticism or judgment from authorities or others.', 
+      },
+      {
+          question: 'Reluctance to engage with the legal system',
+          response: 'The legal process can be complex and lengthy, and you might prefer to avoid involvement in it.', 
+      },  
+      {
+          question: 'Desire to move forward',
+          response: 'You might want to focus on healing and moving forward with your life rather than dwelling on the assault.' 
+      },  
+      {
+          question: 'Cultural or community pressures',
+          response: 'Factors such as cultural norms or community dynamics may influence your decision not to report.', 
+      }
+  ]);
 
-  useEffect(() => {
+  const considerThis = faqs[index];
 
-  }, []);
+  console.log(considerThis);
 
   return (
-    <Flex className=''>
-      <Container
-      >
-        <FaqCarousel gap={32}>
-          {data.slice(5, 15).map((post, index) => (
-            <Flex
-              key={index}
-              boxShadow="rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
-              justifyContent="space-between"
-              flexDirection="column"
-              overflow="hidden"
-              color="gray.300"
-              bg="base.d100"
-              rounded={5}
-              flex={1}
-              p={5}
-            >
-              <VStack mb={6}>
-                <Heading
-                  fontSize={{ base: "xl", md: "2xl" }}
-                  textAlign="left"
-                  w="full"
-                  mb={2}
-                >
-                  
-                </Heading>
-                <Text w="full"></Text>
-              </VStack>
-
-              <Flex justifyContent="space-between">
-                <HStack spacing={2}>
-                  <Tag size="sm" variant="outline" colorScheme="green">
-                    User: {post.userId}
-                  </Tag>
-                  <Tag size="sm" variant="outline" colorScheme="cyan">
-                    Post: {post.id - 5}
-                  </Tag>
-                </HStack>
-                <Button
-                  onClick={() => alert(`Post ${post.id - 5} clicked`)}
-                  colorScheme="green"
-                  fontWeight="bold"
-                  color="gray.900"
-                  size="sm"
-                >
-                  More
-                </Button>
-              </Flex>
-            </Flex>
-          ))}
-        </FaqCarousel>
-      </Container>
+    <Flex direction='column' className='faq-card'>
+      <Flex className='faq-question'>
+        <Text as='b'>{considerThis.question}</Text>
       </Flex>
+      <Flex className='faq-response'>
+        <Text fontSize='sm'>{considerThis.response}</Text>
+      </Flex>
+    </Flex>
   );
 }
 

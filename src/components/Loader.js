@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from 'framer-motion';
 import '../styles.css'
+import { Spinner } from "@chakra-ui/react";
 
 const loaderVariants = {
     animationOne: {
@@ -27,7 +28,7 @@ const Loader = () => {
         variants={loaderVariants}
         animate="animationOne"
         >
-
+            <Spinner />
         </motion.div>
         </>
     )

@@ -26,7 +26,7 @@ export default function Registry() {
                             <DidYouKnow />
                         </Flex>
                 </Flex>
-                <Flex className='faq-card'>
+                <Flex className='faq-container'>
                         <FAQ />
                 </Flex>
                 <Flex className='answer-card'>
