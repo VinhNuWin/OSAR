@@ -4,6 +4,7 @@ const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
         index: 0,
+        email: '',
         registry: {
             survivor: '',
             genderSurvivor:'',

@@ -3,6 +3,7 @@ import RegistryComplete from './RegistryComplete';
 import { motion } from 'framer-motion';
 import { Button, Text, Flex, useMediaQuery } from '@chakra-ui/react';
 import SignIn from './SignIn';
+import MobileSignIn from '../views/MobileSignIn';
 import { useSelector } from 'react-redux';
 import { containerVariants, homePageVariants } from '../data/containerVariants';
 import MissionStatement from '../views/modals/MissionStatement';
@@ -38,7 +39,8 @@ function HomePage() {
                         animate="visible"
                         exit="exitAnimation"
                         >
-                            <SignIn />
+                                { isLargerThan568 ? <SignIn /> : <MobileSignIn /> }
+                            {/* <SignIn /> */}
                         </motion.div>
                     ) : questionPageIndex === 17 ? ( 
                         <motion.div 
