@@ -40,7 +40,6 @@ function HomePage() {
                         exit="exitAnimation"
                         >
                                 { isLargerThan568 ? <SignIn /> : <MobileSignIn /> }
-                            {/* <SignIn /> */}
                         </motion.div>
                     ) : questionPageIndex === 17 ? ( 
                         <motion.div 

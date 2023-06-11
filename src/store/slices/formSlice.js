@@ -22,6 +22,15 @@ const formSlice = createSlice({
       'Name of Survivor', //15
       'Survivor Gender' //16
     ],
+  generalQuestions: [
+    'Use of weapons', //10
+    'Use of Restraints', //11
+    'Assailants Gender', //12 assailant
+    'Assailants Race/Ethnicity', //13
+    'Do you know the assailants name?', //14
+    'Name of Survivor', //15
+    'Survivor Gender' //16
+  ],
     user: {
       incident: {},
       assailant: {},
