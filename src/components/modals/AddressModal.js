@@ -46,7 +46,7 @@ export default function AddressModal() {
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Incident Location</ModalHeader>
+            <ModalHeader>Location</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
                 <FormControl>

@@ -4,7 +4,7 @@ import NextButton from "../components/buttons/NextButton";
 import SkipButton from "../components/buttons/SkipButton";
 import QuestionCard from "../components/ContentBox/QuestionCard";
 import RegistryResponses from "../components/RegistryResponses";
-import ReportSummary from "./drawer/ReportSummary";
+import ReportSummary from "../components/drawer/ReportSummary";
 import SwipeButton from "../components/buttons/SwipeButton";
 
 

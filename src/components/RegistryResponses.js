@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateIncident, updateAssailant, addSurvivor, updateRegistry } from '../store';
 import { Form } from 'antd';
 import { Button, Text, Select, Input, Flex, Stack, Card, CardHeader } from '@chakra-ui/react';
-import AssailantNameModal from '../views/modals/AssailantNameModal';
-import AddressModal from '../views/modals/AddressModal';
+import FullNameAndTitleModal from './modals/FullNameAndTitleModal';
+import AddressModal from './modals/AddressModal';
 import { CloseIcon, CheckIcon } from '@chakra-ui/icons';
 
 function RegistryResponses() {
@@ -23,12 +23,6 @@ function RegistryResponses() {
     const questionIndex = index;
     const TextArea = Input;
 
-    console.log(incident);
-    console.log(assailant);
-    // console.log(survivor);
-
-
-
     return (
         <div className=''>
             <AnimatePresence>
@@ -44,10 +38,7 @@ function RegistryResponses() {
             ) : questionIndex === 2 ? ( // do you remember where the incident occured? "incidentLocation"
                     <motion.div className='flex-box'>
                         <AddressModal />
-                        <Button variant='booleanButton'>
-                            <CloseIcon w={8} boxSize={4} color='red.500' m='1%' />
-                            <Text>No</Text>
-                        </Button>
+   
                     </motion.div>
             ) : questionIndex === 3 ? ( // Was Alcohol Involved "alcoholInvolved"
                 <motion.div className='flex-box'>
@@ -205,7 +196,7 @@ function RegistryResponses() {
                 </div>
             ) : questionIndex === 14 ? ( // Do you know the assailants name?
                 <div>
-                    <AssailantNameModal />
+                    <FullNameAndTitleModal />
                     <motion.div>
                         <Button variant='booleanButton'>
                         <CloseIcon w={8} boxSize={4} color='red.500' m='1%'/>

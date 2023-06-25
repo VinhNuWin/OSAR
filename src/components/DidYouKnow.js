@@ -31,10 +31,30 @@ export default function DidYouKnow() {
     }, [fact])
 
     return (
-
         <Flex className='did-you-know-container'>
-        <Flex>
-        <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }}>Did you know.. </Text>
+        <Flex className='div-a'>
+        { index === 2 ? (
+            <Flex>
+                <Text fontSize={{ base: '16px', md: '18px', lg: '20px' }} >{randomFact(locationFacts)}</Text>
+            </Flex>
+        ) : index === 16 ? (
+            <Flex>
+                <Text fontSize={{ base: '16px', md: '18px', lg: '20px' }} >{randomFact(whyNoReportFacts)}</Text>
+            </Flex>
+        ) : index >= 1 ? (
+            <Flex>
+                <Text fontSize={{ base: '16px', md: '18px', lg: '20px' }} >{randomFact(assaultFacts)}</Text>
+            </Flex>
+        ) : index >= 12 ? (
+            <Flex>
+                <Text fontSize={{ base: '16px', md: '18px', lg: '20px' }} >{randomFact(assaultFacts)}</Text>
+            </Flex>
+        ) : index === null (
+            <Flex>
+            </Flex>
+        )
+        }
+        </Flex>
         <IconButton 
         marginLeft='2'
         aria-label='Report Summary' 
@@ -43,30 +63,6 @@ export default function DidYouKnow() {
         colorScheme='rgb(73, 79, 86)'
         onClick={()=>setFact(!fact)}
         icon={<RepeatIcon />}></IconButton>
-        </Flex>
-        <Flex className='div-a'>
-        { index === 2 ? (
-            <Flex>
-                <Text fontSize={{ base: '8px', md: '10px', lg: '12px' }} >{randomFact(locationFacts)}</Text>
-            </Flex>
-        ) : index === 16 ? (
-            <Flex>
-                <Text fontSize={{ base: '8px', md: '10px', lg: '12px' }} >{randomFact(whyNoReportFacts)}</Text>
-            </Flex>
-        ) : index >= 1 ? (
-            <Flex>
-                <Text fontSize={{ base: '8px', md: '10px', lg: '12px' }} >{randomFact(assaultFacts)}</Text>
-            </Flex>
-        ) : index >= 12 ? (
-            <Flex>
-                <Text fontSize={{ base: '8px', md: '10px', lg: '12px' }} >{randomFact(assaultFacts)}</Text>
-            </Flex>
-        ) : index === null (
-            <Flex>
-            </Flex>
-        )
-        }
-        </Flex>
         </Flex>
     )
 }

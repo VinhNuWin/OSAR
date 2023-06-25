@@ -1,27 +1,29 @@
 import React from 'react';
 import {
-    Button,
-    FormControl,
-    FormLabel,
-    Input,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Select,
+  Icon
   } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateAssailant } from '../../store';
 import { CheckIcon } from '@chakra-ui/icons';
+import { updateRegistry } from '../../store';
 
-export default function AssailantNameModal() {
+export default function FullNameAndTitleModal() {
     const dispatch = useDispatch();
-    const { assailant } = useSelector((state) => {
+    const { registry } = useSelector((state) => {
         return {
-            assailant : state.index.registry.assailant
+          registry : state.index.registry
         }
     })
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -31,12 +33,11 @@ export default function AssailantNameModal() {
   
     return (
       <>
-
-        <Button variant='booleanButton' onClick={onOpen}>
-          <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
+       <Button variant='booleanButton' onClick={onOpen} >
+          <CheckIcon color='green.500' w={8} boxSize={6} m='1%'/>
           Yes
+
         </Button>
-  
         <Modal
           initialFocusRef={initialRef}
           finalFocusRef={finalRef}
@@ -45,22 +46,22 @@ export default function AssailantNameModal() {
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Assailants Full Name</ModalHeader>
+            <ModalHeader>Full Name</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
               <FormControl>
-                <FormLabel>First name</FormLabel>
-                <Input ref={initialRef} name='firstName' placeholder='First name' onChange={(e)=>dispatch(updateAssailant(...assailant, {[e.target.name]: e.target.value}))} />
+                <FormLabel>Full name</FormLabel>
+                <Input ref={initialRef} name='fullName' placeholder='Full name' onChange={(e)=>dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))} />
               </FormControl>
   
               <FormControl mt={4}>
-                <FormLabel>Last name</FormLabel>
-                <Input placeholder='Last name' name='lastName' onChange={(e) => dispatch(updateAssailant({...assailant, [e.target.name]: e.target.value}))} />
+                <FormLabel>Title</FormLabel>
+                <Input placeholder='Title' name='title' onChange={(e) => dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))} />
               </FormControl>
             </ModalBody>
   
             <ModalFooter>
-              <Button colorScheme='blue' mr={3}>
+              <Button colorScheme='blue' mr={3} onClick={onClose}>
                 Save
               </Button>
               <Button onClick={onClose}>Cancel</Button>

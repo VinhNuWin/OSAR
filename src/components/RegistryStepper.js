@@ -12,15 +12,30 @@ import {
     useSteps,
     Flex
   } from '@chakra-ui/react';
+import { render } from 'less';
+  import { useSelector } from 'react-redux';
+
+
 
   const steps = [
-    { title: 'First', description: 'Contact Info' },
-    { title: 'Second', description: 'Incident' },
-    { title: 'Third', description: 'Assailant' },
+    { title: '', description: '' },
+    { title: '', description: '' },
+    { title: '', description: '' },
+    { title: '', description: '' },
+    { title: '', description: '' },
+    { title: '', description: 'Complete' },
+    
   ]
   
   export default function RegistryStepper() {
-    const { activeStep } = useSteps({
+
+    const { index } = useSelector((state)=> {
+      return {
+        index: state.index.index
+      }
+    })
+
+    const { activeStep, setActiveStep } = useSteps({
       index: 1,
       count: steps.length,
     });
@@ -29,10 +44,10 @@ import {
 
   
     return (
-      <Flex className='registry-stepper'>
-      <Stepper index={activeStep} orientation='vertical' height='400px' gap='0'>
+      <Flex className=''>
+      <Stepper index={activeStep} orientation='horizontal' height='100px' gap='0'>
         {steps.map((step, index) => (
-          <Step key={index}>
+          <Step key={index} onClick={() => setActiveStep(index)}>
             <StepIndicator>
               <StepStatus
                 complete={<StepIcon />}
@@ -54,3 +69,4 @@ import {
     )
   }
   
+  render(<RegistryStepper/>)

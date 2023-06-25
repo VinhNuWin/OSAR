@@ -13,6 +13,7 @@ export default function BackButton() {
     const newIndex = parseInt(index + 1);
 
     const skipIndex = (e) => {
+        e.preventDefault();
         dispatch(changeIndex(parseInt(index + 1)));
     }
 

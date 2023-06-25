@@ -11,7 +11,9 @@ import {
     addRegistryId,
     addIncidentId,
     addAssailantId,
-    updateAssailant
+    addAssaultTypeId,
+    updateAssailant,
+    registrySelect
 } from './slices/indexSlice';
 import {
     formReducer,
@@ -30,7 +32,7 @@ const store = configureStore({
     reducer: {
         index: indexReducer,
         form: formReducer,
-        registry: registryReducer, 
+        // registry: registryReducer, 
         [reportApi.reducerPath]: reportApi.reducer,
         [usersApi.reducerPath]: usersApi.reducer
     },
@@ -64,7 +66,9 @@ export {
     addRegistryId,
     addIncidentId,
     addAssailantId,
-    updateAssailant
+    addAssaultTypeId,
+    updateAssailant,
+    registrySelect
  };
 
 export { useFetchReportQuery } from './apis/reportApi';

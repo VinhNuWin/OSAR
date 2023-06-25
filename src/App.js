@@ -1,4 +1,4 @@
-import HomePage from './pages/HomePage';
+import HomePage from './views/pages/HomePage';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { buttonTheme } from "./components/componentThemes/buttonTheme";
 

@@ -18,11 +18,11 @@ const brandPrimary = defineStyle({
 
 const nextButton = defineStyle({
   size:'md',
-  height:'60%',
-  width:'70%',
+  // height:'100%',
+  // width:'100%',
   border:'2px',
-  borderColor:'rgb(73, 79, 86)',
-  margin: '5%',
+  // borderColor:'rgb(73, 79, 86)',
+  // margin: '5%',
   color:'rgb(73, 79, 86)',
   _hover:{ 
     bg: '#ebedf0',
@@ -34,13 +34,9 @@ const nextButton = defineStyle({
 });
 
 const backButton = defineStyle({
-  borderRadius: 0,
-  size:'md',
-  height:'60%',
-  width:'20%',
-  border:'2px',
+  width:'50%',
+  boxShadow: '0px 1px 1px rgba(1, 0, 0, .51), 1px 1px 1px 1px rgba(0, 0, 0, 0.04)',
   borderColor:'rgb(73, 79, 86)',
-  margin: '5%',
   color:'rgb(73, 79, 86)',
   _hover:{ 
     bg: '#ebedf0',
@@ -54,10 +50,34 @@ const backButton = defineStyle({
 
 const skipButton = defineStyle({
   size:'md',
-  height:'60%',
-  width:'20%',
-  color:'rgb(97, 202, 146)',
-  marginRight: '5%',
+  // height:'15%',
+  // width:'50%',
+  // borderTop: '1px',
+  // borderBottom: '1px',
+  marginRight: '',
+    _focus:{
+    boxShadow: 'outline',
+  },
+  _hover:{ bg: '#ebedf0' },
+  _active:{
+    bg: '#dddfe2',
+    transform: 'scale(1.03)',
+    borderColor: '#bec3c9',
+  },
+  _focus:{
+    boxShadow: '0px 1px 1px rgba(1, 0, 0, .51), 1px 1px 1px 1px rgba(0, 0, 0, 0.04)',
+    // boxShadow:
+    //   '0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)',
+  },
+});
+
+const booleanButton = defineStyle({
+  // size:'xl',
+  border: '1px',
+  // height:'100%',
+  // width:'100%',
+  // color:'rgb(97, 202, 146)',
+  // marginRight: '',
     _focus:{
     boxShadow: 'outline',
   },
@@ -73,33 +93,18 @@ const skipButton = defineStyle({
   },
 });
 
-const booleanButton = defineStyle({
-  // size:'md',
-  margin: 1,
-  height:'50px',
-  width:'50vw',
-  borderRadius: '5px',
-  border:'2px',
-  bg:'white',
-  borderColor:'rgb(73, 79, 86)',
-  color:'black',
-  _focus:{
-    boxShadow: 'outline',
-  }
-});
-
 const selectButton = defineStyle({
-  size:'md',
+  // size:'lg',
   flexDirection: 'wrap',
   direction: 'row',
   height:'40px',
-  width:'25vw',
+  width:'90%',
   margin: '2%',
   borderRadius: '10px',
   border:'2px',
   bg:'white',
-  borderColor:'rgb(73, 79, 86)',
-  color:'rgb(97, 202, 146)',
+  borderColor:'rgb(157, 150, 139)',
+  color:'rgb(157, 150, 139)',
   _hover:{ bg: '#ebedf0' },
   _active:{
     bg: '#dddfe2',

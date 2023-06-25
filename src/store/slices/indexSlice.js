@@ -4,39 +4,40 @@ const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
         index: 0,
-        email: '',
         registry: {
-            survivor: '',
-            genderSurvivor:'',
+            registryType: 'employee', //general, employee, sexual, children, spouse, elderly
             email: '',
             _id: '',
-            incident: {
-                _id: '',
-                userId: '',
-                location: '',
-                date: '',
+            userId: '',
+            location: '',
+            date: '',
+            address: {
                 streetAddress: '',
                 city: '',
                 state: '',
-                postal: '',
-                wasAlcoholInvolved: 'false', //false
-                wereDrugsInvolved: 'false', //false
-                wasSurvivorAsleepTimeOfIncident: 'false', //false
-                verbalThreatsToSurvivor: 'false', //false
-                resistanceOfferedBySurvivor: 'false', //false
-                detailsOfTheAssault: 'false', //false
-                areasAssaulted: '',
-                useOfWeaponsFromAssailant: 'false', //false
-                useOfRestraintFromAssailant: 'false', //false
+                zipcode: '',
             },
-            assailant: {
-                _id: '',
-                userId: '',
-                gender: '',
-                raceEthnicity: '',
-                firstName: '',
-                lastName:'',
-            }
+            fullName: 'Vinh',
+            title: 'Owner',
+            wasAlcoholInvolved: 'false', //false
+            wereDrugsInvolved: 'false', //false
+            wasSurvivorAsleepTimeOfIncident: 'false', //false
+            verbalThreatsToSurvivor: 'false', //false
+            resistanceOfferedBySurvivor: 'false', //false
+            detailsOfTheAssault: 'false', //false
+            areasAssaulted: '',
+            useOfWeaponsFromAssailant: 'false', //false
+            useOfRestraintFromAssailant: 'false', //false
+            detailsOfIncident: '',
+            peopleInvolved: '',
+            witnesses: '',
+            incidentOutcome: '',
+            abilitiesAffected: '',
+            seekedMedicalAttention: 'false',
+            reportedToHigherPersonel: '',
+            personalAffect: '',
+            actionsTakenSinceIncident: '',
+            additionalComments: '',
         },
     },
     reducers: {
@@ -57,8 +58,7 @@ const indexSlice = createSlice({
         },
         addRegistryId(state, action) {
             state.registry._id = action.payload;
-            state.registry.incident.userId = action.payload;
-            state.registry.assailant.userId = action.payload;
+            state.registry.userId = action.payload;
         },
         addIncidentId(state, action) {
             state.registry.incident._id = action.payload;
@@ -66,12 +66,21 @@ const indexSlice = createSlice({
         addAssailantId(state, action) {
             state.registry.assailant._id = action.payload;
         },
+        addAssaultTypeId(state, action) {
+            state.registry.registryType._id = action.payload;
+        },
         updateIncident(state, action){
             state.registry.incident = action.payload;
         },
         updateAssailant(state, action) {
             state.registry.assailant = action.payload;
         },
+        registrySelect(state, action) {
+            state.registry.registryType = action.payload;
+        },
+        updateAnswerInput(state, action) {
+            state.registry.answerInputs = action.payload;
+        }
     }
     });
 
@@ -86,6 +95,9 @@ export const {
     addRegistryId, 
     addIncidentId, 
     addAssailantId,
-    updateAssailant 
+    addAssaultTypeId,
+    updateAssailant,
+    registrySelect,
+    updateAnswerInput
 } = indexSlice.actions;
 export const indexReducer = indexSlice.reducer;

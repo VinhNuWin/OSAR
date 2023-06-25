@@ -10,17 +10,19 @@
 	<link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 	<title>Documented Voices</title>
 </head>
-<body>
+<body >
 	<noscript>
 		You need to enable JavaScript to run this app.
 	</noscript>
-  <script>
+  <!-- <script>
      function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   const phrases = ['Documented Voices'];
   const el = document.getElementById("typewriter");
+  el.innerText = phrases;
+  el.style.color = "black";
 
   let sleepTime = 100;
 
@@ -39,7 +41,7 @@
   };
 
   writeLoop();
-  </script>
+  </script> -->
 	<div id="root"></div>
 
 </body>

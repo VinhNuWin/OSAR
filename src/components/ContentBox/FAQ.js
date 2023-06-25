@@ -9,7 +9,7 @@ import {
     HStack,
     Tag
   } from "@chakra-ui/react";
-  import FaqCarousel from '../../views/carousel/FaqCarousel';
+  import FaqCarousel from '../carousel/FaqCarousel';
 import ThingsToConsider from '../../data/ThingsToConsider';
 
 export default function FAQ () {
@@ -51,7 +51,40 @@ export default function FAQ () {
       {
           question: 'Cultural or community pressures',
           response: 'Factors such as cultural norms or community dynamics may influence your decision not to report.', 
-      }
+      },
+      {
+        question: 'Cultural or community pressures',
+        response: 'Factors such as cultural norms or community dynamics may influence your decision not to report.', 
+      },
+      {
+        question: 'Cultural or community pressures',
+        response: 'Factors such as cultural norms or community dynamics may influence your decision not to report.', 
+      },
+      {
+        question: 'Cultural or community pressures',
+        response: 'Factors such as cultural norms or community dynamics may influence your decision not to report.', 
+      },
+      {
+        question: 'Cultural or community pressures',
+        response: 'Factors such as cultural norms or community dynamics may influence your decision not to report.', 
+      },
+      {
+        question: 'Cultural or community pressures',
+        response: 'Factors such as cultural norms or community dynamics may influence your decision not to report.', 
+      },
+      {
+        question: 'Cultural or community pressures',
+        response: 'Factors such as cultural norms or community dynamics may influence your decision not to report.', 
+      },
+      {
+        question: 'Cultural or community pressures',
+        response: 'Factors such as cultural norms or community dynamics may influence your decision not to report.', 
+      },
+      {
+        question: 'Cultural or community pressures',
+        response: 'Factors such as cultural norms or community dynamics may influence your decision not to report.', 
+      },
+
   ]);
 
   const considerThis = faqs[index];

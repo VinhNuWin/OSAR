@@ -3,11 +3,12 @@ import RegistryComplete from './RegistryComplete';
 import { motion } from 'framer-motion';
 import { Button, Text, Flex, useMediaQuery } from '@chakra-ui/react';
 import SignIn from './SignIn';
-import MobileSignIn from '../views/MobileSignIn';
+import MobileSignIn from '../MobileSignIn';
 import { useSelector } from 'react-redux';
-import { containerVariants, homePageVariants } from '../data/containerVariants';
-import MissionStatement from '../views/modals/MissionStatement';
-import MobileView from '../views/MobileView';
+import { containerVariants, homePageVariants } from '../../data/containerVariants';
+import MissionStatement from '../../components/modals/MissionStatement';
+import MobileView from '../MobileView';
+import SelectYourRegistry from '../registries/SelectYourRegistry';
 
 
 // const ChakraBox = chakra(motion.div, {
@@ -30,8 +31,13 @@ function HomePage() {
     const questionPageIndex = index;
 
     return (
-          <div className='Registry'>
+        <div>
+        <Flex className='header'>
+        <MissionStatement />
+        </Flex>
+          <div className='Homepage'>
                     {questionPageIndex === 0 ? ( 
+                        <center>
                         <motion.div 
                         key={questionPageIndex}
                         variants={homePageVariants}
@@ -41,7 +47,8 @@ function HomePage() {
                         >
                                 { isLargerThan568 ? <SignIn /> : <MobileSignIn /> }
                         </motion.div>
-                    ) : questionPageIndex === 17 ? ( 
+                        </center>
+                    ) : questionPageIndex === 18 ? ( 
                         <motion.div 
                         key={questionPageIndex}
                         variants={homePageVariants}
@@ -51,22 +58,26 @@ function HomePage() {
                         >
                             <RegistryComplete />
                         </motion.div>
-                    ) : questionPageIndex >= 1 ? (
+                    ) : questionPageIndex === 1 ? (
+                        <SelectYourRegistry />
+                    ) : questionPageIndex >= 2 ? (
+                        <div>
                     <motion.div 
-                        key={questionPageIndex}
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
                         exit="exitAnimation"
-                        className="wrapper"
+                        className="wrapper-block"
                         >
-                            <MissionStatement />
                             { isLargerThan568 ? <Registry /> : <MobileView /> }
                     </motion.div>
+                    </div>
                     ) : null (
+                        <RegistryComplete />
                         )
                     }
    
+            </div>
             </div>
     )
 };
