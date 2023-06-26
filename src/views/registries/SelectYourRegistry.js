@@ -57,15 +57,15 @@ const dispatch = useDispatch();
                     <Flex className='answer-block' direction='column'>
                         <HStack>
                             <Button name='employee' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>
-                            <Button name='spouse' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>
+                            {/* <Button name='spouse' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button> */}
                         </HStack>
-                        <HStack>
+                        {/* <HStack>
                             <Button name='elderly' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>
                             <Button name='children' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Child</Button>
                         </HStack>
                         <HStack>
                             <Button name='sexual assault' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Sexual Assault</Button>
-                        </HStack>
+                        </HStack> */}
                     <Flex className='answer-element-continue'>
                         <Button onClick={handleRegistryInputs} >
                             Continue
