@@ -6,7 +6,7 @@ body {
   height: 100vh;
 }
 
-input {
+/* input {
   background: #fff;
   color: #525865;
   border-radius: 4px;
@@ -21,15 +21,15 @@ input {
   -moz-transition: .18s ease-out;
   -o-transition: .18s ease-out;
   transition: .18s ease-out;
-}
-input:hover {
+} */
+/* input:hover {
   box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
 }
 input:focus {
   color: #4b515d;
   border: 1px solid #B8B6B6;
   box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
-}
+} */
 
 h1 {
   font-size: 60px;

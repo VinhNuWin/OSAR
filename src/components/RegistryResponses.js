@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateIncident, updateAssailant, addSurvivor, updateRegistry } from '../store';
+import { updateRegistry } from '../store';
 import { Form } from 'antd';
 import { Button, Text, Select, Input, Flex, Stack, Card, CardHeader } from '@chakra-ui/react';
 import FullNameAndTitleModal from './modals/FullNameAndTitleModal';
@@ -8,13 +8,12 @@ import AddressModal from './modals/AddressModal';
 import { CloseIcon, CheckIcon } from '@chakra-ui/icons';
 
 function RegistryResponses() {
-    const { index, incident, assailant, registry } = useSelector((state) => {
+    const { index, employeeRegistry, registry } = useSelector((state) => {
         return {
             store: state,
             index: state.index.index,
             _id: state.form.user._id,
-            incident: state.index.registry.incident,
-            assailant: state.index.registry.assailant,
+            employeeRegistry: state.index.employeeRegistry,
             registry: state.index.registry
         };
     });
@@ -32,7 +31,7 @@ function RegistryResponses() {
                          placeholder="Select Date and Time"
                          size="md"
                          type="datetime-local"
-                         onChange={(datetime) => dispatch(updateIncident({...incident, date: datetime.target.value}))}
+                         onChange={(datetime) => dispatch(employeeRegistry({...employeeRegistry, date: datetime.target.value}))}
                         />
                 </div>
             ) : questionIndex === 2 ? ( // do you remember where the incident occured? "incidentLocation"
@@ -42,55 +41,55 @@ function RegistryResponses() {
                     </motion.div>
             ) : questionIndex === 3 ? ( // Was Alcohol Involved "alcoholInvolved"
                 <motion.div className='flex-box'>
-                        <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wasAlcoholInvolved: true}))}>
+                        <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, wasAlcoholInvolved: true}))}>
                         <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
                             Yes
                         </Button>
-                        <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wasAlcoholInvolved: false}))}>
+                        <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, wasAlcoholInvolved: false}))}>
                         <CloseIcon w={8} boxSize={4} color='red.500' m='1%' />
                             No
                         </Button>
                 </motion.div>
             ) : questionIndex === 4 ? ( // Were Drugs Involved "drugsInvolved"    
                 <div className='flex-box'>       
-                        <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wereDrugsInvolved: true}))}>
+                        <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, wereDrugsInvolved: true}))}>
                             <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
                               Yes
                         </Button>    
-                        <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wereDrugsInvolved: false}))}>
+                        <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, wereDrugsInvolved: false}))}>
                             <CloseIcon w={8} boxSize={4} color='red.500' m='1%' />
                               No
                         </Button>
                     </div>
             ) : questionIndex === 5 ? ( // Was Survivor Asleep at time of Incident "survivorAsleep"
                 <div className='flex-box'>  
-                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wasSurvivorAsleepTimeOfIncident: true}))}>
+                    <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, wasSurvivorAsleepTimeOfIncident: true}))}>
                         <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
                               Yes
                     </Button>           
-                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, wasSurvivorAsleepTimeOfIncident: false}))}>
+                    <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, wasSurvivorAsleepTimeOfIncident: false}))}>
                         <CloseIcon w={8} boxSize={4} color='red.500' m='1%' />
                               No
                     </Button>            
                 </div>   
             ) : questionIndex === 6 ? ( // Were there verbal threats to the survivor
                 <div className='flex-box'>
-                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, verbalThreatsToSurvivor: true}))}>
+                    <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, verbalThreatsToSurvivor: true}))}>
                         <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
                               Yes
                     </Button>  
-                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, verbalThreatsToSurvivor: false}))}>
+                    <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, verbalThreatsToSurvivor: false}))}>
                         <CloseIcon w={8} boxSize={4} color='red.500' m='1%' />    
                               No
                     </Button>
                 </div>   
             ) : questionIndex === 7 ? ( // Was resistance offered by survivor
                 <div className='flex-box'>
-                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, resistanceOfferedBySurvivor: true}))}>
+                    <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, resistanceOfferedBySurvivor: true}))}>
                         <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
                               Yes
                     </Button>       
-                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, resistanceOfferedBySurvivor: false}))}>
+                    <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, resistanceOfferedBySurvivor: false}))}>
                         <CloseIcon w={8} boxSize={4} color='red.500' m='1%' />
                               No
                     </Button>
@@ -109,7 +108,7 @@ function RegistryResponses() {
                                     }}
                                     type='text'
                                     name='detailsOfTheAssault'
-                                    onChange={e => dispatch(updateIncident({...incident, [e.target.name]: e.target.value}))}
+                                    onChange={e => dispatch(employeeRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
                                     placeholder="In your own words a brief description of the event"
                                     />
                                 </Form.Item>
@@ -130,7 +129,7 @@ function RegistryResponses() {
                         }}
                         type='text'
                         name='areasAssaulted'
-                        onChange={e => dispatch(updateIncident({...incident, [e.target.name]: e.target.value}))}
+                        onChange={e => dispatch(employeeRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
                         placeholder="List areas assaulted ie. 'face, arms, groin, etc...' "
                         />
                     </Form.Item>
@@ -139,38 +138,38 @@ function RegistryResponses() {
             </div>
             ) : questionIndex === 10 ? ( // Use of weapons
                 <div>
-                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, useOfWeaponsFromAssailant: true}))}>
+                    <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, useOfWeaponsFromAssailant: true}))}>
                         <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
                               Yes
                     </Button>  
-                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, useOfWeaponsFromAssailant: false}))}>
+                    <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, useOfWeaponsFromAssailant: false}))}>
                         <CloseIcon w={8} boxSize={4} color='red.500' m='1%' />
                               No
                     </Button>
                 </div>                        
             ) : questionIndex === 11 ? ( // Use of Restraints 
                 <div>
-                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, useOfRestraintFromAssailant: true}))}>
+                    <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, useOfRestraintFromAssailant: true}))}>
                         <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
                               Yes
                     </Button> 
-                    <Button variant='booleanButton' onClick={() => dispatch(updateIncident({...incident, useOfRestraintFromAssailant: false}))}>
+                    <Button variant='booleanButton' onClick={() => dispatch(employeeRegistry({...employeeRegistry, useOfRestraintFromAssailant: false}))}>
                         <CloseIcon w={8} boxSize={4} color='red.500' m='1%' />
                               No
                     </Button>
                 </div>        
             ) : questionIndex === 12 ? ( // Assailants Gender
                 <motion.div>
-                    <Button variant='selectButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'male'}))}>
+                    <Button variant='selectButton' onChange={() => dispatch(employeeRegistry({...employeeRegistry, gender: 'male'}))}>
                               Male
                     </Button>
-                    <Button variant='selectButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'female'}))}>
+                    <Button variant='selectButton' onChange={() => dispatch(employeeRegistry({...employeeRegistry, gender: 'female'}))}>
                               Female
                     </Button>
-                    <Button variant='selectButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'non-binary'}))}>
+                    <Button variant='selectButton' onChange={() => dispatch(employeeRegistry({...employeeRegistry, gender: 'non-binary'}))}>
                               Non-Binary
                     </Button>  
-                    <Button variant='selectButton' onChange={() => dispatch(updateAssailant({...assailant, gender: 'unknown'}))}>
+                    <Button variant='selectButton' onChange={() => dispatch(employeeRegistry({...employeeRegistry, gender: 'unknown'}))}>
                               Unknown
                     </Button> 
                 </motion.div>                     
@@ -182,7 +181,7 @@ function RegistryResponses() {
                                 <Select
                                     placeholder='Ethnicity'
                                     name='raceEthnicity'
-                                    onChange={(e) => dispatch(updateAssailant({ ...assailant, raceEthnicity: e.target.value}))}
+                                    onChange={(e) => dispatch(employeeRegistry({ ...employeeRegistry, raceEthnicity: e.target.value}))}
                                     >
                                     <option value='white'>White</option>
                                     <option value='black/african'>Black or African American</option>
@@ -211,22 +210,22 @@ function RegistryResponses() {
                             <Input 
                                placeholder="Name of Survivor"
                                name='survivor'
-                               onChange={(e) => dispatch(addSurvivor({ [e.target.name]: e.target.value}))} />
+                               onChange={(e) => dispatch(employeeRegistry({ [e.target.name]: e.target.value}))} />
                             </Form.Item>     
                     </Form> 
                 </div>
             ) : questionIndex === 16 ? ( // Assailants Gender
                 <motion.div>
-                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registry, genderSurvivor: 'male'}))}>
+                    <Button variant='selectButton' onChange={() => dispatch(employeeRegistry({...employeeRegistry, genderSurvivor: 'male'}))}>
                               Male
                     </Button>
-                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registry, genderSurvivor: 'female'}))}>
+                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...employeeRegistry, genderSurvivor: 'female'}))}>
                               Female
                     </Button>
-                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registry, genderSurvivor: 'non-binary'}))}>
+                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...employeeRegistry, genderSurvivor: 'non-binary'}))}>
                               Non-Binary
                     </Button>  
-                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registry, genderSurvivor: 'unknown'}))}>
+                    <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...employeeRegistry, genderSurvivor: 'unknown'}))}>
                               Unknown
                     </Button> 
                 </motion.div>  

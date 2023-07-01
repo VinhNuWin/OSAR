@@ -4,10 +4,11 @@ const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
         index: 0,
-        registry: {
-            registryType: 'employee', //general, employee, sexual, children, spouse, elderly
-            email: '',
-            _id: '',
+        employeeRegistry: {
+            registryType: '',
+            fullName: '',
+            email: 'Vinhn333',
+            _id: '6494ccd363e3e1106df02ff2',
             userId: '',
             location: '',
             date: '',
@@ -17,8 +18,33 @@ const indexSlice = createSlice({
                 state: '',
                 zipcode: '',
             },
-            fullName: 'Vinh',
-            title: 'Owner',
+            title: '',
+            detailsOfIncident: '',
+            peopleInvolved: '',
+            witnesses: '',
+            incidentOutcome: '',
+            abilitiesAffected: '',
+            seekedMedicalAttention: 'false',
+            reportedToHigherPersonel: '',
+            personalAffect: '',
+            actionsTakenSinceIncident: '',
+            additionalComments: '',
+        },
+        registry: {
+            registryType: '',
+            fullName: '',
+            email: 'Vinhn3333@gmail.com',
+            _id: '6494cc1637d1502267c0b187',
+            userId: '',
+            location: '',
+            date: '',
+            address: {
+                streetAddress: '',
+                city: '',
+                state: '',
+                zipcode: '',
+            },
+            title: '',
             wasAlcoholInvolved: 'false', //false
             wereDrugsInvolved: 'false', //false
             wasSurvivorAsleepTimeOfIncident: 'false', //false
@@ -51,36 +77,24 @@ const indexSlice = createSlice({
             state.registry.survivor = action.payload;
         },
         updateRegistry(state, action) {
-            state.registry = action.payload;
+            state.employeeRegistry = action.payload;
+        },
+        updateAddress(state, action) {
+            state.employeeRegistry.address = action.payload;
         },
         addEmail(state, action){
-            state.registry.email = action.payload;
+            state.employeeRegistry.email = action.payload;
         },
         addRegistryId(state, action) {
-            state.registry._id = action.payload;
-            state.registry.userId = action.payload;
-        },
-        addIncidentId(state, action) {
-            state.registry.incident._id = action.payload;
-        },
-        addAssailantId(state, action) {
-            state.registry.assailant._id = action.payload;
+            state.employeeRegistry._id = action.payload;
+            state.employeeRegistry.userId = action.payload;
         },
         addAssaultTypeId(state, action) {
             state.registry.registryType._id = action.payload;
         },
-        updateIncident(state, action){
-            state.registry.incident = action.payload;
-        },
-        updateAssailant(state, action) {
-            state.registry.assailant = action.payload;
-        },
         registrySelect(state, action) {
-            state.registry.registryType = action.payload;
+            state.employeeRegistry.registryType = action.payload;
         },
-        updateAnswerInput(state, action) {
-            state.registry.answerInputs = action.payload;
-        }
     }
     });
 
@@ -91,13 +105,9 @@ export const {
     addSurvivor,
     updateRegistry,
     addEmail, 
-    updateIncident, 
     addRegistryId, 
-    addIncidentId, 
-    addAssailantId,
-    addAssaultTypeId,
-    updateAssailant,
     registrySelect,
-    updateAnswerInput
+    updateAnswerInput,
+    updateAddress
 } = indexSlice.actions;
 export const indexReducer = indexSlice.reducer;

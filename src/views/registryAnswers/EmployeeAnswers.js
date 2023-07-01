@@ -6,7 +6,7 @@ import { Button, Text, Select, Input, Flex, Card, CardHeader, FormControl, FormL
 import AssailantNameModal from '../../components/modals/FullNameAndTitleModal';
 import AddressModal from '../../components/modals/AddressModal';
 import { CloseIcon, CheckIcon } from '@chakra-ui/icons';
-import { BooleanYesNo, BooleanIfYesName, DateAndTime, Address, FullNameAndTitle } from '../../components/buttons/RegistryResponseComponents.js.js';
+import { BooleanYesNo, BooleanIfYesName, DateAndTime, Address, FullNameAndTitle } from '../../components/buttons/RegistryResponseComponents.js';
 import BackButton from '../../components/buttons/BackButton';
 import RegistryComplete from '../pages/RegistryComplete';
 // import FullNameAndTitle from '../../components/buttons/RegistryResponseComponents/FullNameAndTitle';
@@ -14,28 +14,28 @@ import NextButton from '../../components/buttons/NextButton';
 import NameModal from '../../components/modals/NameModal';
 
 function EmployeeAnswers() {
-    const { index, _id, registry, registryType, location, date, streetAddress, city, state, zipcode, fullName, title, detailsOfIncident, peopleInvolved, witnesses, incidentOutcome, abilitiesAffected, seekedMedicalAttention, reportedToHigherPersonel, personalAffect, actionsTakenSinceIncident, additionalComments } = useSelector((state) => {
+    const { index, _id, employeeRegistry, registryType, location, date, streetAddress, city, state, zipcode, fullName, title, detailsOfIncident, peopleInvolved, witnesses, incidentOutcome, abilitiesAffected, seekedMedicalAttention, reportedToHigherPersonel, personalAffect, actionsTakenSinceIncident, additionalComments } = useSelector((state) => {
         return {
             index: state.index.index,
-            _id: state.index.registry._id,
-            registry: state.index.registry,
-            date: state.index.registry.date,
-            streetAddress: state.index.registry.address.streetAddress,
-            fullName: state.index.registry.fullName,
-            title: state.index.registry.title,
-            city: state.index.registry.address.city,
-            state: state.index.registry.address.state,
-            zipcode: state.index.registry.address.zipcode,
-            detailsOfIncident: state.index.registry.detailsOfIncident,
-            peopleInvolved: state.index.registry.peopleInvolved,
-            witnesses: state.index.registry.witnesses,
-            incidentOutcome: state.index.registry.incidentOutcome,
-            abilitiesAffected: state.index.registry.abilitiesAffected,
-            seekedMedicalAttention: state.index.registry.seekedMedicalAttention,
-            reportedToHigherPersonel: state.index.registry.reportedToHigherPersonel,
-            personalAffect: state.index.registry.personalAffect,
-            actionsTakenSinceIncident: state.index.registry.actionsTakenSinceIncident,
-            additionalComments: state.index.registry.additionalComments
+            _id: state.index.employeeRegistry._id,
+            employeeRegistry: state.index.employeeRegistry,
+            date: state.index.employeeRegistry.date,
+            streetAddress: state.index.employeeRegistry.address.streetAddress,
+            fullName: state.index.employeeRegistry.fullName,
+            title: state.index.employeeRegistry.title,
+            city: state.index.employeeRegistry.address.city,
+            state: state.index.employeeRegistry.address.state,
+            zipcode: state.index.employeeRegistry.address.zipcode,
+            detailsOfIncident: state.index.employeeRegistry.detailsOfIncident,
+            peopleInvolved: state.index.employeeRegistry.peopleInvolved,
+            witnesses: state.index.employeeRegistry.witnesses,
+            incidentOutcome: state.index.employeeRegistry.incidentOutcome,
+            abilitiesAffected: state.index.employeeRegistry.abilitiesAffected,
+            seekedMedicalAttention: state.index.employeeRegistry.seekedMedicalAttention,
+            reportedToHigherPersonel: state.index.employeeRegistry.reportedToHigherPersonel,
+            personalAffect: state.index.employeeRegistry.personalAffect,
+            actionsTakenSinceIncident: state.index.employeeRegistry.actionsTakenSinceIncident,
+            additionalComments: state.index.employeeRegistry.additionalComments
         };
     });
 
@@ -43,22 +43,22 @@ function EmployeeAnswers() {
     const questionIndex = index - 1;
     const TextArea = Input;
 
-    console.log(registry);
+    console.log(employeeRegistry);
     console.log(index);
+
 
     return (
         <Flex >
             { questionIndex === 1 ? ( //Can you provide your full name and your job title
-            <Flex className='four-input-name' >
-                {/* <Button variant='nextButton'/> */}
+            <Flex >
                     <FullNameAndTitle />
             </Flex>
             ) : questionIndex === 2 ? ( //What is the date and approximate time of the incident
-                    <motion.div className='four-date-time'>
+                    <motion.div >
                         <DateAndTime />
                     </motion.div>
             ) : questionIndex === 3 ? ( // Where did the incident take place
-                <motion.div className='four-input-address' >
+                <motion.div  >
                     <Address />
                 </motion.div>
             ) : questionIndex === 4 ? ( // Who were the people involved in the incident
@@ -70,7 +70,7 @@ function EmployeeAnswers() {
                             name='peopleInvolved'
                             h={20}
                             width={{ base: '12em', md: '14em', lg: '20em' }} 
-                            onChange={e => dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))}
+                            onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
                             placeholder="Name1, Name2, etc..."
                         />
                 </FormControl>
@@ -92,7 +92,7 @@ function EmployeeAnswers() {
                               }}
                               type='text'
                               name='detailsOfIncident'
-                              onChange={e => dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))}
+                              onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
                               placeholder="Bullet Point of events"
                               />
                           </Form.Item>
@@ -108,7 +108,7 @@ function EmployeeAnswers() {
                       name='witnesses'
                         h={20}
                         width={{ base: '12em', md: '14em', lg: '24em' }} 
-                        onChange={e => dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))}
+                        onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
                         placeholder="Name1, Name2, etc..."
                     />
             </FormControl>
@@ -122,7 +122,7 @@ function EmployeeAnswers() {
                         h={20}
                         width={{ base: '12em', md: '14em', lg: '24em' }} 
                         name='incidentOutcome'
-                        onChange={e => dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))}
+                        onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
                         placeholder="What happened from this incident.."
                     />
             </FormControl>
@@ -136,7 +136,7 @@ function EmployeeAnswers() {
                         h={20}
                         width={{ base: '12em', md: '14em', lg: '24em' }} 
                                     name='abilitiesAffected'
-                                    onChange={e => dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))}
+                                    onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
                                     placeholder="Brief description.."
                                     />
                             </FormControl>
@@ -168,7 +168,7 @@ function EmployeeAnswers() {
                                     }}
                                     type='text'
                                     name='personalAffect'
-                                    onChange={e => dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))}
+                                    onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
                                     placeholder="Person1, Person2, etc..."
                                     />
                                 </Form.Item>
@@ -190,14 +190,14 @@ function EmployeeAnswers() {
                                     }}
                                     type='text'
                                     name='additionalComments'
-                                    onChange={e => dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))}
+                                    onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
                                     placeholder="Person1, Person2, etc..."
                                     />
                                 </Form.Item>
                                 </div>
                             </Form>
             </motion.div>            
-            ) : questionIndex === 14 ? (
+            ) : questionIndex === 15 ? (
                 <div>
                     <RegistryComplete />
                 </div>  

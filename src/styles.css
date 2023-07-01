@@ -5,7 +5,7 @@
 .Homepage {
   /* background-image: 
   url(
-  "/src/images/HomePage.png"); */
+  "/src/images/Yes.png"); */
   width:100vw;
   height: 100vh;
   /* background-size: 100vh; */
@@ -16,8 +16,6 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-top: 10%;
-  padding: 2%;
 }
 
 .sign-in-element-typewriter {
@@ -25,11 +23,85 @@
   flex-direction: column;
 }
 
+.dual-panel-wrapper{
+  width: 100vw;
+  height: 100vh;
+}
+.panel-one{
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+}
+.panel-two{
+  margin: 1%;
+  border-radius: 30px;
+  width: 50vw;
+  height: 100vh;
+    background-image: 
+  url(
+  "/src/images/Yes.png");
+}
+
+.signin-wrapper{
+  flex-direction: column;
+  height: 100vh;
+  width: 40vw;
+  display: flex;
+  align-content: center;
+  text-align: center;
+}
+
+.signin-h1 {
+  display: flex;
+  font-size: x-large;
+  height: 15%;
+  width: 50%;
+  /* margin-top: 5%; */
+}
+.signin-h2{
+
+  font-size: large;
+  height: 10%;
+}
+.signin-body{
+  height: 20%;
+}
 .sign-in-element-email {
-  padding-top: 20%;
+  height: 50vh;
   width: 30vw;
   flex-direction: column;
   align-items: center;
+  padding-top: 5%;
+}
+.signin-start-registry{
+  position: absolute;
+  width: 40%;
+}
+
+.panel-one-questions{
+  /* height: 20vh; */
+  width: 50vw;
+  position: absolute;
+  align-items: center;
+  top: 25%;
+  justify-content: center;
+}
+
+.panel-one-answers{
+  position: absolute;
+  align-items: center;
+  top: 40%;
+  /* height: 40vh; */
+  width: 50vw;
+  justify-content: center;
+}
+.panel-one-buttons{
+  position: absolute;
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  bottom: 10%;
 }
 
 .wrapper-block {

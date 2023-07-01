@@ -10,16 +10,14 @@ import { EmailIcon } from '@chakra-ui/icons';
 
 export default function SelectYourRegistry() {
 const dispatch = useDispatch();
-    const { index, _id, registry, registryType } = useSelector((state)=> {
+    const { index, _id, employeeRegistry, registryType } = useSelector((state)=> {
         return {
             index: state.index.index,
-            _id: state.index.registry._id,
-            registry: state.index.registry,
-            registryType: state.index.registry.registryType,
+            _id: state.index.employeeRegistry._id,
+            employeeRegistry: state.index.employeeRegistry,
+            registryType: state.index.employeeRegistry.registryType,
         }
     })
-
-    console.log(registry);
 
     const newIndex = index + 1;
 
@@ -30,7 +28,7 @@ const dispatch = useDispatch();
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Method': 'GET,PATCH,POST,DELETE',
                 },
-                registry: registry,
+                employeeRegistry: employeeRegistry,
                 registryType: registryType,
                 _id: _id
             });
@@ -39,21 +37,20 @@ const dispatch = useDispatch();
             console.log(response);
         }
 
+        console.log(registryType);
     return (
-
-<Grid id='content'
+<Flex className='dual-panel-wrapper'>
+<Flex className='panel-one'
 >
-                    <div className='three'>
-                         <GridItem>
-
-                         <Heading color='black'>
+<Heading color='black'>
                                    Select a Registry
                          </Heading>
-                         </GridItem>
+                    <div className='three'>
+
                     </div>
-                    <GridItem>
+
                          <div className='four'>
-                <Stack className='answer-wrapper-block'>
+                <Stack className=''>
                     <Flex className='answer-block' direction='column'>
                         <HStack>
                             <Button name='employee' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>
@@ -74,8 +71,13 @@ const dispatch = useDispatch();
                 </Flex>
              </Stack>
              </div>
-  </GridItem>
-</Grid>
+</Flex>
+
+<Flex className='panel-two'>
+
+</Flex>
+
+</Flex>
 
         // <Flex className='wrapper-block'>
         //                 <Heading color='black' className='question-block' justifyContent='center'>

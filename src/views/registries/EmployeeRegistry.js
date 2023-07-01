@@ -15,14 +15,15 @@ import RegistryStepper from '../../components/RegistryStepper';
 import FullNameAndTitleModal from '../../components/modals/FullNameAndTitleModal';
 import AddressModal from '../../components/modals/AddressModal';
 import { EmployeeSummary } from '../../components/summary/EmployeeSummary';
+import FinalSubmit from '../../components/buttons/FinalSubmit';
 
 export default function EmployeeRegistry() {
     const { registryType, index, _id, email } = useSelector((state) => {
         return {
-            registryType: state.index.registry.registryType,
+            registryType: state.index.employeeRegistry.registryType,
             index: state.index.index,
-            _id: state.index.registry._id,
-            email: state.index.registry.email
+            _id: state.index.employeeRegistry._id,
+            email: state.index.employeeRegistry.email
         }
     })
 
@@ -31,74 +32,32 @@ export default function EmployeeRegistry() {
     const registrySelected = registryType;
 
     return (
-        <div className='wrapper-block'>
+<Flex>
+
         { index <= 14 ? (
-            <Grid id='content'
-            >
-                <div className='one'>
-                    <EmployeeSummary />
-                </div>
-                <div className='two'>
-                <RegistryStepper />
-                </div>
-                <div className='three'>
-                <EmployeeQuestions />
-                </div>
-                <div className='four'>
-                {/* <Flex className='answer-block'> */}
-                    <div className='four-input-wrapper'>
-                        <div className='four-input'>
-                            <EmployeeAnswers />
-                        </div>
-                        <div className='four-input-buttons'>
-                        <BackButton />
-                        <NextButton />
-                        </div>
-                    </div>
-                {/* </Flex > */}
-                </div>
-
-                <div className='five'>
-                    <Flex className='did-you-know-block'>
-                        <DidYouKnow />
-                    </Flex>
-                </div>
-                <div className='six'>
-
-
-                <Flex className='profile-card' direction='column'>
-            <Flex className='' direction='column'>
-            <Text size='lg' fontWeight='500'  >RegistryId:</Text>
-            <h3>{_id}</h3>
+            <Flex className='panel-one' direction='column'>
+                <Flex className='panel-one-questions' >
+                    <EmployeeQuestions />
+                </Flex>
+                <Flex className='panel-one-answers'>
+                    <EmployeeAnswers />
+                </Flex>
+                <Flex className='panel-one-buttons'>
+                <BackButton />
+                {index===14 ? <FinalSubmit /> : <NextButton />}       
+                </Flex>
             </Flex>
-            <Flex className='' direction='column'>
-              <Text size='lg' fontWeight='500'  >Email:</Text>
-              <h3>{email}</h3>
-            </Flex>
-            <Flex className='' direction='column'>
-              <Text size='lg' fontWeight='500'  >Registry Type:</Text>
-              <h3>{registryType}</h3>
-            </Flex>
-            </Flex>
-      
-                </div>
-                <div className='five-header-bubble'>
-                <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }} fontWeight='500' color='rgb(157, 150, 139)' >Did you know</Text>
-                </div>
-                <div className='six-header-bubble'>
-                <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }} fontWeight='500' color='rgb(157, 150, 139)'>REGiSTRY</Text>
-                </div>
-                <div className='one-header-bubble'>
-                <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }} fontWeight='500' color='rgb(157, 150, 139)'>SUMMARY</Text>
-                </div>
-            </Grid>
-
-        ) : (
-            <div>
+        ) : index === 15 ? (
                 <RegistryComplete />
-            </div>
+        ) : null (
+            <RegistryComplete />
         )} 
-        </div>
+
+
+<Flex className='panel-two'>
+
+</Flex>
+        </Flex>
     )
 }
 

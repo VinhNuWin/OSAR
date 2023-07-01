@@ -16,7 +16,7 @@ import SpouseRegistry from '../registries/SpouseRegistry';
 export default function Registry() {
     const { registryType } = useSelector((state) => {
         return {
-            registryType: state.index.registry.registryType
+            registryType: state.index.employeeRegistry.registryType
         }
     })
 

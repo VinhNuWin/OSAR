@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
+import { useState } from 'react';
 import { Button, Flex, Input, Select, FormControl, FormLabel } from "@chakra-ui/react";
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRegistry } from "../../store/slices/indexSlice";
+import { updateRegistry, addEmployeeAnswer, updateAddress } from "../../store/slices/indexSlice";
 import FullNameAndTitleModal from "../modals/FullNameAndTitleModal";
 import NextButton from "./NextButton";
 import BackButton from "./BackButton";
@@ -11,9 +12,10 @@ import BackButton from "./BackButton";
 export const BooleanYesNo = (props) =>  {
     const dispatch = useDispatch();
 
-    const { registry } = useSelector((state)=> {
+    const { registry, employeeRegistry } = useSelector((state)=> {
         return {
-            registry: state.registry
+            registry: state.index.registry,
+            employeeRegistry: state.index.registry.employeeRegistry
         }
     })
 
@@ -33,19 +35,12 @@ export const BooleanYesNo = (props) =>  {
     )
 }
 
-export const BooleanIfYesName = () => {
-
-    return (
-            <FullNameAndTitleModal />
-    )
-}
-
 export const DateAndTime = () => {
     const dispatch = useDispatch();
 
-    const { registry } = useSelector((state)=> {
+    const { employeeRegistry } = useSelector((state)=> {
         return {
-            registry: state.index.registry
+            employeeRegistry: state.index.employeeRegistry
         }
     })
 
@@ -53,9 +48,10 @@ export const DateAndTime = () => {
         <div>    
             <Input
                  placeholder="Select Date and Time"
+                 variant='flushed'
                  size="md"
                  type="datetime-local"
-                 onChange={(datetime) => dispatch(updateRegistry({...registry, date: datetime.target.value}))}
+                 onChange={(datetime) => dispatch(updateRegistry({...employeeRegistry, date: datetime.target.value}))}
                 />
         </div>
     )
@@ -64,32 +60,28 @@ export const DateAndTime = () => {
 export const Address = () => {
     const dispatch = useDispatch();
 
-    const { registry, streetAddress, address, state, zipcode, city } = useSelector((state)=> {
+    const { address, state, zipcode, city } = useSelector((state)=> {
         return {
-            registry: state.index.registry,
-            address: state.index.registry.address,
-            streetAddress: state.index.registry.address.streetAddress,
-            state: state.index.registry.address.state,
-            zipcode: state.index.registry.address.zipcode,
-            city: state.index.registry.address.city
+            address: state.index.employeeRegistry.address,
+            streetAddress: state.index.employeeRegistry.address.streetAddress,
+            state: state.index.employeeRegistry.address.state,
+            zipcode: state.index.employeeRegistry.address.zipcode,
+            city: state.index.employeeRegistry.address.city
         }
     })
 
     return (
-        <Flex flexWrap='wrap'>
+        <Flex flexWrap='wrap' >
             <FormControl>
-            <FormLabel >Address</FormLabel>
-            <Input size='sm' w='14rem' placeholder='Address Line' name='streetAddress'  onChange={(e)=>dispatch(updateRegistry({...streetAddress, [e.target.name]: e.target.value}))} />
+            <Input size='md' variant='flushed' placeholder='Address Line' name='streetAddress'  onChange={(e)=>dispatch(updateAddress({...address, [e.target.name]: e.target.value}))} />
         </FormControl>
 
             <FormControl mt={2}>
-                <FormLabel>City</FormLabel>
-                <Input size='sm' w='14rem'  placeholder='City' name='city' onChange={(e) => dispatch(updateRegistry({...city, [e.target.name]: e.target.value}))} />
+                <Input size='md' variant='flushed'   placeholder='City' name='city' onChange={(e) => dispatch(updateAddress({...address, [e.target.name]: e.target.value}))} />
             </FormControl>
             <Flex flexWrap='nowrap'>
             <FormControl mt={2}>
-            <FormLabel>State</FormLabel>
-                <Select size='sm' w={24} placeholder='Select state' name='state' onChange={(e) => dispatch(updateRegistry({...state, [e.target.name]: e.target.value}))}>
+                <Select size='md' variant='flushed' w={24} placeholder='Select state' name='state' onChange={(e) => dispatch(updateAddress({...address, [e.target.name]: e.target.value}))}>
                     <option value="Alabama">Alabama</option>
                     <option value="Alaska">Alaska</option>
                     <option value="Arizona">Arizona</option>
@@ -142,9 +134,9 @@ export const Address = () => {
                     <option value="Wyoming">Wyoming</option>
                 </Select>
             </FormControl>
-            <FormControl mt={2} pl={8}>
-            <FormLabel>Zipcode</FormLabel>
-            <Input size='sm' w={24} placeholder='Zipcode' name='zipcode' onChange={(e) => dispatch(updateRegistry({...zipcode, [e.target.name]: e.target.value}))} />
+            <FormControl mt={2} pl={0}>
+
+            <Input size='md' variant='flushed' w={24} placeholder='Zipcode' name='zipcode' onChange={(e) => dispatch(updateAddress({...address, [e.target.name]: e.target.value}))} />
         </FormControl>
         </Flex>
 
@@ -154,42 +146,24 @@ export const Address = () => {
     )
 }
 
-export const BooleanIfYesExplain = () => {
-    const dispatch = useDispatch();
-
-    const { registry, address } = useSelector((state)=> {
-        return {
-            registry: state.index.registry,
-        }
-    })
-
-    return (
-        <Flex>
-            
-        </Flex>
-    )
-
-}
-
 export const FullNameAndTitle = () => {
     const dispatch = useDispatch();
 
-    const { registry, address } = useSelector((state)=> {
+    const { employeeRegistry } = useSelector((state)=> {
         return {
-            registry: state.index.registry,
+            employeeRegistry: state.index.employeeRegistry
         }
     })
 
     return (
         <div>
         <FormControl>
-                <FormLabel>Full name</FormLabel>
-                <Input variant='outline' width={{ base: '12em', md: '14em', lg: '20em' }} name='fullName' onChange={(e)=>dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))} />
+                <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...employeeRegistry, [e.target.name]: e.target.value}))} />
               </FormControl>
   
               <FormControl mt={3}>
-                <FormLabel>Title</FormLabel>
-                <Input variant='outline'  name='title' onChange={(e) => dispatch(updateRegistry({...registry, [e.target.name]: e.target.value}))} />
+                <Input variant='flushed'  name='title' placeholder='Job Title' onChange={(e) => dispatch(updateRegistry({ ...employeeRegistry, [e.target.name]: e.target.value}))} />
+
         </FormControl>
         </div>
     )

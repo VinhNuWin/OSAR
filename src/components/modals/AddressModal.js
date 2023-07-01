@@ -16,14 +16,14 @@ import {
     Icon
   } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateIncident } from '../../store';
+import { employeeRegistry } from '../../store';
 import { AiOutlineCheck } from 'react-icons/ai';
 
 export default function AddressModal() {
     const dispatch = useDispatch();
-    const { incident } = useSelector((state) => {
+    const { employeeRegistry } = useSelector((state) => {
         return {
-            incident : state.index.registry.incident
+          employeeRegistry : state.index.employeeRegistry
         }
     })
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -51,21 +51,21 @@ export default function AddressModal() {
             <ModalBody pb={6}>
                 <FormControl>
                     <FormLabel>Address Line</FormLabel>
-                    <Input ref={initialRef} name='streetAddress' placeholder='Street Address' onChange={(e)=>dispatch(updateIncident(...incident, {[e.target.name]: e.target.value}))} />
+                    <Input ref={initialRef} name='streetAddress' placeholder='Street Address' onChange={(e)=>dispatch(employeeRegistry(...employeeRegistry, {[e.target.name]: e.target.value}))} />
                 </FormControl>
   
                 <FormControl mt={4}>
                     <FormLabel>City</FormLabel>
-                    <Input placeholder='City' name='city' onChange={(e) => dispatch(updateIncident({...incident, [e.target.name]: e.target.value}))} />
+                    <Input placeholder='City' name='city' onChange={(e) => dispatch(employeeRegistry({...employeeRegistry, [e.target.name]: e.target.value}))} />
                 </FormControl>
 
                 <FormControl mt={4}>
                     <FormLabel>Zipcode</FormLabel>
-                    <Input placeholder='Zipcode' name='zipcode' onChange={(e) => dispatch(updateIncident({...incident, [e.target.name]: e.target.value}))} />
+                    <Input placeholder='Zipcode' name='zipcode' onChange={(e) => dispatch(employeeRegistry({...employeeRegistry, [e.target.name]: e.target.value}))} />
                 </FormControl>
 
                 <FormLabel mt={4}>State</FormLabel>
-                    <Select placeholder='Select state' name='state' onChange={(e) => dispatch(updateIncident({...incident, [e.target.name]: e.target.value}))}>
+                    <Select placeholder='Select state' name='state' onChange={(e) => dispatch(employeeRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}>
                     <option value="Alabama">Alabama</option>
                     <option value="Alaska">Alaska</option>
                     <option value="Arizona">Arizona</option>
