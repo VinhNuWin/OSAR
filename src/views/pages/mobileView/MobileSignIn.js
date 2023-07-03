@@ -1,15 +1,15 @@
 import React from 'react';
-import '../../styles.css';
-import '../../index.css';
+import '../../../styles.css';
+import '../../../index.css';
 import { useState } from 'react';
 import { motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex, addEmail, add_Id, addRegistryId, registrySelect } from '../../store';
+import { changeIndex, addEmail, add_Id, addRegistryId, registrySelect } from '../../../store';
 import axios from 'axios';
 import { Flex, Button, HStack, Stack, FormControl, FormLabel, FormHelperText, Input, Spinner, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
-import Loader from '../../components/Loader';
-import ThingsToConsider from '../../data/ThingsToConsider';
+import Loader from '../../../components/Loader';
+import ThingsToConsider from '../../../data/ThingsToConsider';
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -76,8 +76,8 @@ function SignIn() {
     const transition = { duration: 4, yoyo: Infinity, ease: "easeInOut" };
 
     return (
-        <Flex className='two-panel-wrapper'>
-        <Flex className='panel-one'>
+        <Flex className='dual-panel-wrapper'>
+        <Flex className=''>
             <Stack className='signin-wrapper'>
             <center>
 
@@ -139,27 +139,8 @@ function SignIn() {
                 </center>
                     </Stack>
         </Flex>
-
-            <Flex className='panel-two'>
-                                    img
-            </Flex>
         </Flex>
     )
 }
 
 export default SignIn;
-
-{/* <Flex >
-<motion.div className=''>
-<div className="sign-in-element-typewriter">
-<h1><span id="typewriter"></span><span id="cursor">|</span></h1>
-      <motion.div
-        className="box"
-        initial={{ offsetDistance: "0%", scale: 2.5 }}
-        animate={{ offsetDistance: "100%", scale: 1 }}
-        transition={transition}
-      />
-    </div>
-    { loader ? <Loader /> && 'Starting Registry' : ""}
-</motion.div>
-</Flex> */}

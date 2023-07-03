@@ -5,7 +5,6 @@ const formSlice = createSlice({
   initialState: {
     sexualAssaultForm: [
       '',
-      '',
       'Can you please provide your full name?',
       'When did the incident occur?', //1
       'Do you remember where the incident occurred?', //2
@@ -26,7 +25,6 @@ const formSlice = createSlice({
     ],
   generalForm: [
     '',
-    '',
     'Use of weapons', //10
     'Use of Restraints', //11
     'Assailants Gender', //12 assailant
@@ -36,7 +34,6 @@ const formSlice = createSlice({
     'Survivor Gender' //16
   ],
   childrensForm: [
-    '',
     '',
     'Are you in immediate danger?',
     'Do you require medical assistance?',
@@ -55,7 +52,6 @@ const formSlice = createSlice({
   ],
   spouseForm: [
     '',
-    '',
     'Can you provide your full name and address?',
     'Are you in immediate danger? Do you require medical assistance?',
     'Can you provide a detailed account of the incident(s)? What happened, when and where did it hgappen?',
@@ -71,13 +67,14 @@ const formSlice = createSlice({
   ],
   elderlyForm: [
     '',
-    '',
-    'Can you please tell me your full name and address?',
-    'Are you in immediate danger or in eed of medical attention?',
-    'Cab you describe what happened in detail? When and where did the incident occur?',
-    'Who is the person involved in the abusive behavior? Can you provide any details about them?',
+    'Are you in immediate danger or in need of medical attention?',
+    'Can you please tell me your full name?',
+    'When did the incident occur?',
+    'Where did the incident occur?',
+    'Can you describe what happened in detail?',
+    'Who is the person involved in the abusive behavior? ',
     'Is this person your caregiver, family member, or someone else? What is their relationship to you?',
-    'Were there any specific threats or actios that were particularly concerning?',
+    'Were there any specific threats or actions that were particularly concerning?',
     'Have there been other instances of this abuse?',
     'Were there any witnesses to the incident or previous incidents',
     'Do you have any evidence of the abuse (like photographs of injuries, written communication, etc)?',
@@ -102,10 +99,6 @@ const formSlice = createSlice({
     'Is there any additional information or comments you would like to add?',
     
   ],
-    user: {
-      incident: {},
-      assailant: {},
-    },
   },
 });
 

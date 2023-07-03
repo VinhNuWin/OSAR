@@ -1,12 +1,12 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import {
     indexReducer,
     changeIndex,
     backIndex,
     updateRegistry,
     addEmail,
-    changeDate,
-    addRegistryId,
+    add_Id,
+    addEmployeeId,
     registrySelect,
     updateAddress
 } from './slices/indexSlice';
@@ -52,9 +52,9 @@ export {
     updateRegistry,
     formReducer,
     addEmail,
-    changeDate,
     addUserId,
-    addRegistryId,
+    add_Id,
+    addEmployeeId,
     registrySelect,
     updateAddress
  };

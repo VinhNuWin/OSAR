@@ -3,12 +3,11 @@ import RegistryComplete from './RegistryComplete';
 import { motion } from 'framer-motion';
 import { Button, Text, Flex, useMediaQuery } from '@chakra-ui/react';
 import SignIn from './SignIn';
-import MobileSignIn from '../MobileSignIn';
+import MobileSignIn from './mobileView/MobileSignIn';
 import { useSelector } from 'react-redux';
 import { containerVariants, homePageVariants } from '../../data/containerVariants';
-import MissionStatement from '../../components/modals/MissionStatement';
-import MobileView from '../MobileView';
-import SelectYourRegistry from '../registries/SelectYourRegistry';
+import MobileRegistrySelect from './mobileView/MobileRegistrySelect';
+import RegistrySelect from '../registries/RegistrySelect';
 
 
 // const ChakraBox = chakra(motion.div, {
@@ -33,7 +32,6 @@ function HomePage() {
     return (
         <div>
         <Flex className='header'>
-        <MissionStatement />
         </Flex>
           <div className='Homepage'>
                     {questionPageIndex === 0 ? ( 
@@ -59,7 +57,9 @@ function HomePage() {
                             <RegistryComplete />
                         </motion.div>
                     ) : questionPageIndex === 1 ? (
-                        <SelectYourRegistry />
+                        <div>
+                            { isLargerThan568 ? <RegistrySelect /> : <MobileRegistrySelect />}
+                        </div>
                     ) : questionPageIndex >= 2 ? (
                         <div>
                     <motion.div 
@@ -69,7 +69,7 @@ function HomePage() {
                         exit="exitAnimation"
                         className="wrapper-block"
                         >
-                            { isLargerThan568 ? <Registry /> : <MobileView /> }
+                        <Registry /> 
                     </motion.div>
                     </div>
                     ) : null (

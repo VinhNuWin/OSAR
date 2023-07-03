@@ -4,67 +4,44 @@ const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
         index: 0,
-        employeeRegistry: {
-            registryType: '',
-            fullName: '',
-            email: 'Vinhn333',
-            _id: '6494ccd363e3e1106df02ff2',
-            userId: '',
-            location: '',
-            date: '',
-            address: {
-                streetAddress: '',
-                city: '',
-                state: '',
-                zipcode: '',
-            },
-            title: '',
-            detailsOfIncident: '',
-            peopleInvolved: '',
-            witnesses: '',
-            incidentOutcome: '',
-            abilitiesAffected: '',
-            seekedMedicalAttention: 'false',
-            reportedToHigherPersonel: '',
-            personalAffect: '',
-            actionsTakenSinceIncident: '',
-            additionalComments: '',
-        },
         registry: {
+            email: '',
+            _id: '',
+            registryId: '',
             registryType: '',
-            fullName: '',
-            email: 'Vinhn3333@gmail.com',
-            _id: '6494cc1637d1502267c0b187',
-            userId: '',
-            location: '',
-            date: '',
-            address: {
-                streetAddress: '',
-                city: '',
-                state: '',
-                zipcode: '',
+            registryReport: {
+                registryId: '',
+                immediateDangerOrMedicalAttention: false,
+                fullName: '',
+                date: '',
+                address: {
+                    streetAddress: '',
+                    city: '',
+                    state: '',
+                    zipcode: '',
+                },
+                title: '',
+                detailsOfIncident: '',
+                peopleInvolved: '',
+                relationshipToReporter: '',
+                witnesses: '',
+                additionalIncidentsOfAbuse: '',
+                evidence: '',
+                otherPeopleAtRisk: '',
+                incidentOutcome: '',
+                abilitiesAffected: '',
+                seekedMedicalAttention: 'false',
+                reportedToHigherPersonel: '',
+                personalAffect: '',
+                actionsTakenSinceIncident: '',
+                additionalComments: '',
+                additionalSupportNeeded: '',
             },
-            title: '',
-            wasAlcoholInvolved: 'false', //false
-            wereDrugsInvolved: 'false', //false
-            wasSurvivorAsleepTimeOfIncident: 'false', //false
-            verbalThreatsToSurvivor: 'false', //false
-            resistanceOfferedBySurvivor: 'false', //false
-            detailsOfTheAssault: 'false', //false
-            areasAssaulted: '',
-            useOfWeaponsFromAssailant: 'false', //false
-            useOfRestraintFromAssailant: 'false', //false
-            detailsOfIncident: '',
-            peopleInvolved: '',
-            witnesses: '',
-            incidentOutcome: '',
-            abilitiesAffected: '',
-            seekedMedicalAttention: 'false',
-            reportedToHigherPersonel: '',
-            personalAffect: '',
-            actionsTakenSinceIncident: '',
-            additionalComments: '',
-        },
+            elderlyRegistry: {
+                fullName: '',
+                registryId: '',
+            },
+        }
     },
     reducers: {
         changeIndex(state, action) {
@@ -73,41 +50,42 @@ const indexSlice = createSlice({
         backIndex(state, action) {
             state.index = action.payload;
         },
-        addSurvivor(state, action) {
-            state.registry.survivor = action.payload;
+        addEmail(state, action){
+            state.registry.email = action.payload;
+        },
+        add_Id(state, action) {
+            state.registry._id = action.payload;
+            state.registry.registryId = action.payload;
+            state.registry.registryReport.registryId = action.payload;
         },
         updateRegistry(state, action) {
-            state.employeeRegistry = action.payload;
+            state.registry.registryReport = action.payload;
         },
         updateAddress(state, action) {
-            state.employeeRegistry.address = action.payload;
+            state.registry.registryReport.address = action.payload;
         },
-        addEmail(state, action){
-            state.employeeRegistry.email = action.payload;
+        addEmployeeId(state, action){
+            state.registry.employeeRegistry.registryId = action.payload;
         },
-        addRegistryId(state, action) {
-            state.employeeRegistry._id = action.payload;
-            state.employeeRegistry.userId = action.payload;
+        addElderlyId(state, action){
+            state.registry.elderlyRegistry.elderlyId = action.payload;
         },
-        addAssaultTypeId(state, action) {
-            state.registry.registryType._id = action.payload;
-        },
-        registrySelect(state, action) {
-            state.employeeRegistry.registryType = action.payload;
+        registrySelect(state, action){
+            state.registry.registryType = action.payload;
+            state.registry.registryReport.registryType = action.payload;
         },
     }
     });
 
 export const { 
-    changeDate, 
     changeIndex, 
     backIndex,
-    addSurvivor,
     updateRegistry,
     addEmail, 
-    addRegistryId, 
+    add_Id,
+    addEmployeeId,
     registrySelect,
-    updateAnswerInput,
-    updateAddress
+    updateAddress,
+
 } = indexSlice.actions;
 export const indexReducer = indexSlice.reducer;

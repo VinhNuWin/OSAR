@@ -12,25 +12,24 @@ import BackButton from "./BackButton";
 export const BooleanYesNo = (props) =>  {
     const dispatch = useDispatch();
 
-    const { registry, employeeRegistry } = useSelector((state)=> {
+    const { registry, registryReport, registryType } = useSelector((state)=> {
         return {
             registry: state.index.registry,
-            employeeRegistry: state.index.registry.employeeRegistry
+            registryReport: state.index.registry.registryReport,
+            registryType: state.index.registry.registryType
         }
     })
 
     return (
         <div>
-            <NextButton />
-            <BackButton />
-            {/* <Button variant='backButton' onClick={(e) => dispatch(updateRegistry({...registry, [props.name]: false}))}>
-                <CloseIcon w={8} boxSize={4} color='red.500' m='1%' />
+            <Button variant='backButton' onClick={(e) => dispatch(updateRegistry({...registryReport, [props.name]: false}))}>
+                <CloseIcon w={8} boxSize={4} m='1%' />
                     No
             </Button>
-            <Button variant='booleanButton' onClick={(e) => dispatch(updateRegistry({...registry, [props.name]: true}))}>
-                <CheckIcon w={8} boxSize={5} color='green.500' m='1%' />
+            <Button variant='booleanButton' onClick={(e) => dispatch(updateRegistry({...registryReport, [props.name]: true}))}>
+                <CheckIcon w={8} boxSize={5} m='1%' />
                     Yes
-            </Button> */}
+            </Button>
         </div>
     )
 }
@@ -38,9 +37,9 @@ export const BooleanYesNo = (props) =>  {
 export const DateAndTime = () => {
     const dispatch = useDispatch();
 
-    const { employeeRegistry } = useSelector((state)=> {
+    const { registryReport } = useSelector((state)=> {
         return {
-            employeeRegistry: state.index.employeeRegistry
+            registryReport: state.index.registry.registryReport
         }
     })
 
@@ -51,7 +50,7 @@ export const DateAndTime = () => {
                  variant='flushed'
                  size="md"
                  type="datetime-local"
-                 onChange={(datetime) => dispatch(updateRegistry({...employeeRegistry, date: datetime.target.value}))}
+                 onChange={(datetime) => dispatch(updateRegistry({...registryReport, date: datetime.target.value}))}
                 />
         </div>
     )
@@ -62,11 +61,11 @@ export const Address = () => {
 
     const { address, state, zipcode, city } = useSelector((state)=> {
         return {
-            address: state.index.employeeRegistry.address,
-            streetAddress: state.index.employeeRegistry.address.streetAddress,
-            state: state.index.employeeRegistry.address.state,
-            zipcode: state.index.employeeRegistry.address.zipcode,
-            city: state.index.employeeRegistry.address.city
+            address: state.index.registry.registryReport.address,
+            // streetAddress: state.index.registry.employeeRegistry.address.streetAddress,
+            // state: state.registry.index.employeeRegistry.address.state,
+            // zipcode: state.index.registry.employeeRegistry.address.zipcode,
+            // city: state.index.registry.employeeRegistry.address.city
         }
     })
 
@@ -146,23 +145,23 @@ export const Address = () => {
     )
 }
 
-export const FullNameAndTitle = () => {
+export const FullNameAndTitle = (props) => {
     const dispatch = useDispatch();
 
-    const { employeeRegistry } = useSelector((state)=> {
+    const { registryReport } = useSelector((state)=> {
         return {
-            employeeRegistry: state.index.employeeRegistry
+            registryReport: state.index.registryReport
         }
     })
 
     return (
         <div>
         <FormControl>
-                <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...employeeRegistry, [e.target.name]: e.target.value}))} />
+                <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
               </FormControl>
   
               <FormControl mt={3}>
-                <Input variant='flushed'  name='title' placeholder='Job Title' onChange={(e) => dispatch(updateRegistry({ ...employeeRegistry, [e.target.name]: e.target.value}))} />
+                <Input variant='flushed'  name='title' placeholder='Job Title' onChange={(e) => dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
 
         </FormControl>
         </div>

@@ -1,14 +1,13 @@
 import { Flex } from '@chakra-ui/react';
-import NextButton from '../../components/buttons/NextButton';
-import BackButton from '../../components/buttons/BackButton';
+import NextButton from '../../../components/buttons/NextButton';
+import BackButton from '../../../components/buttons/BackButton';
 import { useSelector } from 'react-redux';
-import ChildrensQuestions from '../registryQuestions/ChildrensQuestions';
-import ChildrensAnswers from '../registryAnswers/ChildrensAnswers';
-import RegistryComplete from '../pages/RegistryComplete';
-import FinalSubmit from '../../components/buttons/FinalSubmit';
-import MissionStatement from '../../components/modals/MissionStatement';
+import ChildrensQuestions from '../../registryQuestions/ChildrensQuestions';
+import ChildrensAnswers from '../../registryAnswers/ChildrensAnswers';
+import RegistryComplete from '../../pages/RegistryComplete';
+import FinalSubmit from '../../../components/buttons/FinalSubmit';
 
-export default function ChildrensRegistry() {
+export default function MobileChildrensRegistry() {
     const { registryType, index } = useSelector((state) => {
         return {
             registryType: state.index.registry.registryType,
@@ -18,15 +17,13 @@ export default function ChildrensRegistry() {
 
     console.log(registryType);
 
-
     return (
 <Flex>
-
-        { index <= 13 ? (
+        { index <= 14 ? (
             <Flex>
 
-            <Flex className='panel-one' direction='column'>
-            <MissionStatement />
+            <Flex className='dual-panel-wrapper' direction='column'>
+            {/* <MissionStatement /> */}
                 <Flex className='panel-one-questions' >
                     <ChildrensQuestions />
                 </Flex>
@@ -35,22 +32,16 @@ export default function ChildrensRegistry() {
                 </Flex>
                 <Flex className='panel-one-buttons'>
                 <BackButton />
-                {index===13 ? <FinalSubmit /> : <NextButton />}       
+                {index===14 ? <FinalSubmit /> : <NextButton />}       
                 </Flex>
 </Flex>
 
             </Flex>
-        ) : index >= 15 ? (
+        ) : index === 15 ? (
                 <RegistryComplete />
         ) : null (
             <RegistryComplete />
         )} 
-
-
-<Flex className='panel-two'>
-
-</Flex>
         </Flex>
     )
 }
-

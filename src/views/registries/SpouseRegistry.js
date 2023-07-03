@@ -1,56 +1,56 @@
-import { Flex, Text } from '@chakra-ui/react';
-import FAQ from '../../components/ContentBox/FAQ';
-import RegistryResponses from '../../components/RegistryResponses';
+import { Flex } from '@chakra-ui/react';
 import NextButton from '../../components/buttons/NextButton';
 import BackButton from '../../components/buttons/BackButton';
-import SkipButton from '../../components/buttons/SkipButton';
-import ReportSummary from '../../components/drawer/ReportSummary';
 import { useSelector } from 'react-redux';
-import DidYouKnow from '../../components/DidYouKnow';
 import SpouseQuestions from '../registryQuestions/SpouseQuestions';
+import SpouseAnswers from '../registryAnswers/SpouseAnswers';
+import RegistryComplete from '../pages/RegistryComplete';
+import FinalSubmit from '../../components/buttons/FinalSubmit';
+import MissionStatement from '../../components/modals/MissionStatement';
 
 export default function SpouseRegistry() {
-    const { assaultType } = useSelector((state) => {
+    const { registryType, index } = useSelector((state) => {
         return {
-            assaultType: state.index.registry.assaultType
+            registryType: state.index.registry.registryType,
+            index: state.index.index,
         }
     })
 
-    console.log(assaultType.assaultType);
+    console.log(registryType);
 
-    const registrySelected = assaultType.assaultType;
 
     return (
-        <Flex height="100%" className=''>
-            <Flex className='container'>
-                <Flex direction='column' className='question-container'>
-                        <Flex className='question-card'>
-                            <SpouseQuestions />
-                        </Flex>
-                        <Flex className=''>
-                            <DidYouKnow />
-                        </Flex>
-                </Flex>
-                <Flex className='faq-container'>
-                        <FAQ />
-                </Flex>
-                <Flex className='answer-card'>
-                    <Flex className='button'>
-                        <NextButton />
-                    </Flex>
-                    <Flex className='input-card '>
-                        <RegistryResponses />
-                    </Flex>
-                    <Flex className='button2'>
-                        <BackButton />
-                        <SkipButton />
-                    </Flex>
-                </Flex>
-            </Flex>
+<Flex>
 
-            <Flex className='icon-container '>
-                <ReportSummary />
+        { index <= 13 ? (
+            <Flex>
+
+            <Flex className='panel-one' direction='column'>
+            <MissionStatement />
+                <Flex className='panel-one-questions' >
+                    <SpouseQuestions />
+                </Flex>
+                <Flex className='panel-one-answers'>
+                    <SpouseAnswers />
+                </Flex>
+                <Flex className='panel-one-buttons'>
+                <BackButton />
+                {index===13 ? <FinalSubmit /> : <NextButton />}       
+                </Flex>
+</Flex>
+
             </Flex>
+        ) : index >= 15 ? (
+                <RegistryComplete />
+        ) : null (
+            <RegistryComplete />
+        )} 
+
+
+<Flex className='panel-two'>
+
+</Flex>
         </Flex>
     )
 }
+

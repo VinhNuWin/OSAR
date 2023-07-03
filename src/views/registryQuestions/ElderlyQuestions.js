@@ -10,7 +10,7 @@ export default function ElderlyQuestions () {
         }
     });
 
-    const elderlyIndex = index;
+    const elderlyIndex = index - 1;
     const questions = elderlyForm[elderlyIndex];
 
     console.log(questions);
@@ -19,7 +19,7 @@ export default function ElderlyQuestions () {
     return (
         <Flex direction='column'>
         <Flex wrap='nowrap' direction='column' className='questions'>
-            <Text className='div-c' fontSize={{ base: '30px', md: '24px', lg: '32px' }} color='rgb(73, 79, 86)'>{questions}</Text>
+            <Text className='div-c' fontSize={{ base: '16px', md: '20px', lg: '26px' }} color='rgb(73, 79, 86)'>{questions}</Text>
         </Flex>
         </Flex>
     )

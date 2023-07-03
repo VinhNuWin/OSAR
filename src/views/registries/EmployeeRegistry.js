@@ -16,14 +16,15 @@ import FullNameAndTitleModal from '../../components/modals/FullNameAndTitleModal
 import AddressModal from '../../components/modals/AddressModal';
 import { EmployeeSummary } from '../../components/summary/EmployeeSummary';
 import FinalSubmit from '../../components/buttons/FinalSubmit';
+import MissionStatement from '../../components/modals/MissionStatement';
 
 export default function EmployeeRegistry() {
     const { registryType, index, _id, email } = useSelector((state) => {
         return {
-            registryType: state.index.employeeRegistry.registryType,
+            registryType: state.index.registry.registryType,
             index: state.index.index,
-            _id: state.index.employeeRegistry._id,
-            email: state.index.employeeRegistry.email
+            _id: state.index.registry._id,
+            email: state.index.registry.email
         }
     })
 
@@ -35,7 +36,10 @@ export default function EmployeeRegistry() {
 <Flex>
 
         { index <= 14 ? (
+            <Flex>
+
             <Flex className='panel-one' direction='column'>
+            <MissionStatement />
                 <Flex className='panel-one-questions' >
                     <EmployeeQuestions />
                 </Flex>
@@ -46,6 +50,8 @@ export default function EmployeeRegistry() {
                 <BackButton />
                 {index===14 ? <FinalSubmit /> : <NextButton />}       
                 </Flex>
+</Flex>
+
             </Flex>
         ) : index === 15 ? (
                 <RegistryComplete />

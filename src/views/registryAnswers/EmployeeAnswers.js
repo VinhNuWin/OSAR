@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateIncident, updateAssailant, addSurvivor, updateRegistry } from '../../store';
 import { Form } from 'antd';
 import { Button, Text, Select, Input, Flex, Card, CardHeader, FormControl, FormLabel } from '@chakra-ui/react';
-import AssailantNameModal from '../../components/modals/FullNameAndTitleModal';
 import AddressModal from '../../components/modals/AddressModal';
 import { CloseIcon, CheckIcon } from '@chakra-ui/icons';
 import { BooleanYesNo, BooleanIfYesName, DateAndTime, Address, FullNameAndTitle } from '../../components/buttons/RegistryResponseComponents.js';
@@ -14,28 +13,12 @@ import NextButton from '../../components/buttons/NextButton';
 import NameModal from '../../components/modals/NameModal';
 
 function EmployeeAnswers() {
-    const { index, _id, employeeRegistry, registryType, location, date, streetAddress, city, state, zipcode, fullName, title, detailsOfIncident, peopleInvolved, witnesses, incidentOutcome, abilitiesAffected, seekedMedicalAttention, reportedToHigherPersonel, personalAffect, actionsTakenSinceIncident, additionalComments } = useSelector((state) => {
+    const { index, _id, registry, registryReport, registryType, location, date, streetAddress, city, state, zipcode, fullName, title, detailsOfIncident, peopleInvolved, witnesses, incidentOutcome, abilitiesAffected, seekedMedicalAttention, reportedToHigherPersonel, personalAffect, actionsTakenSinceIncident, additionalComments } = useSelector((state) => {
         return {
             index: state.index.index,
-            _id: state.index.employeeRegistry._id,
-            employeeRegistry: state.index.employeeRegistry,
-            date: state.index.employeeRegistry.date,
-            streetAddress: state.index.employeeRegistry.address.streetAddress,
-            fullName: state.index.employeeRegistry.fullName,
-            title: state.index.employeeRegistry.title,
-            city: state.index.employeeRegistry.address.city,
-            state: state.index.employeeRegistry.address.state,
-            zipcode: state.index.employeeRegistry.address.zipcode,
-            detailsOfIncident: state.index.employeeRegistry.detailsOfIncident,
-            peopleInvolved: state.index.employeeRegistry.peopleInvolved,
-            witnesses: state.index.employeeRegistry.witnesses,
-            incidentOutcome: state.index.employeeRegistry.incidentOutcome,
-            abilitiesAffected: state.index.employeeRegistry.abilitiesAffected,
-            seekedMedicalAttention: state.index.employeeRegistry.seekedMedicalAttention,
-            reportedToHigherPersonel: state.index.employeeRegistry.reportedToHigherPersonel,
-            personalAffect: state.index.employeeRegistry.personalAffect,
-            actionsTakenSinceIncident: state.index.employeeRegistry.actionsTakenSinceIncident,
-            additionalComments: state.index.employeeRegistry.additionalComments
+            _id: state.index.registry._id,
+            registry: state.index.registry,
+            registryReport: state.index.registry.registryReport,
         };
     });
 
@@ -43,7 +26,7 @@ function EmployeeAnswers() {
     const questionIndex = index - 1;
     const TextArea = Input;
 
-    console.log(employeeRegistry);
+    console.log(registry.registryReport);
     console.log(index);
 
 
@@ -51,7 +34,15 @@ function EmployeeAnswers() {
         <Flex >
             { questionIndex === 1 ? ( //Can you provide your full name and your job title
             <Flex >
-                    <FullNameAndTitle />
+                <div>
+                    <FormControl>
+                            <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
+                          </FormControl>
+
+                          <FormControl mt={3}>
+                            <Input variant='flushed'  name='title' placeholder='Job Title' onChange={(e) => dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
+                    </FormControl>
+                </div>
             </Flex>
             ) : questionIndex === 2 ? ( //What is the date and approximate time of the incident
                     <motion.div >
@@ -70,7 +61,7 @@ function EmployeeAnswers() {
                             name='peopleInvolved'
                             h={20}
                             width={{ base: '12em', md: '14em', lg: '20em' }} 
-                            onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
+                            onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
                             placeholder="Name1, Name2, etc..."
                         />
                 </FormControl>
@@ -92,7 +83,7 @@ function EmployeeAnswers() {
                               }}
                               type='text'
                               name='detailsOfIncident'
-                              onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
+                              onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
                               placeholder="Bullet Point of events"
                               />
                           </Form.Item>
@@ -108,7 +99,7 @@ function EmployeeAnswers() {
                       name='witnesses'
                         h={20}
                         width={{ base: '12em', md: '14em', lg: '24em' }} 
-                        onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
+                        onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
                         placeholder="Name1, Name2, etc..."
                     />
             </FormControl>
@@ -122,7 +113,7 @@ function EmployeeAnswers() {
                         h={20}
                         width={{ base: '12em', md: '14em', lg: '24em' }} 
                         name='incidentOutcome'
-                        onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
+                        onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
                         placeholder="What happened from this incident.."
                     />
             </FormControl>
@@ -136,7 +127,7 @@ function EmployeeAnswers() {
                         h={20}
                         width={{ base: '12em', md: '14em', lg: '24em' }} 
                                     name='abilitiesAffected'
-                                    onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
+                                    onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
                                     placeholder="Brief description.."
                                     />
                             </FormControl>
@@ -159,7 +150,6 @@ function EmployeeAnswers() {
                                 <div>
                                 <Form.Item>
                                 <TextArea
-                                    showCount
                                     maxLength={100}
                                     style={{
                                       height: 120,
@@ -168,7 +158,7 @@ function EmployeeAnswers() {
                                     }}
                                     type='text'
                                     name='personalAffect'
-                                    onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
+                                    onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
                                     placeholder="Person1, Person2, etc..."
                                     />
                                 </Form.Item>
@@ -190,7 +180,7 @@ function EmployeeAnswers() {
                                     }}
                                     type='text'
                                     name='additionalComments'
-                                    onChange={e => dispatch(updateRegistry({...employeeRegistry, [e.target.name]: e.target.value}))}
+                                    onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
                                     placeholder="Person1, Person2, etc..."
                                     />
                                 </Form.Item>
