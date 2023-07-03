@@ -1,8 +1,8 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateRegistry } from '../../store';
 import { Form } from 'antd';
-import { Input, Flex, FormControl, FormLabel } from '@chakra-ui/react';
+import { Input, Flex, FormControl, FormLabel, Text } from '@chakra-ui/react';
 import { BooleanYesNo, DateAndTime, Address } from '../../components/buttons/RegistryResponseComponents.js';
 import RegistryComplete from '../pages/RegistryComplete';
 
@@ -32,7 +32,7 @@ function SpouseAnswers() {
                     <BooleanYesNo name='immediateDangerOrMedicalAttention' />
                 </div>
             </Flex>
-            ) : questionIndex === 2 ? ( //'Can you please tell me your full name?
+            ) : questionIndex === 2 ? ( //'Who is the person responsible for the abuse?'
             <Flex >
                 <div>
                     <FormControl>
@@ -40,7 +40,7 @@ function SpouseAnswers() {
                     </FormControl>
                 </div>
             </Flex>
-            ) : questionIndex === 3 ? ( // When did the incident occur?
+            ) : questionIndex === 3 ? ( // When did the incident happen?'
                 <motion.div  >
                     <DateAndTime />
                 </motion.div>
@@ -48,7 +48,7 @@ function SpouseAnswers() {
             <motion.div  >
                 <Address />
             </motion.div>
-            ) : questionIndex === 5 ? ( // Can you describe what happened in detail?
+            ) : questionIndex === 5 ? ( // Can you provide a detailed account of the incident(s)? What happened?
             <motion.div className='' >
             <FormControl>
                 <FormLabel >Desciption of what happened</FormLabel>
@@ -62,7 +62,7 @@ function SpouseAnswers() {
                     />
             </FormControl>
         </motion.div>
-            ) : questionIndex === 6 ? ( // Who is the person involved in the abusive behavior?
+            ) : questionIndex === 6 ? ( // Were there any specific threats made? If yes, what were they?
             <motion.div className='' >
                 <FormControl>
                     <FormLabel >List Individuals Directly Involved</FormLabel>
@@ -77,7 +77,7 @@ function SpouseAnswers() {
                 </FormControl>
             </motion.div>
 
-            ) : questionIndex === 7 ? ( // Is this person your caregiver, family member, or someone else? What is their relationship to you?
+            ) : questionIndex === 7 ? ( // Are there any witnesses who can corroborate the incident?
             <motion.div className='flex-box'>
                 <Form>
                           <div>
@@ -99,7 +99,7 @@ function SpouseAnswers() {
                           </div>
                       </Form>
       </motion.div>
-            ) : questionIndex === 8 ? ( // Were there any specific threats or actions that were particularly concerning?
+            ) : questionIndex === 8 ? ( // Has this occured before? If so, have you reported it in the past?
             <motion.div className='' >
             <FormControl>
                 <FormLabel >Please list specific threats or actions that concern you </FormLabel>
@@ -113,7 +113,7 @@ function SpouseAnswers() {
                     />
             </FormControl>
         </motion.div>
-            ) : questionIndex === 9 ? ( // Have there been other instances of this abuse?
+            ) : questionIndex === 9 ? ( // Do you have any physical, digital, or other types of evidence of the abuse (like photographs, emails, text messages, etc.)?
             <motion.div className='' >
             <FormControl>
                 <FormLabel >List any additional incidents</FormLabel>
@@ -127,7 +127,7 @@ function SpouseAnswers() {
                     />
             </FormControl>
         </motion.div>
-            ) : questionIndex === 10 ? ( // Were there any witnesses to the incident or previous incidents
+            ) : questionIndex === 10 ? ( // Are there any children or other dependents in the household? Are they in immediate danger?
             <motion.div className='' >
             <FormControl>
                 <FormLabel >List Individuals Who Physically Witnessed Event</FormLabel>
@@ -141,11 +141,11 @@ function SpouseAnswers() {
                     />
             </FormControl>
         </motion.div>
-            ) : questionIndex === 11 ? ( // Do you have any evidence of the abuse (like photographs of injuries, written communication, etc)?
+            ) : questionIndex === 11 ? ( // Are there any weapons in the house?
             <motion.div>
                 <BooleanYesNo name={'evidence'}/>
             </motion.div>
-            ) : questionIndex === 12 ? ( // Are there any other people living with you or who could be at risk because of this person?
+            ) : questionIndex === 12 ? ( // Do you have a safe place to stay after reporting this incident?
             <motion.div className='flex-box'>
                 <BooleanYesNo name={'otherPeopleAtRisk'} />
             </motion.div>
@@ -153,9 +153,15 @@ function SpouseAnswers() {
             <motion.div className='flex-box'>
                 <BooleanYesNo name={'currentLivingSituationSafe'} />
             </motion.div>
-            ) : questionIndex === 14 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
+            ) : questionIndex === 14 ? ( // Would you like to be referred to local support services for victims of domestic abuse?
             <motion.div className='flex-box'>
                 <BooleanYesNo name={'additionalSupportNeeded'} />
+            </motion.div>
+            ) : questionIndex === 15 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
+            <motion.div className='flex-box'>
+                <Text>
+                    If you are in need of help, respond to the email for further assistance and support.
+                </Text>
             </motion.div>
             ) : questionIndex === null (
                 <RegistryComplete />

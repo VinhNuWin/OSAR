@@ -1,7 +1,7 @@
 import Registry from './Registry';
 import RegistryComplete from './RegistryComplete';
 import { motion } from 'framer-motion';
-import { Button, Text, Flex, useMediaQuery } from '@chakra-ui/react';
+import { Flex, useMediaQuery } from '@chakra-ui/react';
 import SignIn from './SignIn';
 import MobileSignIn from './mobileView/MobileSignIn';
 import { useSelector } from 'react-redux';
@@ -46,16 +46,6 @@ function HomePage() {
                                 { isLargerThan568 ? <SignIn /> : <MobileSignIn /> }
                         </motion.div>
                         </center>
-                    ) : questionPageIndex === 18 ? ( 
-                        <motion.div 
-                        key={questionPageIndex}
-                        variants={homePageVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exitAnimation"
-                        >
-                            <RegistryComplete />
-                        </motion.div>
                     ) : questionPageIndex === 1 ? (
                         <div>
                             { isLargerThan568 ? <RegistrySelect /> : <MobileRegistrySelect />}
@@ -73,7 +63,6 @@ function HomePage() {
                     </motion.div>
                     </div>
                     ) : null (
-                        <RegistryComplete />
                         )
                     }
    

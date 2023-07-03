@@ -187,10 +187,12 @@ function EmployeeAnswers() {
                                 </div>
                             </Form>
             </motion.div>            
-            ) : questionIndex === 15 ? (
-                <div>
-                    <RegistryComplete />
-                </div>  
+            ) : questionIndex === 14 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
+            <motion.div className='flex-box'>
+                <Text>
+                    If you are in need of help, respond to the email for further assistance and support.
+                </Text>
+            </motion.div>
             ) : questionIndex === null (
                 
             )

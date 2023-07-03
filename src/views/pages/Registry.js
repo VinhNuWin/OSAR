@@ -10,6 +10,8 @@ import MobileElderlyRegistry from './mobileView/MobileElderlyRegistry';
 import MobileChildrensRegistry from './mobileView/MobileChildrensRegistry';
 import MobileSpouseRegistry from './mobileView/MobileSpouseRegistry';
 import MobileSexualAssaultRegistry from './mobileView/MobileSexualAssaultRegistry';
+import GeneralRegistry from '../registries/GeneralRegistry';
+import MobileGeneralRegistry from './mobileView/MobileGeneralRegistry';
 
 
 
@@ -49,6 +51,10 @@ export default function Registry() {
         ) : registrySelected === 'elderly' ? (
             <div>
             { isLargerThan568 ? <ElderlyRegistry /> : <MobileElderlyRegistry /> }
+            </div>
+        ) : registrySelected === 'general' ? (
+            <div>
+            { isLargerThan568 ? <GeneralRegistry /> : <MobileGeneralRegistry /> }
             </div>
         ) : null
     }

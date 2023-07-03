@@ -22,26 +22,22 @@ export default function ChildrensRegistry() {
     return (
 <Flex>
 
-        { index <= 13 ? (
-            <Flex>
-
+        { index <= 14 ? (
+        <Flex>
             <Flex className='panel-one' direction='column'>
-            <MissionStatement />
-                <Flex className='panel-one-questions' >
-                    <ChildrensQuestions />
+                <MissionStatement />
+                    <Flex className='panel-one-questions' >
+                        <ChildrensQuestions />
+                    </Flex>
+                    <Flex className='panel-one-answers'>
+                        <ChildrensAnswers />
+                    </Flex>
+                    <Flex className='panel-one-buttons'>
+                        <BackButton />
+                        {index===14 ? <FinalSubmit /> : <NextButton />}       
+                    </Flex>
                 </Flex>
-                <Flex className='panel-one-answers'>
-                    <ChildrensAnswers />
-                </Flex>
-                <Flex className='panel-one-buttons'>
-                <BackButton />
-                {index===13 ? <FinalSubmit /> : <NextButton />}       
-                </Flex>
-</Flex>
-
             </Flex>
-        ) : index >= 15 ? (
-                <RegistryComplete />
         ) : null (
             <RegistryComplete />
         )} 

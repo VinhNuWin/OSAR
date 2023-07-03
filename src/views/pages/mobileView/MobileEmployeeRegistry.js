@@ -1,4 +1,4 @@
-import { Flex, Text, Grid, GridItem, Heading, Stack, HStack, Card, CardBody, Avatar } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import BackButton from '../../../components/buttons/BackButton';
 import FinalSubmit from '../../../components/buttons/FinalSubmit';

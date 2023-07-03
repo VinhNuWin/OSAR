@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateRegistry } from '../../store';
 import { Form } from 'antd';
-import { Input, Flex, FormControl, FormLabel } from '@chakra-ui/react';
+import { Input, Flex, FormControl, FormLabel, Text } from '@chakra-ui/react';
 import { BooleanYesNo, DateAndTime, Address } from '../../components/buttons/RegistryResponseComponents.js';
 import RegistryComplete from '../pages/RegistryComplete';
 
@@ -156,6 +156,12 @@ function ElderlyAnswers() {
             ) : questionIndex === 14 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
             <motion.div className='flex-box'>
                 <BooleanYesNo name={'additionalSupportNeeded'} />
+            </motion.div>
+            ) : questionIndex === 15 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
+            <motion.div className='flex-box'>
+                <Text>
+                    If you are in need of help, respond to the email for further assistance and support.
+                </Text>
             </motion.div>
             ) : questionIndex === null (
                 <RegistryComplete />

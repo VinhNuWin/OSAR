@@ -10,7 +10,7 @@ import { EmailIcon } from '@chakra-ui/icons';
 
 export default function SelectYourRegistry() {
 const dispatch = useDispatch();
-    const { index, _id, employeeRegistry, registryType, registryId } = useSelector((state)=> {
+    const { index, _id, registryType, registryId } = useSelector((state)=> {
         return {
             index: state.index.index,
             _id: state.index.registry._id,
@@ -59,6 +59,7 @@ const dispatch = useDispatch();
                         </HStack>
                         <HStack>
                             <Button name='sexualAssault' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Sexual Assault</Button>
+                            <Button name='general' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>
                         </HStack>
                     <Flex className='answer-element-continue'>
                         <Button onClick={handleRegistryInputs} >

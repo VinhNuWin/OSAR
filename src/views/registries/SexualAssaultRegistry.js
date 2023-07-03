@@ -22,26 +22,23 @@ export default function SexualAssaultRegistry() {
     return (
 <Flex>
 
-        { index <= 13 ? (
+        { index <= 18 ? (
             <Flex>
 
-            <Flex className='panel-one' direction='column'>
-            <MissionStatement />
+                <Flex className='panel-one' direction='column'>
+                    <MissionStatement />
                 <Flex className='panel-one-questions' >
                     <SexualAssaultQuestions />
                 </Flex>
                 <Flex className='panel-one-answers'>
                     <SexualAssaultAnswers />
                 </Flex>
-                <Flex className='panel-one-buttons'>
-                <BackButton />
-                {index===13 ? <FinalSubmit /> : <NextButton />}       
+                    <Flex className='panel-one-buttons'>
+                        <BackButton />
+                        {index===18 ? <FinalSubmit /> : <NextButton />}       
+                    </Flex>
                 </Flex>
-</Flex>
-
             </Flex>
-        ) : index >= 15 ? (
-                <RegistryComplete />
         ) : null (
             <RegistryComplete />
         )} 

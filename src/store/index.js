@@ -14,11 +14,6 @@ import {
     formReducer,
     addUserId
 } from './slices/formSlice';
-import {
-    addAnswer, 
-    removeAnswer,
-    registryReducer,
-} from './slices/registrySlice';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { reportApi }  from './apis/reportApi';
 import { usersApi } from './apis/userApi';

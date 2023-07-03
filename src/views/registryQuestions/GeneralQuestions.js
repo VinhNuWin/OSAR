@@ -10,7 +10,7 @@ export default function GeneralQuestions () {
         }
     });
 
-    const generalIndex = index;
+    const generalIndex = index - 1;
     const questions = generalForm[generalIndex];
 
     console.log(questions);

@@ -22,11 +22,10 @@ export default function ElderlyRegistry() {
     return (
 <Flex>
 
-        { index <= 13 ? (
+        { index <= 14 ? (
             <Flex>
-
             <Flex className='panel-one' direction='column'>
-            <MissionStatement />
+                <MissionStatement />
                 <Flex className='panel-one-questions' >
                     <ElderlyQuestions />
                 </Flex>
@@ -34,14 +33,11 @@ export default function ElderlyRegistry() {
                     <ElderlyAnswers />
                 </Flex>
                 <Flex className='panel-one-buttons'>
-                <BackButton />
-                {index===13 ? <FinalSubmit /> : <NextButton />}       
+                    <BackButton />
+                    {index===14 ? <FinalSubmit /> : <NextButton />}       
+                    </Flex>
                 </Flex>
-</Flex>
-
             </Flex>
-        ) : index >= 15 ? (
-                <RegistryComplete />
         ) : null (
             <RegistryComplete />
         )} 

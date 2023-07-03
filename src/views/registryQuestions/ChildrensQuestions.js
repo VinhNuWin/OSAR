@@ -10,7 +10,7 @@ export default function ChildrensQuestions () {
         }
     });
 
-    const childrensIndex = index;
+    const childrensIndex = index - 1;
     const questions = childrensForm[childrensIndex];
 
     console.log(questions);
