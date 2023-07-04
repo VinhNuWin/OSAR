@@ -7,6 +7,7 @@ import EmployeeAnswers from '../registryAnswers/EmployeeAnswers';
 import RegistryComplete from '../pages/RegistryComplete';
 import FinalSubmit from '../../components/buttons/FinalSubmit';
 import MissionStatement from '../../components/modals/MissionStatement';
+import employee from '../../images/employee2.png';
 
 export default function EmployeeRegistry() {
     const { registryType, index } = useSelector((state) => {
@@ -42,8 +43,8 @@ export default function EmployeeRegistry() {
         )} 
 
 
-<Flex className='panel-two'>
-
+<Flex className='panel-two' >
+            <img src={employee} />
 </Flex>
         </Flex>
     )

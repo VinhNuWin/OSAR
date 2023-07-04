@@ -7,6 +7,7 @@ import ChildrensAnswers from '../registryAnswers/ChildrensAnswers';
 import RegistryComplete from '../pages/RegistryComplete';
 import FinalSubmit from '../../components/buttons/FinalSubmit';
 import MissionStatement from '../../components/modals/MissionStatement';
+import children from '../../images/children.png';
 
 export default function ChildrensRegistry() {
     const { registryType, index } = useSelector((state) => {
@@ -44,7 +45,7 @@ export default function ChildrensRegistry() {
 
 
 <Flex className='panel-two'>
-
+<img src={children} />
 </Flex>
         </Flex>
     )

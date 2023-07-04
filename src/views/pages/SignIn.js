@@ -10,6 +10,9 @@ import { Flex, Button, HStack, Stack, FormControl, FormLabel, FormHelperText, In
 import { EmailIcon } from '@chakra-ui/icons';
 import Loader from '../../components/Loader';
 import ThingsToConsider from '../../data/ThingsToConsider';
+import cover from '../../images/cover.png';
+import logo from '../../images/logo.png';
+
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -76,11 +79,14 @@ function SignIn() {
     const transition = { duration: 4, yoyo: Infinity, ease: "easeInOut" };
 
     return (
+        <div>
         <Flex className='two-panel-wrapper'>
         <Flex className='panel-one'>
             <Stack className='signin-wrapper'>
             <center>
-
+            <Flex className='header'>
+            <img src={logo} />
+        </Flex>
             <Flex className='signin-h2'>
                 <Text textAlign='center' w='full'>
                 Follow the promps to submit your report.
@@ -129,7 +135,7 @@ function SignIn() {
                                     <ThingsToConsider />
                     </Flex>
                     <Flex className='signin-start-registry' direction='column'>
-                        <Text marginBottom={8}>
+                        <Text className='signin-body' marginBottom={8}>
                         If you have questions or feedback on the submission experience, email us at info@documentedvoices.com
                         </Text>
                                 <Button onClick={addUser} w='50%'>
@@ -141,9 +147,10 @@ function SignIn() {
         </Flex>
 
             <Flex className='panel-two'>
-                                    img
+                <img src={cover} />
             </Flex>
         </Flex>
+        </div>
     )
 }
 

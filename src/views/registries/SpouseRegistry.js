@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import NextButton from '../../components/buttons/NextButton';
 import BackButton from '../../components/buttons/BackButton';
 import { useSelector } from 'react-redux';
@@ -7,6 +7,9 @@ import SpouseAnswers from '../registryAnswers/SpouseAnswers';
 import RegistryComplete from '../pages/RegistryComplete';
 import FinalSubmit from '../../components/buttons/FinalSubmit';
 import MissionStatement from '../../components/modals/MissionStatement';
+import spouseSlide from '../../images/PanelSlides/SpouseSlide';
+import SpouseSlide from '../../images/PanelSlides/SpouseSlide';
+import spouse from '../../images/elderly.png';
 
 export default function SpouseRegistry() {
     const { registryType, index } = useSelector((state) => {
@@ -18,6 +21,10 @@ export default function SpouseRegistry() {
 
     console.log(registryType);
 
+    // const images = spouseSlide.map((image, index) => (
+    // <img src={image.img} key={index} alt='image' />
+    // )
+    // )
 
     return (
 <Flex>
@@ -44,7 +51,7 @@ export default function SpouseRegistry() {
 
 
 <Flex className='panel-two'>
-
+    <img src={spouse} />
 </Flex>
         </Flex>
     )

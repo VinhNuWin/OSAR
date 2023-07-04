@@ -7,6 +7,7 @@ import ElderlyAnswers from '../registryAnswers/ElderlyAnswers';
 import RegistryComplete from '../pages/RegistryComplete';
 import FinalSubmit from '../../components/buttons/FinalSubmit';
 import MissionStatement from '../../components/modals/MissionStatement';
+import elderly from '../../images/elderly.png';
 
 export default function ElderlyRegistry() {
     const { registryType, index } = useSelector((state) => {
@@ -44,7 +45,7 @@ export default function ElderlyRegistry() {
 
 
 <Flex className='panel-two'>
-
+    <img src={elderly} />
 </Flex>
         </Flex>
     )

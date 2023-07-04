@@ -1,11 +1,12 @@
 .header{
-  width: 100%;
+  width: 50%;
 }
 
 .Homepage {
+  /* border: 3px solid red; */
   /* background-image: 
   url(
-  "/src/images/Yes.png"); */
+  "/src/images/a-voice-for-the-elderly.jpg"); */
   width:100vw;
   height: 100vh;
   /* background-size: 100vh; */
@@ -34,14 +35,15 @@
   position: relative;
 }
 .panel-two{
-  margin: 1%;
-  border-radius: 30px;
+  margin: auto;
   width: 50vw;
   height: 100vh;
-    background-image: 
-  url(
-  "/src/images/Yes.png");
+    /* background-image: 
+    url(
+      "/src/images/a-voice-for-the-elderly.jpg"); */
 }
+
+
 
 .signin-wrapper{
   display: inline-block;
@@ -57,7 +59,7 @@
   height: 15%;
 }
 .signin-h2{
-  margin-top: 5%;;
+  margin-top: 2%;;
   /* border: 3px solid red; */
   font-size: large;
   height: 10%;

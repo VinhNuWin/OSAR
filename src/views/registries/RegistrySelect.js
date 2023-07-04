@@ -7,6 +7,7 @@ import { changeIndex, addEmployeeId, registrySelect } from '../../store';
 import axios from 'axios';
 import { Flex, Button, HStack, Stack, Heading, Grid, GridItem, FormLabel, FormHelperText, Input, Spinner, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
+import general from '../../images/general.png';
 
 export default function SelectYourRegistry() {
 const dispatch = useDispatch();
@@ -72,7 +73,7 @@ const dispatch = useDispatch();
 </Flex>
 
 <Flex className='panel-two'>
-
+    <img src={general} />
 </Flex>
 
 </Flex>
