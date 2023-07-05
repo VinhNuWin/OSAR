@@ -7,7 +7,7 @@ import SexualAssaultAnswers from '../registryAnswers/SexualAssaultAnswers';
 import RegistryComplete from '../pages/RegistryComplete';
 import FinalSubmit from '../../components/buttons/FinalSubmit';
 import MissionStatement from '../../components/modals/MissionStatement';
-import sexualAssault from '../../images/sexualAssault.png';
+import assault from '../../images/assault.png';
 
 export default function SexualAssaultRegistry() {
     const { registryType, index } = useSelector((state) => {
@@ -46,7 +46,7 @@ export default function SexualAssaultRegistry() {
 
 
 <Flex className='panel-two'>
-<img src={sexualAssault} />
+<img src={assault} />
 </Flex>
         </Flex>
     )
