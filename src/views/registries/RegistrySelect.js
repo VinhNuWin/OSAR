@@ -51,16 +51,16 @@ const dispatch = useDispatch();
                 <Stack className='selectRegistry-buttons'>
                     <Flex  direction='column'>
                         <HStack>
+                            <Button name='general' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>
                             <Button name='employees' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>
-                            <Button name='elderly' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>
                         </HStack>
                         <HStack>
                             <Button name='spouse' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>
-                            <Button name='children' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Child</Button>
+                            <Button name='elderly' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>
                         </HStack>
                         <HStack>
-                            <Button name='sexualAssault' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Sexual Assault</Button>
-                            <Button name='general' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>
+                            <Button name='assault' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}> Assault</Button>
+                            <Button name='children' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Child</Button>
                         </HStack>
                     <Flex className='answer-element-continue'>
                         <Button onClick={handleRegistryInputs} >
@@ -94,7 +94,7 @@ const dispatch = useDispatch();
         //               <Button name='children' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Child</Button>
         //               </HStack>
         //               <HStack>
-        //               <Button name='sexual assault' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Sexual Assault</Button>
+        //               <Button name=' assault' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}> Assault</Button>
         //               </HStack>
         //                 <Flex className='answer-element-continue'>
         //                     <Button onClick={handleRegistryInputs} >

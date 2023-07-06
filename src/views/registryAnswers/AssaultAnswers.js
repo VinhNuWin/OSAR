@@ -6,7 +6,7 @@ import { BooleanYesNo, DateAndTime, Address } from '../../components/buttons/Reg
 import RegistryComplete from '../pages/RegistryComplete';
 
 
-function SexualAssaultAnswers() {
+function AssaultAnswers() {
     const { index, registryReport } = useSelector((state) => {
         return {
             index: state.index.index,
@@ -165,4 +165,4 @@ function SexualAssaultAnswers() {
     )
 }
 
-export default SexualAssaultAnswers;
+export default AssaultAnswers;

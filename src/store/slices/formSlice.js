@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const formSlice = createSlice({
   name: 'form',
   initialState: {
-    sexualAssaultForm: [
+    assaultForm: [
       '',
       'Can you please provide your full name?', //1
       'When did the incident occur?', //2

@@ -2,16 +2,16 @@ import { Flex, Text } from '@chakra-ui/react';
 import { useSelector } from  'react-redux';
 
 
-export default function SexualAssaultQuestions () {
-    const { sexualAssaultForm, index } = useSelector((state) => {
+export default function AssaultQuestions () {
+    const { assaultForm, index } = useSelector((state) => {
         return {
             index: state.index.index,
-            sexualAssaultForm: state.form.sexualAssaultForm,
+            assaultForm: state.form.assaultForm,
         }
     });
 
-    const sexualAssaultIndex = index - 1;
-    const questions = sexualAssaultForm[sexualAssaultIndex];
+    const assaultIndex = index - 1;
+    const questions = assaultForm[assaultIndex];
 
     console.log(questions);
 

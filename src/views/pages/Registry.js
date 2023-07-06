@@ -1,6 +1,6 @@
 import { Flex, useMediaQuery } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import SexualAssaultRegistry from '../registries/SexualAssaultRegistry';
+import AssaultRegistry from '../registries/AssaultRegistry';
 import ChildrensRegistry from '../registries/ChildrensRegistry';
 import ElderlyRegistry from '../registries/ElderlyRegistry';
 import EmployeeRegistry from '../registries/EmployeeRegistry';
@@ -9,7 +9,7 @@ import MobileEmployeeRegistry from './mobileView/MobileEmployeeRegistry';
 import MobileElderlyRegistry from './mobileView/MobileElderlyRegistry';
 import MobileChildrensRegistry from './mobileView/MobileChildrensRegistry';
 import MobileSpouseRegistry from './mobileView/MobileSpouseRegistry';
-import MobileSexualAssaultRegistry from './mobileView/MobileSexualAssaultRegistry';
+import MobileAssaultRegistry from './mobileView/MobileAssaultRegistry';
 import GeneralRegistry from '../registries/GeneralRegistry';
 import MobileGeneralRegistry from './mobileView/MobileGeneralRegistry';
 
@@ -44,9 +44,9 @@ export default function Registry() {
             <div>
             { isLargerThan568 ? <SpouseRegistry /> : <MobileSpouseRegistry /> }
             </div>
-        ) : registrySelected === 'sexualAssault' ? (
+        ) : registrySelected === 'assault' ? (
             <div>
-            { isLargerThan568 ? <SexualAssaultRegistry /> : <MobileSexualAssaultRegistry /> }
+            { isLargerThan568 ? <AssaultRegistry /> : <MobileAssaultRegistry /> }
             </div>
         ) : registrySelected === 'elderly' ? (
             <div>

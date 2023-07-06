@@ -2,12 +2,12 @@ import { Flex } from '@chakra-ui/react';
 import NextButton from '../../../components/buttons/NextButton';
 import BackButton from '../../../components/buttons/BackButton';
 import { useSelector } from 'react-redux';
-import SexualAssaultQuestions from '../../registryQuestions/SexualAssaultQuestions';
-import SexualAssaultAnswers from '../../registryAnswers/SexualAssaultAnswers';
-import RegistryComplete from '../../pages/RegistryComplete';
+import AssaultQuestions from '../../registryQuestions/AssaultQuestions';
+import AssaultAnswers from '../../registryAnswers/AssaultAnswers';
+import RegistryComplete from '../RegistryComplete';
 import FinalSubmit from '../../../components/buttons/FinalSubmit';
 
-export default function MobileSexualAssaultRegistry() {
+export default function MobileAssaultRegistry() {
     const { registryType, index, _id, email } = useSelector((state) => {
         return {
             registryType: state.index.registry.registryType,
@@ -27,10 +27,10 @@ export default function MobileSexualAssaultRegistry() {
             <Flex className='dual-panel-wrapper' direction='column'>
             {/* <MissionStatement /> */}
                 <Flex className='panel-one-questions' >
-                    <SexualAssaultQuestions />
+                    <AssaultQuestions />
                 </Flex>
                 <Flex className='panel-one-answers'>
-                    <SexualAssaultAnswers />
+                    <AssaultAnswers />
                 </Flex>
                 <Flex className='panel-one-buttons'>
                 <BackButton />
