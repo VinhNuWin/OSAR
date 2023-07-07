@@ -4,9 +4,9 @@ import '../../index.css';
 import { useState } from 'react';
 import { motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex, addEmail, add_Id, addRegistryId, registrySelect } from '../../store';
+import { changeIndex, addEmail, add_Id } from '../../store';
 import axios from 'axios';
-import { Flex, Button, HStack, Stack, FormControl, FormLabel, FormHelperText, Input, Spinner, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup, InputRightElement } from '@chakra-ui/react';
+import { Flex, Button, Stack, FormControl, FormErrorMessage, FormHelperText, Input, Checkbox, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
 import Loader from '../../components/Loader';
 import ThingsToConsider from '../../data/ThingsToConsider';
@@ -53,6 +53,8 @@ function SignIn() {
         registryId: state.index.registry.registryId
         }
     });
+
+    const isError = email === '';
 
     const addUser = async () => {
         console.log('adduser clicked');
@@ -103,38 +105,38 @@ function SignIn() {
                 Enter Your Email
                 </Text>
             </Flex>
+            { loader ? <Loader /> : ''}
       
 
                     <Flex className='sign-in-element-email'>
-                        <FormControl >
+                        <FormControl isInvalid={isError}>
                                 <InputGroup>
                                   <InputLeftElement pointerEvents='none'>
                                     <EmailIcon />
                                   </InputLeftElement>
                                 <Input 
+                                    type='email'
                                     variant='flushed'
                                     value={email}
                                   onChange={(e) => {dispatch(addEmail( e.target.value))}}
-                                  rules={[
-                                      {
-                                        type: 'email',
-                                        message: 'The input is not valid E-mail!',
-                                      },
-                                      {
-                                        required: true,
-                                        message: 'Please input your E-mail!',
-                                      },
-                                    ]}
                                   />
-                                  <InputRightElement>
-                                  { loader ? <Loader /> : ''}
-                                  </InputRightElement>
+                                  {!isError ? (
+                                    <FormHelperText>
+
+                                    </FormHelperText>
+                                  ) : (
+                                    <FormErrorMessage>Email is required.</FormErrorMessage>
+                                  )}
+                                  {/* <InputRightElement> */}
+                        
+                                  {/* </InputRightElement> */}
                                 </InputGroup>
-                            <FormHelperText>I would like to submit this report anonymously</FormHelperText>
+                                <Checkbox m={2}>I would like to submit this report anonymously</Checkbox>
                         </FormControl>
                                     <ThingsToConsider />
                     </Flex>
-                    <Flex className='signin-start-registry' direction='column'>
+                    <Flex className= 'signin-start-registry' direction='column'>
+
                         <Text className='signin-body' marginBottom={8}>
                         If you have questions or feedback on the submission experience, email us at info@documentedvoices.com
                         </Text>

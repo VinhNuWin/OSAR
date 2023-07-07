@@ -5,12 +5,12 @@ import { motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, addEmployeeId, registrySelect } from '../../store';
 import axios from 'axios';
-import { Flex, Button, HStack, Stack, Heading, Grid, GridItem, FormLabel, FormHelperText, Input, Spinner, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
+import { FormErrorMessage, Flex, Button, HStack, Stack, Heading, Grid, GridItem, FormLabel, FormHelperText, Input, Spinner, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
 import general from '../../images/general.png';
 
 export default function SelectYourRegistry() {
-const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const { index, _id, registryType, registryId } = useSelector((state)=> {
         return {
             index: state.index.index,
@@ -18,7 +18,9 @@ const dispatch = useDispatch();
             registryId: state.index.registry.registryId,
             registryType: state.index.registry.registryType,
         }
-    })
+    });
+
+    const [ isError, setIsError ] = useState(false);
 
     const newIndex = index + 1;
 
@@ -33,12 +35,11 @@ const dispatch = useDispatch();
                 registryId: registryId,
                 registryType: registryType,
                 _id: _id,
-                
             });
             dispatch(changeIndex(parseInt((newIndex))));
-            console.log('index was changed'); 
             console.log(response);
-        }
+        };
+    
 
     return (
 <Flex className='dual-panel-wrapper'>
@@ -66,6 +67,7 @@ const dispatch = useDispatch();
                         <Button onClick={handleRegistryInputs} >
                             Continue
                         </Button>
+
                     </Flex>
                 </Flex>
              </Stack>

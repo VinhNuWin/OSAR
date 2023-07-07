@@ -10,6 +10,7 @@ import { Flex, Button, HStack, Stack, FormControl, FormLabel, FormHelperText, In
 import { EmailIcon } from '@chakra-ui/icons';
 import Loader from '../../../components/Loader';
 import ThingsToConsider from '../../../data/ThingsToConsider';
+import logo from '../../../images/logo.png';
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -80,7 +81,9 @@ function SignIn() {
         <Flex className=''>
             <Stack className='signin-wrapper'>
             <center>
-
+                <Flex className='header'>
+                    <img src={logo} />
+                </Flex>
             <Flex className='signin-h2'>
                 <Text textAlign='center' w='full'>
                 Follow the promps to submit your report.
@@ -96,6 +99,7 @@ function SignIn() {
                 <Text textAlign='center' w='full'>
                 Enter Your Email
                 </Text>
+                { loader ? <Loader /> : ''}
             </Flex>
       
 
@@ -120,9 +124,6 @@ function SignIn() {
                                       },
                                     ]}
                                   />
-                                  <InputRightElement>
-                                  { loader ? <Loader /> : ''}
-                                  </InputRightElement>
                                 </InputGroup>
                             <FormHelperText>I would like to submit this report anonymously</FormHelperText>
                         </FormControl>
