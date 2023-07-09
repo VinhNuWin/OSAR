@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, chakra, shouldForwardProp } from '@chakra-ui/react';
 import NextButton from '../../components/buttons/NextButton';
 import BackButton from '../../components/buttons/BackButton';
 import { useSelector } from 'react-redux';
@@ -6,6 +6,14 @@ import GeneralQuestions from '../registryQuestions/GeneralQuestions';
 import GeneralAnswers from '../registryAnswers/GeneralAnswers';
 import FinalSubmit from '../../components/buttons/FinalSubmit';
 import MissionStatement from '../../components/modals/MissionStatement';
+import employee from '../../images/employee.png';
+import { listVariants, itemVariants } from '../../data/containerVariants';
+import { motion, isValidMotionProp } from 'framer-motion'; 
+
+const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+  });
+
 
 export default function GeneralRegistry() {
     const { registryType, index } = useSelector((state) => {
@@ -29,7 +37,14 @@ export default function GeneralRegistry() {
                         <GeneralQuestions />
                     </Flex>
                     <Flex className='panel-one-answers'>
+                    <ChakraBox 
+                        initial='hidden'
+                        animate='visible'
+                        variants={listVariants}>
+                            <ChakraBox variants={itemVariants}>
                         <GeneralAnswers />
+                        </ChakraBox>
+                        </ChakraBox>
                     </Flex>
                     <Flex className='panel-one-buttons'>
                         <BackButton />
@@ -42,7 +57,7 @@ export default function GeneralRegistry() {
 
 
 <Flex className='panel-two'>
-
+    <img src={employee} />
 </Flex>
         </Flex>
     )

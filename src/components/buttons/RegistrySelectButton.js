@@ -13,12 +13,12 @@ export const RegistrySelectButton = () => {
     const dispatch = useDispatch()
 
     const componentButtonArray = [
-        <Button name='general' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>,
-        <Button name='employees' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>,
-        <Button name='spouse' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>,
-        <Button name='elderly' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>,
-        <Button name='assault' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Assault</Button>,
-        <Button name='children' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Children</Button>
+        <Button name='general' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>,
+        <Button name='employees' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>,
+        <Button name='spouse' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>,
+        <Button name='elderly' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>,
+        <Button name='assault' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Assault</Button>,
+        <Button name='children' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Children</Button>
     ];
 
     return (

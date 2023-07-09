@@ -21,16 +21,22 @@ const nextButton = defineStyle({
   // height:'100%',
   // width:'100%',
   border:'2px',
-  // borderColor:'rgb(73, 79, 86)',
-  // margin: '5%',
+  borderColor:'rgb(73, 79, 86)',
+  margin: '5%',
   color:'rgb(73, 79, 86)',
   _hover:{ 
     bg: '#ebedf0',
-    color: 'black' 
+    color: 'black',
+    boxShadow: '0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7',
+    transform: 'translateY(-2px)',
   },
   _focus:{
     boxShadow: 'outline',
-  }
+  },
+_active:{
+    boxShadow: 'inset 0px 3px 7px #d6d6e7',
+    transform:' translateY(2px)',
+}
 });
 
 const backButton = defineStyle({
@@ -40,7 +46,9 @@ const backButton = defineStyle({
   color:'rgb(73, 79, 86)',
   _hover:{ 
     bg: '#ebedf0',
-    color: 'black' 
+    color: 'black',
+    boxShadow: '0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7',
+    transform: 'translateY(-2px)', 
   },
   _focus:{
     boxShadow:
@@ -73,24 +81,35 @@ const skipButton = defineStyle({
 
 const booleanButton = defineStyle({
   // size:'xl',
-  border: '1px',
-  // height:'100%',
-  // width:'100%',
+  // border: '1px',
+  // height:'25%',
+  // width:'50%',
+  
   // color:'rgb(97, 202, 146)',
   // marginRight: '',
-    _focus:{
-    boxShadow: 'outline',
-  },
-  _hover:{ bg: '#ebedf0' },
-  _active:{
-    bg: '#dddfe2',
-    transform: 'scale(1.03)',
-    borderColor: '#bec3c9',
-  },
-  _focus:{
-    boxShadow:
-      '0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)',
-  },
+  //   _focus:{
+  //   boxShadow: 'outline',
+  // },
+  // _hover:{ bg: '#ebedf0' },
+  // _active:{
+  //   bg: '#dddfe2',
+  //   transform: 'scale(1.03)',
+  //   borderColor: '#bec3c9',
+  // },
+  // _focus:{
+  //   boxShadow:
+  //     '0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)',
+  // },
+
+_hover: {
+    boxShadow: '0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7',
+    transform: 'translateY(-2px)',
+},
+_active:{
+    boxShadow: 'inset 0px 3px 7px #d6d6e7',
+    transform:' translateY(2px)',
+}
+
 });
 
 const selectButton = defineStyle({

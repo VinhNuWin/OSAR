@@ -55,7 +55,9 @@ export default function Registry() {
             <div>
             { isLargerThan568 ? <GeneralRegistry /> : <MobileGeneralRegistry /> }
             </div>
-        ) : null
+        ) : (<div>
+        { isLargerThan568 ? <GeneralRegistry /> : <MobileGeneralRegistry /> }
+        </div>)
     }
     </Flex>
     )

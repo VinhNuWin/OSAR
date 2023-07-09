@@ -23,6 +23,9 @@ export default function SelectYourRegistry() {
 
     const newIndex = index + 1;
 
+    const isError = registryType === '';
+
+
     const handleRegistryInputs = async () => {
         console.log('patch request made');
         const response = await axios.patch(`https://osar-api.onrender.com/registry/${_id}`, {
@@ -49,7 +52,7 @@ export default function SelectYourRegistry() {
                             <Flex direction='column' className='selectRegistry-buttons-wrapper '>
                                 <RegistrySelectButton />
                             <Flex className='answer-element-continue'>
-                                <Button onClick={handleRegistryInputs} >
+                                <Button className="btn" colorScheme='facebook' onClick={handleRegistryInputs} >
                                     Continue
                                 </Button>
                             </Flex>

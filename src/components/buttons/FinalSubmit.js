@@ -54,7 +54,7 @@ export default function FinalSubmit() {
     
     return (
         <Button 
-        variant='nextButton'
+        variant='backButton'
         onClick={handleEmployeeRegistry}
         >Submit
         </Button> 

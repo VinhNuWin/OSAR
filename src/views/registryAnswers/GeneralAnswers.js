@@ -37,66 +37,64 @@ function GeneralAnswers() {
         variants={listVariants}>
                             <ChakraBox variants={itemVariants}>
             { questionIndex === 1 ? ( //Are you in immediate danger or in need of medical attention?
-            <Flex >
-                <div>
+            <ChakraBox variants={itemVariants}  key={index} >
                     <BooleanYesNo name='immediateDangerOrMedicalAttention' />
-                </div>
-            </Flex>
+            </ChakraBox>
             ) : questionIndex === 2 ? ( // When did the incident happen?
-            <Flex >
-                <motion.div  >
+            <ChakraBox variants={itemVariants}  key={index} >
+                <motion.div >
                     <DateAndTime />
                 </motion.div>
-            </Flex>
+            </ChakraBox>
             ) : questionIndex === 3 ? ( //Where did the incident occur?
-                <motion.div  >
+                <motion.div variants={itemVariants}  key={index}  >
                     <Address />
                 </motion.div>
             ) : questionIndex === 4 ? ( // Can you provide a detailed account of the incident(s)? What happened?
-            <motion.div className='' >
-            <FormControl>
-                <FormLabel >Desciption of what happened</FormLabel>
-                    <Input 
-                        type='text'
-                        name='detailsOfIncident'
-                        h={20}
-                        width={{ base: '12em', md: '14em', lg: '20em' }} 
-                        onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                        placeholder="Brief description"
-                    />
-            </FormControl>
-        </motion.div>
+                <ChakraBox variants={itemVariants}  key={index}  >
+                    <FormControl>
+                        <FormLabel >Desciption of what happened</FormLabel>
+                            <Input 
+                                type='text'
+                                name='detailsOfIncident'
+                                h={20}
+                                width={{ base: '12em', md: '14em', lg: '20em' }} 
+                                onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
+                                placeholder="Brief description"
+                            />
+                    </FormControl>
+                </ChakraBox>
             ) : questionIndex === 5 ? ( // Name of person responsible for incident?
-            <motion.div className='' >
-            <FormControl>
-                <FormLabel >Desciption of what happened</FormLabel>
-                    <Input 
-                        type='text'
-                        name='detailsOfIncident'
-                        h={20}
-                        width={{ base: '12em', md: '14em', lg: '20em' }} 
-                        onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                        placeholder="Brief description"
-                    />
-            </FormControl>
-        </motion.div>
+                <ChakraBox variants={itemVariants}  key={index}  >
+                    <FormControl>
+                        <FormLabel >Desciption of what happened</FormLabel>
+                            <Input 
+                                type='text'
+                                name='detailsOfIncident'
+                                h={20}
+                                width={{ base: '12em', md: '14em', lg: '20em' }} 
+                                onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
+                                placeholder="Brief description"
+                            />
+                    </FormControl>
+                </ChakraBox>
             ) : questionIndex === 6 ? ( // Are there any witnesses who saw the incident
-            <motion.div className='' >
-            <FormControl>
-                <FormLabel >List Individuals Who Physically Witnessed Event</FormLabel>
-                    <Input 
-                      type='text'
-                      name='witnesses'
-                        h={20}
-                        width={{ base: '12em', md: '14em', lg: '24em' }} 
-                        onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                        placeholder="Name1, name2, name3.."
-                    />
-            </FormControl>
-        </motion.div>
+                <ChakraBox variants={itemVariants}  key={index}  >
+                    <FormControl>
+                        <FormLabel >List Individuals Who Physically Witnessed Event</FormLabel>
+                            <Input 
+                              type='text'
+                              name='witnesses'
+                                h={20}
+                                width={{ base: '12em', md: '14em', lg: '24em' }} 
+                                onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
+                                placeholder="Name1, name2, name3.."
+                            />
+                    </FormControl>
+                </ChakraBox>
 
             ) : questionIndex === 7 ? ( // Is there any additional information or comments you would like to add?
-                <motion.div className='flex-box'>
+                <ChakraBox variants={itemVariants}  key={index}  >
                         <Form>
                             <div>
                             <Form.Item>
@@ -116,13 +114,13 @@ function GeneralAnswers() {
                             </Form.Item>
                             </div>
                         </Form>
-                    </motion.div>            
+                </ChakraBox>    
             ) : questionIndex === 8 ? ( // Your registry has been reported, a timestamped copy will be sent to the the email provided'
-                <motion.div className='flex-box'>
+                <ChakraBox variants={itemVariants}  key={index}  >
                     <Text>
                         If you are in need of help, respond to the email for further assistance and support.
                     </Text>
-                </motion.div>
+                </ChakraBox>
             ) : questionIndex === null (
 
             )

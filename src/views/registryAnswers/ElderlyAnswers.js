@@ -38,29 +38,29 @@ function ElderlyAnswers() {
         variants={listVariants}>
                             <ChakraBox variants={itemVariants}>
             { questionIndex === 1 ? ( //Are you in immediate danger or in need of medical attention?
-            <Flex >
+            <ChakraBox variants={itemVariants}  key={index}>
                 <div>
                     <BooleanYesNo name='immediateDangerOrMedicalAttention' />
                 </div>
-            </Flex>
+            </ChakraBox>
             ) : questionIndex === 2 ? ( //'Can you please tell me your full name?
-            <Flex >
+            <ChakraBox variants={itemVariants}  key={index}>
                 <div>
                     <FormControl>
                         <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
                     </FormControl>
                 </div>
-            </Flex>
+            </ChakraBox>
             ) : questionIndex === 3 ? ( // When did the incident occur?
-                <motion.div  >
+            <ChakraBox variants={itemVariants}  key={index}>
                     <DateAndTime />
-                </motion.div>
+            </ChakraBox>
             ) : questionIndex === 4 ? ( // Where did the incident occur?
-            <motion.div  >
+            <ChakraBox variants={itemVariants}  key={index}>
                 <Address />
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 5 ? ( // Can you describe what happened in detail?
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
             <FormControl>
                 <FormLabel >Desciption of what happened</FormLabel>
                     <Input 
@@ -72,9 +72,9 @@ function ElderlyAnswers() {
                         placeholder="Brief description"
                     />
             </FormControl>
-        </motion.div>
+            </ChakraBox>
             ) : questionIndex === 6 ? ( // Who is the person involved in the abusive behavior?
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
                 <FormControl>
                     <FormLabel >List Individuals Directly Involved</FormLabel>
                         <Input 
@@ -86,10 +86,10 @@ function ElderlyAnswers() {
                             placeholder="Name1, Name2, etc..."
                         />
                 </FormControl>
-            </motion.div>
+            </ChakraBox>
 
             ) : questionIndex === 7 ? ( // Is this person your caregiver, family member, or someone else? What is their relationship to you?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <Form>
                           <div>
                           <Form.Item>
@@ -109,9 +109,9 @@ function ElderlyAnswers() {
                           </Form.Item>
                           </div>
                       </Form>
-      </motion.div>
+            </ChakraBox>
             ) : questionIndex === 8 ? ( // Were there any specific threats or actions that were particularly concerning?
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
             <FormControl>
                 <FormLabel >Please list specific threats or actions that concern you </FormLabel>
                     <Input 
@@ -123,9 +123,9 @@ function ElderlyAnswers() {
                         placeholder="Your concerns regarding the person in question"
                     />
             </FormControl>
-        </motion.div>
+            </ChakraBox>
             ) : questionIndex === 9 ? ( // Have there been other instances of this abuse?
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
             <FormControl>
                 <FormLabel >List any additional incidents</FormLabel>
                     <Input 
@@ -137,9 +137,9 @@ function ElderlyAnswers() {
                         placeholder="List additional incidents of abuse.."
                     />
             </FormControl>
-        </motion.div>
+            </ChakraBox>
             ) : questionIndex === 10 ? ( // Were there any witnesses to the incident or previous incidents
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
             <FormControl>
                 <FormLabel >List Individuals Who Physically Witnessed Event</FormLabel>
                     <Input 
@@ -151,29 +151,29 @@ function ElderlyAnswers() {
                         placeholder="Name1, name2, name3.."
                     />
             </FormControl>
-        </motion.div>
+            </ChakraBox>
             ) : questionIndex === 11 ? ( // Do you have any evidence of the abuse (like photographs of injuries, written communication, etc)?
-            <motion.div>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <BooleanYesNo name={'evidence'}/>
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 12 ? ( // Are there any other people living with you or who could be at risk because of this person?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <BooleanYesNo name={'otherPeopleAtRisk'} />
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 13 ? ( // Do you feel safe in your current living situation?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <BooleanYesNo name={'currentLivingSituationSafe'} />
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 14 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <BooleanYesNo name={'additionalSupportNeeded'} />
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 15 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <Text>
                     If you are in need of help, respond to the email for further assistance and support.
                 </Text>
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === null (
                 <RegistryComplete />
             )

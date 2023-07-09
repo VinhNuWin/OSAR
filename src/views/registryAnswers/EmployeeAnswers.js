@@ -47,7 +47,6 @@ function EmployeeAnswers() {
         initial='hidden'
         animate='visible'
         variants={listVariants}>
-                            <ChakraBox variants={itemVariants}>
             { questionIndex === 1 ? ( //Can you provide your full name and your job title
                 <ChakraBox variants={itemVariants}>
                         <FormControl>
@@ -60,15 +59,15 @@ function EmployeeAnswers() {
 
                 </ChakraBox>
             ) : questionIndex === 2 ? ( //What is the date and approximate time of the incident
-                <ChakraBox variants={itemVariants}>
+                <motion.div key={index} variants={itemVariants}>
                     <DateAndTime />
-                </ChakraBox>
+                </motion.div>
             ) : questionIndex === 3 ? ( // Where did the incident take place
-                         <ChakraBox variants={itemVariants}>
+                         <ChakraBox key={index} variants={itemVariants}>
                                 <Address />
                        </ChakraBox>
             ) : questionIndex === 4 ? ( // Who were the people involved in the incident
-         <ChakraBox variants={itemVariants}>
+         <ChakraBox key={index} variants={itemVariants}>
                 <FormControl>
                     <FormLabel >List Individuals Directly Involved</FormLabel>
                         <Input 
@@ -83,10 +82,9 @@ function EmployeeAnswers() {
        </ChakraBox>
 
             ) : questionIndex === 5 ? ( // Can you describe the incident in as much detail as possible
-            <motion.div className='flex-box'>
-                <ChakraBox variants={itemVariants}>
+                <ChakraBox key={index} variants={itemVariants}>
                     <Form>
-                          <div>
+                    
                           <Form.Item>
                             <FormLabel>Description</FormLabel>
                           <TextArea
@@ -103,12 +101,10 @@ function EmployeeAnswers() {
                               placeholder="Bullet Point of events"
                               />
                           </Form.Item>
-                          </div>
                       </Form>
                     </ChakraBox> 
-      </motion.div>
             ) : questionIndex === 6 ? ( // Were there any witnesses to the incident? If yes, who were they
-                <ChakraBox variants={itemVariants}>
+                <ChakraBox key={index} variants={itemVariants}>
                     <FormControl>
                         <FormLabel >List Individuals Who Physically Witnessed Event</FormLabel>
                             <Input 
@@ -122,7 +118,7 @@ function EmployeeAnswers() {
                     </FormControl>
                 </ChakraBox>
             ) : questionIndex === 7 ? ( // What was the immediate outcome of the incident
-            <ChakraBox variants={itemVariants}>
+            <ChakraBox key={index} variants={itemVariants}>
                 <FormControl>
                     <FormLabel >Brief description of direct outcome of incident</FormLabel>
                         <Input 
@@ -136,7 +132,7 @@ function EmployeeAnswers() {
                     </FormControl>
             </ChakraBox>
             ) : questionIndex === 8 ? ( // Did the incident affect your ability to perform your job? If so, how
-                <ChakraBox variants={itemVariants}>
+                <ChakraBox key={index} variants={itemVariants}>
                     <FormControl>
                         <FormLabel>How did the incident effect your work</FormLabel>
                             <Input 
@@ -150,19 +146,19 @@ function EmployeeAnswers() {
                                     </FormControl>
                 </ChakraBox>
             ) : questionIndex === 9 ? ( // Did you seek medical attention as a result of the incident
-                <ChakraBox variants={itemVariants}>
+                <ChakraBox key={index} variants={itemVariants}>
                     <BooleanYesNo name={'seekedMedicalAttention'}/>
                 </ChakraBox>
             ) : questionIndex === 10 ? ( // Have you reported the incident to your direct supervisor or manager
-                <ChakraBox variants={itemVariants}>
+                <ChakraBox key={index} variants={itemVariants}>
                 <BooleanYesNo name={'reportedToHigherPersonel'} />
                 </ChakraBox>
             ) : questionIndex === 11 ? ( // Has any action been taken since the incident
-                <ChakraBox variants={itemVariants}>
+                <ChakraBox key={index} variants={itemVariants}>
                 <BooleanYesNo name={'actionsTakenSinceIncident'} />
                 </ChakraBox>
             ) : questionIndex === 12 ? ( // How has the incident impacted you personally
-                <ChakraBox variants={itemVariants}>
+                <ChakraBox key={index} variants={itemVariants}>
                  <Form>
                                 <div>
                                 <Form.Item>
@@ -183,7 +179,7 @@ function EmployeeAnswers() {
                             </Form>
                 </ChakraBox>    
             ) : questionIndex === 13 ? ( // Is there any additional information or comments you would like to add
-                <ChakraBox variants={itemVariants}>
+                <ChakraBox key={index} variants={itemVariants}>
                 <Form>
                                 <div>
                                 <Form.Item>
@@ -205,7 +201,7 @@ function EmployeeAnswers() {
                             </Form>
                 </ChakraBox>  
             ) : questionIndex === 14 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
-            <motion.div className='flex-box'>
+            <motion.div key={index} className='flex-box'>
                 <Text>
                     If you are in need of help, respond to the email for further assistance and support.
                 </Text>
@@ -216,7 +212,7 @@ function EmployeeAnswers() {
                 }
 
         </ChakraBox>
-        </ChakraBox>
+
         </AnimatePresence>
     )
 }

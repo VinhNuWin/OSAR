@@ -84,19 +84,23 @@
 
 .panel-one-questions{
   /* height: 20vh; */
-  width: 100%;
+  width: 80%;
   position: absolute;
-  align-items: center;
-  top: 25%;
-  justify-content: center;
+  top: 20%;
+  justify-self: center;
+  text-align: center;
+  left: 10%;
 }
 
 .panel-one-answers{
+    /* border: 3px solid red; */
+  display: grid;
   position: absolute;
   align-items: center;
-  top: 40%;
-  /* height: 40vh; */
-  width: 100%;
+  top: 30%;
+  height: 40vh;
+  width: 80%;
+  left: 10%;
   justify-content: center;
 }
 .panel-one-buttons{
@@ -113,25 +117,26 @@
   padding-top: 10%;
 }
 .selectRegistry-buttons-wrapper {
+  /* border: 3px solid red; */
   position: relative;
   display: flex;
   display: flex;
   width: 50vw;
   height: 80vh;
-  justify-items: space-a;
-  align-content: space-between;
-  padding-top: 10%;
+  align-content: center;
+  padding-top: 20%;
   /* padding: 5%; */
 }
 
 .selectButtons {
-  position: relative;
+  position: absolute;
   flex-wrap: wrap;
   flex-direction: row;
   display: flex;
-  /* border: 3px solid red; */
-  width: 90%;
-  justify-content: space-around;
+  width: 100%;
+  height: 35%;
+  justify-content: space-evenly;
+  padding: 5%;
 }
 
 .answer-element-continue {
@@ -140,8 +145,29 @@
   /* margin: auto; */
   /* justify-self: center; */
   align-self: center;
-  bottom: 20%;
+  bottom: 13%;
 }
+
+.boolean-wrapper {
+  display: flex;
+  position: relative;
+  height: 10vh;
+  width: 30vw;
+  align-content: space-between;
+  justify-content: space-between;
+  /* left: 1%; */
+}
+
+.boolean-button {
+  width: 50%;
+  margin-left: 1%;
+  /* border: 3px solid red; */
+}
+
+
+
+
+
 
 .wrapper-block {
   /* flex-grow: 1; */

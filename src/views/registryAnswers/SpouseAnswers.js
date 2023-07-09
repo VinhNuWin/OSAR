@@ -2,7 +2,7 @@ import { AnimatePresence, motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateRegistry } from '../../store';
 import { Form } from 'antd';
-import { Input, Flex, FormControl, FormLabel, Text, chakra, shouldForwardProp } from '@chakra-ui/react';
+import { Input, FormControl, FormLabel, Text, chakra, shouldForwardProp } from '@chakra-ui/react';
 import { BooleanYesNo, DateAndTime, Address } from '../../components/buttons/RegistryResponseComponents.js';
 import RegistryComplete from '../pages/RegistryComplete';
 import { listVariants, itemVariants } from '../../data/containerVariants';
@@ -38,29 +38,29 @@ function SpouseAnswers() {
         variants={listVariants}>
                             <ChakraBox variants={itemVariants}>
             { questionIndex === 1 ? ( //Are you in immediate danger or in need of medical attention?
-            <Flex >
+            <ChakraBox variants={itemVariants}  key={index}>
                 <div>
                     <BooleanYesNo name='immediateDangerOrMedicalAttention' />
                 </div>
-            </Flex>
+            </ChakraBox>
             ) : questionIndex === 2 ? ( //'Who is the person responsible for the abuse?'
-            <Flex >
+            <ChakraBox variants={itemVariants}  key={index}>
                 <div>
                     <FormControl>
                         <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
                     </FormControl>
                 </div>
-            </Flex>
+            </ChakraBox>
             ) : questionIndex === 3 ? ( // When did the incident happen?'
-                <motion.div  >
+            <ChakraBox variants={itemVariants}  key={index}>
                     <DateAndTime />
-                </motion.div>
+            </ChakraBox>
             ) : questionIndex === 4 ? ( // Where did the incident occur?
-            <motion.div  >
+            <ChakraBox variants={itemVariants}  key={index}>
                 <Address />
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 5 ? ( // Can you provide a detailed account of the incident(s)? What happened?
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
             <FormControl>
                 <FormLabel >Desciption of what happened</FormLabel>
                     <Input 
@@ -72,9 +72,9 @@ function SpouseAnswers() {
                         placeholder="Brief description"
                     />
             </FormControl>
-        </motion.div>
+            </ChakraBox>
             ) : questionIndex === 6 ? ( // Were there any specific threats made? If yes, what were they?
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
                 <FormControl>
                     <FormLabel >List Individuals Directly Involved</FormLabel>
                         <Input 
@@ -86,10 +86,10 @@ function SpouseAnswers() {
                             placeholder="Name1, Name2, etc..."
                         />
                 </FormControl>
-            </motion.div>
+            </ChakraBox>
 
             ) : questionIndex === 7 ? ( // Are there any witnesses who can corroborate the incident?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <Form>
                           <div>
                           <Form.Item>
@@ -109,9 +109,9 @@ function SpouseAnswers() {
                           </Form.Item>
                           </div>
                       </Form>
-      </motion.div>
+            </ChakraBox>
             ) : questionIndex === 8 ? ( // Has this occured before? If so, have you reported it in the past?
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
             <FormControl>
                 <FormLabel >Please list specific threats or actions that concern you </FormLabel>
                     <Input 
@@ -123,9 +123,9 @@ function SpouseAnswers() {
                         placeholder="Your concerns regarding the person in question"
                     />
             </FormControl>
-        </motion.div>
+            </ChakraBox>
             ) : questionIndex === 9 ? ( // Do you have any physical, digital, or other types of evidence of the abuse (like photographs, emails, text messages, etc.)?
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
             <FormControl>
                 <FormLabel >List any additional incidents</FormLabel>
                     <Input 
@@ -137,9 +137,9 @@ function SpouseAnswers() {
                         placeholder="List additional incidents of abuse.."
                     />
             </FormControl>
-        </motion.div>
+            </ChakraBox>
             ) : questionIndex === 10 ? ( // Are there any children or other dependents in the household? Are they in immediate danger?
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
             <FormControl>
                 <FormLabel >List Individuals Who Physically Witnessed Event</FormLabel>
                     <Input 
@@ -151,29 +151,29 @@ function SpouseAnswers() {
                         placeholder="Name1, name2, name3.."
                     />
             </FormControl>
-        </motion.div>
+            </ChakraBox>
             ) : questionIndex === 11 ? ( // Are there any weapons in the house?
-            <motion.div>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <BooleanYesNo name={'evidence'}/>
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 12 ? ( // Do you have a safe place to stay after reporting this incident?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <BooleanYesNo name={'otherPeopleAtRisk'} />
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 13 ? ( // Do you feel safe in your current living situation?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <BooleanYesNo name={'currentLivingSituationSafe'} />
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 14 ? ( // Would you like to be referred to local support services for victims of domestic abuse?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <BooleanYesNo name={'additionalSupportNeeded'} />
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 15 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <Text>
                     If you are in need of help, respond to the email for further assistance and support.
                 </Text>
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === null (
                 <RegistryComplete />
             )

@@ -1,35 +1,36 @@
-import { motion } from "framer-motion";
+import { motion, isValidMotionProp } from "framer-motion";
 import { useState } from 'react';
-import { Button, Flex, Input, Select, FormControl, FormLabel } from "@chakra-ui/react";
-import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
+import { Button, Flex, Input, Select, FormControl, chakra, shouldForwardProp } from "@chakra-ui/react";
+import { CheckIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRegistry, addEmployeeAnswer, updateAddress } from "../../store/slices/indexSlice";
-import FullNameAndTitleModal from "../modals/FullNameAndTitleModal";
-import NextButton from "./NextButton";
-import BackButton from "./BackButton";
+import { updateRegistry, updateAddress } from "../../store/slices/indexSlice";
+
+const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+  });
 
 
 export const BooleanYesNo = (props) =>  {
     const dispatch = useDispatch();
 
-    const { registry, registryReport, registryType } = useSelector((state)=> {
+    const { registryReport } = useSelector((state)=> {
         return {
-            registry: state.index.registry,
             registryReport: state.index.registry.registryReport,
-            registryType: state.index.registry.registryType
         }
     })
 
     return (
-        <div>
-            <Button variant='backButton' onClick={(e) => dispatch(updateRegistry({...registryReport, [props.name]: false}))}>
-                <CloseIcon w={8} boxSize={4} m='1%' />
+        <div className="boolean-wrapper">
+            <div className="boolean-button">
+            <Button className="btn" colorScheme='facebook' onClick={(e)=> dispatch(updateRegistry({...registryReport, [props.name]: false}))}>
                     No
             </Button>
-            <Button variant='booleanButton' onClick={(e) => dispatch(updateRegistry({...registryReport, [props.name]: true}))}>
-                <CheckIcon w={8} boxSize={5} m='1%' />
+            </div>
+            <div className="boolean-button">
+            <Button className="btn" onClick={(e) => dispatch(updateRegistry({...registryReport, [props.name]: true}))}>
                     Yes
             </Button>
+            </div>
         </div>
     )
 }
@@ -62,15 +63,11 @@ export const Address = () => {
     const { address, state, zipcode, city } = useSelector((state)=> {
         return {
             address: state.index.registry.registryReport.address,
-            // streetAddress: state.index.registry.employeeRegistry.address.streetAddress,
-            // state: state.registry.index.employeeRegistry.address.state,
-            // zipcode: state.index.registry.employeeRegistry.address.zipcode,
-            // city: state.index.registry.employeeRegistry.address.city
         }
     })
 
     return (
-        <Flex flexWrap='wrap' >
+        <Flex flexWrap='wrap'>
             <FormControl>
             <Input size='md' variant='flushed' placeholder='Address Line' name='streetAddress'  onChange={(e)=>dispatch(updateAddress({...address, [e.target.name]: e.target.value}))} />
         </FormControl>

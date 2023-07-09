@@ -33,45 +33,43 @@ function AssaultAnswers() {
         variants={listVariants}>
                             <ChakraBox variants={itemVariants}>
             { questionIndex === 1 ? ( //Can you please provide your full name?
-             <div>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <FormControl>
                     <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
                 </FormControl>
-            </div>
+            </ChakraBox>
             ) : questionIndex === 2 ? ( //'When did the incident occur?
-            <Flex >
-                <div>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <motion.div  >
                     <DateAndTime />
                 </motion.div>
-                </div>
-            </Flex>
+            </ChakraBox>
             ) : questionIndex === 3 ? ( // Do you remember where the incident occurred
-                <motion.div  >
+            <ChakraBox variants={itemVariants}  key={index}>
                     <Address />
-                </motion.div>
+            </ChakraBox>
             ) : questionIndex === 4 ? ( // Was Alcohol Involved
-                <div>
+            <ChakraBox variants={itemVariants}  key={index}>
                     <BooleanYesNo name='alcoholInvolved' />
-                </div>
+            </ChakraBox>
             ) : questionIndex === 5 ? ( // Were Drugs Involved
-                <div>
+            <ChakraBox variants={itemVariants}  key={index}>
                     <BooleanYesNo name='drugsInvolved' />
-                </div>
+            </ChakraBox>
             ) : questionIndex === 6 ? ( // Was Survivor Asleep at time of Incident
-                <div>
+                <ChakraBox variants={itemVariants}  key={index}>
                     <BooleanYesNo name='wasSurvivorAsleep' />
-                </div>
+                </ChakraBox>
             ) : questionIndex === 7 ? ( // Were there verbal threats to the survivor
-                <div>
+                <ChakraBox variants={itemVariants}  key={index}>
                     <BooleanYesNo name='verbalThreats' />
-                </div>
+                </ChakraBox>
             ) : questionIndex === 8 ? ( // Was resistance offered by survivor
-                <div>
+                <ChakraBox variants={itemVariants}  key={index}>
                     <BooleanYesNo name='resistanceOffered' />
-                </div>
+                </ChakraBox>
             ) : questionIndex === 9 ? ( // Details of the assault
-            <motion.div className='' >
+            <ChakraBox variants={itemVariants}  key={index}>
                 <FormControl>
                     <FormLabel >Details of the assault</FormLabel>
                         <Input 
@@ -83,25 +81,25 @@ function AssaultAnswers() {
                             placeholder="Brief description"
                         />
                 </FormControl>
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 10 ? ( // Areas assaulted
-          <div>
+            <ChakraBox variants={itemVariants}  key={index}>
 
-          </div>
+            </ChakraBox>
             ) : questionIndex === 11 ? ( // Do you have any evidence of the abuse (like photographs of injuries, written communication, etc)?
-            <motion.div>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <BooleanYesNo name={'evidence'}/>
-            </motion.div>
+            </ChakraBox>
             ) : questionIndex === 12 ? ( // Use of weapons
-            <motion.div className='flex-box'>
+                <ChakraBox variants={itemVariants}  key={index}>
                 <BooleanYesNo name={'useOfWeapons'} />
-            </motion.div>
+                </ChakraBox>
             ) : questionIndex === 13 ? ( // Use of Restraints
-            <motion.div className='flex-box'>
-                <BooleanYesNo name={'useOfRestraints'} />
-            </motion.div>
+                <ChakraBox variants={itemVariants}  key={index}>
+                    <BooleanYesNo name={'useOfRestraints'} />
+                </ChakraBox>
             ) : questionIndex === 14 ? ( // Assailants Gender
-                <motion.div>
+                <ChakraBox variants={itemVariants}  key={index}>
                     <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registryReport, assailantGender: 'male'}))}>
                               Male
                     </Button>
@@ -114,9 +112,9 @@ function AssaultAnswers() {
                     <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registryReport, assailantGender: 'unknown'}))}>
                               Unknown
                     </Button> 
-                </motion.div>    
+                </ChakraBox>
             ) : questionIndex === 15 ? ( // Assailants Race/Ethnicity
-                <div className=''>  
+                <ChakraBox variants={itemVariants}  key={index}>
                     <Card>
                         <CardHeader size='sm'> 
                         <Select
@@ -133,21 +131,21 @@ function AssaultAnswers() {
                         </Select>  
                         </CardHeader>     
                     </Card>     
-                </div>
+                </ChakraBox>
             ) : questionIndex === 16 ? ( // Do you know the assailants name?
-            <div>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <FormControl>
                     <Input variant='flushed' name='assailantsFullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
                 </FormControl>
-            </div>
+            </ChakraBox>
            ) : questionIndex === 17 ? ( // Name of Survivor
-           <div>
-           <FormControl>
-               <Input variant='flushed' name='survivorsFullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
-           </FormControl>
-       </div>
+            <ChakraBox variants={itemVariants}  key={index}>
+                <FormControl>
+                    <Input variant='flushed' name='survivorsFullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
+                </FormControl>
+            </ChakraBox>
            ) : questionIndex === 18 ? ( //Survivor Gender
-            <motion.div>
+                <ChakraBox variants={itemVariants}  key={index}>
                     <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registryReport, survivorGender: 'male'}))}>
                               Male
                     </Button>
@@ -160,13 +158,13 @@ function AssaultAnswers() {
                     <Button variant='selectButton' onChange={() => dispatch(updateRegistry({...registryReport, survivorGender: 'unknown'}))}>
                               Unknown
                     </Button> 
-                </motion.div>       
+                </ChakraBox>     
             ) : questionIndex === 19 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
-            <motion.div className='flex-box'>
+            <ChakraBox variants={itemVariants}  key={index}>
                 <Text>
                     If you are in need of help, respond to the email for further assistance and support.
                 </Text>
-            </motion.div>             
+            </ChakraBox>
             ) : questionIndex === null (
                 <RegistryComplete />
             )

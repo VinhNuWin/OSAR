@@ -6,7 +6,7 @@ import { motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, addEmail, add_Id } from '../../store';
 import axios from 'axios';
-import { Flex, Button, Stack, FormControl, FormErrorMessage, FormHelperText, Input, Checkbox, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup, InputRightElement } from '@chakra-ui/react';
+import { Flex, Button, Stack, FormControl, FormErrorMessage, FormHelperText, Input, Checkbox, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
 import Loader from '../../components/Loader';
 import ThingsToConsider from '../../data/ThingsToConsider';
@@ -35,6 +35,7 @@ function SignIn() {
     const addUser = async () => {
         console.log('adduser clicked');
         setLoader(true);
+        try {
         const response = await axios.post('https://osar-api.onrender.com/registry', {
             headers: {
                 'Content-Type' : 'application/json',
@@ -46,6 +47,10 @@ function SignIn() {
         const userId = response.data.data._id;
         dispatch(add_Id(userId));
         dispatch(changeIndex(parseInt(index + 1)));
+        } catch {
+            setLoader(false);
+        }
+    
     };
 
     console.log(email);
@@ -107,7 +112,7 @@ function SignIn() {
                         <Text className='signin-body' marginBottom={8}>
                         If you have questions or feedback on the submission experience, email us at info@documentedvoices.com
                         </Text>
-                                <Button onClick={addUser} w='50%'>
+                                <Button className="btn" colorScheme='facebook' onClick={addUser} w='50%'>
                                     Start Registry
                                 </Button>
                             </Flex>
