@@ -6,6 +6,7 @@ import SpouseQuestions from '../../registryQuestions/SpouseQuestions';
 import SpouseAnswers from '../../registryAnswers/SpouseAnswers';
 import RegistryComplete from '../../pages/RegistryComplete';
 import FinalSubmit from '../../../components/buttons/FinalSubmit';
+import MissionStatement from '../../../components/modals/MissionStatement';
 
 export default function MobileSpouseRegistry() {
     const { registryType, index, _id, email } = useSelector((state) => {
@@ -24,8 +25,8 @@ export default function MobileSpouseRegistry() {
         { index <= 14 ? (
             <Flex>
 
-            <Flex className='dual-panel-wrapper' direction='column'>
-            {/* <MissionStatement /> */}
+            <Flex className='panel-one-mobile' direction='column'>
+                <MissionStatement />
                 <Flex className='panel-one-questions' >
                     <SpouseQuestions />
                 </Flex>

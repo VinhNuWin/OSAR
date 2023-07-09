@@ -1,5 +1,5 @@
 .header{
-  width: 50%;
+  width: 50vw;
   height: 8%;
   display: flex;
   align-self: center;
@@ -32,13 +32,16 @@
   display: flex;
   position: relative;
 }
+.panel-one-mobile{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+}
 .panel-two{
   margin: auto;
   width: 50vw;
   height: 100vh;
-    /* background-image: 
-    url(
-      "/src/images/a-voice-for-the-elderly.jpg"); */
 }
 
 
@@ -121,7 +124,7 @@
   position: relative;
   display: flex;
   display: flex;
-  width: 50vw;
+  width: 100%;
   height: 80vh;
   align-content: center;
   padding-top: 20%;

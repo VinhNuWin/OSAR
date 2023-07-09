@@ -7,6 +7,7 @@ import { changeIndex, addEmployeeId, registrySelect } from '../../../store';
 import axios from 'axios';
 import { Flex, Button, HStack, Stack, Heading, Grid, GridItem, FormLabel, FormHelperText, Input, Spinner, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
+import { RegistrySelectButton } from '../../../components/buttons/RegistrySelectButton';
 
 export default function MobileRegistrySelect() {
 const dispatch = useDispatch();
@@ -40,35 +41,21 @@ const dispatch = useDispatch();
         }
 
     return (
-<Flex className='dual-panel-wrapper'>
-<Flex className='' direction='column'
->
-<Heading className='selectRegistry-header' color='black' marginTop={10}>
-                                   Select a Registry
-                         </Heading>
-                         <div >
-                <Stack className='selectRegistry-buttons'>
-                    <Flex  direction='column'>
-                        <HStack>
-                            <Button name='employees' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>
-                            <Button name='elderly' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>
-                        </HStack>
-                        {/* <HStack>
-                            <Button name='spouse' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>
-                            <Button name='children' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Child</Button>
-                        </HStack>
-                        <HStack>
-                            <Button name='sexual assault' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Sexual Assault</Button>
-                        </HStack> */}
-                    <Flex className='answer-element-continue'>
-                        <Button onClick={handleRegistryInputs} >
-                            Continue
-                        </Button>
-                    </Flex>
+<Flex className='panel-one-mobile' direction='column'>
+                <Heading className='selectRegistry-header' color='black' marginTop={10}>
+                    Select a Registry
+                </Heading>
+                    <div>
+                            <Flex direction='column' className='selectRegistry-buttons-wrapper '>
+                                <RegistrySelectButton />
+                            <Flex className='answer-element-continue'>
+                                <Button className="btn" colorScheme='facebook' onClick={handleRegistryInputs} >
+                                    Continue
+                                </Button>
+                            </Flex>
+                        </Flex>
+
+                     </div>
                 </Flex>
-             </Stack>
-             </div>
-</Flex>
-</Flex>
     )
 }

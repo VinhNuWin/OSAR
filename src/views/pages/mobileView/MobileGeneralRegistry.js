@@ -23,7 +23,7 @@ export default function MobileGeneralRegistry() {
 
         { index <= 7 ? (
         <Flex>
-            <Flex className='panel-one' direction='column'>
+            <Flex className='panel-one-mobile' direction='column'>
                 <MissionStatement />
                     <Flex className='panel-one-questions' >
                         <GeneralQuestions />

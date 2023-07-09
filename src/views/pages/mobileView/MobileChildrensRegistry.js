@@ -6,6 +6,7 @@ import ChildrensQuestions from '../../registryQuestions/ChildrensQuestions';
 import ChildrensAnswers from '../../registryAnswers/ChildrensAnswers';
 import RegistryComplete from '../../pages/RegistryComplete';
 import FinalSubmit from '../../../components/buttons/FinalSubmit';
+import MissionStatement from '../../../components/modals/MissionStatement';
 
 export default function MobileChildrensRegistry() {
     const { registryType, index } = useSelector((state) => {
@@ -22,8 +23,8 @@ export default function MobileChildrensRegistry() {
         { index <= 14 ? (
             <Flex>
 
-            <Flex className='dual-panel-wrapper' direction='column'>
-            {/* <MissionStatement /> */}
+            <Flex className='panel-one-mobile' direction='column'>
+                <MissionStatement />
                 <Flex className='panel-one-questions' >
                     <ChildrensQuestions />
                 </Flex>

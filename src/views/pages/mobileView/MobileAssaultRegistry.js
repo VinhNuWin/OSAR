@@ -6,6 +6,7 @@ import AssaultQuestions from '../../registryQuestions/AssaultQuestions';
 import AssaultAnswers from '../../registryAnswers/AssaultAnswers';
 import RegistryComplete from '../RegistryComplete';
 import FinalSubmit from '../../../components/buttons/FinalSubmit';
+import MissionStatement from '../../../components/modals/MissionStatement';
 
 export default function MobileAssaultRegistry() {
     const { registryType, index, _id, email } = useSelector((state) => {
@@ -24,8 +25,8 @@ export default function MobileAssaultRegistry() {
         { index <= 14 ? (
             <Flex>
 
-            <Flex className='dual-panel-wrapper' direction='column'>
-            {/* <MissionStatement /> */}
+            <Flex className='panel-one-mobile' direction='column'>
+                <MissionStatement />
                 <Flex className='panel-one-questions' >
                     <AssaultQuestions />
                 </Flex>

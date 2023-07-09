@@ -6,6 +6,7 @@ import ElderlyQuestions from '../../registryQuestions/ElderlyQuestions';
 import ElderlyAnswers from '../../registryAnswers/ElderlyAnswers';
 import RegistryComplete from '../../pages/RegistryComplete';
 import FinalSubmit from '../../../components/buttons/FinalSubmit';
+import MissionStatement from '../../../components/modals/MissionStatement';
 
 export default function MobileElderlyRegistry() {
     const { registryType, index, _id, email } = useSelector((state) => {
@@ -24,8 +25,8 @@ export default function MobileElderlyRegistry() {
         { index <= 14 ? (
             <Flex>
 
-            <Flex className='dual-panel-wrapper' direction='column'>
-            {/* <MissionStatement /> */}
+            <Flex className='panel-one-mobile' direction='column'>
+                <MissionStatement />
                 <Flex className='panel-one-questions' >
                     <ElderlyQuestions />
                 </Flex>
