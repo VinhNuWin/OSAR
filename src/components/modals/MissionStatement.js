@@ -19,6 +19,7 @@ import {
     DrawerCloseButton
   } from '@chakra-ui/react';
 import { useState, useRef } from 'react';
+import logo from '../../images/logo.png';
 
   export default function MissionStatement() {
   
@@ -38,9 +39,10 @@ import { useState, useRef } from 'react';
   
     return (
       <Flex className='header'>
-      <Button ref={btnRef} colorScheme='teal' onClick={onOpen} width='100%'>
-        Abous Us
-      </Button>
+        <img src={logo} />
+        {/* <Button ref={btnRef} onClick={onOpen} width='100%'>
+          Abous Us
+        </Button> */}
       <Drawer
         isOpen={isOpen}
         placement='right'

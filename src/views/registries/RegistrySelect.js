@@ -1,13 +1,14 @@
 import React from 'react';
 import '../../styles.css';
 import { useState } from 'react';
-import { motion, isValidMotionProp } from 'framer-motion';
+import { motion, isValidMotionProp, Variants, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, addEmployeeId, registrySelect } from '../../store';
 import axios from 'axios';
 import { FormErrorMessage, Flex, Button, HStack, Stack, Heading, Grid, GridItem, FormLabel, FormHelperText, Input, Spinner, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
-import { EmailIcon } from '@chakra-ui/icons';
+import { listVariants } from '../../data/containerVariants';
 import general from '../../images/general.png';
+import { RegistrySelectButton } from '../../components/buttons/RegistrySelectButton';
 
 export default function SelectYourRegistry() {
     const dispatch = useDispatch();
@@ -19,8 +20,6 @@ export default function SelectYourRegistry() {
             registryType: state.index.registry.registryType,
         }
     });
-
-    const [ isError, setIsError ] = useState(false);
 
     const newIndex = index + 1;
 
@@ -40,75 +39,27 @@ export default function SelectYourRegistry() {
             console.log(response);
         };
     
-
     return (
-<Flex className='dual-panel-wrapper'>
-<Flex className='panel-one' direction='column'
->
-<Heading className='selectRegistry-header' color='black' marginTop={10}>
-                                   Select a Registry
-                         </Heading>
-                         <div >
-                <Stack className='selectRegistry-buttons'>
-                    <Flex  direction='column'>
-                        <HStack>
-                            <Button name='general' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>
-                            <Button name='employees' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>
-                        </HStack>
-                        <HStack>
-                            <Button name='spouse' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>
-                            <Button name='elderly' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>
-                        </HStack>
-                        <HStack>
-                            <Button name='assault' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}> Assault</Button>
-                            <Button name='children' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Child</Button>
-                        </HStack>
-                    <Flex className='answer-element-continue'>
-                        <Button onClick={handleRegistryInputs} >
-                            Continue
-                        </Button>
+        <Flex className='dual-panel-wrapper'>
+            <Flex className='panel-one' direction='column'>
+                <Heading className='selectRegistry-header' color='black' marginTop={10}>
+                    Select a Registry
+                </Heading>
+                    <div>
+                            <Flex direction='column' className='selectRegistry-buttons-wrapper '>
+                                <RegistrySelectButton />
+                            <Flex className='answer-element-continue'>
+                                <Button onClick={handleRegistryInputs} >
+                                    Continue
+                                </Button>
+                            </Flex>
+                        </Flex>
 
+                     </div>
+                </Flex>
+                    <Flex className='panel-two'>
+                        <img src={general} />
                     </Flex>
                 </Flex>
-             </Stack>
-             </div>
-</Flex>
-
-<Flex className='panel-two'>
-    <img src={general} />
-</Flex>
-
-</Flex>
-
-        // <Flex className='wrapper-block'>
-        //                 <Heading color='black' className='question-block' justifyContent='center'>
-        //                           Select a Registry
-        //                 </Heading>
-        // <Flex className='' >
-        //     <Stack >
-        //             <Flex className='answer-block' direction='column'>
-        //                 <HStack>
-        //               <Button name='employee' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>
-        //               <Button name='spouse' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>
-        //              </HStack>
-        //              <HStack>
-        //               <Button name='elderly' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>
-        //               <Button name='children' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Child</Button>
-        //               </HStack>
-        //               <HStack>
-        //               <Button name=' assault' variant='selectButton' onClick={(e)=> dispatch(registrySelect(e.target.name))}> Assault</Button>
-        //               </HStack>
-        //                 <Flex className='answer-element-continue'>
-        //                     <Button onClick={handleRegistryInputs} >
-        //                         Continue
-        //                     </Button>
-        //                 </Flex>
-        //             </Flex>
-                    
-        //             <Flex>
-        //             </Flex>
-        //     </Stack>
-        // </Flex>
-        // </Flex>
-    )
-}
+            )
+        }

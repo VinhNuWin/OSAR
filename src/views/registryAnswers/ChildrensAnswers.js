@@ -1,11 +1,15 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateRegistry } from '../../store';
 import { Form } from 'antd';
-import { Input, Flex, FormControl, FormLabel, Text } from '@chakra-ui/react';
+import { Input, Flex, FormControl, FormLabel, Text, shouldForwardProp, chakra } from '@chakra-ui/react';
 import { BooleanYesNo, DateAndTime, Address } from '../../components/buttons/RegistryResponseComponents.js';
 import RegistryComplete from '../pages/RegistryComplete';
+import { listVariants, itemVariants } from '../../data/containerVariants';
 
+const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+  });
 
 function ChildrensAnswers() {
     const { index, registry, registryReport } = useSelector((state) => {
@@ -25,7 +29,14 @@ function ChildrensAnswers() {
 
 
     return (
-        <Flex >
+        <AnimatePresence >
+        <ChakraBox
+        initial='hidden'
+        animate='visible'
+        variants={listVariants}
+        >
+            <ChakraBox
+            variants={itemVariants}>
             { questionIndex === 1 ? ( //Are you in immediate danger or in need of medical attention?
             <Flex >
                 <div>
@@ -167,7 +178,10 @@ function ChildrensAnswers() {
                 <RegistryComplete />
             )
                 }
-        </Flex>
+                </ChakraBox>
+        </ChakraBox>
+        </AnimatePresence>
+        
     )
 }
 

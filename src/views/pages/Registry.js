@@ -17,9 +17,8 @@ import MobileGeneralRegistry from './mobileView/MobileGeneralRegistry';
 
 export default function Registry() {
 
-    const [ isLargerThan568, isLargerThan320 ] = useMediaQuery([
-        '(min-width: 568px)',
-        '(min-width: 320px)',
+    const [ isLargerThan568 ] = useMediaQuery([
+        '(min-width: 568px)'
     ]);
 
     const { registryType } = useSelector((state) => {

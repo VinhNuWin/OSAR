@@ -95,21 +95,21 @@ const booleanButton = defineStyle({
 
 const selectButton = defineStyle({
   // size:'lg',
-  flexDirection: 'wrap',
-  direction: 'row',
-  height:'40px',
-  width:'90%',
-  margin: '2%',
+  colorScheme: 'teal',
+  height: '50px',
+  width:'300px',
+  margin: '5%',
   borderRadius: '10px',
   border:'2px',
   bg:'white',
   borderColor:'rgb(157, 150, 139)',
   color:'rgb(157, 150, 139)',
-  _hover:{ bg: '#ebedf0' },
+  _hover:{ bg: '#80ffd3' },
   _active:{
     bg: '#dddfe2',
     transform: 'scale(1.03)',
     borderColor: '#bec3c9',
+    boxShadow: 'outline',
   },
   _selected:{
     bg: '#dddfe2',
@@ -120,6 +120,8 @@ const selectButton = defineStyle({
     boxShadow: 'outline',
   }
 })
+
+
 
 export const buttonTheme = defineStyleConfig({
   variants: { brandPrimary, skipButton, nextButton, backButton, booleanButton, selectButton },

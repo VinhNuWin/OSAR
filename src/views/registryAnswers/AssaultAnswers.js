@@ -1,9 +1,14 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateRegistry } from '../../store';
-import { Input, Flex, FormControl, FormLabel, Button, Text, Card, CardHeader, Select } from '@chakra-ui/react';
+import { Input, chakra, shouldForwardProp, Flex, FormControl, FormLabel, Button, Text, Card, CardHeader, Select} from '@chakra-ui/react';
 import { BooleanYesNo, DateAndTime, Address } from '../../components/buttons/RegistryResponseComponents.js';
 import RegistryComplete from '../pages/RegistryComplete';
+import { listVariants, itemVariants } from '../../data/containerVariants';
+
+const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+  });
 
 
 function AssaultAnswers() {
@@ -21,7 +26,12 @@ function AssaultAnswers() {
 
 
     return (
-        <Flex >
+        <AnimatePresence >
+        <ChakraBox 
+        initial='hidden'
+        animate='visible'
+        variants={listVariants}>
+                            <ChakraBox variants={itemVariants}>
             { questionIndex === 1 ? ( //Can you please provide your full name?
              <div>
                 <FormControl>
@@ -161,7 +171,9 @@ function AssaultAnswers() {
                 <RegistryComplete />
             )
                 }
-        </Flex>
+        </ChakraBox>
+        </ChakraBox>
+        </AnimatePresence>
     )
 }
 

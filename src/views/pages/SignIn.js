@@ -18,30 +18,6 @@ const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
   });
 
-const svgVariants = {
-    hidden: { rotate: -180 },
-    visible: {
-        rotate: 0,
-    }
-};
-
-const pathVariants = {
-    hidden: {
-        opacity: 0,
-        pathLength: 0,
-        fill: "rgba(250, 0, 250, 0)"
-    },
-    visible: {
-        opacity: 1,
-        pathLength: 1,
-        fill: "rgb(97, 202, 146)",
-        transition: {
-            duration: 4,
-            ease: "easeInOut",
-        }
-    }
-};
-
 function SignIn() {
     const dispatch = useDispatch();
     const [ loader, setLoader ] = useState(false);
@@ -67,21 +43,16 @@ function SignIn() {
             },
             email: email,
         });
-        console.log(response);
         const userId = response.data.data._id;
-        console.log(userId);
-
         dispatch(add_Id(userId));
         dispatch(changeIndex(parseInt(index + 1)));
-        console.log(registryId)
     };
 
     console.log(email);
 
-    const transition = { duration: 4, yoyo: Infinity, ease: "easeInOut" };
-
     return (
-        <div>
+        <motion.div
+        >
         <Flex className='two-panel-wrapper'>
         <Flex className='panel-one'>
             <Stack className='signin-wrapper'>
@@ -106,7 +77,6 @@ function SignIn() {
                 </Text>
             </Flex>
             { loader ? <Loader /> : ''}
-      
 
                     <Flex className='sign-in-element-email'>
                         <FormControl isInvalid={isError}>
@@ -127,9 +97,6 @@ function SignIn() {
                                   ) : (
                                     <FormErrorMessage>Email is required.</FormErrorMessage>
                                   )}
-                                  {/* <InputRightElement> */}
-                        
-                                  {/* </InputRightElement> */}
                                 </InputGroup>
                                 <Checkbox m={2}>I would like to submit this report anonymously</Checkbox>
                         </FormControl>
@@ -152,23 +119,8 @@ function SignIn() {
                 <img src={cover} />
             </Flex>
         </Flex>
-        </div>
+        </motion.div>
     )
 }
 
 export default SignIn;
-
-{/* <Flex >
-<motion.div className=''>
-<div className="sign-in-element-typewriter">
-<h1><span id="typewriter"></span><span id="cursor">|</span></h1>
-      <motion.div
-        className="box"
-        initial={{ offsetDistance: "0%", scale: 2.5 }}
-        animate={{ offsetDistance: "100%", scale: 1 }}
-        transition={transition}
-      />
-    </div>
-    { loader ? <Loader /> && 'Starting Registry' : ""}
-</motion.div>
-</Flex> */}

@@ -8,6 +8,7 @@ import RegistryComplete from '../pages/RegistryComplete';
 import FinalSubmit from '../../components/buttons/FinalSubmit';
 import MissionStatement from '../../components/modals/MissionStatement';
 import assault from '../../images/assault.png';
+import logo from '../../images/logo.png';
 
 export default function AssaultRegistry() {
     const { registryType, index } = useSelector((state) => {
@@ -25,7 +26,6 @@ export default function AssaultRegistry() {
 
         { index <= 18 ? (
             <Flex>
-
                 <Flex className='panel-one' direction='column'>
                     <MissionStatement />
                 <Flex className='panel-one-questions' >

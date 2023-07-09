@@ -1,10 +1,16 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateRegistry } from '../../store';
 import { Form } from 'antd';
-import { Input, Flex, FormControl, FormLabel, Text } from '@chakra-ui/react';
+import { Input, Flex, FormControl, FormLabel, Text, chakra, shouldForwardProp } from '@chakra-ui/react';
 import { BooleanYesNo, DateAndTime, Address } from '../../components/buttons/RegistryResponseComponents.js';
 import RegistryComplete from '../pages/RegistryComplete';
+import { listVariants, itemVariants } from '../../data/containerVariants';
+
+const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+  });
+
 
 
 function ElderlyAnswers() {
@@ -25,7 +31,12 @@ function ElderlyAnswers() {
 
 
     return (
-        <Flex >
+        <AnimatePresence >
+        <ChakraBox 
+        initial='hidden'
+        animate='visible'
+        variants={listVariants}>
+                            <ChakraBox variants={itemVariants}>
             { questionIndex === 1 ? ( //Are you in immediate danger or in need of medical attention?
             <Flex >
                 <div>
@@ -167,7 +178,9 @@ function ElderlyAnswers() {
                 <RegistryComplete />
             )
                 }
-        </Flex>
+        </ChakraBox>
+        </ChakraBox>
+        </AnimatePresence>
     )
 }
 

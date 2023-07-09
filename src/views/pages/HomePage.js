@@ -16,9 +16,8 @@ import RegistrySelect from '../registries/RegistrySelect';
 
 function HomePage() {
 
-    const [ isLargerThan568, isLargerThan320 ] = useMediaQuery([
+    const [ isLargerThan568 ] = useMediaQuery([
         '(min-width: 568px)',
-        '(min-width: 320px)',
     ]);
 
     const { index } = useSelector((state) => {
