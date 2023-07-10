@@ -42,7 +42,9 @@ function GeneralAnswers() {
             </ChakraBox>
             ) : questionIndex === 2 ? ( // When did the incident happen?
             <ChakraBox variants={itemVariants}  key={index} >
+            <div>
                     <DateAndTime />
+                    </div>
             </ChakraBox>
             ) : questionIndex === 3 ? ( //Where did the incident occur?
             <ChakraBox variants={itemVariants}  key={index} >
