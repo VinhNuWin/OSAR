@@ -1,19 +1,19 @@
 {
   "short_name": "DVAA App",
-  "name": "Create React App Sample",
+  "name": "Documented Voices",
   "icons": [
     {
-      "src": "DVAA-logo.png",
+      "src": "DV.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "DVAA-logo.png",
+      "src": "DV.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "DVAA-logo.png",
+      "src": "DV.png",
       "type": "image/png",
       "sizes": "512x512"
     }
