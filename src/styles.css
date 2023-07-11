@@ -3,7 +3,7 @@
   height: 75px;
   display: flex;
   align-self: center;
-  background-image: url("./src/images/logo.png");
+  background-image: url("./images/logo.png");
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
