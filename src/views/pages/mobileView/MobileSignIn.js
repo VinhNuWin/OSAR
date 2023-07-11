@@ -81,10 +81,11 @@ function SignIn() {
         <Flex className=''>
             <Stack className='signin-wrapper'>
             <center>
-                <Flex className='header-mobile'>
-                    <Flex className='header'/>
+                <Flex className='header'>
+
                 </Flex>
             <Flex className='signin-h2'>
+                
                 <Text textAlign='center' w='full'>
                 Follow the promps to submit your report.
                 </Text>
