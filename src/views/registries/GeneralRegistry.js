@@ -29,10 +29,10 @@ export default function GeneralRegistry() {
     return (
 <Flex>
 
-        { index <= 7 ? (
+        { index <= 10 ? (
         <Flex>
             <Flex className='panel-one' direction='column'>
-                <MissionStatement />
+                <Flex className='header'/>
                     <Flex className='panel-one-questions' >
                         <GeneralQuestions />
                     </Flex>
@@ -47,8 +47,8 @@ export default function GeneralRegistry() {
                         </ChakraBox>
                     </Flex>
                     <Flex className='panel-one-buttons'>
-                        <BackButton />
-                        {index===7 ? <FinalSubmit /> : <NextButton />}       
+                        {index < 9 ? <BackButton /> : null }
+                        {index===8 ? <FinalSubmit /> : index < 9 ? <NextButton /> : null}       
                     </Flex>
                 </Flex>
             </Flex>

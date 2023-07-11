@@ -60,10 +60,10 @@ function SignIn() {
         >
         <Flex className='two-panel-wrapper'>
         <Flex className='panel-one'>
+        <Flex className='header'/>
             <Stack className='signin-wrapper'>
             <center>
             <Flex className='header'>
-            <img src={logo} />
         </Flex>
             <Flex className='signin-h2'>
                 <Text textAlign='center' w='full'>

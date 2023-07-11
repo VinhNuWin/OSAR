@@ -25,7 +25,7 @@ export default function EmployeeRegistry() {
         { index <= 13 ? (
             <Flex>
             <Flex className='panel-one' direction='column'>
-                <MissionStatement />
+                <Flex className='header'/>
                     <Flex className='panel-one-questions' >
                         <EmployeeQuestions />
                     </Flex>
@@ -33,8 +33,8 @@ export default function EmployeeRegistry() {
                         <EmployeeAnswers />
                     </Flex>
                     <Flex className='panel-one-buttons'>
-                        <BackButton />
-                        {index===13 ? <FinalSubmit /> : <NextButton />}       
+                        {index < 14 ? <BackButton /> : null }
+                        {index===13 ? <FinalSubmit /> : index < 14 ? <NextButton /> : null}       
                     </Flex>
                 </Flex>
             </Flex>

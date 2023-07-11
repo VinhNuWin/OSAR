@@ -32,7 +32,7 @@ export default function SpouseRegistry() {
         { index <= 14 ? (
             <Flex>
                 <Flex className='panel-one' direction='column'>
-                    <MissionStatement />
+                    <Flex className='header'/>
                 <Flex className='panel-one-questions' >
                     <SpouseQuestions />
                 </Flex>
@@ -40,8 +40,8 @@ export default function SpouseRegistry() {
                     <SpouseAnswers />
                 </Flex>
                     <Flex className='panel-one-buttons'>
-                        <BackButton />
-                        {index===14 ? <FinalSubmit /> : <NextButton />}       
+                        {index < 14 ? <BackButton /> : null }    
+                        {index===13 ? <FinalSubmit /> : index < 14 ? <NextButton /> : null }       
                     </Flex>
                 </Flex>
             </Flex>

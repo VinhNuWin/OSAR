@@ -26,7 +26,7 @@ export default function MobileEmployeeRegistry() {
         { index <= 14 ? (
             <Flex>
             <Flex className='panel-one-mobile' direction='column'>
-                <MissionStatement />
+                <Flex className='header'/>
                 <Flex className='panel-one-questions' >
                     <EmployeeQuestions/>
                 </Flex>
@@ -34,8 +34,8 @@ export default function MobileEmployeeRegistry() {
                     <EmployeeAnswers />
                 </Flex>
                 <Flex className='panel-one-buttons'>
-                    <BackButton />
-                {index===14 ? <FinalSubmit/> : <NextButton/>}       
+                    {index < 14 ? <BackButton /> : null }
+                    {index===13 ? <FinalSubmit /> : index < 14 ? <NextButton /> : null}       
                 </Flex>
 </Flex>
 

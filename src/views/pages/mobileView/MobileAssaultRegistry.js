@@ -26,16 +26,16 @@ export default function MobileAssaultRegistry() {
             <Flex>
 
             <Flex className='panel-one-mobile' direction='column'>
-                <MissionStatement />
-                <Flex className='panel-one-questions' >
-                    <AssaultQuestions />
-                </Flex>
-                <Flex className='panel-one-answers'>
-                    <AssaultAnswers />
-                </Flex>
-                <Flex className='panel-one-buttons'>
-                <BackButton />
-                {index===14 ? <FinalSubmit /> : <NextButton />}       
+                <Flex className='header'/>
+                    <Flex className='panel-one-questions' >
+                        <AssaultQuestions />
+                    </Flex>
+                    <Flex className='panel-one-answers'>
+                        <AssaultAnswers />
+                    </Flex>
+                    <Flex className='panel-one-buttons'>
+                        {index < 19 ? <BackButton /> : null }
+                        {index===18 ? <FinalSubmit /> : index === 19 ? <NextButton /> : null}    
                 </Flex>
 </Flex>
 

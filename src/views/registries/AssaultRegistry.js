@@ -27,7 +27,7 @@ export default function AssaultRegistry() {
         { index <= 18 ? (
             <Flex>
                 <Flex className='panel-one' direction='column'>
-                    <MissionStatement />
+                    <Flex className='header'/>
                 <Flex className='panel-one-questions' >
                     <AssaultQuestions />
                 </Flex>
@@ -35,8 +35,8 @@ export default function AssaultRegistry() {
                     <AssaultAnswers />
                 </Flex>
                     <Flex className='panel-one-buttons'>
-                        <BackButton />
-                        {index===18 ? <FinalSubmit /> : <NextButton />}       
+                        {index < 19 ? <BackButton /> : null }
+                        {index===18 ? <FinalSubmit /> : index === 19 ? <NextButton /> : null}       
                     </Flex>
                 </Flex>
             </Flex>

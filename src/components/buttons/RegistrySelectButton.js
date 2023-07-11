@@ -9,8 +9,11 @@ import { FormErrorMessage, Flex, Button, HStack, Stack, Heading, Grid, GridItem,
 import { listVariants, itemVariants } from '../../data/containerVariants';
 import general from '../../images/general.png';
 
+
 export const RegistrySelectButton = () => {
     const dispatch = useDispatch()
+
+ 
 
     const componentButtonArray = [
         <Button name='general' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>,

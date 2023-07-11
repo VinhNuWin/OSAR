@@ -39,7 +39,6 @@ import logo from '../../images/logo.png';
   
     return (
       <Flex className='header'>
-        <img src={logo} w='auto' />
         {/* <Button ref={btnRef} onClick={onOpen} width='100%'>
           Abous Us
         </Button> */}

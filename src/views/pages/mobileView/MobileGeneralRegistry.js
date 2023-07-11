@@ -24,7 +24,7 @@ export default function MobileGeneralRegistry() {
         { index <= 7 ? (
         <Flex>
             <Flex className='panel-one-mobile' direction='column'>
-                <MissionStatement />
+                <Flex className='header'/>
                     <Flex className='panel-one-questions' >
                         <GeneralQuestions />
                     </Flex>
@@ -32,8 +32,8 @@ export default function MobileGeneralRegistry() {
                         <GeneralAnswers />
                     </Flex>
                     <Flex className='panel-one-buttons'>
-                        <BackButton />
-                        {index===7 ? <FinalSubmit /> : <NextButton />}       
+                        {index < 9 ? <BackButton /> : null }
+                        {index===8 ? <FinalSubmit /> : index < 9 ? <NextButton /> : null}       
                     </Flex>
                 </Flex>
             </Flex>

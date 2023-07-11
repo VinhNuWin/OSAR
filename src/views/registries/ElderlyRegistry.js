@@ -25,23 +25,23 @@ export default function ElderlyRegistry() {
 
         { index <= 14 ? (
             <Flex>
-            <Flex className='panel-one' direction='column'>
-                <MissionStatement />
-                <Flex className='panel-one-questions' >
-                    <ElderlyQuestions />
-                </Flex>
-                <Flex className='panel-one-answers'>
-                    <ElderlyAnswers />
-                </Flex>
-                <Flex className='panel-one-buttons'>
-                    <BackButton />
-                    {index===14 ? <FinalSubmit /> : <NextButton />}       
+                <Flex className='panel-one' direction='column'>
+                    <Flex className='header'/>
+                        <Flex className='panel-one-questions' >
+                            <ElderlyQuestions />
+                        </Flex>
+                        <Flex className='panel-one-answers'>
+                            <ElderlyAnswers />
+                        </Flex>
+                        <Flex className='panel-one-buttons'>
+                            {index < 15 ? <BackButton /> : null }
+                            {index===14 ? <FinalSubmit /> : index < 15 ? <NextButton /> : null}       
+                            </Flex>
+                        </Flex>
                     </Flex>
-                </Flex>
-            </Flex>
-        ) : null (
-            <RegistryComplete />
-        )} 
+                ) : null (
+                    <RegistryComplete />
+                )} 
 
 
 <Flex className='panel-two'>

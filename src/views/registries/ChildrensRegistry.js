@@ -26,7 +26,7 @@ export default function ChildrensRegistry() {
         { index <= 14 ? (
         <Flex>
             <Flex className='panel-one' direction='column'>
-                <MissionStatement />
+                <Flex className='header'/>
                     <Flex className='panel-one-questions' >
                         <ChildrensQuestions />
                     </Flex>
@@ -34,8 +34,8 @@ export default function ChildrensRegistry() {
                         <ChildrensAnswers />
                     </Flex>
                     <Flex className='panel-one-buttons'>
-                        <BackButton />
-                        {index===14 ? <FinalSubmit /> : <NextButton />}       
+                        {index < 16 ? <BackButton /> : null }
+                        {index===15 ? <FinalSubmit /> : index < 16 ? <NextButton /> : null}       
                     </Flex>
                 </Flex>
             </Flex>

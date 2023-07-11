@@ -43,7 +43,7 @@ export default function FinalSubmit() {
                 registryType: registryType,
                 registryReport: registryReport,
             });
-            console.log(registryResponse);
+            console.log(`${registryResponse} has been reported`);
     
             dispatch(changeIndex(parseInt(index + 1)));
         };

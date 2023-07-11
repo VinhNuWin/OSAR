@@ -82,7 +82,7 @@ function SignIn() {
             <Stack className='signin-wrapper'>
             <center>
                 <Flex className='header-mobile'>
-                    <img src={logo} />
+                    <Flex className='header'/>
                 </Flex>
             <Flex className='signin-h2'>
                 <Text textAlign='center' w='full'>

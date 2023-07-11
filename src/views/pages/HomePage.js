@@ -30,7 +30,7 @@ function HomePage() {
 
     return (
         <div>
-        <Flex className='header'>
+        <Flex>
         </Flex>
           <div className='Homepage'>
                     {questionPageIndex === 0 ? ( 

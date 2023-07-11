@@ -13,8 +13,6 @@ export default function EmployeeQuestions () {
     const employeeIndex = index - 1;
     const questions = employeeForm[employeeIndex];
 
-    console.log(questions);
-    console.log();
 
     return (
         <Flex wrap='nowrap' direction='column' >

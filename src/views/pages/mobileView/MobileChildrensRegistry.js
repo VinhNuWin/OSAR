@@ -24,16 +24,16 @@ export default function MobileChildrensRegistry() {
             <Flex>
 
             <Flex className='panel-one-mobile' direction='column'>
-                <MissionStatement />
-                <Flex className='panel-one-questions' >
-                    <ChildrensQuestions />
-                </Flex>
-                <Flex className='panel-one-answers'>
-                    <ChildrensAnswers />
-                </Flex>
-                <Flex className='panel-one-buttons'>
-                <BackButton />
-                {index===14 ? <FinalSubmit /> : <NextButton />}       
+                <Flex className='header'/>
+                    <Flex className='panel-one-questions' >
+                        <ChildrensQuestions />
+                    </Flex>
+                    <Flex className='panel-one-answers'>
+                        <ChildrensAnswers />
+                    </Flex>
+                    <Flex className='panel-one-buttons'>
+                        {index < 16 ? <BackButton /> : null }
+                        {index===15 ? <FinalSubmit /> : index < 16 ? <NextButton /> : null}       
                 </Flex>
 </Flex>
 
