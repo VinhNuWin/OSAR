@@ -42,9 +42,14 @@ function GeneralAnswers() {
             </ChakraBox>
             ) : questionIndex === 2 ? ( // When did the incident happen?
             <ChakraBox variants={itemVariants}  key={index} >
-            <div>
-                    <DateAndTime />
-                    </div>
+                                <Input
+                 placeholder="Select Date and Time"
+                 variant='flushed'
+                 size="md"
+                 type="datetime-local"
+                 onChange={(datetime) => dispatch(updateRegistry({...registryReport, date: datetime.target.value}))}
+                />
+                    {/* <DateAndTime /> */}
             </ChakraBox>
             ) : questionIndex === 3 ? ( //Where did the incident occur?
             <ChakraBox variants={itemVariants}  key={index} >
