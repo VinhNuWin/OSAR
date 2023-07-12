@@ -4,6 +4,8 @@ import { Button, Flex, Input, Select, FormControl, chakra, shouldForwardProp } f
 import { CheckIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRegistry, updateAddress } from "../../store/slices/indexSlice";
+import { DatePicker, Space } from 'antd';
+import { DatePickerProps, RangePickerProps } from 'antd/es/date-picker';
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -37,6 +39,13 @@ export const BooleanYesNo = (props) =>  {
 
 export const DateAndTime = () => {
     const dispatch = useDispatch();
+    const onChange = (value, dateString) => {
+        console.log('Selected Time: ', value);
+        console.log('Formatted Selected Time: ', dateString);
+      };
+      const onOk = (value) => {
+        console.log('onOk: ', value);
+      };
 
     const { registryReport } = useSelector((state)=> {
         return {
@@ -45,15 +54,19 @@ export const DateAndTime = () => {
     })
 
     return (
-        <div>    
-            <Input
-                 placeholder="Select Date and Time"
-                 variant='flushed'
-                 size="md"
-                 type="datetime-local"
-                 onChange={(datetime) => dispatch(updateRegistry({...registryReport, date: datetime.target.value}))}
-                />
-        </div>
+        <Space direction="vertical" size={12}>
+        <DatePicker showTime name="datetime-local" placement='topLeft' onChange={(value) => dispatch(updateRegistry({...registryReport, date: value.$d}))} />
+        </Space>
+
+        // <div>    
+        //     <Input
+        //          placeholder="Select Date and Time"
+        //          variant='flushed'
+        //          size="md"
+        //          name="datetime-local"
+        //          onChange={(datetime) => dispatch(updateRegistry({...registryReport, date: datetime.target.value}))}
+        //         />
+        // </div>
     )
 }
 

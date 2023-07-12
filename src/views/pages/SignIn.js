@@ -12,6 +12,7 @@ import Loader from '../../components/Loader';
 import ThingsToConsider from '../../data/ThingsToConsider';
 import cover from '../../images/cover.png';
 import logo from '../../images/logo.png';
+import MissionStatement from '../../components/modals/MissionStatement';
 
 
 const ChakraBox = chakra(motion.div, {
@@ -106,6 +107,7 @@ function SignIn() {
                                 <Checkbox m={2}>I would like to submit this report anonymously</Checkbox>
                         </FormControl>
                                     <ThingsToConsider />
+                                    <MissionStatement />
                     </Flex>
                     <Flex className= 'signin-start-registry' direction='column'>
 

@@ -39,12 +39,12 @@ import logo from '../../images/logo.png';
   
     return (
       <Flex className=''>
-        {/* <Button ref={btnRef} onClick={onOpen} width='100%'>
+        <Button ref={btnRef} onClick={onOpen} width='100%'>
           Abous Us
-        </Button> */}
+        </Button>
       <Drawer
         isOpen={isOpen}
-        placement='right'
+        placement='bottom'
         onClose={onClose}
         finalFocusRef={btnRef}
       >
@@ -54,7 +54,7 @@ import logo from '../../images/logo.png';
           <DrawerHeader fontSize='2xl'>Our Mission</DrawerHeader>
 
           <DrawerBody>
-            <Text fontSize='lg'>We exist to empower and provide a voice for survivors of assault. Documented Voices Against Assault is a nonprofit organization dedicated to advocating for victims, promoting healing, and raising awareness about the prevalence and impact of assault. We are committed to collecting and sharing anonymized reports to enlighten the public, influence policy makers, and foster a safer society. We believe in the power of individual stories, documented and preserved, to inspire change and combat the stigma often associated with victims of assault. We strive to create a supportive community where every voice is heard, every experience is validated, and every survivor is acknowledged.</Text>
+            <Text fontSize='lg'>Welcome to Documented Voices. This space is designed for you and you alone. Here, you can confidentially record your story, securing a written testimony of events experienced. Upon submission, a copy is automatically sent to your email, serving as a time-stamped record, providing tangible proof if ever needed in the future. But this platform isn’t just for documenting—it’s also a safe space for you to unburden your heart. It’s a place to voice your story, even when it feels too immense to tell. Remember, your experience matters, your voice matters. Documented Voices exists for two crucial purposes: to chronicle your experience and amplify your voice.</Text>
           </DrawerBody>
 
           <DrawerFooter>

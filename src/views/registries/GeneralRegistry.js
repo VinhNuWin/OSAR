@@ -42,8 +42,8 @@ export default function GeneralRegistry() {
                         animate='visible'
                         variants={listVariants}>
                             <ChakraBox variants={itemVariants}>
-                        <GeneralAnswers />
-                        </ChakraBox>
+                                <GeneralAnswers />
+                            </ChakraBox>
                         </ChakraBox>
                     </Flex>
                     <Flex className='panel-one-buttons'>

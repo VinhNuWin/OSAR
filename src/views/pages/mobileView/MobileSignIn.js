@@ -11,6 +11,7 @@ import { EmailIcon } from '@chakra-ui/icons';
 import Loader from '../../../components/Loader';
 import ThingsToConsider from '../../../data/ThingsToConsider';
 import logo from '../../../images/logo.png';
+import MissionStatement from '../../../components/modals/MissionStatement';
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -129,6 +130,7 @@ function SignIn() {
                             <FormHelperText>I would like to submit this report anonymously</FormHelperText>
                         </FormControl>
                                     <ThingsToConsider />
+                                    <MissionStatement />
                     </Flex>
                     <Flex className='signin-start-registry' direction='column'>
                         <Text marginBottom={8}>
