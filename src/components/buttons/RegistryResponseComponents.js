@@ -1,11 +1,9 @@
 import { motion, isValidMotionProp } from "framer-motion";
 import { useState } from 'react';
-import { Button, Flex, Input, Select, FormControl, chakra, shouldForwardProp } from "@chakra-ui/react";
+import { Button, Flex, Input, Select, FormControl, chakra, shouldForwardProp, FormLabel } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRegistry, updateAddress } from "../../store/slices/indexSlice";
-import { DatePicker, Space } from 'antd';
-import { DatePickerProps, RangePickerProps } from 'antd/es/date-picker';
+import { updateRegistry, updateAddress, updateBoolean } from "../../store/slices/indexSlice";
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -24,12 +22,12 @@ export const BooleanYesNo = (props) =>  {
     return (
         <div className="boolean-wrapper">
             <div className="boolean-button">
-            <Button className="btn" colorScheme='facebook' onClick={(e)=> dispatch(updateRegistry({...registryReport, [props.name]: false}))}>
+            <Button className="btn" colorScheme='facebook' onClick={(e)=> dispatch(updateBoolean({...registryReport, [props.name]: false}))}>
                     No
             </Button>
             </div>
             <div className="boolean-button">
-            <Button className="btn" onClick={(e) => dispatch(updateRegistry({...registryReport, [props.name]: true}))}>
+            <Button className="btn" onClick={(e) => dispatch(updateBoolean({...registryReport, [props.name]: true}))}>
                     Yes
             </Button>
             </div>
@@ -39,10 +37,7 @@ export const BooleanYesNo = (props) =>  {
 
 export const DateAndTime = () => {
     const dispatch = useDispatch();
-    const onChange = (value, dateString) => {
-        console.log('Selected Time: ', value);
-        console.log('Formatted Selected Time: ', dateString);
-      };
+
       const onOk = (value) => {
         console.log('onOk: ', value);
       };
@@ -54,26 +49,46 @@ export const DateAndTime = () => {
     })
 
     return (
-        <Space direction="vertical" size={12}>
-        <DatePicker showTime name="datetime-local" placement='topLeft' onChange={(value) => dispatch(updateRegistry({...registryReport, date: value.$d}))} />
-        </Space>
 
-        // <div>    
-        //     <Input
-        //          placeholder="Select Date and Time"
-        //          variant='flushed'
-        //          size="md"
-        //          name="datetime-local"
-        //          onChange={(datetime) => dispatch(updateRegistry({...registryReport, date: datetime.target.value}))}
-        //         />
-        // </div>
+        <div>    
+            <Input
+                 placeholder="Select Date and Time"
+                 variant='flushed'
+                 size="md"
+                 name="datetime-local"
+                 onChange={(datetime) => dispatch(updateRegistry({...registryReport, date: datetime.target.value}))}
+                />
+        </div>
+    )
+}
+
+export const FormInput = (props) => {
+    const dispatch = useDispatch();
+
+    const { registryReport } = useSelector((state)=> {
+        return {
+            registryReport: state.index.registry.registryReport
+        }
+    })
+
+    return (
+    <FormControl>
+    <FormLabel >Desciption of what happened</FormLabel>
+        <Input 
+            type='text'
+            h={20}
+            width={{ base: '12em', md: '14em', lg: '20em' }} 
+            onChange={e => dispatch(updateRegistry({...registryReport, [props.name]: e.target.value}))}
+            placeholder="Brief description"
+        />
+</FormControl>
     )
 }
 
 export const Address = () => {
     const dispatch = useDispatch();
 
-    const { address, state, zipcode, city } = useSelector((state)=> {
+    const { address } = useSelector((state)=> {
         return {
             address: state.index.registry.registryReport.address,
         }

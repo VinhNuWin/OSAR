@@ -51,7 +51,7 @@ const indexSlice = createSlice({
                 survivorsFullName: '',
                 survivorGender: '',
             },
-        }
+        },
     },
     reducers: {
         changeIndex(state, action) {
@@ -70,10 +70,13 @@ const indexSlice = createSlice({
         },
         updateRegistry(state, action) {
             state.registry.registryReport = action.payload;
-            state.index = state.index + 1;
         },
         updateAddress(state, action) {
             state.registry.registryReport.address = action.payload;
+        },
+        updateBoolean(state, action) {
+            state.registry.registryReport = action.payload;
+            state.index = state.index + 1;
         },
         addEmployeeId(state, action){
             state.registry.employeeRegistry.registryId = action.payload;
@@ -92,6 +95,7 @@ export const {
     changeIndex, 
     backIndex,
     updateRegistry,
+    updateBoolean,
     addEmail, 
     add_Id,
     addEmployeeId,

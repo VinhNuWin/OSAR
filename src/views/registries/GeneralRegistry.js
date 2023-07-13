@@ -8,7 +8,7 @@ import FinalSubmit from '../../components/buttons/FinalSubmit';
 import MissionStatement from '../../components/modals/MissionStatement';
 import employee from '../../images/employee.png';
 import { listVariants, itemVariants } from '../../data/containerVariants';
-import { motion, isValidMotionProp } from 'framer-motion'; 
+import { motion, isValidMotionProp, AnimatePresence } from 'framer-motion'; 
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -16,7 +16,7 @@ const ChakraBox = chakra(motion.div, {
 
 
 export default function GeneralRegistry() {
-    const { registryType, index } = useSelector((state) => {
+    const { registryType, index, isVisible } = useSelector((state) => {
         return {
             registryType: state.index.registry.registryType,
             index: state.index.index,
@@ -27,39 +27,50 @@ export default function GeneralRegistry() {
 
 
     return (
-<Flex>
+        <AnimatePresence>
+        <Flex>
+        <ChakraBox>
+            <ChakraBox  initial='hidden'
+        animate='visible'
+        exit='exit'
+        variants={listVariants}>
 
         { index <= 10 ? (
-        <Flex>
+
+        <Flex >
             <Flex className='panel-one' direction='column'>
                 <Flex className='header'/>
-                    <Flex className='panel-one-questions' >
-                        <GeneralQuestions />
-                    </Flex>
-                    <Flex className='panel-one-answers'>
-                    <ChakraBox 
-                        initial='hidden'
-                        animate='visible'
-                        variants={listVariants}>
-                            <ChakraBox variants={itemVariants}>
+
+                        <ChakraBox className='panel-one-questions' variants={itemVariants} key={index} initial='hidden' animate='visible' exit={{opacity: 0}}  custom={1} >
+                            <GeneralQuestions />
+                        </ChakraBox >                        
+                    <ChakraBox className='panel-one-answers'>
+                    
+                            <ChakraBox initial='hidden' animate='visible' exit='hidden' variants={itemVariants} key={index} custom={2}>
                                 <GeneralAnswers />
                             </ChakraBox>
                         </ChakraBox>
-                    </Flex>
-                    <Flex className='panel-one-buttons'>
+                    
+                    <Flex className='panel-one-buttons'  >
                         {index < 9 ? <BackButton /> : null }
                         {index===8 ? <FinalSubmit /> : index < 9 ? <NextButton /> : null}       
                     </Flex>
                 </Flex>
             </Flex>
+
         ) : null (
         )} 
 
+            </ChakraBox>
+            </ChakraBox>
 
 <Flex className='panel-two'>
     <img src={employee} />
-</Flex>
+    </Flex>
+
+
         </Flex>
+        </AnimatePresence>
     )
 }
 

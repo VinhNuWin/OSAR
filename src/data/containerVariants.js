@@ -106,7 +106,9 @@ export const listVariants = {
         transition: {
             type: "spring",
             bounce: 0,
-            duration: 1
+            duration: 1,
+            delayChildren: .1,
+            staggerChildren: 0.15
         }
     },
     visible:{
@@ -116,17 +118,27 @@ export const listVariants = {
             type: "spring",
             bounce: 0,
             duration: 0.8,
-            delayChildren: .3,
-            staggerChildren: 0.05
+            when: "beforeChildren",
+            delayChildren: .1,
+            staggerChildren: 0.15
         }
     },
 }
 
 export const itemVariants = {
-    visible: {
+    visible: i => ({
       opacity: 1,
       y: 0,
-      transition: { type: "spring", stiffness: 300, damping: 24 }
-    },
-    hidden: { opacity: 0, y: 20, transition: { duration: 0.2 } }
+      transition: { type: "spring", stiffness: 300, damping: 24, delay: i * 0.1 }
+    }),
+    hidden: i => ({ 
+        opacity: 0, 
+        y: 20, 
+        transition: { duration: 0.2, delay: i * 0.1 }
+    }),
+    exit: i => ({
+        x: "-5hw",
+        opacity: 0,
+        transition: { duration: 0.5, ease: "easeInOut", delay: i * 0.1 },
+      }),
   };

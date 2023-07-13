@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateRegistry } from '../../store';
 import { Form } from 'antd';
 import { Input, Flex, FormControl, FormLabel, Text, chakra, shouldForwardProp } from '@chakra-ui/react';
-import { BooleanYesNo, DateAndTime, Address } from '../../components/buttons/RegistryResponseComponents.js';
+import { BooleanYesNo, DateAndTime, Address, FormInput } from '../../components/buttons/RegistryResponseComponents.js';
 import { listVariants, itemVariants } from '../../data/containerVariants';
 
 const ChakraBox = chakra(motion.div, {
@@ -30,44 +30,24 @@ function GeneralAnswers() {
 
 
     return (
-        <AnimatePresence >
-        <ChakraBox 
-        initial='hidden'
-        animate='visible'
-        variants={listVariants}>
-                            <ChakraBox variants={itemVariants}>
+        <AnimatePresence>
+        <ChakraBox >
+                            <ChakraBox>
             { questionIndex === 1 ? ( //Are you in immediate danger or in need of medical attention?
-            <ChakraBox variants={itemVariants}  key={index} >
+            <ChakraBox >
                     <BooleanYesNo name='immediateDangerOrMedicalAttention' />
             </ChakraBox>
             ) : questionIndex === 2 ? ( // When did the incident happen?
-            <ChakraBox variants={itemVariants}  key={index} >
-                                {/* <Input
-                 placeholder="Select Date and Time"
-                 variant='flushed'
-                 size="md"
-                 name="datetime-local"
-                 onChange={(datetime) => dispatch(updateRegistry({...registryReport, date: datetime.target.value}))}
-                /> */}
+            <ChakraBox >
                     <DateAndTime />
             </ChakraBox>
             ) : questionIndex === 3 ? ( //Where did the incident occur?
-            <ChakraBox variants={itemVariants}  key={index} >
+            <ChakraBox >
                     <Address />
             </ChakraBox>
             ) : questionIndex === 4 ? ( // Can you provide a detailed account of the incident(s)? What happened?
-                <ChakraBox variants={itemVariants}  key={index}  >
-                    <FormControl>
-                        <FormLabel >Desciption of what happened</FormLabel>
-                            <Input 
-                                type='text'
-                                name='detailsOfIncident'
-                                h={20}
-                                width={{ base: '12em', md: '14em', lg: '20em' }} 
-                                onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                                placeholder="Brief description"
-                            />
-                    </FormControl>
+                <ChakraBox >
+                    <FormInput name='detailsOfIncident' />
                 </ChakraBox>
             ) : questionIndex === 5 ? ( // Name of person responsible for incident?
                 <ChakraBox variants={itemVariants}  key={index}  >
