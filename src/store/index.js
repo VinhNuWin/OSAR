@@ -9,7 +9,8 @@ import {
     add_Id,
     addEmployeeId,
     registrySelect,
-    updateAddress
+    updateAddress,
+    addFeedBack
 } from './slices/indexSlice';
 import {
     formReducer,
@@ -53,7 +54,8 @@ export {
     add_Id,
     addEmployeeId,
     registrySelect,
-    updateAddress
+    updateAddress,
+    addFeedBack
  };
 
 export { useFetchReportQuery } from './apis/reportApi';

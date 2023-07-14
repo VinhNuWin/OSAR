@@ -70,7 +70,6 @@ function SignIn() {
                 <Text textAlign='center' w='full'>
                 Follow the promps to submit your report.
                 </Text>
-
             </Flex>
 
             <Flex className='signin-body'>

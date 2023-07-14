@@ -6,6 +6,7 @@ import GeneralQuestions from '../../registryQuestions/GeneralQuestions';
 import GeneralAnswers from '../../registryAnswers/GeneralAnswers';
 import FinalSubmit from '../../../components/buttons/FinalSubmit';
 import MissionStatement from '../../../components/modals/MissionStatement';
+import EmailSubmit from '../../../components/buttons/emailSubmit';
 
 export default function MobileGeneralRegistry() {
     const { registryType, index } = useSelector((state) => {
@@ -32,8 +33,8 @@ export default function MobileGeneralRegistry() {
                         <GeneralAnswers />
                     </Flex>
                     <Flex className='panel-one-buttons'>
-                        {index < 9 ? <BackButton /> : null }
-                        {index===8 ? <FinalSubmit /> : index < 9 ? <NextButton /> : null}       
+                    {index < 10 ? <BackButton /> : null }
+                        {index===8 ? <FinalSubmit /> : index === 9 ? <EmailSubmit /> :  <NextButton /> }        
                     </Flex>
                 </Flex>
             </Flex>

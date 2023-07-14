@@ -9,6 +9,7 @@ import MissionStatement from '../../components/modals/MissionStatement';
 import employee from '../../images/employee.png';
 import { listVariants, itemVariants } from '../../data/containerVariants';
 import { motion, isValidMotionProp, AnimatePresence } from 'framer-motion'; 
+import EmailSubmit from '../../components/buttons/emailSubmit';
 
 const ChakraBox = chakra(motion.div, {
     shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -35,25 +36,25 @@ export default function GeneralRegistry() {
         exit='exit'
         variants={listVariants}>
 
-        { index <= 10 ? (
+        { index <= 12 ? (
 
         <Flex >
             <Flex className='panel-one' direction='column'>
                 <Flex className='header'/>
 
-                        <ChakraBox className='panel-one-questions' variants={itemVariants} key={index} initial='hidden' animate='visible' exit={{opacity: 0}}  custom={1} >
+                        <ChakraBox className='panel-one-questions' variants={itemVariants} key={index} initial='hidden' animate='visible' exit={{opacity: 0}}  >
                             <GeneralQuestions />
                         </ChakraBox >                        
                     <ChakraBox className='panel-one-answers'>
                     
-                            <ChakraBox initial='hidden' animate='visible' exit='hidden' variants={itemVariants} key={index} custom={2}>
+                            <ChakraBox initial='hidden' animate='visible' exit='hidden' variants={itemVariants} key={index}>
                                 <GeneralAnswers />
                             </ChakraBox>
                         </ChakraBox>
                     
                     <Flex className='panel-one-buttons'  >
-                        {index < 9 ? <BackButton /> : null }
-                        {index===8 ? <FinalSubmit /> : index < 9 ? <NextButton /> : null}       
+                        {index < 12 ? <BackButton /> : null }
+                        {index===9 ? <FinalSubmit /> : index === 10 ? <EmailSubmit /> : index < 14 ? <NextButton /> : null }       
                     </Flex>
                 </Flex>
             </Flex>

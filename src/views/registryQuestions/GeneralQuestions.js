@@ -10,11 +10,8 @@ export default function GeneralQuestions () {
         }
     });
 
-    const generalIndex = index - 1;
+    const generalIndex = index;
     const questions = generalForm[generalIndex];
-
-    console.log(questions);
-    console.log(generalForm);
 
     return (
         <Flex direction='column'>

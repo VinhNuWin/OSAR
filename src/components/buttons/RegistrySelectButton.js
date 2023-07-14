@@ -11,17 +11,22 @@ import general from '../../images/general.png';
 
 
 export const RegistrySelectButton = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const { registryType } = useSelector((state)=> {
+        return {
+            registryType: state.index.registryType,
+        }
+    })
 
  
 
     const componentButtonArray = [
-        <Button name='general' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>,
-        <Button name='employees' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>,
-        <Button name='spouse' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>,
-        <Button name='elderly' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>,
-        <Button name='assault' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Assault</Button>,
-        <Button name='children' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Children</Button>
+        <Button name='general'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>,
+        <Button name='employees'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>,
+        <Button name='spouse'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>,
+        <Button name='elderly'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>,
+        <Button name='assault'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Assault</Button>,
+        <Button name='children'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Children</Button>
     ];
 
     return (
@@ -31,7 +36,7 @@ export const RegistrySelectButton = () => {
             variants={listVariants}
         >
             <motion.div className='selectButtons'>
-                {componentButtonArray.map(item => <motion.li variants={itemVariants}>{item}</motion.li>)}
+                {componentButtonArray.map(item => <motion.li key={registryType} variants={itemVariants}>{item}</motion.li>)}
             </motion.div>
         </motion.ul>
     )

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 import { changeIndex } from "../../store";
 
-export default function FinalSubmit() {
+export default function EmailSubmit() {
     const dispatch = useDispatch();
     const { index, _id, registryType, email, registryReport } = useSelector((state) => {
         return {
@@ -17,31 +17,37 @@ export default function FinalSubmit() {
     });
     
 
-    const handleFinalSubmit = async () => {
-
-            const registryResponse = await axios.post(`https://osar-api.onrender.com/${registryType}`, {
+    const handleEmailSubmit = async () => {
+            
+        const response = await axios.post(`http://dvaa-smtp.onrender.com/api/sendemail`, {
                 headers: {
                     'Content-Type' : 'application/json',
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Method': 'POST',
                 },
-                registryType: registryType,
                 registryReport: registryReport,
+                email: email,
+                
             });
-            console.log( registryType + ' has been submitted');
-    
-            dispatch(changeIndex(parseInt(index + 1)));
+
+
+
+
         };
     
-
+    const handleOnSubmit = async () => {
+        console.log('email sent'); 
+        dispatch(changeIndex(parseInt(index + 1)));
+    }
     
 
     
     return (
         <Button 
         variant='backButton'
-        onClick={handleFinalSubmit}
-        >Next
+        onClick={handleEmailSubmit}
+        onSubmit={handleOnSubmit}
+        >Submit
         </Button> 
     )
 }

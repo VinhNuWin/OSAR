@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import FinalSubmit from '../../components/buttons/FinalSubmit';
+import GeneralSummary from '../../views/registries/registrySummary/generalSummary';
 
 const formSlice = createSlice({
   name: 'form',
@@ -27,6 +29,7 @@ const formSlice = createSlice({
     ],
   generalForm: [
     '',
+    '',
     'Are you in immediate danger?',
     'When did the incident happen?',
     'Where did the incident occur?',
@@ -34,7 +37,10 @@ const formSlice = createSlice({
     'Name of person responsible for incident?',
     'Are there any witnesses who saw the incident?',
     'Is there any additional information or comments you would like to add?',
-    'Your registry has been reported, a timestamped copy will be sent to the the email provided'
+    "<GeneralSummary />",
+    'A timestamped record has been sent to your email, if you would like to provide feedback to help provide a better experience for others',
+    '',
+    '',
   ],
   childrensForm: [
     '',

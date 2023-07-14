@@ -3,17 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 const indexSlice = createSlice({
     name: 'indexes',
     initialState: {
-        index: 0,
+        index: 1,
         registry: {
-            email: '',
-            _id: '',
-            registryId: '',
+            email: 'Vinhn3333@gmail.com',
+            _id: '64b08bbd6500106222f9d2d0',
+            registryId: '64b08bbd6500106222f9d2d0',
             registryType: '',
             registryReport: {
                 registryId: '',
                 immediateDangerOrMedicalAttention: false,
                 fullName: '',
-                date: '',
+                date: 'July',
                 address: {
                     streetAddress: '',
                     city: '',
@@ -52,6 +52,7 @@ const indexSlice = createSlice({
                 survivorGender: '',
             },
         },
+        feedback:'',
     },
     reducers: {
         changeIndex(state, action) {
@@ -88,6 +89,9 @@ const indexSlice = createSlice({
             state.registry.registryType = action.payload;
             state.registry.registryReport.registryType = action.payload;
         },
+        addFeedBack(state, action){
+            state.feedback = action.payload;
+        }
     }
     });
 
@@ -101,6 +105,7 @@ export const {
     addEmployeeId,
     registrySelect,
     updateAddress,
+    addFeedBack
 
 } = indexSlice.actions;
 export const indexReducer = indexSlice.reducer;
