@@ -30,8 +30,8 @@ function GeneralAnswers() {
 
 
     return (
-        <AnimatePresence>
-        <ChakraBox >
+        <AnimatePresence className='' >
+        <ChakraBox className=''>
                             <ChakraBox>
             { questionIndex === 2 ? ( //Are you in immediate danger or in need of medical attention?
             <ChakraBox >
@@ -52,12 +52,12 @@ function GeneralAnswers() {
             ) : questionIndex === 6 ? ( // Name of person responsible for incident?
                 <ChakraBox variants={itemVariants}  key={index}  >
                     <FormControl>
-                        <FormLabel >Desciption of what happened</FormLabel>
+                        <FormLabel color='rgb(147,154,236)' >Desciption of what happened</FormLabel>
                             <Input 
                                 type='text'
-                                name='detailsOfIncident'
+                                name='peopleInvolved'
                                 h={20}
-                                width={{ base: '12em', md: '14em', lg: '20em' }} 
+                                width={{ base: '20em', md: '18em', lg: '24em' }} 
                                 onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
                                 placeholder="Brief description"
                             />
@@ -66,12 +66,12 @@ function GeneralAnswers() {
             ) : questionIndex === 7 ? ( // Are there any witnesses who saw the incident
                 <ChakraBox variants={itemVariants}  key={index}  >
                     <FormControl>
-                        <FormLabel >List Individuals Who Physically Witnessed Event</FormLabel>
+                        <FormLabel color='rgb(147,154,236)' >List Individuals Who Physically Witnessed Event</FormLabel>
                             <Input 
                               type='text'
                               name='witnesses'
                                 h={20}
-                                width={{ base: '12em', md: '14em', lg: '24em' }} 
+                                width={{ base: '20em', md: '20em', lg: '26em' }} 
                                 onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
                                 placeholder="Name1, name2, name3.."
                             />

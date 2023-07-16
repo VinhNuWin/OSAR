@@ -2,48 +2,54 @@ import { defineStyle, defineStyleConfig } from '@chakra-ui/react'
 
 
 const brandPrimary = defineStyle({
-    size:'md',
+
     height:'40px',
-    width:'600px',
+    width:'150px',
     border:'2px',
     borderColor:'rgb(73, 79, 86)',
-    bg:'white',
-    borderColor:'rgb(73, 79, 86)',
-    color:'rgb(97, 202, 146)',
+    bg:'rgb(91,100,233)',
+    color:'white',
     _focus:{
       boxShadow: 'outline',
       color: 'rgb(73, 79, 86)',
-    }
+    },
+    _active:{
+      boxShadow: 'inset 0px 3px 7px #d6d6e7',
+      transform:' translateY(-5px)',
+  }
 });
 
 const nextButton = defineStyle({
-  size:'md',
-  // height:'100%',
-  // width:'100%',
-  border:'2px',
-  borderColor:'rgb(73, 79, 86)',
-  margin: '5%',
-  color:'rgb(73, 79, 86)',
-  _hover:{ 
-    bg: '#ebedf0',
-    color: 'black',
-    boxShadow: '0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7',
-    transform: 'translateY(-2px)',
-  },
-  _focus:{
-    boxShadow: 'outline',
-  },
-_active:{
-    boxShadow: 'inset 0px 3px 7px #d6d6e7',
-    transform:' translateY(2px)',
-}
+  height:'40px',
+    width:'100%',
+    border:'2px',
+    borderColor:'rgb(73, 79, 86)',
+    bg:'rgb(91,100,233)',
+    color:'white',
+    _hover:{ 
+      bg: '#ebedf0',
+      color: 'black',
+      boxShadow: '0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7',
+      transform: 'translateY(-2px)', 
+    },
+    _focus:{
+      boxShadow:
+        'grey',
+    },
+    _active:{
+      bg: '#dddfe2',
+      transform: 'scale(1.03)',
+      borderColor: '#bec3c9',
+      boxShadow: 'outline',
+    },
 });
 
 const backButton = defineStyle({
   width:'50%',
   boxShadow: '0px 1px 1px rgba(1, 0, 0, .51), 1px 1px 1px 1px rgba(0, 0, 0, 0.04)',
   borderColor:'rgb(73, 79, 86)',
-  color:'rgb(73, 79, 86)',
+  color:'rgb(255, 255, 233)',
+  colorScheme: 'teal',
   _hover:{ 
     bg: '#ebedf0',
     color: 'black',
@@ -102,12 +108,12 @@ const booleanButton = defineStyle({
   // },
 
 _hover: {
-    boxShadow: '0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7',
+    // boxShadow: '0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7',
     transform: 'translateY(-2px)',
 },
 _active:{
     boxShadow: 'inset 0px 3px 7px #d6d6e7',
-    transform:' translateY(2px)',
+    // transform:' translateY(2px)',
 }
 
 });

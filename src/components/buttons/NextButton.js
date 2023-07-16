@@ -50,7 +50,7 @@ export default function NextButton() {
     
     return (
         <Button 
-        variant='backButton'
+        variant='nextButton'
         onClick={handleRegistryInputs}
         >Next
         </Button> 

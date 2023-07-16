@@ -42,14 +42,14 @@ const dispatch = useDispatch();
 
     return (
 <Flex className='panel-one-mobile' direction='column'>
-                <Heading className='selectRegistry-header' color='black' marginTop={10}>
+                <Heading className='selectRegistry-header' color='white' marginTop={10}>
                     Select a Registry
                 </Heading>
                     <div>
                             <Flex direction='column' className='selectRegistry-buttons-wrapper '>
                                 <RegistrySelectButton />
                             <Flex className='answer-element-continue'>
-                                <Button className="btn" colorScheme='facebook' onClick={handleRegistryInputs} >
+                                <Button className="btn" onClick={handleRegistryInputs} >
                                     Continue
                                 </Button>
                             </Flex>

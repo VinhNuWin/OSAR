@@ -10,7 +10,9 @@ import {
     addEmployeeId,
     registrySelect,
     updateAddress,
-    addFeedBack
+    addFeedBack,
+    addResponseSummary,
+    addSummaryKeys
 } from './slices/indexSlice';
 import {
     formReducer,
@@ -55,7 +57,9 @@ export {
     addEmployeeId,
     registrySelect,
     updateAddress,
-    addFeedBack
+    addFeedBack,
+    addResponseSummary,
+    addSummaryKeys,
  };
 
 export { useFetchReportQuery } from './apis/reportApi';

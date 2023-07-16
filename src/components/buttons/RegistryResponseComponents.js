@@ -22,12 +22,12 @@ export const BooleanYesNo = (props) =>  {
     return (
         <div className="boolean-wrapper">
             <div className="boolean-button">
-            <Button className="btn" colorScheme='facebook' onClick={(e)=> dispatch(updateBoolean({...registryReport, [props.name]: false}))}>
+            <Button variant="brandPrimary" onClick={(e)=> dispatch(updateBoolean({...registryReport, [props.name]: false}))}>
                     No
             </Button>
             </div>
             <div className="boolean-button">
-            <Button className="btn" onClick={(e) => dispatch(updateBoolean({...registryReport, [props.name]: true}))}>
+            <Button variant="brandPrimary" onClick={(e) => dispatch(updateBoolean({...registryReport, [props.name]: true}))}>
                     Yes
             </Button>
             </div>
@@ -73,11 +73,11 @@ export const FormInput = (props) => {
 
     return (
     <FormControl>
-    <FormLabel >Desciption of what happened</FormLabel>
+    <FormLabel color='rgb(147,154,236)' >Desciption of what happened</FormLabel>
         <Input 
             type='text'
             h={20}
-            width={{ base: '12em', md: '14em', lg: '20em' }} 
+            width={{ base: '20em', md: '20em', lg: '24em' }} 
             onChange={e => dispatch(updateRegistry({...registryReport, [props.name]: e.target.value}))}
             placeholder="Brief description"
         />

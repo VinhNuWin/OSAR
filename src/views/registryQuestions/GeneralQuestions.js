@@ -16,7 +16,7 @@ export default function GeneralQuestions () {
     return (
         <Flex direction='column'>
         <Flex wrap='nowrap' direction='column' className='questions'>
-            <Text className='' fontSize={{ base: '20px', md: '20px', lg: '26px' }} color='rgb(73, 79, 86)'>{questions}</Text>
+            <h1 className='' >{questions}</h1>
         </Flex>
         </Flex>
     )

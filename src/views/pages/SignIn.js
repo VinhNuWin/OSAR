@@ -45,6 +45,7 @@ function SignIn() {
             },
             email: email,
         });
+
         const userId = response.data.data._id;
         dispatch(add_Id(userId));
         dispatch(changeIndex(parseInt(index + 1)));
@@ -53,8 +54,6 @@ function SignIn() {
         }
     
     };
-
-    console.log(email);
 
     return (
         <motion.div
@@ -72,14 +71,14 @@ function SignIn() {
                 </Text>
             </Flex>
 
-            <Flex className='signin-body'>
-            The report takes 2-3 minutes. After review, reports will be added to the Documented Voices database.
-            </Flex>
+            <h3 className='signin-body'>
+                The report takes 2-3 minutes.
+                </h3>
 
-            <Flex className='signin-h1'>
-                <Text textAlign='center' w='full'>
+                <Flex className='' >
+                <h2 className='signin-h1' textAlign='center' w='full'>
                 Enter Your Email
-                </Text>
+                </h2>
             </Flex>
             { loader ? <Loader /> : ''}
 
@@ -87,7 +86,7 @@ function SignIn() {
                         <FormControl isInvalid={isError}>
                                 <InputGroup>
                                   <InputLeftElement pointerEvents='none'>
-                                    <EmailIcon />
+                                    <EmailIcon color='white' />
                                   </InputLeftElement>
                                 <Input 
                                     type='email'
@@ -103,17 +102,17 @@ function SignIn() {
                                     <FormErrorMessage>Email is required.</FormErrorMessage>
                                   )}
                                 </InputGroup>
-                                <Checkbox m={2}>I would like to submit this report anonymously</Checkbox>
+                                <Checkbox m={2} color='rgb(147,154,236)'>I would like to submit this report anonymously</Checkbox>
                         </FormControl>
                                     <ThingsToConsider />
-                                    <MissionStatement />
+                                    {/* <MissionStatement /> */}
                     </Flex>
                     <Flex className= 'signin-start-registry' direction='column'>
 
                         <Text className='signin-body' marginBottom={8}>
                         If you have questions or feedback on the submission experience, email us at info@documentedvoices.com
                         </Text>
-                                <Button className="btn" colorScheme='facebook' onClick={addUser} w='50%'>
+                                <Button variant='brandPrimary' colorScheme='facebook' onClick={addUser} w='50%'>
                                     Start Registry
                                 </Button>
                             </Flex>

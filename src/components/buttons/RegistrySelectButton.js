@@ -21,12 +21,12 @@ export const RegistrySelectButton = () => {
  
 
     const componentButtonArray = [
-        <Button name='general'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>,
-        <Button name='employees'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>,
-        <Button name='spouse'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>,
-        <Button name='elderly'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>,
-        <Button name='assault'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Assault</Button>,
-        <Button name='children'  className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Children</Button>
+        <Button name='general' key='general' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>,
+        <Button name='employees' key='employees' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>,
+        <Button name='spouse' key='spouse' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>,
+        <Button name='elderly' key='elderly' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>,
+        <Button name='assault' key='assault' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Assault</Button>,
+        <Button name='children' key='children' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Children</Button>
     ];
 
     return (
@@ -35,8 +35,8 @@ export const RegistrySelectButton = () => {
             animate='visible'
             variants={listVariants}
         >
-            <motion.div className='selectButtons'>
-                {componentButtonArray.map(item => <motion.li key={registryType} variants={itemVariants}>{item}</motion.li>)}
+            <motion.div className='selectButtons' variants={itemVariants} >
+                {componentButtonArray.map((item, i) => <motion.li key={i} variants={itemVariants}>{item}</motion.li>)}
             </motion.div>
         </motion.ul>
     )

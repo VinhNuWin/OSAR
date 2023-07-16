@@ -54,7 +54,7 @@ export default function GeneralRegistry() {
                     
                     <Flex className='panel-one-buttons'  >
                         {index < 12 ? <BackButton /> : null }
-                        {index===9 ? <FinalSubmit /> : index === 10 ? <EmailSubmit /> : index < 14 ? <NextButton /> : null }       
+                        {index===8 ? <FinalSubmit /> : index === 9 ? <EmailSubmit /> : index < 14 ? <NextButton /> : null }       
                     </Flex>
                 </Flex>
             </Flex>

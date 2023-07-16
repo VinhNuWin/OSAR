@@ -6,7 +6,7 @@ import { motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, addEmail, add_Id, addRegistryId, registrySelect } from '../../../store';
 import axios from 'axios';
-import { Flex, Button, HStack, Stack, FormControl, FormLabel, FormHelperText, Input, Spinner, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup, InputRightElement } from '@chakra-ui/react';
+import { Flex, Button, HStack, Stack, FormControl, FormLabel, FormHelperText, Input, Spinner, Checkbox, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
 import Loader from '../../../components/Loader';
 import ThingsToConsider from '../../../data/ThingsToConsider';
@@ -78,38 +78,39 @@ function SignIn() {
     const transition = { duration: 4, yoyo: Infinity, ease: "easeInOut" };
 
     return (
-        <Flex className='dual-panel-wrapper'>
-        <Flex className=''>
+        <Flex className='signin-wrapper'>
+        <Flex className='' pt={5}>
             <Stack className='signin-wrapper'>
             <center>
                 <Flex className='header'>
 
                 </Flex>
-            <Flex className='signin-h2'>
+            <Flex >
                 
-                <Text textAlign='center' w='full'>
+                <p className='signin-p'>
                 Follow the promps to submit your report.
-                </Text>
+                </p>
 
             </Flex>
 
-            <Flex className='signin-body'>
-            The report takes 2-3 minutes. After review, reports will be added to the Documented Voices database.
+            <Flex >
+                <h3 className='signin-body'>
+                The report takes 2-3 minutes.
+                </h3>
             </Flex>
 
-            <Flex className='signin-h1'>
-                <Text textAlign='center' w='full'>
+            <Flex className='' >
+                <h2 className='signin-h1' textAlign='center' w='full'>
                 Enter Your Email
-                </Text>
-                { loader ? <Loader /> : ''}
+                </h2>
             </Flex>
-      
+            { loader ? <Loader /> : ''}
 
                     <Flex className='sign-in-element-email'>
                         <FormControl >
                                 <InputGroup>
                                   <InputLeftElement pointerEvents='none'>
-                                    <EmailIcon />
+                                    <EmailIcon color='white' />
                                   </InputLeftElement>
                                 <Input 
                                     variant='flushed'
@@ -127,16 +128,16 @@ function SignIn() {
                                     ]}
                                   />
                                 </InputGroup>
-                            <FormHelperText>I would like to submit this report anonymously</FormHelperText>
+                                <Checkbox m={2} color='rgb(147,154,236)'>I would like to submit this report anonymously</Checkbox>
                         </FormControl>
                                     <ThingsToConsider />
-                                    <MissionStatement />
+                                    {/* <MissionStatement /> */}
                     </Flex>
                     <Flex className='signin-start-registry' direction='column'>
                         <Text marginBottom={8}>
                         If you have questions or feedback on the submission experience, email us at info@documentedvoices.com
                         </Text>
-                                <Button onClick={addUser} w='50%'>
+                                <Button variant='brandPrimary' onClick={addUser} w='90%'>
                                     Start Registry
                                 </Button>
                             </Flex>

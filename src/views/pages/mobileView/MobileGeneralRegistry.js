@@ -33,8 +33,8 @@ export default function MobileGeneralRegistry() {
                         <GeneralAnswers />
                     </Flex>
                     <Flex className='panel-one-buttons'>
-                    {index < 10 ? <BackButton /> : null }
-                        {index===8 ? <FinalSubmit /> : index === 9 ? <EmailSubmit /> :  <NextButton /> }        
+                    {index < 12 ? <BackButton /> : null }
+                        {index===8 ? <FinalSubmit /> : index === 9 ? <EmailSubmit /> : index < 14 ? <NextButton /> : null }         
                     </Flex>
                 </Flex>
             </Flex>
