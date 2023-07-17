@@ -80,7 +80,7 @@ function SignIn() {
                 Enter Your Email
                 </h2>
             </Flex>
-                <div className='loader border'>
+                <div className='loader'>
                   { loader ? <Loader /> : ''}
                 </div>
 
