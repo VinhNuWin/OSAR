@@ -5,8 +5,8 @@ import { motion, isValidMotionProp, Variants, AnimatePresence } from 'framer-mot
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, addEmployeeId, registrySelect } from '../../store';
 import axios from 'axios';
-import { FormErrorMessage, Flex, Button, HStack, Stack, Heading, Grid, GridItem, FormLabel, FormHelperText, Input, Spinner, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
-import { listVariants, itemVariants } from '../../data/containerVariants';
+import { FormErrorMessage, Flex, Button } from '@chakra-ui/react';
+import { listVariants, itemVariants, container, item, test } from '../../data/containerVariants';
 import general from '../../images/general.png';
 
 
@@ -30,14 +30,18 @@ export const RegistrySelectButton = () => {
     ];
 
     return (
+        <div>
         <motion.ul
-            initial='hidden'
-            animate='visible'
-            variants={listVariants}
+        variants={listVariants}
+        initial='hidden'
+        animate='visible'
+        className='selectButtons'
         >
-            <motion.div className='selectButtons' variants={itemVariants} >
-                {componentButtonArray.map((item, i) => <motion.li key={i} variants={itemVariants}>{item}</motion.li>)}
-            </motion.div>
+                    <AnimatePresence mode='wait'>
+                { componentButtonArray.map((item, i) => <motion.li key={item[i]} variants={itemVariants} initial='hidden' animate='visible' exit='close'>{item}</motion.li>)}
+                        </AnimatePresence>
         </motion.ul>
+
+        </div>
     )
 }

@@ -19,7 +19,7 @@ const ChakraBox = chakra(motion.div, {
 
 
 function EmployeeAnswers() {
-    const { index, registry, registryReport, registryType, location, date, streetAddress, city, state, zipcode, fullName, title, detailsOfIncident, peopleInvolved, witnesses, incidentOutcome, abilitiesAffected, seekedMedicalAttention, reportedToHigherPersonel, personalAffect, actionsTakenSinceIncident, additionalComments } = useSelector((state) => {
+    const { index, registry, registryReport } = useSelector((state) => {
         return {
             index: state.index.index,
             _id: state.index.registry._id,
@@ -34,7 +34,7 @@ function EmployeeAnswers() {
 
     const inputsArray = [
         <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />,
-        <Input variant='flushed'  name='title' placeholder='Job Title' onChange={(e) => dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
+        <Input variant='flushed' name='title' placeholder='Job Title' onChange={(e) => dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
     ];
 
     console.log(registry.registryReport);
@@ -42,13 +42,15 @@ function EmployeeAnswers() {
 
 
     return (
-        <AnimatePresence >
+
         <ChakraBox 
         initial='hidden'
         animate='visible'
-        variants={listVariants}>
+        exit='close'
+        variants={listVariants}
+        >
             { questionIndex === 1 ? ( //Can you provide your full name and your job title
-                <ChakraBox variants={itemVariants}>
+                <ChakraBox key='id-1' variants={itemVariants} >
                         <FormControl>
                             <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
                         </FormControl>
@@ -59,15 +61,16 @@ function EmployeeAnswers() {
 
                 </ChakraBox>
             ) : questionIndex === 2 ? ( //What is the date and approximate time of the incident
-                <motion.div key={index} variants={itemVariants}>
+                <motion.div key='id-1' variants={itemVariants}
+                >
                     <DateAndTime />
                 </motion.div>
             ) : questionIndex === 3 ? ( // Where did the incident take place
-                         <ChakraBox key={index} variants={itemVariants}>
+                         <ChakraBox key='id-3' variants={itemVariants}>
                                 <Address />
                        </ChakraBox>
             ) : questionIndex === 4 ? ( // Who were the people involved in the incident
-         <ChakraBox key={index} variants={itemVariants}>
+         <ChakraBox key='id-4' variants={itemVariants}>
                 <FormControl>
                     <FormLabel >List Individuals Directly Involved</FormLabel>
                         <Input 
@@ -213,7 +216,6 @@ function EmployeeAnswers() {
 
         </ChakraBox>
 
-        </AnimatePresence>
     )
 }
 

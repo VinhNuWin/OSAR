@@ -21,7 +21,7 @@ export default function EmailSubmit() {
 
     const handleEmailSubmit = async () => {
    
-        const response = await axios.post(`http://localhost:3002/api/sendemail`, {
+        const response = await axios.post(`https://dvaa-smtp.onrender.com`, {
                 headers: {
                     'Content-Type' : 'application/json',
                     'Access-Control-Allow-Origin': '*',

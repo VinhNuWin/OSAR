@@ -31,10 +31,7 @@ export default function GeneralRegistry() {
         <AnimatePresence>
         <Flex>
         <ChakraBox>
-            <ChakraBox  initial='hidden'
-        animate='visible'
-        exit='exit'
-        variants={listVariants}>
+            <ChakraBox  >
 
         { index <= 12 ? (
 
@@ -42,12 +39,12 @@ export default function GeneralRegistry() {
             <Flex className='panel-one' direction='column'>
                 <Flex className='header'/>
 
-                        <ChakraBox className='panel-one-questions' variants={itemVariants} key={index} initial='hidden' animate='visible' exit={{opacity: 0}}  >
+                        <ChakraBox className='panel-one-questions'  >
                             <GeneralQuestions />
                         </ChakraBox >                        
                     <ChakraBox className='panel-one-answers'>
                     
-                            <ChakraBox initial='hidden' animate='visible' exit='hidden' variants={itemVariants} key={index}>
+                            <ChakraBox >
                                 <GeneralAnswers />
                             </ChakraBox>
                         </ChakraBox>

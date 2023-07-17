@@ -22,7 +22,7 @@ export default function FinalSubmit(props) {
     const handleFinalSubmit = async () => {
         
         
-            const registryResponse = await axios.post(`http://localhost:3001/${registryType}`, {
+            const registryResponse = await axios.post(`https://osar-api.onrender.com/${registryType}`, {
                 headers: {
                     'Content-Type' : 'application/json',
                     'Access-Control-Allow-Origin': '*',

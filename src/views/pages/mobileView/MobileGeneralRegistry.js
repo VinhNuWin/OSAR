@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, shouldForwardProp, chakra } from '@chakra-ui/react';
 import NextButton from '../../../components/buttons/NextButton';
 import BackButton from '../../../components/buttons/BackButton';
 import { useSelector } from 'react-redux';
@@ -7,6 +7,12 @@ import GeneralAnswers from '../../registryAnswers/GeneralAnswers';
 import FinalSubmit from '../../../components/buttons/FinalSubmit';
 import MissionStatement from '../../../components/modals/MissionStatement';
 import EmailSubmit from '../../../components/buttons/emailSubmit';
+import { AnimatePresence, motion, isValidMotionProp } from 'framer-motion';
+import { itemVariants } from '../../../data/containerVariants';
+
+const ChakraBox = chakra(motion.div, {
+    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+  });
 
 export default function MobileGeneralRegistry() {
     const { registryType, index } = useSelector((state) => {
@@ -21,12 +27,12 @@ export default function MobileGeneralRegistry() {
 
     return (
 <Flex>
-
-        { index <= 7 ? (
+{/* <AnimatePresence> */}
+        { index <= 12 ? (
         <Flex>
             <Flex className='panel-one-mobile' direction='column'>
                 <Flex className='header'/>
-                    <Flex className='panel-one-questions' >
+                    <Flex className='panel-one-questions'>
                         <GeneralQuestions />
                     </Flex>
                     <Flex className='panel-one-answers'>
@@ -40,6 +46,7 @@ export default function MobileGeneralRegistry() {
             </Flex>
         ) : null (
         )} 
+        {/* </AnimatePresence> */}
         </Flex>
     )
 }

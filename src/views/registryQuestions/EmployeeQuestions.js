@@ -16,7 +16,7 @@ export default function EmployeeQuestions () {
 
     return (
         <Flex wrap='nowrap' direction='column' >
-            <Text className='div-c' fontSize={{ base: '16px', md: '20px', lg: '26px' }} color='rgb(73, 79, 86)'>{questions}</Text>
+            <Text className='div-c' fontSize={{ base: '16px', md: '20px', lg: '26px' }} color='white'>{questions}</Text>
         </Flex>
     )
 }

@@ -6,12 +6,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeIndex, addEmployeeId, registrySelect } from '../../store';
 import axios from 'axios';
 import { FormErrorMessage, Flex, Button, HStack, Stack, Heading, Grid, GridItem, FormLabel, FormHelperText, Input, Spinner, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
-import { listVariants } from '../../data/containerVariants';
+import { listVariants, container, item } from '../../data/containerVariants';
 import general from '../../images/general.png';
 import { RegistrySelectButton } from '../../components/buttons/RegistrySelectButton';
 
+
+
+
 export default function SelectYourRegistry() {
     const dispatch = useDispatch();
+
+    
     const { index, _id, registryType, registryId } = useSelector((state)=> {
         return {
             index: state.index.index,
@@ -46,14 +51,14 @@ export default function SelectYourRegistry() {
         <Flex className='dual-panel-wrapper'>
             <Flex className='panel-one' direction='column'>
             <Flex className='header'/>
-                <Heading className='selectRegistry-header' color='black' marginTop={10}>
+                <Heading className='selectRegistry-header' color='white' marginTop={10}>
                     Select a Registry
                 </Heading>
-                    <div>
-                            <Flex direction='column' className='selectRegistry-buttons-wrapper '>
+                    <div >
+                            <Flex direction='column' className='selectRegistry-buttons-wrapper' >
                                 <RegistrySelectButton />
                             <Flex className='answer-element-continue'>
-                                <Button className="btn" colorScheme='facebook' onClick={handleRegistryInputs} >
+                                <Button className="btn" onClick={handleRegistryInputs} >
                                     Continue
                                 </Button>
                             </Flex>

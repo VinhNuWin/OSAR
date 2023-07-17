@@ -80,7 +80,9 @@ function SignIn() {
                 Enter Your Email
                 </h2>
             </Flex>
-            { loader ? <Loader /> : ''}
+                <div className='loader border'>
+                  { loader ? <Loader /> : ''}
+                </div>
 
                     <Flex className='sign-in-element-email'>
                         <FormControl isInvalid={isError}>
@@ -92,8 +94,9 @@ function SignIn() {
                                     type='email'
                                     variant='flushed'
                                     value={email}
-                                  onChange={(e) => {dispatch(addEmail( e.target.value))}}
+                                    onChange={(e) => {dispatch(addEmail( e.target.value))}}
                                   />
+                            
                                   {!isError ? (
                                     <FormHelperText>
 

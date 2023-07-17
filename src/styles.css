@@ -122,6 +122,11 @@
   align-items: center;
   bottom: 5%;
 }
+.loader{
+  width: 100%;
+  height: 100%;
+  margin-top: 15%;
+}
 
 .panel-one-questions{
       /* border: 3px solid red; */
@@ -183,12 +188,15 @@
 }
 
 .answer-element-continue {
+      /* border: 3px solid red; */
   /* display: flex; */
   position: absolute;
+  width: 80%;
   /* margin: auto; */
-  /* justify-self: center; */
+  justify-self: center;
   align-self: center;
   bottom: 13%;
+  left: 10%;
 }
 
 .boolean-wrapper {

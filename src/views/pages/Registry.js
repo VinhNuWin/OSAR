@@ -12,6 +12,8 @@ import MobileSpouseRegistry from './mobileView/MobileSpouseRegistry';
 import MobileAssaultRegistry from './mobileView/MobileAssaultRegistry';
 import GeneralRegistry from '../registries/GeneralRegistry';
 import MobileGeneralRegistry from './mobileView/MobileGeneralRegistry';
+import { listVariants, itemVariants } from '../../data/containerVariants';
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 
@@ -21,45 +23,61 @@ export default function Registry() {
         '(min-width: 568px)'
     ]);
 
-    const { registryType } = useSelector((state) => {
+    const { registryType, index } = useSelector((state) => {
         return {
-            registryType: state.index.registry.registryType
+            registryType: state.index.registry.registryType,
+            index: state.index.index
         }
     })
 
     const registrySelected = registryType;
 
     return (
-        <Flex>
+
+        <motion.div 
+        variants={listVariants}
+        initial='hidden'
+        animate='visible'
+        >
+            <motion.div
+                    >
+                    <AnimatePresence>
         { registrySelected === 'employees' ? (
-            <div>
+            <motion.div>
             { isLargerThan568 ? <EmployeeRegistry /> : <MobileEmployeeRegistry /> }
-            </div>
+            </motion.div>
         ) : registrySelected === 'children' ? (
-            <div>
+            <motion.div>
             { isLargerThan568 ? <ChildrensRegistry /> : <MobileChildrensRegistry /> }
-            </div>
+            </motion.div>
         ) : registrySelected === 'spouse' ? (
-            <div>
+            <motion.div>
             { isLargerThan568 ? <SpouseRegistry /> : <MobileSpouseRegistry /> }
-            </div>
+            </motion.div>
         ) : registrySelected === 'assault' ? (
-            <div>
+            <motion.div>
             { isLargerThan568 ? <AssaultRegistry /> : <MobileAssaultRegistry /> }
-            </div>
+            </motion.div>
         ) : registrySelected === 'elderly' ? (
-            <div>
+            <motion.div>
             { isLargerThan568 ? <ElderlyRegistry /> : <MobileElderlyRegistry /> }
-            </div>
+            </motion.div>
         ) : registrySelected === 'general' ? (
-            <div>
+            <motion.div
+            variants={itemVariants}
+            initial='hidden'
+            animate='visible'
+            exit='close'
+            >
             { isLargerThan568 ? <GeneralRegistry /> : <MobileGeneralRegistry /> }
-            </div>
-        ) : (<div>
+            </motion.div>
+        ) : (<motion.div>
         { isLargerThan568 ? <GeneralRegistry /> : <MobileGeneralRegistry /> }
-        </div>)
+        </motion.div>)
     }
-    </Flex>
+    </AnimatePresence>
+    </motion.div>
+    </motion.div>
     )
 }
 

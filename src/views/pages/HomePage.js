@@ -5,7 +5,7 @@ import { Flex, useMediaQuery } from '@chakra-ui/react';
 import SignIn from './SignIn';
 import MobileSignIn from './mobileView/MobileSignIn';
 import { useSelector } from 'react-redux';
-import { containerVariants, homePageVariants } from '../../data/containerVariants';
+import { container, containerVariants, item, itemVariants, listVariants } from '../../data/containerVariants';
 import MobileRegistrySelect from './mobileView/MobileRegistrySelect';
 import RegistrySelect from '../registries/RegistrySelect';
 
@@ -32,15 +32,12 @@ function HomePage() {
         <div>
         <Flex>
         </Flex>
-          <div className='Homepage'>
+          <motion.div className='Homepage'
+            >
                     {questionPageIndex === 0 ? ( 
                         <center>
                         <motion.div 
                         key={questionPageIndex}
-                        variants={homePageVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exitAnimation"
                         >
                                 { isLargerThan568 ? <SignIn /> : <MobileSignIn /> }
                         </motion.div>
@@ -51,11 +48,7 @@ function HomePage() {
                         </div>
                     ) : questionPageIndex >= 2 ? (
                         <div>
-                    <motion.div 
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exitAnimation"
+                    <motion.div
                         className="wrapper-block"
                         >
                         <Registry /> 
@@ -65,7 +58,7 @@ function HomePage() {
                         )
                     }
    
-            </div>
+            </motion.div>
             </div>
     )
 };

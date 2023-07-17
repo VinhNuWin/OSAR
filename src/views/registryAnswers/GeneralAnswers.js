@@ -30,27 +30,52 @@ function GeneralAnswers() {
 
 
     return (
-        <AnimatePresence className='' >
         <ChakraBox className=''>
                             <ChakraBox>
+                            <AnimatePresence mode='wait' >
             { questionIndex === 2 ? ( //Are you in immediate danger or in need of medical attention?
-            <ChakraBox >
+            <ChakraBox key={index} 
+                variants={itemVariants}
+                initial='hidden'
+                animate='visible'
+                exit='close'
+            >
                     <BooleanYesNo name='immediateDangerOrMedicalAttention' />
             </ChakraBox>
             ) : questionIndex === 3 ? ( // When did the incident happen?
-            <ChakraBox >
+            <ChakraBox key={index} 
+                variants={itemVariants}
+                initial='hidden'
+                animate='visible'
+                exit='close'
+            >
                     <DateAndTime />
             </ChakraBox>
             ) : questionIndex === 4 ? ( //Where did the incident occur?
-            <ChakraBox >
+            <ChakraBox key={index} 
+                variants={itemVariants}
+                initial='hidden'
+                animate='visible'
+                exit='close'
+            >
                     <Address />
             </ChakraBox>
             ) : questionIndex === 5 ? ( // Can you provide a detailed account of the incident(s)? What happened?
-                <ChakraBox >
+            <ChakraBox key={index} 
+                variants={itemVariants}
+                initial='hidden'
+                animate='visible'
+                exit='close'
+            >
                     <FormInput name='detailsOfIncident' />
                 </ChakraBox>
             ) : questionIndex === 6 ? ( // Name of person responsible for incident?
-                <ChakraBox variants={itemVariants}  key={index}  >
+            <ChakraBox key={index} 
+                variants={itemVariants}
+                initial='hidden'
+                animate='visible'
+                exit='close'
+            >
                     <FormControl>
                         <FormLabel color='rgb(147,154,236)' >Desciption of what happened</FormLabel>
                             <Input 
@@ -64,7 +89,12 @@ function GeneralAnswers() {
                     </FormControl>
                 </ChakraBox>
             ) : questionIndex === 7 ? ( // Are there any witnesses who saw the incident
-                <ChakraBox variants={itemVariants}  key={index}  >
+            <ChakraBox key={index} 
+                variants={itemVariants}
+                initial='hidden'
+                animate='visible'
+                exit='close'
+            >
                     <FormControl>
                         <FormLabel color='rgb(147,154,236)' >List Individuals Who Physically Witnessed Event</FormLabel>
                             <Input 
@@ -79,7 +109,12 @@ function GeneralAnswers() {
                 </ChakraBox>
 
             ) : questionIndex === 8 ? ( // Is there any additional information or comments you would like to add?
-                <ChakraBox variants={itemVariants}  key={index}  >
+            <ChakraBox key={index} 
+                variants={itemVariants}
+                initial='hidden'
+                animate='visible'
+                exit='close'
+                >
                         <Form>
                             <div>
                             <Form.Item>
@@ -100,7 +135,12 @@ function GeneralAnswers() {
                         </Form>
                 </ChakraBox>    
             ) : questionIndex === 10 ? ( //a timestamped copy will be sent to the the email provided'
-                <ChakraBox variants={itemVariants}  key={index} >
+            <ChakraBox key={index} 
+                variants={itemVariants}
+                initial='hidden'
+                animate='visible'
+                exit='close'
+            >
                             <Form.Item>
                             <TextArea
                                 maxLength={100}
@@ -120,9 +160,9 @@ function GeneralAnswers() {
                 <div>Complete</div>
             ) : null
                 }
+                        </AnimatePresence>
         </ChakraBox>
         </ChakraBox>
-        </AnimatePresence>
     )
 }
 
