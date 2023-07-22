@@ -6,6 +6,7 @@ import SpouseQuestions from "../../registryQuestions/SpouseQuestions";
 import SpouseAnswers from "../../registryAnswers/SpouseAnswers";
 import RegistryComplete from "../../pages/RegistryComplete";
 import PostSubmit from "../../../components/buttons/PostSubmit";
+import EmailSubmit from "../../../components/buttons/emailSubmit";
 
 export default function MobileSpouseRegistry() {
   const { index } = useSelector((state) => {

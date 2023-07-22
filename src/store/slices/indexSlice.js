@@ -5,7 +5,7 @@ const indexSlice = createSlice({
   initialState: {
     index: 0,
     registry: {
-      email: "Vinhn3333@gmail.com",
+      email: "",
       _id: "",
       registryId: "",
       registryType: "",

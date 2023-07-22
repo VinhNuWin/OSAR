@@ -44,7 +44,7 @@ function GeneralAnswers() {
     <ChakraBox className="">
       <ChakraBox>
         <AnimatePresence mode="wait">
-          {questionIndex === 2 ? ( //Are you in immediate danger or in need of medical attention?
+          {questionIndex === 2 ? ( //Full Name
             <ChakraBox
               key={index}
               variants={itemVariants}
@@ -52,7 +52,24 @@ function GeneralAnswers() {
               animate="visible"
               exit="close"
             >
-              <BooleanYesNo name="immediateDangerOrMedicalAttention" />
+              <div>
+                <FormControl>
+                  <Input
+                    variant="flushed"
+                    name="fullName"
+                    placeholder="Full Name"
+                    width={{ base: "12em", md: "14em", lg: "20em" }}
+                    onChange={(e) =>
+                      dispatch(
+                        updateRegistry({
+                          ...registryReport,
+                          [e.target.name]: e.target.value,
+                        })
+                      )
+                    }
+                  />
+                </FormControl>
+              </div>
             </ChakraBox>
           ) : questionIndex === 3 ? ( // When did the incident happen?
             <ChakraBox
