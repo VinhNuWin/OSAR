@@ -125,7 +125,7 @@
 .loader{
   width: 100%;
   height: 10%;
-  /* margin-top: 10%; */
+  padding-top: 10%;
 }
 
 .panel-one-questions{
@@ -266,7 +266,7 @@
 }
 
 .answer-block {
-  border: 3px solid red;
+  /* border: 3px solid red; */
   display: grid;
   height: 100%;
   width: 100%;

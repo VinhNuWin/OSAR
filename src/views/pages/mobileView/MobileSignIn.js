@@ -100,11 +100,14 @@ function SignIn() {
             </Flex>
 
             <Flex className='' >
-                <h2 className='signin-h1' textAlign='center' w='full'>
+                <h2 className='signin-h1' w='full'>
                 Enter Your Email
                 </h2>
             </Flex>
+            {/* <div className='mt-10 border'>
             { loader ? <Loader /> : ''}
+            </div> */}
+
 
                     <Flex className='sign-in-element-email'>
                         <FormControl >

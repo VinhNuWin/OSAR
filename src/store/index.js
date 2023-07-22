@@ -11,8 +11,7 @@ import {
     registrySelect,
     updateAddress,
     addFeedBack,
-    addResponseSummary,
-    addSummaryKeys
+    setAnonymous
 } from './slices/indexSlice';
 import {
     formReducer,
@@ -58,8 +57,7 @@ export {
     registrySelect,
     updateAddress,
     addFeedBack,
-    addResponseSummary,
-    addSummaryKeys,
+    setAnonymous
  };
 
 export { useFetchReportQuery } from './apis/reportApi';

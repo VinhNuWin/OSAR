@@ -1,26 +1,38 @@
-import { Flex, Text } from '@chakra-ui/react';
-import { useSelector } from  'react-redux';
+import { Flex } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { AnimatePresence, motion } from "framer-motion";
+import { itemVariants } from "../../data/containerVariants";
 
+export default function ElderlyQuestions() {
+  const { elderlyForm, index } = useSelector((state) => {
+    return {
+      index: state.index.index,
+      elderlyForm: state.form.elderlyForm,
+    };
+  });
 
-export default function ElderlyQuestions () {
-    const { elderlyForm, index } = useSelector((state) => {
-        return {
-            index: state.index.index,
-            elderlyForm: state.form.elderlyForm,
-        }
-    });
+  const elderlyIndex = index;
+  const questions = elderlyForm[elderlyIndex];
 
-    const elderlyIndex = index - 1;
-    const questions = elderlyForm[elderlyIndex];
+  console.log(questions);
+  console.log();
 
-    console.log(questions);
-    console.log();
-
-    return (
-        <Flex direction='column'>
-        <Flex wrap='nowrap' direction='column' className='questions'>
-            <Text className='div-c' fontSize={{ base: '16px', md: '20px', lg: '26px' }} color='rgb(73, 79, 86)'>{questions}</Text>
-        </Flex>
-        </Flex>
-    )
+  return (
+    <Flex direction="column">
+      <Flex wrap="nowrap" direction="column" className="questions">
+        <AnimatePresence mode="wait">
+          <motion.h1
+            className=""
+            key={elderlyIndex}
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+            exit="close"
+          >
+            {questions}
+          </motion.h1>
+        </AnimatePresence>
+      </Flex>
+    </Flex>
+  );
 }

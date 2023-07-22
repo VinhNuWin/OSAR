@@ -1,222 +1,421 @@
-import { AnimatePresence, motion, isValidMotionProp } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateIncident, updateAssailant, addSurvivor, updateRegistry } from '../../store';
-import { Form } from 'antd';
-import { Button, Text, Select, Input, Flex, chakra, shouldForwardProp, FormControl, FormLabel } from '@chakra-ui/react';
-import AddressModal from '../../components/modals/AddressModal';
-import { CloseIcon, CheckIcon } from '@chakra-ui/icons';
-import { BooleanYesNo, BooleanIfYesName, DateAndTime, Address, FullNameAndTitle } from '../../components/buttons/RegistryResponseComponents.js';
-import BackButton from '../../components/buttons/BackButton';
-import RegistryComplete from '../pages/RegistryComplete';
-// import FullNameAndTitle from '../../components/buttons/RegistryResponseComponents/FullNameAndTitle';
-import NextButton from '../../components/buttons/NextButton';
-import NameModal from '../../components/modals/NameModal';
-import { listVariants, itemVariants } from '../../data/containerVariants';
+import { AnimatePresence, motion, isValidMotionProp } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  updateIncident,
+  updateAssailant,
+  addSurvivor,
+  updateRegistry,
+} from "../../store";
+import { Form } from "antd";
+import {
+  Button,
+  Text,
+  Select,
+  Input,
+  Flex,
+  chakra,
+  shouldForwardProp,
+  FormControl,
+  FormLabel,
+} from "@chakra-ui/react";
+import AddressModal from "../../components/modals/AddressModal";
+import { CloseIcon, CheckIcon } from "@chakra-ui/icons";
+import {
+  BooleanYesNo,
+  BooleanIfYesName,
+  DateAndTime,
+  Address,
+  FullNameAndTitle,
+} from "../../components/buttons/RegistryResponseComponents.js";
+import BackButton from "../../components/buttons/BackButton";
+import RegistryComplete from "../pages/RegistryComplete";
+import NextButton from "../../components/buttons/NextButton";
+import NameModal from "../../components/modals/NameModal";
+import { listVariants, itemVariants } from "../../data/containerVariants";
 
 const ChakraBox = chakra(motion.div, {
-    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
-  });
-
+  shouldForwardProp: (prop) =>
+    isValidMotionProp(prop) || shouldForwardProp(prop),
+});
 
 function EmployeeAnswers() {
-    const { index, registry, registryReport } = useSelector((state) => {
-        return {
-            index: state.index.index,
-            _id: state.index.registry._id,
-            registry: state.index.registry,
-            registryReport: state.index.registry.registryReport,
-        };
-    });
+  const { index, registry, registryReport } = useSelector((state) => {
+    return {
+      index: state.index.index,
+      _id: state.index.registry._id,
+      registry: state.index.registry,
+      registryReport: state.index.registry.registryReport,
+    };
+  });
 
-    const dispatch = useDispatch();
-    const questionIndex = index - 1;
-    const TextArea = Input;
+  const dispatch = useDispatch();
+  const questionIndex = index;
+  const TextArea = Input;
 
-    const inputsArray = [
-        <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />,
-        <Input variant='flushed' name='title' placeholder='Job Title' onChange={(e) => dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
-    ];
+  const inputsArray = [
+    <Input
+      variant="flushed"
+      name="fullName"
+      placeholder="Full Name"
+      width={{ base: "12em", md: "14em", lg: "20em" }}
+      onChange={(e) =>
+        dispatch(
+          updateRegistry({ ...registryReport, [e.target.name]: e.target.value })
+        )
+      }
+    />,
+    <Input
+      variant="flushed"
+      name="title"
+      placeholder="Job Title"
+      onChange={(e) =>
+        dispatch(
+          updateRegistry({ ...registryReport, [e.target.name]: e.target.value })
+        )
+      }
+    />,
+  ];
 
-    console.log(registry.registryReport);
-    console.log(index);
+  console.log(registry.registryReport);
+  console.log(index);
 
+  return (
+    <ChakraBox className="">
+      <ChakraBox>
+        <AnimatePresence mode="wait">
+          {questionIndex === 2 ? ( //Can you provide your full name and your job title
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <FormControl>
+                <Input
+                  variant="flushed"
+                  name="fullName"
+                  placeholder="Full Name"
+                  width={{ base: "12em", md: "14em", lg: "20em" }}
+                  onChange={(e) =>
+                    dispatch(
+                      updateRegistry({
+                        ...registryReport,
+                        [e.target.name]: e.target.value,
+                      })
+                    )
+                  }
+                />
+              </FormControl>
 
-    return (
-
-        <ChakraBox 
-        initial='hidden'
-        animate='visible'
-        exit='close'
-        variants={listVariants}
-        >
-            { questionIndex === 1 ? ( //Can you provide your full name and your job title
-                <ChakraBox key='id-1' variants={itemVariants} >
-                        <FormControl>
-                            <Input variant='flushed' name='fullName' placeholder="Full Name" width={{ base: '12em', md: '14em', lg: '20em' }}  onChange={(e)=> dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
-                        </FormControl>
-    
-                    <FormControl mt={3}>
-                            <Input variant='flushed'  name='title' placeholder='Job Title' onChange={(e) => dispatch(updateRegistry({ ...registryReport, [e.target.name]: e.target.value}))} />
-                    </FormControl>
-
-                </ChakraBox>
-            ) : questionIndex === 2 ? ( //What is the date and approximate time of the incident
-                <motion.div key='id-1' variants={itemVariants}
-                >
-                    <DateAndTime />
-                </motion.div>
-            ) : questionIndex === 3 ? ( // Where did the incident take place
-                         <ChakraBox key='id-3' variants={itemVariants}>
-                                <Address />
-                       </ChakraBox>
-            ) : questionIndex === 4 ? ( // Who were the people involved in the incident
-         <ChakraBox key='id-4' variants={itemVariants}>
-                <FormControl>
-                    <FormLabel >List Individuals Directly Involved</FormLabel>
-                        <Input 
-                            type='text'
-                            name='peopleInvolved'
-                            h={20}
-                            width={{ base: '12em', md: '14em', lg: '20em' }} 
-                            onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                            placeholder="Name1, Name2, etc..."
-                        />
-                </FormControl>
-       </ChakraBox>
-
-            ) : questionIndex === 5 ? ( // Can you describe the incident in as much detail as possible
-                <ChakraBox key={index} variants={itemVariants}>
-                    <Form>
-                    
-                          <Form.Item>
-                            <FormLabel>Description</FormLabel>
-                          <TextArea
-                              showCount
-                              maxLength={200}
-                              style={{
-                                height: 100,
-                                marginBottom: 24,
-                                width: 400,
-                              }}
-                              type='text'
-                              name='detailsOfIncident'
-                              onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                              placeholder="Bullet Point of events"
-                              />
-                          </Form.Item>
-                      </Form>
-                    </ChakraBox> 
-            ) : questionIndex === 6 ? ( // Were there any witnesses to the incident? If yes, who were they
-                <ChakraBox key={index} variants={itemVariants}>
-                    <FormControl>
-                        <FormLabel >List Individuals Who Physically Witnessed Event</FormLabel>
-                            <Input 
-                              type='text'
-                              name='witnesses'
-                                h={20}
-                                width={{ base: '12em', md: '14em', lg: '24em' }} 
-                                onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                                placeholder="Name1, Name2, etc..."
-                            />
-                    </FormControl>
-                </ChakraBox>
-            ) : questionIndex === 7 ? ( // What was the immediate outcome of the incident
-            <ChakraBox key={index} variants={itemVariants}>
-                <FormControl>
-                    <FormLabel >Brief description of direct outcome of incident</FormLabel>
-                        <Input 
-                          type='text'
-                            h={20}
-                            width={{ base: '12em', md: '14em', lg: '24em' }} 
-                            name='incidentOutcome'
-                            onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                            placeholder="What happened from this incident.."
-                        />
-                    </FormControl>
+              <FormControl mt={3}>
+                <Input
+                  variant="flushed"
+                  name="title"
+                  placeholder="Job Title"
+                  onChange={(e) =>
+                    dispatch(
+                      updateRegistry({
+                        ...registryReport,
+                        [e.target.name]: e.target.value,
+                      })
+                    )
+                  }
+                />
+              </FormControl>
             </ChakraBox>
-            ) : questionIndex === 8 ? ( // Did the incident affect your ability to perform your job? If so, how
-                <ChakraBox key={index} variants={itemVariants}>
-                    <FormControl>
-                        <FormLabel>How did the incident effect your work</FormLabel>
-                            <Input 
-                              type='text'
-                                h={20}
-                                width={{ base: '12em', md: '14em', lg: '24em' }} 
-                                            name='abilitiesAffected'
-                                            onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                                            placeholder="Brief description.."
-                                            />
-                                    </FormControl>
-                </ChakraBox>
-            ) : questionIndex === 9 ? ( // Did you seek medical attention as a result of the incident
-                <ChakraBox key={index} variants={itemVariants}>
-                    <BooleanYesNo name={'seekedMedicalAttention'}/>
-                </ChakraBox>
-            ) : questionIndex === 10 ? ( // Have you reported the incident to your direct supervisor or manager
-                <ChakraBox key={index} variants={itemVariants}>
-                <BooleanYesNo name={'reportedToHigherPersonel'} />
-                </ChakraBox>
-            ) : questionIndex === 11 ? ( // Has any action been taken since the incident
-                <ChakraBox key={index} variants={itemVariants}>
-                <BooleanYesNo name={'actionsTakenSinceIncident'} />
-                </ChakraBox>
-            ) : questionIndex === 12 ? ( // How has the incident impacted you personally
-                <ChakraBox key={index} variants={itemVariants}>
-                 <Form>
-                                <div>
-                                <Form.Item>
-                                <TextArea
-                                    maxLength={100}
-                                    style={{
-                                      height: 120,
-                                      marginBottom: 24,
-                                      width: 300,
-                                    }}
-                                    type='text'
-                                    name='personalAffect'
-                                    onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                                    placeholder="Person1, Person2, etc..."
-                                    />
-                                </Form.Item>
-                                </div>
-                            </Form>
-                </ChakraBox>    
-            ) : questionIndex === 13 ? ( // Is there any additional information or comments you would like to add
-                <ChakraBox key={index} variants={itemVariants}>
-                <Form>
-                                <div>
-                                <Form.Item>
-                                <TextArea
-                                    showCount
-                                    maxLength={100}
-                                    style={{
-                                      height: 120,
-                                      marginBottom: 24,
-                                      width: 300,
-                                    }}
-                                    type='text'
-                                    name='additionalComments'
-                                    onChange={e => dispatch(updateRegistry({...registryReport, [e.target.name]: e.target.value}))}
-                                    placeholder="Person1, Person2, etc..."
-                                    />
-                                </Form.Item>
-                                </div>
-                            </Form>
-                </ChakraBox>  
-            ) : questionIndex === 14 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
-            <motion.div key={index} className='flex-box'>
-                <Text>
-                    If you are in need of help, respond to the email for further assistance and support.
-                </Text>
-            </motion.div>
-            ) : questionIndex === null (
-                
-            )
-                }
-
-        </ChakraBox>
-
-    )
+          ) : questionIndex === 3 ? ( //What is the date and approximate time of the incident
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <DateAndTime />
+            </ChakraBox>
+          ) : questionIndex === 4 ? ( // Where did the incident take place
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <Address />
+            </ChakraBox>
+          ) : questionIndex === 5 ? ( // Who were the people involved in the incident
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <FormControl>
+                <FormLabel>List Individuals Directly Involved</FormLabel>
+                <Input
+                  type="text"
+                  name="peopleInvolved"
+                  h={20}
+                  width={{ base: "12em", md: "14em", lg: "20em" }}
+                  onChange={(e) =>
+                    dispatch(
+                      updateRegistry({
+                        ...registryReport,
+                        [e.target.name]: e.target.value,
+                      })
+                    )
+                  }
+                  placeholder="Name1, Name2, etc..."
+                />
+              </FormControl>
+            </ChakraBox>
+          ) : questionIndex === 6 ? ( // Can you describe the incident in as much detail as possible
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <Form>
+                <Form.Item>
+                  <FormLabel>Description</FormLabel>
+                  <TextArea
+                    showCount
+                    maxLength={200}
+                    style={{
+                      height: 100,
+                      marginBottom: 24,
+                      width: 400,
+                    }}
+                    type="text"
+                    name="detailsOfIncident"
+                    onChange={(e) =>
+                      dispatch(
+                        updateRegistry({
+                          ...registryReport,
+                          [e.target.name]: e.target.value,
+                        })
+                      )
+                    }
+                    placeholder="Bullet Point of events"
+                  />
+                </Form.Item>
+              </Form>
+            </ChakraBox>
+          ) : questionIndex === 7 ? ( // Were there any witnesses to the incident? If yes, who were they
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <FormControl>
+                <FormLabel>
+                  List Individuals Who Physically Witnessed Event
+                </FormLabel>
+                <Input
+                  type="text"
+                  name="witnesses"
+                  h={20}
+                  width={{ base: "12em", md: "14em", lg: "24em" }}
+                  onChange={(e) =>
+                    dispatch(
+                      updateRegistry({
+                        ...registryReport,
+                        [e.target.name]: e.target.value,
+                      })
+                    )
+                  }
+                  placeholder="Name1, Name2, etc..."
+                />
+              </FormControl>
+            </ChakraBox>
+          ) : questionIndex === 8 ? ( // What was the immediate outcome of the incident
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <FormControl>
+                <FormLabel>
+                  Brief description of direct outcome of incident
+                </FormLabel>
+                <Input
+                  type="text"
+                  h={20}
+                  width={{ base: "12em", md: "14em", lg: "24em" }}
+                  name="incidentOutcome"
+                  onChange={(e) =>
+                    dispatch(
+                      updateRegistry({
+                        ...registryReport,
+                        [e.target.name]: e.target.value,
+                      })
+                    )
+                  }
+                  placeholder="What happened from this incident.."
+                />
+              </FormControl>
+            </ChakraBox>
+          ) : questionIndex === 9 ? ( // Did the incident affect your ability to perform your job? If so, how
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <FormControl>
+                <FormLabel>How did the incident effect your work</FormLabel>
+                <Input
+                  type="text"
+                  h={20}
+                  width={{ base: "12em", md: "14em", lg: "24em" }}
+                  name="abilitiesAffected"
+                  onChange={(e) =>
+                    dispatch(
+                      updateRegistry({
+                        ...registryReport,
+                        [e.target.name]: e.target.value,
+                      })
+                    )
+                  }
+                  placeholder="Brief description.."
+                />
+              </FormControl>
+            </ChakraBox>
+          ) : questionIndex === 10 ? ( // Did you seek medical attention as a result of the incident
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <BooleanYesNo name={"seekedMedicalAttention"} />
+            </ChakraBox>
+          ) : questionIndex === 11 ? ( // Have you reported the incident to your direct supervisor or manager
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <BooleanYesNo name={"reportedToHigherPersonel"} />
+            </ChakraBox>
+          ) : questionIndex === 12 ? ( // Has any action been taken since the incident
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <BooleanYesNo name={"actionsTakenSinceIncident"} />
+            </ChakraBox>
+          ) : questionIndex === 13 ? ( // How has the incident impacted you personally
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <Form>
+                <div>
+                  <Form.Item>
+                    <TextArea
+                      maxLength={100}
+                      style={{
+                        height: 120,
+                        marginBottom: 24,
+                        width: 300,
+                      }}
+                      type="text"
+                      name="personalAffect"
+                      onChange={(e) =>
+                        dispatch(
+                          updateRegistry({
+                            ...registryReport,
+                            [e.target.name]: e.target.value,
+                          })
+                        )
+                      }
+                      placeholder="Person1, Person2, etc..."
+                    />
+                  </Form.Item>
+                </div>
+              </Form>
+            </ChakraBox>
+          ) : questionIndex === 14 ? ( // Is there any additional information or comments you would like to add
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <Form>
+                <div>
+                  <Form.Item>
+                    <TextArea
+                      showCount
+                      maxLength={100}
+                      style={{
+                        height: 120,
+                        marginBottom: 24,
+                        width: 300,
+                      }}
+                      type="text"
+                      name="additionalComments"
+                      onChange={(e) =>
+                        dispatch(
+                          updateRegistry({
+                            ...registryReport,
+                            [e.target.name]: e.target.value,
+                          })
+                        )
+                      }
+                      placeholder="Person1, Person2, etc..."
+                    />
+                  </Form.Item>
+                </div>
+              </Form>
+            </ChakraBox>
+          ) : questionIndex === 15 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <div>Submit</div>
+            </ChakraBox>
+          ) : questionIndex === 16 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              <div>Complete</div>
+            </ChakraBox>
+          ) : (
+            questionIndex === null()
+          )}
+        </AnimatePresence>
+      </ChakraBox>
+    </ChakraBox>
+  );
 }
 
 export default EmployeeAnswers;

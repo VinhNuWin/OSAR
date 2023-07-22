@@ -1,51 +1,50 @@
-import { Flex } from '@chakra-ui/react';
-import { useSelector } from 'react-redux';
-import BackButton from '../../../components/buttons/BackButton';
-import FinalSubmit from '../../../components/buttons/FinalSubmit';
-import NextButton from '../../../components/buttons/NextButton';
-import MissionStatement from '../../../components/modals/MissionStatement';
-import EmployeeAnswers from '../../registryAnswers/EmployeeAnswers';
-import EmployeeQuestions from '../../registryQuestions/EmployeeQuestions';
-import RegistryComplete from '../RegistryComplete';
+import { Flex } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import BackButton from "../../../components/buttons/BackButton";
+import PostSubmit from "../../../components/buttons/PostSubmit";
+import NextButton from "../../../components/buttons/NextButton";
+import EmployeeAnswers from "../../registryAnswers/EmployeeAnswers";
+import EmployeeQuestions from "../../registryQuestions/EmployeeQuestions";
+import RegistryComplete from "../RegistryComplete";
+import EmailSubmit from "../../../components/buttons/emailSubmit";
 
 export default function MobileEmployeeRegistry() {
-    const { registryType, index, _id, email } = useSelector((state) => {
-        return {
-            registryType: state.index.registry.registryType,
-            index: state.index.index,
-            _id: state.index.registry._id,
-            email: state.index.registry.email
-        }
-    })
+  const { index } = useSelector((state) => {
+    return {
+      registryType: state.index.registry.registryType,
+      index: state.index.index,
+      _id: state.index.registry._id,
+      email: state.index.registry.email,
+    };
+  });
 
-    console.log(registryType);
-
-    return (
-<Flex>
-
-        { index <= 14 ? (
-            <Flex>
-            <Flex className='panel-one-mobile' direction='column'>
-                <Flex className='header'/>
-                <Flex className='panel-one-questions' >
-                    <EmployeeQuestions/>
-                </Flex>
-                <Flex className='panel-one-answers'>
-                    <EmployeeAnswers />
-                </Flex>
-                <Flex className='panel-one-buttons'>
-                    {index < 14 ? <BackButton /> : null }
-                    {index===13 ? <FinalSubmit /> : index < 14 ? <NextButton /> : null}       
-                </Flex>
-</Flex>
-
+  return (
+    <Flex>
+      {index <= 100 ? (
+        <Flex>
+          <Flex className="panel-one-mobile" direction="column">
+            <Flex className="header" />
+            <Flex className="panel-one-questions">
+              <EmployeeQuestions />
             </Flex>
-        ) : index === 15 ? (
-                <RegistryComplete/>
-        ) : null (
-            <RegistryComplete />
-        )} 
+            <Flex className="panel-one-answers">
+              <EmployeeAnswers />
+            </Flex>
+            <Flex className="panel-one-buttons">
+              {index < 15 ? <BackButton /> : null}
+              {index === 14 ? (
+                <PostSubmit />
+              ) : index === 15 ? (
+                <EmailSubmit />
+              ) : index < 15 ? (
+                <NextButton />
+              ) : null}
+            </Flex>
+          </Flex>
         </Flex>
-    )
+      ) : (
+        null(<RegistryComplete />)
+      )}
+    </Flex>
+  );
 }
-

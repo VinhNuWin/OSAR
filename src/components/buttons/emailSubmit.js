@@ -20,8 +20,8 @@ export default function EmailSubmit() {
     
 
     const handleEmailSubmit = async () => {
-   
-        const response = await axios.post(`https://dvaa-smtp.onrender.com`, {
+        console.log('email sent'); 
+        const response = await axios.post(`https://dvaa-smtp.onrender.com/${registryType}`, {
                 headers: {
                     'Content-Type' : 'application/json',
                     'Access-Control-Allow-Origin': '*',
@@ -46,7 +46,7 @@ export default function EmailSubmit() {
     
     return (
         <Button 
-        variant='backButton'
+        variant='nextButton'
         onClick={handleEmailSubmit}
   
         >Submit

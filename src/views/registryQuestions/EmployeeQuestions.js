@@ -1,22 +1,40 @@
-import { Flex, Text } from '@chakra-ui/react';
-import { useSelector } from  'react-redux';
+import { AnimatePresence, motion, isValidMotionProp } from "framer-motion";
+import { Flex, Text, chakra, shouldForwardProp } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { itemVariants } from "../../data/containerVariants";
 
+const ChakraBox = chakra(motion.div, {
+  shouldForwardProp: (prop) =>
+    isValidMotionProp(prop) || shouldForwardProp(prop),
+});
 
-export default function EmployeeQuestions () {
-    const { employeeForm, index } = useSelector((state) => {
-        return {
-            index: state.index.index,
-            employeeForm: state.form.employeeForm,
-        }
-    });
+export default function EmployeeQuestions() {
+  const { employeeForm, index } = useSelector((state) => {
+    return {
+      index: state.index.index,
+      employeeForm: state.form.employeeForm,
+    };
+  });
 
-    const employeeIndex = index - 1;
-    const questions = employeeForm[employeeIndex];
+  const employeeIndex = index;
+  const questions = employeeForm[employeeIndex];
 
-
-    return (
-        <Flex wrap='nowrap' direction='column' >
-            <Text className='div-c' fontSize={{ base: '16px', md: '20px', lg: '26px' }} color='white'>{questions}</Text>
-        </Flex>
-    )
+  return (
+    <Flex direction="column">
+      <Flex wrap="nowrap" direction="column" className="questions">
+        <AnimatePresence mode="wait">
+          <motion.h1
+            className=""
+            key={employeeIndex}
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+            exit="close"
+          >
+            {questions}
+          </motion.h1>
+        </AnimatePresence>
+      </Flex>
+    </Flex>
+  );
 }

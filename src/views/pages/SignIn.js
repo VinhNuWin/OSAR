@@ -4,7 +4,7 @@ import '../../index.css';
 import { useState } from 'react';
 import { motion, isValidMotionProp } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeIndex, addEmail, add_Id } from '../../store';
+import { changeIndex, addEmail, add_Id, setAnonymous } from '../../store';
 import axios from 'axios';
 import { Flex, Button, Stack, FormControl, FormErrorMessage, FormHelperText, Input, Checkbox, Text, chakra, shouldForwardProp, InputLeftElement, InputGroup } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
@@ -23,11 +23,11 @@ function SignIn() {
     const dispatch = useDispatch();
     const [ loader, setLoader ] = useState(false);
 
-    const { index, email, registryId } = useSelector((state) => {
+    const { index, email, anonymous } = useSelector((state) => {
         return {
         index: state.index.index,
         email: state.index.registry.email,
-        registryId: state.index.registry.registryId
+        anonymous: state.index.anonymous
         }
     });
 
@@ -55,6 +55,8 @@ function SignIn() {
     
     };
 
+    console.log()
+
     return (
         <motion.div
         >
@@ -76,7 +78,7 @@ function SignIn() {
                 </h3>
 
                 <Flex className='' >
-                <h2 className='signin-h1' textAlign='center' w='full'>
+                <h2 className='signin-h1' w='full'>
                 Enter Your Email
                 </h2>
             </Flex>
@@ -105,7 +107,7 @@ function SignIn() {
                                     <FormErrorMessage>Email is required.</FormErrorMessage>
                                   )}
                                 </InputGroup>
-                                <Checkbox m={2} color='rgb(147,154,236)'>I would like to submit this report anonymously</Checkbox>
+                                {/* <Checkbox m={2} color='rgb(147,154,236)' onClick={dispatch(setAnonymous(!false))} >I would like to submit this report anonymously</Checkbox> */}
                         </FormControl>
                                     <ThingsToConsider />
                                     {/* <MissionStatement /> */}

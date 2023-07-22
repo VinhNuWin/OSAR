@@ -22,7 +22,7 @@ export const RegistrySelectButton = () => {
 
     const componentButtonArray = [
         <Button name='general' key='general' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>General</Button>,
-        <Button name='employees' key='employees' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>,
+        <Button name='employee' key='employee' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Employee</Button>,
         <Button name='spouse' key='spouse' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Spouse</Button>,
         <Button name='elderly' key='elderly' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Elderly</Button>,
         <Button name='assault' key='assault' className='btn2' onClick={(e)=> dispatch(registrySelect(e.target.name))}>Assault</Button>,
@@ -37,9 +37,12 @@ export const RegistrySelectButton = () => {
         animate='visible'
         className='selectButtons'
         >
-                    <AnimatePresence mode='wait'>
-                { componentButtonArray.map((item, i) => <motion.li key={item[i]} variants={itemVariants} initial='hidden' animate='visible' exit='close'>{item}</motion.li>)}
-                        </AnimatePresence>
+                    {/* <AnimatePresence mode='wait'> */}
+                        {React.Children.toArray(
+                componentButtonArray.map((item, i) => <motion.li variants={itemVariants} initial='hidden' animate='visible' exit='close'>{item}</motion.li>)
+                        )
+                    }
+                        {/* </AnimatePresence> */}
         </motion.ul>
 
         </div>
