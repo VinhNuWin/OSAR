@@ -22,10 +22,8 @@ const formSlice = createSlice({
       "Assailants Gender", //15
       "Assailants Race/Ethnicity", //16
       "Do you know the assailants name?", //17
-      "Name of Survivor", //18
-      "Survivor Gender", //19
-      "Submit Registry",
-      "Complete",
+      "Submit Registry", //18
+      "Complete", //19
       "",
     ],
     generalForm: [
@@ -46,17 +44,18 @@ const formSlice = createSlice({
     childrensForm: [
       "",
       "",
-      "How old are you", //3
+      "What's your name?", //2
+      "Are you in immediate danger?", //3
+      "How old are you?", //4
       "Can you tell us what happened?", //5
       "Where did it happen?", //6
-      "Who is the person responsible for the abuse?", //7
-      "Has this occured before?", //8
+      "When did this happen?", //7
+      "Who is the person responsible for the abuse?", //8
       "Do you have any visible bruises and/or marks", //9
-      "Are there any children or other dependents in the household? Are they in immediate danger?", //10
-      "Are there any weapons in the house?", //11
-      "Who is someone you feel safe with?", //12
-      "Submit Registry", //13
-      "Complete", //14
+      "Are there any weapons in the house?", //10
+      "Who is someone you feel safe with?", //11
+      "Submit Registry", //12
+      "Complete", //13
     ],
     spouseForm: [
       "",
@@ -65,7 +64,7 @@ const formSlice = createSlice({
       "Please provide the name of the abusive person", //3
       "When did the incident happen?", //4
       "Where did the incident occur?", //5
-      "Can you provide a detailed account of the incident(s)? What happened?", //6
+      "Can you provide a detailed account of the incident(s)? ", //6
       "If there were any specific threats made, what were they?", //7
       "Are there any witnesses who can corroborate the incident?", //8
       "Has this occured before? If so, have you reported it in the past?", //9

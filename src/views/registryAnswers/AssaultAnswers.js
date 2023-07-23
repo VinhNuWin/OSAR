@@ -349,7 +349,7 @@ function AssaultAnswers() {
                 />
               </FormControl>
             </ChakraBox>
-          ) : questionIndex === 18 ? ( //Survivor Gender
+          ) : questionIndex === 18 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
             <ChakraBox
               key={index}
               variants={itemVariants}
@@ -357,70 +357,9 @@ function AssaultAnswers() {
               animate="visible"
               exit="close"
             >
-              <Button
-                variant="selectButton"
-                onChange={() =>
-                  dispatch(
-                    updateRegistry({
-                      ...registryReport,
-                      survivorGender: "male",
-                    })
-                  )
-                }
-              >
-                Male
-              </Button>
-              <Button
-                variant="selectButton"
-                onChange={() =>
-                  dispatch(
-                    updateRegistry({
-                      ...registryReport,
-                      survivorGender: "female",
-                    })
-                  )
-                }
-              >
-                Female
-              </Button>
-              <Button
-                variant="selectButton"
-                onChange={() =>
-                  dispatch(
-                    updateRegistry({
-                      ...registryReport,
-                      survivorGender: "non-binary",
-                    })
-                  )
-                }
-              >
-                Non-Binary
-              </Button>
-              <Button
-                variant="selectButton"
-                onChange={() =>
-                  dispatch(
-                    updateRegistry({
-                      ...registryReport,
-                      survivorGender: "unknown",
-                    })
-                  )
-                }
-              >
-                Unknown
-              </Button>
+              <div>Complete</div>
             </ChakraBox>
           ) : questionIndex === 19 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
-            <ChakraBox
-              key={index}
-              variants={itemVariants}
-              initial="hidden"
-              animate="visible"
-              exit="close"
-            >
-              <div>Additonal feedback</div>
-            </ChakraBox>
-          ) : questionIndex === 20 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
             <ChakraBox
               key={index}
               variants={itemVariants}

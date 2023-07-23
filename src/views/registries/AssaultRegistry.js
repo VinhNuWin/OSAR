@@ -34,12 +34,12 @@ export default function AssaultRegistry() {
               <AssaultAnswers />
             </Flex>
             <Flex className="panel-one-buttons">
-              {index < 19 ? <BackButton /> : null}
-              {index === 18 ? (
+              {index < 18 ? <BackButton /> : null}
+              {index === 17 ? (
                 <PostSubmit />
-              ) : index === 19 ? (
+              ) : index === 18 ? (
                 <EmailSubmit />
-              ) : index < 19 ? (
+              ) : index < 18 ? (
                 <NextButton />
               ) : null}
             </Flex>

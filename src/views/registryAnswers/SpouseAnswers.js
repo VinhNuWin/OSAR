@@ -246,7 +246,7 @@ function SpouseAnswers() {
               animate="visible"
               exit="close"
             >
-              <div>.</div>
+              <div></div>
             </ChakraBox>
           ) : questionIndex === 12 ? ( // Submit Registry
             <ChakraBox
@@ -256,7 +256,7 @@ function SpouseAnswers() {
               animate="visible"
               exit="close"
             >
-              <div>.</div>
+              <div></div>
             </ChakraBox>
           ) : (
             questionIndex === null(<RegistryComplete />)
