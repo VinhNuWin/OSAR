@@ -14,8 +14,6 @@ export default function PostSubmit(props) {
   });
 
   const handlePostSubmit = async () => {
-    console.log("final Submit");
-
     const registryResponse = await axios.post(
       `https://osar-api.onrender.com/${registryType}`,
       {
@@ -29,16 +27,17 @@ export default function PostSubmit(props) {
       }
     );
     console.log(registryResponse.data.data);
-
-    // var data = registryResponse.data.data.registryReport;
+    console.log("Post Submitted");
 
     dispatch(changeIndex(parseInt(index + 1)));
   };
 
   return (
-    <Button variant="nextButton" onClick={handlePostSubmit}>
-      Next
-    </Button>
+    <div className="backBtn">
+      <Button className="btn3" onClick={handlePostSubmit}>
+        Next
+      </Button>
+    </div>
   );
 }
 

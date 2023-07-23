@@ -23,7 +23,7 @@ const formSlice = createSlice({
       "Assailants Race/Ethnicity", //16
       "Do you know the assailants name?", //17
       "Submit Registry", //18
-      "Complete", //19
+      "Rainn - Find help and the resources you need. Call 800.656.4673", //19
       "",
     ],
     generalForm: [
@@ -37,7 +37,7 @@ const formSlice = createSlice({
       "Are there any witnesses who saw the incident?", //7
       "Is there any additional information or comments you would like to add?", //8
       "Submit Registry", //9
-      "Complete", //10
+      "", //10
       "",
       "",
     ],
@@ -55,7 +55,7 @@ const formSlice = createSlice({
       "Are there any weapons in the house?", //10
       "Who is someone you feel safe with?", //11
       "Submit Registry", //12
-      "Complete", //13
+      "Childhelp - Find help and the resources you need. Call 800.422.4453", //13
     ],
     spouseForm: [
       "",
@@ -70,7 +70,7 @@ const formSlice = createSlice({
       "Has this occured before? If so, have you reported it in the past?", //9
       "Do you have any physical, digital, or other types of evidence of the abuse (like photographs, emails, text messages, etc.)?", //10
       "Submit Registry", //11
-      "Complete", //12
+      "National Domestic Violence Hotline - Find help and the resources you need. Call 800.799.7233", //12
       "",
     ],
     elderlyForm: [
@@ -89,7 +89,7 @@ const formSlice = createSlice({
       "Are there any other people living with you or who could be at risk because of this person?", //12
       "Do you feel safe in your current living situation?", //13
       "Submit Registry", //14
-      "Complete", //15
+      "National Domestic Violence Hotline - Find help and the resources you need. Call 800.799.7233", //15
       "",
     ],
     employeeForm: [
@@ -109,7 +109,7 @@ const formSlice = createSlice({
       "How has the incident impacted you personally?", //13
       "Is there any additional information or comments you would like to add?", //14
       "Submit Registry", //15
-      "Complete", //16
+      "OSHA - Find help and the resources you need. Call 800.321.6742", //16
       "",
     ],
   },

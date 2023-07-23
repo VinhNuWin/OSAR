@@ -18,6 +18,7 @@ import {
 } from "../../components/buttons/RegistryResponseComponents.js";
 import RegistryComplete from "../pages/RegistryComplete";
 import { listVariants, itemVariants } from "../../data/containerVariants";
+import SubmissionComplete from "../../components/SubmissionComplete";
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) =>
@@ -186,12 +187,10 @@ function ChildrensAnswers() {
             </ChakraBox>
           ) : questionIndex === 12 ? ( // SUbmit Registry
             <ChakraBox variants={itemVariants} key={index}>
-              <Text>Submit</Text>
+              <Text>Submit Registry</Text>
             </ChakraBox>
           ) : questionIndex === 13 ? ( // Complete
-            <ChakraBox variants={itemVariants} key={index}>
-              <Text></Text>
-            </ChakraBox>
+            <SubmissionComplete />
           ) : (
             questionIndex === null(<RegistryComplete />)
           )}

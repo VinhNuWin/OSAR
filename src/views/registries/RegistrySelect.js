@@ -50,8 +50,8 @@ export default function SelectYourRegistry() {
   };
 
   return (
-    <Flex className="dual-panel-wrapper">
-      <Flex className="panel-one" direction="column">
+    <Flex className="dual-panel-wrapper border">
+      <Flex className="panel-one " direction="column">
         <Flex className="header" />
         <Heading className="selectRegistry-header" color="white" marginTop={10}>
           Select a Registry

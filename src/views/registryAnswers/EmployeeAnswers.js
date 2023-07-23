@@ -32,6 +32,7 @@ import RegistryComplete from "../pages/RegistryComplete";
 import NextButton from "../../components/buttons/NextButton";
 import NameModal from "../../components/modals/NameModal";
 import { listVariants, itemVariants } from "../../data/containerVariants";
+import SubmissionComplete from "../../components/SubmissionComplete";
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) =>
@@ -397,18 +398,10 @@ function EmployeeAnswers() {
               animate="visible"
               exit="close"
             >
-              <div>Submit</div>
+              <div>Submit Registry</div>
             </ChakraBox>
           ) : questionIndex === 16 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
-            <ChakraBox
-              key={index}
-              variants={itemVariants}
-              initial="hidden"
-              animate="visible"
-              exit="close"
-            >
-              <div>Complete</div>
-            </ChakraBox>
+            <SubmissionComplete />
           ) : (
             questionIndex === null()
           )}

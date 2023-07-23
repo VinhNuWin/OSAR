@@ -2,6 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
 import { itemVariants } from "../../data/containerVariants";
+import QuestionIndexSummary from "../../components/QuestionIndexSummary";
 
 export default function SpouseQuestions() {
   const { spouseForm, index } = useSelector((state) => {
@@ -18,6 +19,7 @@ export default function SpouseQuestions() {
     <Flex direction="column">
       <Flex wrap="nowrap" direction="column" className="questions">
         <AnimatePresence mode="wait">
+          <QuestionIndexSummary />
           <motion.h1
             className=""
             key={spouseIndex}

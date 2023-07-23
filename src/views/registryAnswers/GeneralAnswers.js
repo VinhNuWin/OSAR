@@ -18,6 +18,7 @@ import {
   FormInput,
 } from "../../components/buttons/RegistryResponseComponents.js";
 import { listVariants, itemVariants } from "../../data/containerVariants";
+import SubmissionComplete from "../../components/SubmissionComplete";
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) =>
@@ -58,6 +59,7 @@ function GeneralAnswers() {
                     variant="flushed"
                     name="fullName"
                     placeholder="Full Name"
+                    fontSize="20px"
                     width={{ base: "12em", md: "14em", lg: "20em" }}
                     onChange={(e) =>
                       dispatch(
@@ -195,33 +197,18 @@ function GeneralAnswers() {
                 </div>
               </Form>
             </ChakraBox>
-          ) : questionIndex === 10 ? ( //a timestamped copy will be sent to the the email provided'
+          ) : questionIndex === 9 ? ( //a timestamped copy will be sent to the the email provided'
             <ChakraBox
               key={index}
               variants={itemVariants}
               initial="hidden"
               animate="visible"
               exit="close"
-            >
-              {/* <Form.Item>
-                <TextArea
-                  maxLength={100}
-                  style={{
-                    height: 120,
-                    marginBottom: 24,
-                    width: 300,
-                  }}
-                  type="text"
-                  name="feedback"
-                  onChange={(e) =>
-                    dispatch(addFeedBack({ feedback: e.target.value }))
-                  }
-                  placeholder="Person1, Person2, etc..."
-                />
-              </Form.Item> */}
-            </ChakraBox>
-          ) : questionIndex === 11 ? (
-            <div>Complete</div>
+            ></ChakraBox>
+          ) : questionIndex === 10 ? (
+            <div>
+              <SubmissionComplete />
+            </div>
           ) : null}
         </AnimatePresence>
       </ChakraBox>

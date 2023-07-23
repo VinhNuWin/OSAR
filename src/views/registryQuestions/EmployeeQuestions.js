@@ -2,6 +2,7 @@ import { AnimatePresence, motion, isValidMotionProp } from "framer-motion";
 import { Flex, Text, chakra, shouldForwardProp } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { itemVariants } from "../../data/containerVariants";
+import QuestionIndexSummary from "../../components/QuestionIndexSummary";
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) =>
@@ -23,6 +24,7 @@ export default function EmployeeQuestions() {
     <Flex direction="column">
       <Flex wrap="nowrap" direction="column" className="questions">
         <AnimatePresence mode="wait">
+          <QuestionIndexSummary />
           <motion.h1
             className=""
             key={employeeIndex}

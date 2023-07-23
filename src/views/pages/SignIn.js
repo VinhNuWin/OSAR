@@ -14,7 +14,6 @@ import {
   FormErrorMessage,
   FormHelperText,
   Input,
-  Checkbox,
   Text,
   chakra,
   shouldForwardProp,
@@ -123,11 +122,12 @@ function SignIn() {
               </Flex>
               <Flex className="signin-start-registry" direction="column">
                 <Button
-                  variant="brandPrimary"
-                  colorScheme="facebook"
+                  className="PrimaryButton"
+                  // variant="brandPrimary"
+                  // colorScheme="facebook"
                   onClick={addUser}
-                  w="50%"
-                  mb="5%"
+                  // w="50%"
+                  // mb="5%"
                 >
                   Start Registry
                 </Button>

@@ -21,18 +21,15 @@ export default function EmailSubmit() {
 
   const handleEmailSubmit = async () => {
     console.log("email sent");
-    const response = await axios.post(
-      `https://dvaa-smtp.onrender.com/${registryType}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Method": "POST",
-        },
-        registryReport: registryReport,
-        email: email,
-      }
-    );
+    const response = await axios.post(`http://localhost:3002/${registryType}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Method": "POST",
+      },
+      registryReport: registryReport,
+      email: email,
+    });
     console.log("Report has been submitted");
 
     dispatch(changeIndex(parseInt(index + 1)));
@@ -44,9 +41,11 @@ export default function EmailSubmit() {
   };
 
   return (
-    <Button variant="nextButton" onClick={handleEmailSubmit}>
-      Submit
-    </Button>
+    <div className="backBtn">
+      <Button className="btn" onClick={handleEmailSubmit}>
+        Submit
+      </Button>
+    </div>
   );
 }
 

@@ -17,8 +17,10 @@ export default function NextButton() {
   };
 
   return (
-    <Button variant="nextButton" onClick={handleRegistryInputs}>
-      Next
-    </Button>
+    <div className="backBtn">
+      <Button className="btn3" onClick={handleRegistryInputs}>
+        Next
+      </Button>
+    </div>
   );
 }
