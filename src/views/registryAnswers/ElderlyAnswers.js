@@ -43,7 +43,7 @@ function ElderlyAnswers() {
   return (
     <ChakraBox>
       <ChakraBox>
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {questionIndex === 2 ? ( //Can you please tell me your full name?
             <ChakraBox
               key={index}

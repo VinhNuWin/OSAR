@@ -79,7 +79,9 @@ function GeneralAnswers() {
               animate="visible"
               exit="close"
             >
-              <DateAndTime />
+              <div>
+                <DateAndTime />
+              </div>
             </ChakraBox>
           ) : questionIndex === 4 ? ( //Where did the incident occur?
             <ChakraBox
@@ -201,7 +203,7 @@ function GeneralAnswers() {
               animate="visible"
               exit="close"
             >
-              <Form.Item>
+              {/* <Form.Item>
                 <TextArea
                   maxLength={100}
                   style={{
@@ -216,7 +218,7 @@ function GeneralAnswers() {
                   }
                   placeholder="Person1, Person2, etc..."
                 />
-              </Form.Item>
+              </Form.Item> */}
             </ChakraBox>
           ) : questionIndex === 11 ? (
             <div>Complete</div>

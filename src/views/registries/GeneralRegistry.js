@@ -45,12 +45,12 @@ export default function GeneralRegistry() {
                 </ChakraBox>
 
                 <Flex className="panel-one-buttons">
-                  {index < 10 ? <BackButton /> : null}
-                  {index === 9 ? (
+                  {index < 9 ? <BackButton /> : null}
+                  {index === 8 ? (
                     <PostSubmit />
-                  ) : index === 10 ? (
+                  ) : index === 9 ? (
                     <EmailSubmit />
-                  ) : index < 10 ? (
+                  ) : index < 9 ? (
                     <NextButton />
                   ) : null}
                 </Flex>

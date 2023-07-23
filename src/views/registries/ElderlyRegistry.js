@@ -48,7 +48,7 @@ export default function ElderlyRegistry() {
         null(<RegistryComplete />)
       )}
 
-      <Flex className="panel-two">
+      <Flex className="panel-two border">
         <img src={elderly} />
       </Flex>
     </Flex>

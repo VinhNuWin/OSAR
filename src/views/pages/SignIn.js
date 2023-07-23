@@ -75,7 +75,7 @@ function SignIn() {
 
   return (
     <motion.div>
-      <Flex className="two-panel-wrapper">
+      <Flex>
         <Flex className="panel-one">
           <Stack className="signin-wrapper">
             <center>
@@ -99,7 +99,7 @@ function SignIn() {
                 <FormControl isInvalid={isError}>
                   <InputGroup>
                     <InputLeftElement pointerEvents="none">
-                      <EmailIcon color="white" />
+                      <EmailIcon color="black" />
                     </InputLeftElement>
                     <Input
                       type="email"
@@ -122,18 +122,19 @@ function SignIn() {
                 {/* <MissionStatement /> */}
               </Flex>
               <Flex className="signin-start-registry" direction="column">
-                <Text className="signin-body" marginBottom={8}>
-                  If you have questions or feedback on the submission
-                  experience, email us at info@documentedvoices.com
-                </Text>
                 <Button
                   variant="brandPrimary"
                   colorScheme="facebook"
                   onClick={addUser}
                   w="50%"
+                  mb="5%"
                 >
                   Start Registry
                 </Button>
+                <Text className="signin-body" marginBottom={8}>
+                  If you have questions or feedback email us at
+                  info@documentedvoices.com
+                </Text>
               </Flex>
             </center>
           </Stack>

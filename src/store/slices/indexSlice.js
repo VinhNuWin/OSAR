@@ -79,7 +79,7 @@ const indexSlice = createSlice({
       state.registry.registryReport = action.payload;
     },
     updateAddress(state, action) {
-      state.registry.registryReport.address = action.payload;
+      state.registry.registryReport.incidentAddress = action.payload;
     },
     updateBoolean(state, action) {
       state.registry.registryReport = action.payload;

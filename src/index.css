@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   height: 100vh;
 }
@@ -22,79 +21,79 @@ img {
 h1 {
   font-size: 26px;
   font-weight: 600;
-  color: azure;
+  color: black;
 }
 
 li {
   font-size: 16px;
   font-weight: 500;
-  color: rgb(47,55,71);
+  color: rgb(47, 55, 71);
 }
 
 h3 {
-  color: rgb(147,154,236);
+  color: rgb(147, 154, 236);
+  font-weight: 500;
 }
 
 h2 {
   font-weight: 700;
-  color: white;
+  color: black;
   font-size: large;
 }
 
-p{
-  color: #FCFCFD;
+p {
+  color: #fcfcfd;
+  font-weight: 500;
 }
 
-input, select, textarea{
-  color: rgb(255,255,255);
+input,
+select,
+textarea {
+  color: black;
 }
 /* .btn{
   width:max-content;
   height: max-content;
 } */
 
-
-
-
-
-
-
-
-.btn{
-display: inline-block;
-outline: 0;
-border: 0;
-cursor: pointer;
-transition: box-shadow 0.15s ease,transform 0.15s ease;
-will-change: box-shadow,transform;
-background: #FCFCFD;
-box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-height: 48px;
-width: 100%;
-padding: 0 32px;
-font-size: 18px;
-border-radius: 6px;
-color: rgb(91,100,233);
-transition: box-shadow 0.15s ease,transform 0.15s ease;
-}
-.btn:hover {
-    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-    transform: translateY(-2px);
-}
-.btn:active{
-    box-shadow: inset 0px 3px 7px #d6d6e7;
-    transform: translateY(2px);
-}
-
-.btn2{
+.btn {
   display: inline-block;
   outline: 0;
   border: 0;
   cursor: pointer;
-  transition: box-shadow 0.15s ease,transform 0.15s ease;
-  will-change: box-shadow,transform;
-  background: rgb(49,51,56);
-  box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  will-change: box-shadow, transform;
+  background: #fcfcfd;
+  box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
+    0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+  height: 48px;
+  width: 100%;
+  padding: 0 32px;
+  font-size: 18px;
+  border-radius: 6px;
+  color: rgb(91, 100, 233);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.btn:hover {
+  box-shadow: 0px 4px 8px rgb(45 35 66 / 40%),
+    0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+  transform: translateY(-2px);
+}
+.btn:active {
+  box-shadow: inset 0px 3px 7px #d6d6e7;
+  transform: translateY(2px);
+}
+
+.btn2 {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+  will-change: box-shadow, transform;
+  background: rgb(49, 51, 56);
+  box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
+    0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
   height: 48px;
   width: 100px;
   padding: 0 32px;
@@ -102,14 +101,20 @@ transition: box-shadow 0.15s ease,transform 0.15s ease;
   margin: 5%;
   border-radius: 6px;
   color: #36395a;
-  transition: box-shadow 0.15s ease,transform 0.15s ease;
-  }
-  .btn2:hover {
-      box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
-      transform: translateY(-2px);
-  }
-  .btn2:active{
-      box-shadow: inset 0px 3px 7px #d6d6e7;
-      transform: translateY(2px);
-      background-color: #36395a;
-  }
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.btn2:hover {
+  box-shadow: 0px 4px 8px rgb(45 35 66 / 40%),
+    0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+  transform: translateY(-2px);
+}
+.btn2:active {
+  box-shadow: inset 0px 3px 7px #d6d6e7;
+  transform: translateY(2px);
+  background-color: #36395a;
+}
+
+.btn2:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 3px 5px #3a97f9;
+  transform: translateY(2px);
+}
