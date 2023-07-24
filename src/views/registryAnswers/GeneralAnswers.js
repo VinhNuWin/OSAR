@@ -16,6 +16,7 @@ import {
   DateAndTime,
   Address,
   FormInput,
+  DateTime,
 } from "../../components/buttons/RegistryResponseComponents.js";
 import { listVariants, itemVariants } from "../../data/containerVariants";
 import SubmissionComplete from "../../components/SubmissionComplete";
@@ -82,7 +83,8 @@ function GeneralAnswers() {
               exit="close"
             >
               <div>
-                <DateAndTime />
+                <DateTime />
+                {/* <DateAndTime /> */}
               </div>
             </ChakraBox>
           ) : questionIndex === 4 ? ( //Where did the incident occur?

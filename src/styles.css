@@ -203,16 +203,20 @@
   display: flex;
   position: relative;
   height: 20vh;
-  width: 100%;
+  width: 40vw;
+  flex-wrap: wrap;
+  margin-top: 15%;
   /* align-content: center;
   justify-content: space-between; */
   /* left: 1%; */
 }
 
 .boolean-button {
-  width: 50vw;
-  margin-left: 0%;
-  /* border: 3px solid red; */
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 5%;
+  /* align-content: center; */
 }
 
 .wrapper-block {
@@ -258,7 +262,19 @@
   /* background: rgba(250, 251, 253, 253.05);
   box-shadow: 0px 1px 2px rgba(1, 0, 0, .51), 1px 2px 0px 2px rgba(0, 0, 0, 0.04); */
 }
-
+.genderSelect {
+  display: flex;
+  /* border: 3px solid red; */
+  flex-wrap: wrap;
+  width: 20vw;
+  height: 40vh;
+  /* justify-content: space-around; */
+  align-content: space-around;
+  margin-top: 15%;
+}
+.genderBtn {
+  margin: 1%;
+}
 .answer-block {
   /* border: 3px solid red; */
   display: grid;

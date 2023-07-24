@@ -16,6 +16,7 @@ import {
   updateAddress,
   updateBoolean,
 } from "../../store/slices/indexSlice";
+import { DatePicker } from "antd";
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) =>
@@ -33,9 +34,9 @@ export const BooleanYesNo = (props) => {
 
   return (
     <div className="boolean-wrapper">
-      <div className="boolean-button">
+      <div className="boolean-button ">
         <Button
-          variant="brandPrimary"
+          className="btn"
           onClick={(e) =>
             dispatch(updateBoolean({ ...registryReport, [props.name]: false }))
           }
@@ -43,9 +44,9 @@ export const BooleanYesNo = (props) => {
           No
         </Button>
       </div>
-      <div className="boolean-button">
+      <div className="boolean-button ">
         <Button
-          variant="brandPrimary"
+          className="btn"
           onClick={(e) =>
             dispatch(updateBoolean({ ...registryReport, [props.name]: true }))
           }
@@ -53,6 +54,38 @@ export const BooleanYesNo = (props) => {
           Yes
         </Button>
       </div>
+    </div>
+  );
+};
+
+export const DateTime = () => {
+  const dispatch = useDispatch();
+
+  const { registryReport } = useSelector((state) => {
+    return {
+      registryReport: state.index.registry.registryReport,
+    };
+  });
+
+  const onOk = (value) => {
+    dispatch(
+      updateRegistry({
+        ...registryReport,
+        date: value,
+      })
+    );
+    console.log(value);
+  };
+
+  return (
+    <div>
+      <DatePicker
+        showTime
+        onOk={onOk}
+        onChange={(value) =>
+          dispatch(updateRegistry({ ...registryReport, date: value }))
+        }
+      />
     </div>
   );
 };
@@ -289,6 +322,113 @@ export const FullNameAndTitle = (props) => {
             )
           }
         />
+      </FormControl>
+    </div>
+  );
+};
+
+export const GenderSelect = () => {
+  const dispatch = useDispatch();
+
+  const { registryReport } = useSelector((state) => {
+    return {
+      registryReport: state.index.registryReport,
+    };
+  });
+
+  return (
+    <div className="genderSelect">
+      <Button
+        className="btn genderBtn"
+        onChange={() =>
+          dispatch(
+            updateRegistry({
+              ...registryReport,
+              assailantGender: "male",
+            })
+          )
+        }
+      >
+        Male
+      </Button>
+      <Button
+        className="btn genderBtn"
+        onChange={() =>
+          dispatch(
+            updateRegistry({
+              ...registryReport,
+              assailantGender: "female",
+            })
+          )
+        }
+      >
+        Female
+      </Button>
+      <Button
+        className="btn genderBtn"
+        onChange={() =>
+          dispatch(
+            updateRegistry({
+              ...registryReport,
+              assailantGender: "non-binary",
+            })
+          )
+        }
+      >
+        Non-Binary
+      </Button>
+      <Button
+        className="btn genderBtn"
+        onChange={() =>
+          dispatch(
+            updateRegistry({
+              ...registryReport,
+              assailantGender: "unknown",
+            })
+          )
+        }
+      >
+        Unknown
+      </Button>
+    </div>
+  );
+};
+
+export const EthnicitySelect = () => {
+  const dispatch = useDispatch();
+
+  const { registryReport } = useSelector((state) => {
+    return {
+      registryReport: state.index.registryReport,
+    };
+  });
+  return (
+    <div>
+      <FormControl mt={2}>
+        <Select
+          size="md"
+          placeholder="Ethnicity"
+          name="raceEthnicity"
+          onChange={(e) =>
+            dispatch(
+              updateRegistry({
+                ...registryReport,
+                raceEthnicity: e.target.value,
+              })
+            )
+          }
+        >
+          <option value="white">White</option>
+          <option value="black/african">Black or African American</option>
+          <option value="americanIndian/alaskanNative">
+            American Indian or Alaskan Native
+          </option>
+          <option value="hawaiian/pacificIslander">
+            Native Hawaiian or Pacific Islander
+          </option>
+          <option value="asian">Asian</option>
+          <option value="hispanic/latino">Hispanic or Latino</option>
+        </Select>
       </FormControl>
     </div>
   );

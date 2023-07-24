@@ -18,6 +18,9 @@ import {
   BooleanYesNo,
   DateAndTime,
   Address,
+  DateTime,
+  GenderSelect,
+  EthnicitySelect,
 } from "../../components/buttons/RegistryResponseComponents.js";
 import RegistryComplete from "../pages/RegistryComplete";
 import { listVariants, itemVariants } from "../../data/containerVariants";
@@ -79,7 +82,7 @@ function AssaultAnswers() {
               exit="close"
             >
               <motion.div>
-                <DateAndTime />
+                <DateTime />
               </motion.div>
             </ChakraBox>
           ) : questionIndex === 4 ? ( // Do you remember where the incident occurred
@@ -234,58 +237,7 @@ function AssaultAnswers() {
               animate="visible"
               exit="close"
             >
-              <Button
-                variant="selectButton"
-                onChange={() =>
-                  dispatch(
-                    updateRegistry({
-                      ...registryReport,
-                      assailantGender: "male",
-                    })
-                  )
-                }
-              >
-                Male
-              </Button>
-              <Button
-                variant="selectButton"
-                onChange={() =>
-                  dispatch(
-                    updateRegistry({
-                      ...registryReport,
-                      assailantGender: "female",
-                    })
-                  )
-                }
-              >
-                Female
-              </Button>
-              <Button
-                variant="selectButton"
-                onChange={() =>
-                  dispatch(
-                    updateRegistry({
-                      ...registryReport,
-                      assailantGender: "non-binary",
-                    })
-                  )
-                }
-              >
-                Non-Binary
-              </Button>
-              <Button
-                variant="selectButton"
-                onChange={() =>
-                  dispatch(
-                    updateRegistry({
-                      ...registryReport,
-                      assailantGender: "unknown",
-                    })
-                  )
-                }
-              >
-                Unknown
-              </Button>
+              <GenderSelect />
             </ChakraBox>
           ) : questionIndex === 16 ? ( // Assailants Race/Ethnicity
             <ChakraBox
@@ -295,35 +247,7 @@ function AssaultAnswers() {
               animate="visible"
               exit="close"
             >
-              <Card>
-                <CardHeader size="sm">
-                  <Select
-                    placeholder="Ethnicity"
-                    name="raceEthnicity"
-                    onChange={(e) =>
-                      dispatch(
-                        updateRegistry({
-                          ...registryReport,
-                          raceEthnicity: e.target.value,
-                        })
-                      )
-                    }
-                  >
-                    <option value="white">White</option>
-                    <option value="black/african">
-                      Black or African American
-                    </option>
-                    <option value="americanIndian/alaskanNative">
-                      American Indian or Alaskan Native
-                    </option>
-                    <option value="hawaiian/pacificIslander">
-                      Native Hawaiian or Pacific Islander
-                    </option>
-                    <option value="asian">Asian</option>
-                    <option value="hispanic/latino">Hispanic or Latino</option>
-                  </Select>
-                </CardHeader>
-              </Card>
+              <EthnicitySelect />
             </ChakraBox>
           ) : questionIndex === 17 ? ( // Do you know the assailants name?
             <ChakraBox
@@ -357,9 +281,7 @@ function AssaultAnswers() {
               initial="hidden"
               animate="visible"
               exit="close"
-            >
-              <div>Submit Registry</div>
-            </ChakraBox>
+            ></ChakraBox>
           ) : questionIndex === 19 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
             <SubmissionComplete />
           ) : (
