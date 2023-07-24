@@ -14,6 +14,7 @@ import GeneralRegistry from "../registries/GeneralRegistry";
 import MobileGeneralRegistry from "./mobileView/MobileGeneralRegistry";
 import { listVariants, itemVariants } from "../../data/containerVariants";
 import { AnimatePresence, motion } from "framer-motion";
+import MissionStatement from "../../components/modals/MissionStatement";
 
 export default function Registry() {
   const [isLargerThan568] = useMediaQuery(["(min-width: 568px)"]);

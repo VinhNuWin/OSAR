@@ -82,11 +82,11 @@ function SignIn() {
 
   return (
     <Flex className="signin-wrapper">
-      <Flex className="" pt={5}>
+      <Flex>
         <Stack className="signin-wrapper">
           <center>
             <MissionStatement />
-            <Flex className="header"></Flex>
+            <Flex className="header "></Flex>
             <Flex>
               <p className="signin-p">
                 Follow the promps to submit your report.
@@ -137,13 +137,13 @@ function SignIn() {
               <div className="mt-10">{loader ? <Loader /> : ""}</div>
             </Flex>
             <Flex className="signin-start-registry" direction="column">
-              <Text marginBottom={8}>
+              <Button className="btn mb-10" onClick={addUser} w="90%">
+                Start Registry
+              </Button>
+              <Text marginBottom={0}>
                 If you have questions or feedback email us at
                 info@documentedvoices.com
               </Text>
-              <Button className="btn" onClick={addUser} w="90%">
-                Start Registry
-              </Button>
             </Flex>
           </center>
         </Stack>

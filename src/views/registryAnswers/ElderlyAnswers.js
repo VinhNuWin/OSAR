@@ -130,9 +130,8 @@ function ElderlyAnswers() {
               <div>
                 <FormControl>
                   <Input
-                    variant="flushed"
                     name="assailantName"
-                    placeholder="Assailants Full Name"
+                    placeholder="Persons Full Name"
                     width={{ base: "12em", md: "14em", lg: "20em" }}
                     onChange={(e) =>
                       dispatch(
