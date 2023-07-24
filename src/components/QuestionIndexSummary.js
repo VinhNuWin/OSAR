@@ -28,13 +28,7 @@ export default function QuestionIndexSummary() {
     <motion.div>
       <AnimatePresence mode="wait">
         {registryType === "employee" && questionIndex <= 14 ? (
-          <motion.div
-            key={questionIndex}
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
-            exit="close"
-          >
+          <motion.div>
             <FormControl>
               <FormLabel color="#3a97f9" fontWeight={400}>
                 Question {questionIndex} of 14
