@@ -28,7 +28,7 @@ export default function MobileGeneralRegistry() {
   return (
     <Flex>
       {/* <AnimatePresence> */}
-      {index <= 12 ? (
+      {index <= 100 ? (
         <Flex>
           <Flex className="panel-one-mobile" direction="column">
             <Flex className="header" />

@@ -22,7 +22,7 @@ export default function MobileAssaultRegistry() {
 
   return (
     <Flex>
-      {index <= 14 ? (
+      {index <= 100 ? (
         <Flex>
           <Flex className="panel-one-mobile" direction="column">
             <Flex className="header" />
@@ -42,7 +42,7 @@ export default function MobileAssaultRegistry() {
             </Flex>
           </Flex>
         </Flex>
-      ) : index === 15 ? (
+      ) : index === 100 ? (
         <RegistryComplete />
       ) : null}
     </Flex>

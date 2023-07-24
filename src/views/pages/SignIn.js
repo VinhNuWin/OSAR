@@ -78,22 +78,22 @@ function SignIn() {
         <Flex className="panel-one">
           <Stack className="signin-wrapper">
             <center>
-              <Flex className="header"></Flex>
-              <Flex className="signin-h2">
+              <div className="header-wrapper">
+                <MissionStatement />
+              </div>
+              <Flex className="header" />
+              <Flex className="signin-h2 ">
                 <Text textAlign="center" w="full">
                   Follow the promps to submit your report.
                 </Text>
               </Flex>
-
               <h3 className="signin-body">The report takes 2-3 minutes.</h3>
-
               <Flex className="">
                 <h2 className="signin-h1" w="full">
                   Enter Your Email
                 </h2>
               </Flex>
               <div className="loader">{loader ? <Loader /> : ""}</div>
-
               <Flex className="sign-in-element-email">
                 <FormControl isInvalid={isError}>
                   <InputGroup>
@@ -118,7 +118,6 @@ function SignIn() {
                   {/* <Checkbox m={2} color='rgb(147,154,236)' onClick={dispatch(setAnonymous(!false))} >I would like to submit this report anonymously</Checkbox> */}
                 </FormControl>
                 <ThingsToConsider />
-                {/* <MissionStatement /> */}
               </Flex>
               <Flex className="signin-start-registry" direction="column">
                 <Button

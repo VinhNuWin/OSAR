@@ -10,7 +10,7 @@ export default function SubmissionComplete() {
     };
   });
   return (
-    <div>
+    <div className="submissionComplete-wrapper">
       <Typewriter
         onInit={(typewriter) => {
           typewriter

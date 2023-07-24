@@ -41,30 +41,6 @@ const ChakraBox = chakra(motion.div, {
     isValidMotionProp(prop) || shouldForwardProp(prop),
 });
 
-const svgVariants = {
-  hidden: { rotate: -180 },
-  visible: {
-    rotate: 0,
-  },
-};
-
-const pathVariants = {
-  hidden: {
-    opacity: 0,
-    pathLength: 0,
-    fill: "rgba(250, 0, 250, 0)",
-  },
-  visible: {
-    opacity: 1,
-    pathLength: 1,
-    fill: "rgb(97, 202, 146)",
-    transition: {
-      duration: 4,
-      ease: "easeInOut",
-    },
-  },
-};
-
 function SignIn() {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
@@ -109,6 +85,7 @@ function SignIn() {
       <Flex className="" pt={5}>
         <Stack className="signin-wrapper">
           <center>
+            <MissionStatement />
             <Flex className="header"></Flex>
             <Flex>
               <p className="signin-p">
@@ -117,7 +94,9 @@ function SignIn() {
             </Flex>
 
             <Flex>
-              <h3 className="signin-body">The report takes 2-3 minutes.</h3>
+              <h3 className="signin-body">
+                The report takes approx. 2-3 minutes.
+              </h3>
             </Flex>
 
             <Flex className="">
@@ -125,9 +104,6 @@ function SignIn() {
                 Enter Your Email
               </h2>
             </Flex>
-            {/* <div className='mt-10 border'>
-            { loader ? <Loader /> : ''}
-            </div> */}
 
             <Flex className="sign-in-element-email">
               <FormControl>
@@ -158,14 +134,14 @@ function SignIn() {
                 </Checkbox>
               </FormControl>
               <ThingsToConsider />
-              {/* <MissionStatement /> */}
+              <div className="mt-10">{loader ? <Loader /> : ""}</div>
             </Flex>
             <Flex className="signin-start-registry" direction="column">
               <Text marginBottom={8}>
-                If you have questions or feedback on the submission experience,
-                email us at info@documentedvoices.com
+                If you have questions or feedback email us at
+                info@documentedvoices.com
               </Text>
-              <Button variant="brandPrimary" onClick={addUser} w="90%">
+              <Button className="btn" onClick={addUser} w="90%">
                 Start Registry
               </Button>
             </Flex>
