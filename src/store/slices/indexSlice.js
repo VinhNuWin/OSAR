@@ -4,6 +4,7 @@ const indexSlice = createSlice({
   name: "indexes",
   initialState: {
     index: 0,
+    anonIndex: 1,
     registry: {
       email: "",
       _id: "",
@@ -99,7 +100,7 @@ const indexSlice = createSlice({
       state.feedback = action.payload;
     },
     setAnonymous(state, action) {
-      state.anonymous = action.payload;
+      state.registry.anonymous = action.payload;
     },
   },
 });

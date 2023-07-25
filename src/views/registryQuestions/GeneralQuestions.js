@@ -5,10 +5,11 @@ import { itemVariants } from "../../data/containerVariants";
 import QuestionIndexSummary from "../../components/QuestionIndexSummary";
 
 export default function GeneralQuestions() {
-  const { generalForm, index } = useSelector((state) => {
+  const { generalForm, index, anonymous } = useSelector((state) => {
     return {
       index: state.index.index,
       generalForm: state.form.generalForm,
+      anonymous: state.index.registry.anonymous,
     };
   });
 

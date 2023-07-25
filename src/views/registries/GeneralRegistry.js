@@ -1,7 +1,7 @@
 import { Flex, chakra, shouldForwardProp } from "@chakra-ui/react";
 import NextButton from "../../components/buttons/NextButton";
 import BackButton from "../../components/buttons/BackButton";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import GeneralQuestions from "../registryQuestions/GeneralQuestions";
 import GeneralAnswers from "../registryAnswers/GeneralAnswers";
 import PostSubmit from "../../components/buttons/PostSubmit";
@@ -17,12 +17,13 @@ const ChakraBox = chakra(motion.div, {
 });
 
 export default function GeneralRegistry() {
-  const { registryType, index, isVisible } = useSelector((state) => {
+  const { registryType, index } = useSelector((state) => {
     return {
       registryType: state.index.registry.registryType,
       index: state.index.index,
     };
   });
+  const dispatch = useDispatch();
 
   console.log(registryType);
 

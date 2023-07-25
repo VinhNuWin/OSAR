@@ -27,7 +27,6 @@ export default function SelectYourRegistry() {
   });
 
   const newIndex = index + 1;
-
   const isError = registryType === "";
 
   const handleRegistryInputs = async () => {

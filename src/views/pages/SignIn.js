@@ -19,12 +19,12 @@ import {
   shouldForwardProp,
   InputLeftElement,
   InputGroup,
+  Checkbox,
 } from "@chakra-ui/react";
 import { EmailIcon } from "@chakra-ui/icons";
 import Loader from "../../components/Loader";
 import ThingsToConsider from "../../data/ThingsToConsider";
 import cover from "../../images/cover.png";
-import logo from "../../images/logo.png";
 import MissionStatement from "../../components/modals/MissionStatement";
 
 const ChakraBox = chakra(motion.div, {
@@ -40,7 +40,7 @@ function SignIn() {
     return {
       index: state.index.index,
       email: state.index.registry.email,
-      anonymous: state.index.anonymous,
+      anonymous: state.index.registry.anonymous,
     };
   });
 
@@ -87,7 +87,9 @@ function SignIn() {
                   Follow the promps to submit your report.
                 </Text>
               </Flex>
-              <h3 className="signin-body">The report takes 2-3 minutes.</h3>
+              <h3 className="signin-body">
+                The report takes approx. 2-3 minutes.
+              </h3>
               <Flex className="">
                 <h2 className="signin-h1" w="full">
                   Enter Your Email
@@ -115,18 +117,21 @@ function SignIn() {
                       <FormErrorMessage>Email is required.</FormErrorMessage>
                     )}
                   </InputGroup>
-                  {/* <Checkbox m={2} color='rgb(147,154,236)' onClick={dispatch(setAnonymous(!false))} >I would like to submit this report anonymously</Checkbox> */}
+                  <Checkbox
+                    m={2}
+                    color="rgb(147,154,236)"
+                    onChange={(e) => dispatch(setAnonymous(!anonymous))}
+                  >
+                    I would like to submit this report anonymously
+                  </Checkbox>
                 </FormControl>
                 <ThingsToConsider />
               </Flex>
               <Flex className="signin-start-registry" direction="column">
                 <Button
                   className="PrimaryButton"
-                  // variant="brandPrimary"
-                  // colorScheme="facebook"
+                  type="submit"
                   onClick={addUser}
-                  // w="50%"
-                  // mb="5%"
                 >
                   Start Registry
                 </Button>
@@ -138,7 +143,6 @@ function SignIn() {
             </center>
           </Stack>
         </Flex>
-
         <Flex className="panel-two">
           <img src={cover} />
         </Flex>
