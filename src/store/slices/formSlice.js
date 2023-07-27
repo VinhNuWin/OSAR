@@ -16,14 +16,14 @@ const formSlice = createSlice({
       "Was resistance offered by survivor", //9
       "Details of the assault", //10
       "Areas assaulted", //11
-      "Do you have any evidence of the abuse (like photographs of injuries, written communication, etc)?", //12
+      "Do you have any evidence of the abuse?", //12
       "Use of weapons", //13
       "Use of Restraints", //14
       "Assailants Gender", //15
       "Assailants Race/Ethnicity", //16
       "Do you know the assailants name?", //17
       "Submit Registry", //18
-      "Rainn - Find help and the resources you need. Call 800.656.4673", //19
+      "Rainn - Call 800.656.4673", //19
       "",
     ],
     generalForm: [
@@ -55,7 +55,7 @@ const formSlice = createSlice({
       "Are there any weapons in the house?", //10
       "Who is someone you feel safe with?", //11
       "Submit Registry", //12
-      "Childhelp - Find help and the resources you need. Call 800.422.4453", //13
+      "Childhelp - Call 800.422.4453", //13
     ],
     spouseForm: [
       "",
@@ -70,7 +70,7 @@ const formSlice = createSlice({
       "Has this occured before? If so, have you reported it in the past?", //9
       "Do you have any physical, digital, or other types of evidence of the abuse (like photographs, emails, text messages, etc.)?", //10
       "Submit Registry", //11
-      "National Domestic Violence Hotline - Find help and the resources you need. Call 800.799.7233", //12
+      "National Domestic Violence Hotline - Call 800.799.7233", //12
       "",
     ],
     elderlyForm: [
@@ -85,7 +85,7 @@ const formSlice = createSlice({
       "Were there any specific threats or actions that were particularly concerning?", //8
       "Have there been other instances of this abuse?", //9
       "Were there any witnesses to the incident or previous incidents", //10
-      "Do you have any evidence of the abuse (ie. photographs of injuries, written communication, etc)?", //11
+      "Do you have any evidence of the abuse?", //11
       "Are there any other people living with you or who could be at risk because of this person?", //12
       "Do you feel safe in your current living situation?", //13
       "Submit Registry", //14

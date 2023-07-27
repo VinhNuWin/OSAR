@@ -52,7 +52,7 @@ export default function SelectYourRegistry() {
     <Flex className="dual-panel-wrapper">
       <Flex className="panel-one " direction="column">
         <Flex className="header" />
-        <Heading className="selectRegistry-header" color="white" marginTop={10}>
+        <Heading className="selectRegistry-header" color="black" marginTop={10}>
           Select a Registry
         </Heading>
         <div>

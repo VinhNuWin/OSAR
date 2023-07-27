@@ -185,7 +185,6 @@ function EmployeeAnswers() {
                   <FormLabel>Description</FormLabel>
                   <TextArea
                     showCount
-                    maxLength={200}
                     style={{
                       height: 100,
                       marginBottom: 24,
@@ -333,7 +332,6 @@ function EmployeeAnswers() {
                 <div>
                   <Form.Item>
                     <TextArea
-                      maxLength={100}
                       style={{
                         height: 120,
                         marginBottom: 24,
@@ -368,7 +366,6 @@ function EmployeeAnswers() {
                   <Form.Item>
                     <TextArea
                       showCount
-                      maxLength={100}
                       style={{
                         height: 120,
                         marginBottom: 24,

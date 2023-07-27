@@ -20,6 +20,8 @@ import {
 } from "../../components/buttons/RegistryResponseComponents.js";
 import { listVariants, itemVariants } from "../../data/containerVariants";
 import SubmissionComplete from "../../components/SubmissionComplete";
+import MobileDatePicker from "../../components/MobileDatePicker";
+import MobileDateModal from "../../components/modals/MobileDateModal";
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) =>
@@ -83,6 +85,8 @@ function GeneralAnswers() {
               exit="close"
             >
               <div>
+                {/* <MobileDateModal /> */}
+                {/* <MobileDatePicker /> */}
                 <DateTime />
                 {/* <DateAndTime /> */}
               </div>
@@ -177,7 +181,6 @@ function GeneralAnswers() {
                 <div>
                   <Form.Item>
                     <TextArea
-                      maxLength={100}
                       style={{
                         height: 120,
                         marginBottom: 24,

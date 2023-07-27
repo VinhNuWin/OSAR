@@ -59,11 +59,11 @@ export const itemVariants = {
     y: 20,
     transition: { duration: 0.2 },
   }),
-  close: (i) => ({
+  close: {
     y: -20,
     opacity: 0,
     transition: { duration: 0.2, ease: "easeInOut" },
-  }),
+  },
 };
 
 export const test = {

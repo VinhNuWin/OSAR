@@ -181,11 +181,10 @@ function SpouseAnswers() {
                 <div>
                   <Form.Item>
                     <TextArea
-                      maxLength={200}
                       style={{
                         height: 100,
                         marginBottom: 24,
-                        width: 400,
+                        width: 300,
                       }}
                       type="text"
                       name="witnesses"
