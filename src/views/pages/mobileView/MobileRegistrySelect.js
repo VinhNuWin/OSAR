@@ -66,7 +66,7 @@ export default function MobileRegistrySelect() {
         Select a Registry
       </Heading>
       <div>
-        <Flex direction="column" className="selectRegistry-buttons-wrapper ">
+        <Flex direction="column" className="selectRegistry-buttons-wrapper">
           <RegistrySelectButton />
           <Flex className="answer-element-continue">
             <Button className="btn" onClick={handleRegistryInputs}>

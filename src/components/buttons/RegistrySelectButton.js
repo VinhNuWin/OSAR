@@ -19,8 +19,14 @@ import {
   test,
 } from "../../data/containerVariants";
 import general from "../../images/general.png";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 export const RegistrySelectButton = () => {
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const isMediumDevice = useMediaQuery(
+    "only screen and (min-width : 769px) and (max-width : 992px)"
+  );
+
   const dispatch = useDispatch();
   const { index, _id, registryType, registryId } = useSelector((state) => {
     return {
@@ -32,53 +38,73 @@ export const RegistrySelectButton = () => {
   });
 
   const componentButtonArray = [
-    <Button
-      name="general"
-      className="btn2"
-      id="1"
-      onClick={(e) => dispatch(registrySelect(e.target.name))}
-    >
-      General
-    </Button>,
+    <div>
+      <Button
+        name="general"
+        className="btn-registry-select"
+        id="1"
+        onClick={(e) => dispatch(registrySelect(e.target.name))}
+      >
+        <div className="btn-select-text">
+          <h2 className="h-0">General</h2>
+          <h4>Anyone who needs a voice</h4>
+        </div>
+      </Button>
+    </div>,
     <Button
       name="employee"
-      className="btn2"
+      className="btn-registry-select"
       id="2"
       onClick={(e) => dispatch(registrySelect(e.target.name))}
     >
-      Employee
+      <div className="btn-select-text">
+        <h2 className="h-0">Employee</h2>
+        <h4>Workplace misconduct or harassment</h4>
+      </div>
     </Button>,
     <Button
       name="spouse"
-      className="btn2"
+      className="btn-registry-select"
       id="6"
       onClick={(e) => dispatch(registrySelect(e.target.name))}
     >
-      Spouse
+      <div className="btn-select-text">
+        <h2 className="h-0">Spouse</h2>
+        <h4>Intimate relationships experiencing domestic abuse</h4>
+      </div>
     </Button>,
     <Button
       name="elderly"
-      className="btn2"
+      className="btn-registry-select"
       id="3"
       onClick={(e) => dispatch(registrySelect(e.target.name))}
     >
-      Elderly
+      <div className="btn-select-text ">
+        <h2 className="h-0">Elderly</h2>
+        <h4>Seniors facing abuse and neglect</h4>
+      </div>
     </Button>,
     <Button
       name="assault"
-      className="btn2"
+      className="btn-registry-select"
       id="4"
       onClick={(e) => dispatch(registrySelect(e.target.name))}
     >
-      Assault
+      <div className="btn-select-text">
+        <h2 className="h-0">Assault</h2>
+        <h4>Survivors of physical, emotional, or sexual assault</h4>
+      </div>
     </Button>,
     <Button
       name="children"
-      className="btn2"
+      className="btn-registry-select"
       id="5"
       onClick={(e) => dispatch(registrySelect(e.target.name))}
     >
-      Children
+      <div className="btn-select-text">
+        <h2 className="h-0">Children</h2>
+        <h4>Young individuals facing mistreatment</h4>
+      </div>
     </Button>,
   ];
 
@@ -114,10 +140,10 @@ export const RegistrySelectButton = () => {
     // </motion.ul>
 
     //
-    <motion.div key="0">
+    <motion.div key="0" className={isSmallDevice ? "active" : ""}>
       <motion.ul
         variants={listVariants}
-        key="9"
+        key=""
         initial="hidden"
         animate="visible"
         className="selectButtons"
