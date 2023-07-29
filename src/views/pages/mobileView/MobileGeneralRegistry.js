@@ -27,7 +27,6 @@ export default function MobileGeneralRegistry() {
 
   return (
     <Flex>
-      {/* <AnimatePresence> */}
       {index <= 100 ? (
         <Flex>
           <Flex className="panel-one-mobile" direction="column">
@@ -53,7 +52,6 @@ export default function MobileGeneralRegistry() {
       ) : (
         null()
       )}
-      {/* </AnimatePresence> */}
     </Flex>
   );
 }

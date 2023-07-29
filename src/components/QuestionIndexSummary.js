@@ -71,27 +71,16 @@ export default function QuestionIndexSummary() {
           </ChakraBox>
         ) : registryType === "general" && questionIndex <= 8 ? (
           <AnimatePresence mode="wait">
-            <motion.div
+            {/* <motion.div
               className=""
               key={questionIndex}
               variants={itemVariants}
               initial="hidden"
               animate="visible"
-              exit={{
-                y: -20,
-                opacity: 0,
-                transition: {
-                  duration: 0.2,
-                  ease: "easeInOut",
-                },
-              }}
+              exit="close"
             >
-              <FormControl>
-                <FormLabel color="#3a97f9" fontWeight={400}>
-                  Question {questionIndex} of 8
-                </FormLabel>
-              </FormControl>
-            </motion.div>
+              {questionIndex}
+            </motion.div> */}
           </AnimatePresence>
         ) : (
           <motion.div></motion.div>

@@ -63,6 +63,7 @@ textarea {
 
 /* SigninButton */
 .btn {
+  background-color: #fff !important;
   display: inline-block;
   outline: 0;
   border: 0;
@@ -70,8 +71,9 @@ textarea {
   transition: box-shadow 0.15s ease, transform 0.15s ease;
   will-change: box-shadow, transform;
   background: #fcfcfd;
-  box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
-    0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+  /* box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
+    0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7; */
+  box-shadow: 2px 3px 3px 0px rgb(147, 154, 236);
   height: 48px;
   width: 100%;
   padding: 0 32px;
@@ -81,6 +83,7 @@ textarea {
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 .btn:hover {
+  background: transparent !important;
   /* box-shadow: 0px 4px 8px rgb(45 35 66 / 40%),
     0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
   transform: translateY(-2px); */
@@ -121,8 +124,8 @@ textarea {
   transition: box-shadow 0.15s ease, transform 0.15s ease;
   will-change: box-shadow, transform;
   background: rgb(49, 51, 56);
-  box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
-    0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
+  /* box-shadow: 0px 2px 4px rgb(45 35 66 / 40%),
+    0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7; */
   height: 48px;
   width: 100px;
   padding: 0 32px;
@@ -131,8 +134,10 @@ textarea {
   border-radius: 6px;
   color: #36395a;
   transition: box-shadow 0.15s ease, transform 0.15s ease;
+  box-shadow: 2px 3px 3px 0px rgb(147, 154, 236);
 }
 .btn2:hover {
+  background: transparent !important;
   box-shadow: 0px 4px 8px rgb(45 35 66 / 40%),
     0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
   transform: translateY(-2px);
@@ -166,7 +171,7 @@ textarea {
 
 /* Next/Back Buttons */
 .btn3 {
-  background: linear-gradient(20deg, var(--copartBlue), var(--copartBlue));
+  background-color: #fff !important;
   padding: 10px 16px 9px;
   color: var(--white);
   border: 1px solid var(--copartBlue);
@@ -180,8 +185,10 @@ textarea {
   /* max-width: 150px; */
   transform: translateZ(0);
   margin: 5%;
+  box-shadow: 2px 3px 3px 0px rgb(147, 154, 236);
 }
 .btn3:hover {
+  background: transparent !important;
   box-shadow: 0px 4px 8px rgb(45 35 66 / 40%),
     0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #d6d6e7;
   transform: translateY(-2px);
@@ -249,20 +256,20 @@ textarea {
 .btn-registry-select:hover:not(:disabled) {
   backface-visibility: hidden;
   background: linear-gradient(20deg, var(--copartBlue), var(--copartBlue));
-  box-shadow: rgba(0, 0, 0, 0.14) 0px 4px 6px -2px,
-    rgba(0, 0, 0, 0.12) 0px 2px 4px 1px;
+  /* box-shadow: 0 0 0 2px #ffffff, 0 0 3px 5px rgb(147, 154, 236); */
   transform: scale(1.02);
 }
 .btn-registry-select:active {
   text-decoration: none;
   box-shadow: inset 0px 3px 7px #d6d6e7;
   background-color: #36395a;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 3px 5px #3a97f9;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 3px 5px rgb(147, 154, 236);
   transform: translateY(2px);
   color: #fff;
 }
 .btn-registry-select:active:not(:disabled) {
   transform: scale(0.96);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 3px 5px rgb(147, 154, 236);
 }
 
 .btn-registry-select:disabled {
@@ -270,10 +277,11 @@ textarea {
   opacity: 0.4;
   filter: saturate(0.25);
   border: 0;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 3px 5px rgb(147, 154, 236);
 }
 
 .btn-registry-select:focus {
-  /* box-shadow: 0 0 0 2px #ffffff, 0 0 3px 5px #3a97f9; */
+  box-shadow: 0 0 0 2px #ffffff, 0 0 3px 5px rgb(147, 154, 236);
   transform: translateY(2px);
 }
 

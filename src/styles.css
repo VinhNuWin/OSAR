@@ -339,3 +339,24 @@
   padding-top: 15%;
   /* border: 3px solid red; */
 }
+
+.index-summary-wrapper {
+  color: rgb(147, 154, 236);
+  font-weight: 600;
+  display: flex;
+  width: 24rem;
+}
+
+.index-summary {
+  color: rgb(147, 154, 236);
+  font-weight: 500;
+  display: flex;
+  width: 4.5rem;
+}
+
+.index-summary-component {
+  color: rgb(147, 154, 236);
+  /* border: 3px solid red; */
+  display: flex;
+  width: 18px;
+}

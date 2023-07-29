@@ -42,7 +42,7 @@ function ChildrensAnswers() {
   console.log(index);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       <ChakraBox initial="hidden" animate="visible" variants={listVariants}>
         <ChakraBox variants={itemVariants}>
           {questionIndex === 2 ? ( //Whats your name ?
@@ -72,34 +72,7 @@ function ChildrensAnswers() {
                 </FormControl>
               </div>
             </ChakraBox>
-          ) : questionIndex === 3 ? ( //Are you in immediate danger ?
-            <ChakraBox variants={itemVariants} key={index}>
-              <div>
-                <BooleanYesNo name="immediateDangerOrMedicalAttention" />
-              </div>
-            </ChakraBox>
-          ) : questionIndex === 4 ? ( //'How old are you?
-            <ChakraBox variants={itemVariants} key={index}>
-              <div>
-                <FormControl>
-                  <Input
-                    variant="flushed"
-                    name="age"
-                    placeholder="age"
-                    width={{ base: "12em", md: "14em", lg: "20em" }}
-                    onChange={(e) =>
-                      dispatch(
-                        updateRegistry({
-                          ...registryReport,
-                          [e.target.name]: e.target.value,
-                        })
-                      )
-                    }
-                  />
-                </FormControl>
-              </div>
-            </ChakraBox>
-          ) : questionIndex === 5 ? ( //Can you tell us what happened?
+          ) : questionIndex === 3 ? ( //What happened ?
             <ChakraBox variants={itemVariants} key={index}>
               <FormControl>
                 <FormLabel>Desciption of what happened</FormLabel>
@@ -120,11 +93,17 @@ function ChildrensAnswers() {
                 />
               </FormControl>
             </ChakraBox>
-          ) : questionIndex === 6 ? ( // Where?
-            <ChakraBox variants={itemVariants} key={index}>
+          ) : questionIndex === 4 ? ( //'Where did this happen?
+            <ChakraBox
+              key={index}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
               <Address />
             </ChakraBox>
-          ) : questionIndex === 7 ? ( // When did it happen?
+          ) : questionIndex === 5 ? ( //When did this happen?
             <ChakraBox
               key={index}
               variants={itemVariants}
@@ -134,7 +113,7 @@ function ChildrensAnswers() {
             >
               <DateAndTime />
             </ChakraBox>
-          ) : questionIndex === 8 ? ( // Who is the person responsible for the abuse ?
+          ) : questionIndex === 6 ? ( // Whats the name of the person we're talking about?
             <ChakraBox
               key={index}
               variants={itemVariants}
@@ -147,7 +126,7 @@ function ChildrensAnswers() {
                   <Input
                     variant="flushed"
                     name="assailantName"
-                    placeholder="Assailants Full Name"
+                    placeholder="Persons Name"
                     width={{ base: "12em", md: "14em", lg: "20em" }}
                     onChange={(e) =>
                       dispatch(
@@ -161,7 +140,7 @@ function ChildrensAnswers() {
                 </FormControl>
               </div>
             </ChakraBox>
-          ) : questionIndex === 9 ? ( // Do you have any visible bruises and/or marks
+          ) : questionIndex === 7 ? ( // Do you have any visible bruises and/or marks?
             <ChakraBox
               key={index}
               variants={itemVariants}
@@ -171,7 +150,7 @@ function ChildrensAnswers() {
             >
               <BooleanYesNo name={"evidence"} />
             </ChakraBox>
-          ) : questionIndex === 10 ? ( // Are there any weapons in the house?
+          ) : questionIndex === 8 ? ( // Who is someone you feel safe with
             <ChakraBox
               key={index}
               variants={itemVariants}
@@ -179,17 +158,30 @@ function ChildrensAnswers() {
               animate="visible"
               exit="close"
             >
-              <BooleanYesNo name={"useOfWeapons"} />
+              <div>
+                <FormControl>
+                  <Input
+                    variant="flushed"
+                    name="safePerson"
+                    placeholder="Persons Name"
+                    width={{ base: "12em", md: "14em", lg: "20em" }}
+                    onChange={(e) =>
+                      dispatch(
+                        updateRegistry({
+                          ...registryReport,
+                          [e.target.name]: e.target.value,
+                        })
+                      )
+                    }
+                  />
+                </FormControl>
+              </div>
             </ChakraBox>
-          ) : questionIndex === 11 ? ( // Who is someone you feel safe with?
-            <ChakraBox variants={itemVariants} key={index}>
-              <Input name={"safePerson"} />
-            </ChakraBox>
-          ) : questionIndex === 12 ? ( // SUbmit Registry
+          ) : questionIndex === 9 ? ( // SUbmit Registry
             <ChakraBox variants={itemVariants} key={index}>
               <Text>Submit Registry</Text>
             </ChakraBox>
-          ) : questionIndex === 13 ? ( // Complete
+          ) : questionIndex === 10 ? ( // Complete
             <SubmissionComplete />
           ) : (
             questionIndex === null(<RegistryComplete />)

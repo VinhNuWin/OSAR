@@ -32,7 +32,7 @@ const formSlice = createSlice({
       "Please provide your full name?", //2
       "When did the incident happen?", //3
       "Where did the incident occur?", //4
-      "Can you provide a detailed account of the incident(s)? What happened?", //5
+      "Can you provide a detailed account of the incident?", //5
       "Name of person responsible for incident?", //6
       "Are there any witnesses who saw the incident?", //7
       "Is there any additional information or comments you would like to add?", //8
@@ -44,18 +44,15 @@ const formSlice = createSlice({
     childrensForm: [
       "",
       "",
-      "What's your name?", //2
-      "Are you in immediate danger?", //3
-      "How old are you?", //4
-      "Can you tell us what happened?", //5
-      "Where did it happen?", //6
+      "Can you tell us your name?", //2
+      "Tell us what happened?", //5
+      "Where did this happen?", //6
       "When did this happen?", //7
-      "Who is the person responsible for the abuse?", //8
+      "Whats the name of the person we're talking about?", //8
       "Do you have any visible bruises and/or marks", //9
-      "Are there any weapons in the house?", //10
-      "Who is someone you feel safe with?", //11
-      "Submit Registry", //12
-      "Childhelp - Call 800.422.4453", //13
+      "Who is someone you feel safe with?", //10
+      "Submit Registry", //11
+      <h5>Childhelp - Call 800.422.4453</h5>, //12
     ],
     spouseForm: [
       "",
@@ -64,11 +61,11 @@ const formSlice = createSlice({
       "Please provide the name of the abusive person", //3
       "When did the incident happen?", //4
       "Where did the incident occur?", //5
-      "Can you provide a detailed account of the incident(s)? ", //6
+      "Can you provide a detailed account of the incident? ", //6
       "If there were any specific threats made, what were they?", //7
       "Are there any witnesses who can corroborate the incident?", //8
       "Has this occured before? If so, have you reported it in the past?", //9
-      "Do you have any physical, digital, or other types of evidence of the abuse (like photographs, emails, text messages, etc.)?", //10
+      "Do you have any physical, digital, or other types of evidence of the abuse?", //10
       "Submit Registry", //11
       "National Domestic Violence Hotline - Call 800.799.7233", //12
       "",
@@ -89,7 +86,10 @@ const formSlice = createSlice({
       "Are there any other people living with you or who could be at risk because of this person?", //12
       "Do you feel safe in your current living situation?", //13
       "Submit Registry", //14
-      "National Domestic Violence Hotline - Find help and the resources you need. Call 800.799.7233", //15
+      <h4>
+        "National Domestic Violence Hotline - Find help and the resources you
+        need. Call 800.799.7233"
+      </h4>, //15
       "",
     ],
     employeeForm: [
@@ -99,7 +99,7 @@ const formSlice = createSlice({
       "What is the date and approximate time of the incident?", //3
       "Where did the incident take place?", //4
       "Who were the people involved in the incident?", //5
-      "Can you describe the incident in as much detail as possible?", //6
+      "Can you describe the incident in detail?", //6
       "Were there any witnesses to the incident? If yes, who were they?", //7
       "What was the immediate outcome of the incident?", //8
       "Did the incident affect your ability to perform your job? If so, how?", //9
