@@ -37,7 +37,7 @@ export default function ChildrensQuestions() {
               </AnimatePresence>
               <div className="index-summary">of 7</div>
             </div>
-          ) : questionIndex === 9 ? (
+          ) : questionIndex === 8 ? (
             <motion.div
               className="index-summary-wrapper"
               key={questionIndex}
@@ -48,7 +48,7 @@ export default function ChildrensQuestions() {
             >
               Registry Complete
             </motion.div>
-          ) : questionIndex === 10 ? (
+          ) : questionIndex === 9 ? (
             <motion.div
               className="index-summary-wrapper"
               key={questionIndex}

@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeIndex } from "../../store";
+import { useState } from "react";
 
 export default function NextButton() {
   const dispatch = useDispatch();
@@ -18,7 +19,11 @@ export default function NextButton() {
 
   return (
     <div className="backBtn">
-      <Button className="btn3" onClick={handleRegistryInputs}>
+      <Button
+        className="btn3"
+        // variant="nextButton"
+        onClick={handleRegistryInputs}
+      >
         Next
       </Button>
     </div>

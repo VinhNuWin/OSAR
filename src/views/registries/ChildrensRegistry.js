@@ -33,12 +33,12 @@ export default function ChildrensRegistry() {
               <ChildrensAnswers />
             </Flex>
             <Flex className="panel-one-buttons">
-              {index < 14 ? <BackButton /> : null}
-              {index === 13 ? (
+              {index < 9 ? <BackButton /> : null}
+              {index === 8 ? (
                 <PostSubmit />
-              ) : index === 14 ? (
+              ) : index === 9 ? (
                 <EmailSubmit />
-              ) : index < 14 ? (
+              ) : index < 9 ? (
                 <NextButton />
               ) : null}
             </Flex>

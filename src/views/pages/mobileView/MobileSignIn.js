@@ -134,11 +134,11 @@ function SignIn() {
                 </Checkbox>
               </FormControl>
               <ThingsToConsider />
-              <div className="mt-10">{loader ? <Loader /> : ""}</div>
+              <div className="loader">{loader ? <Loader /> : ""}</div>
             </Flex>
             <Flex className="signin-start-registry" direction="column">
-              <Button className="btn mb-10" onClick={addUser} w="90%">
-                Start Registry
+              <Button className="btn" onClick={addUser} w="90%">
+                <div>{loader ? <div>Starting..</div> : "Start Registry"}</div>
               </Button>
               <Text marginBottom={0}>
                 If you have questions or feedback email us at

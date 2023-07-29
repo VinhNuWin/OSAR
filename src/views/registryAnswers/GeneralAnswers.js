@@ -184,7 +184,7 @@ function GeneralAnswers() {
                       style={{
                         height: 120,
                         marginBottom: 24,
-                        width: 300,
+                        width: 400,
                       }}
                       type="text"
                       name="additionalComments"

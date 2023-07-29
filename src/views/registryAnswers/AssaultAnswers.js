@@ -154,8 +154,15 @@ function AssaultAnswers() {
               exit="close"
             >
               <FormControl>
-                <FormLabel>Details of the assault</FormLabel>
+                <FormLabel color="rgb(147,154,236)">
+                  Details of the assault
+                </FormLabel>
                 <Input
+                  style={{
+                    height: 120,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
                   name="detailsOfIncident"
                   h={20}
@@ -168,7 +175,7 @@ function AssaultAnswers() {
                       })
                     )
                   }
-                  placeholder="Brief description"
+                  placeholder="Brief description of what occured.."
                 />
               </FormControl>
             </ChakraBox>
@@ -181,12 +188,17 @@ function AssaultAnswers() {
               exit="close"
             >
               <FormControl>
-                <FormLabel>Details of the assault</FormLabel>
+                <FormLabel color="rgb(147,154,236)">
+                  List area's physically assaulted
+                </FormLabel>
                 <Input
+                  style={{
+                    height: 120,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
                   name="areasAssaulted"
-                  h={20}
-                  width={{ base: "12em", md: "14em", lg: "20em" }}
                   onChange={(e) =>
                     dispatch(
                       updateRegistry({
@@ -195,7 +207,7 @@ function AssaultAnswers() {
                       })
                     )
                   }
-                  placeholder="Brief description"
+                  placeholder="Face, arm, chest.."
                 />
               </FormControl>
             </ChakraBox>
@@ -274,7 +286,7 @@ function AssaultAnswers() {
                 />
               </FormControl>
             </ChakraBox>
-          ) : questionIndex === 18 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
+          ) : questionIndex === 18 ? ( // Complete
             <ChakraBox
               key={index}
               variants={itemVariants}

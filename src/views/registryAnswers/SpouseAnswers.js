@@ -126,12 +126,17 @@ function SpouseAnswers() {
               exit="close"
             >
               <FormControl>
-                <FormLabel>Desciption of what happened</FormLabel>
+                <FormLabel color="rgb(147,154,236)">
+                  Desciption of what happened
+                </FormLabel>
                 <Input
+                  style={{
+                    height: 100,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
                   name="detailsOfIncident"
-                  h={20}
-                  width={{ base: "12em", md: "14em", lg: "20em" }}
                   onChange={(e) =>
                     dispatch(
                       updateRegistry({
@@ -140,6 +145,7 @@ function SpouseAnswers() {
                       })
                     )
                   }
+                  placeholder="Breif description of events"
                 />
               </FormControl>
             </ChakraBox>
@@ -151,12 +157,18 @@ function SpouseAnswers() {
               animate="visible"
               exit="close"
             >
+              <FormLabel color="rgb(147,154,236)">
+                List threats, if any..
+              </FormLabel>
               <FormControl>
                 <Input
+                  style={{
+                    height: 100,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
                   name="threatsOrActions"
-                  h={20}
-                  width={{ base: "12em", md: "14em", lg: "20em" }}
                   onChange={(e) =>
                     dispatch(
                       updateRegistry({
@@ -179,12 +191,15 @@ function SpouseAnswers() {
             >
               <Form>
                 <div>
+                  <FormLabel color="rgb(147,154,236)">
+                    List Individuals Who Physically Witnessed Event
+                  </FormLabel>
                   <Form.Item>
                     <TextArea
                       style={{
                         height: 100,
                         marginBottom: 24,
-                        width: 300,
+                        width: 400,
                       }}
                       type="text"
                       name="witnesses"
@@ -220,11 +235,17 @@ function SpouseAnswers() {
               animate="visible"
               exit="close"
             >
+              <FormLabel color="rgb(147,154,236)">
+                List any pieces of evidence you may have
+              </FormLabel>
               <FormControl>
                 <Input
+                  style={{
+                    height: 100,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
-                  h={20}
-                  width={{ base: "12em", md: "14em", lg: "24em" }}
                   name="evidence"
                   onChange={(e) =>
                     dispatch(
@@ -234,7 +255,7 @@ function SpouseAnswers() {
                       })
                     )
                   }
-                  placeholder="Evidence"
+                  placeholder="Pictures of bruises, text messages, screenshots etc.."
                 />
               </FormControl>
             </ChakraBox>

@@ -101,8 +101,15 @@ function ElderlyAnswers() {
               exit="close"
             >
               <FormControl>
-                <FormLabel>Desciption of what happened</FormLabel>
+                <FormLabel color="rgb(147,154,236)">
+                  Desciption of what happened
+                </FormLabel>
                 <Input
+                  style={{
+                    height: 100,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
                   name="detailsOfIncident"
                   h={20}
@@ -156,7 +163,7 @@ function ElderlyAnswers() {
               <Form>
                 <div>
                   <Form.Item>
-                    <FormLabel>Relationship</FormLabel>
+                    <FormLabel color="rgb(147,154,236)">Relationship</FormLabel>
                     <TextArea
                       maxLength={200}
                       style={{
@@ -188,8 +195,16 @@ function ElderlyAnswers() {
               animate="visible"
               exit="close"
             >
+              <FormLabel color="rgb(147,154,236)">
+                Threats or actions made to you
+              </FormLabel>
               <FormControl>
                 <Input
+                  style={{
+                    height: 100,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
                   name="concerningThreatsOrActions"
                   h={20}
@@ -215,11 +230,16 @@ function ElderlyAnswers() {
               exit="close"
             >
               <FormControl>
-                <FormLabel>List any additional incidents</FormLabel>
+                <FormLabel color="rgb(147,154,236)">
+                  List any additional incidents
+                </FormLabel>
                 <Input
+                  style={{
+                    height: 100,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
-                  h={20}
-                  width={{ base: "12em", md: "14em", lg: "24em" }}
                   name="additionalIncidentsOfAbuse"
                   onChange={(e) =>
                     dispatch(
@@ -242,14 +262,17 @@ function ElderlyAnswers() {
               exit="close"
             >
               <FormControl>
-                <FormLabel>
+                <FormLabel color="rgb(147,154,236)">
                   List Individuals Who Physically Witnessed Event
                 </FormLabel>
                 <Input
+                  style={{
+                    height: 100,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
                   name="witnesses"
-                  h={20}
-                  width={{ base: "12em", md: "14em", lg: "24em" }}
                   onChange={(e) =>
                     dispatch(
                       updateRegistry({
@@ -292,7 +315,7 @@ function ElderlyAnswers() {
             >
               <BooleanYesNo name={"currentLivingSituationSafe"} />
             </ChakraBox>
-          ) : questionIndex === 14 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
+          ) : questionIndex === 14 ? ( //Submit
             <ChakraBox
               key={index}
               variants={itemVariants}
@@ -300,7 +323,7 @@ function ElderlyAnswers() {
               animate="visible"
               exit="close"
             >
-              <Text>Submit Registry</Text>
+              <Text></Text>
             </ChakraBox>
           ) : questionIndex === 15 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
             <SubmissionComplete />

@@ -75,12 +75,17 @@ function ChildrensAnswers() {
           ) : questionIndex === 3 ? ( //What happened ?
             <ChakraBox variants={itemVariants} key={index}>
               <FormControl>
-                <FormLabel>Desciption of what happened</FormLabel>
+                <FormLabel color="rgb(147,154,236)">
+                  Desciption of what happened
+                </FormLabel>
                 <Input
+                  style={{
+                    height: 120,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
                   name="detailsOfIncident"
-                  h={20}
-                  width={{ base: "12em", md: "14em", lg: "20em" }}
                   onChange={(e) =>
                     dispatch(
                       updateRegistry({
@@ -89,7 +94,7 @@ function ChildrensAnswers() {
                       })
                     )
                   }
-                  placeholder="Brief description"
+                  placeholder="No one will know unless you decide"
                 />
               </FormControl>
             </ChakraBox>
@@ -179,7 +184,7 @@ function ChildrensAnswers() {
             </ChakraBox>
           ) : questionIndex === 9 ? ( // SUbmit Registry
             <ChakraBox variants={itemVariants} key={index}>
-              <Text>Submit Registry</Text>
+              <Text></Text>
             </ChakraBox>
           ) : questionIndex === 10 ? ( // Complete
             <SubmissionComplete />

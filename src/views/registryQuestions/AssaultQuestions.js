@@ -37,7 +37,7 @@ export default function AssaultQuestions() {
               </AnimatePresence>
               <div className="index-summary">of 16</div>
             </div>
-          ) : questionIndex === 18 ? (
+          ) : questionIndex === 17 ? (
             <motion.div
               className="index-summary-wrapper"
               key={questionIndex}
@@ -48,7 +48,7 @@ export default function AssaultQuestions() {
             >
               Registry Complete
             </motion.div>
-          ) : questionIndex === 19 ? (
+          ) : questionIndex === 18 ? (
             <motion.div
               className="index-summary-wrapper"
               key={questionIndex}

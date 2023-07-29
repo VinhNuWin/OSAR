@@ -22,7 +22,7 @@ const brandPrimary = defineStyle({
 
 const nextButton = defineStyle({
   height: "40px",
-  width: "100%",
+  width: "80%",
   border: "2px",
   borderColor: "rgb(73, 79, 86)",
   bg: "rgb(91,100,233)",

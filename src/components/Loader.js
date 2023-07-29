@@ -29,7 +29,7 @@ const Loader = () => {
         variants={loaderVariants}
         animate="animationOne"
       >
-        <Spinner size="sm" color="black" />
+        <Spinner size="md" color="blue" />
       </motion.div>
     </>
   );

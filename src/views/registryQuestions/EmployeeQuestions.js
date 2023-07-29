@@ -27,7 +27,7 @@ export default function EmployeeQuestions() {
         <AnimatePresence mode="wait">
           {questionIndex < 14 ? (
             <div className="index-summary-wrapper">
-              <div className="index-summary-wrapper">Question</div>
+              <div className="index-summary">Question</div>
               <AnimatePresence mode="wait">
                 <motion.div
                   className="index-summary-component"
@@ -42,7 +42,7 @@ export default function EmployeeQuestions() {
               </AnimatePresence>
               <div className="index-summary">of 13</div>
             </div>
-          ) : questionIndex === 14 ? (
+          ) : questionIndex === 14 ? ( //QuestionIndex should be ++ number directly above
             <motion.div
               className="index-summary-wrapper"
               key={questionIndex}

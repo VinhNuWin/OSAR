@@ -2,10 +2,12 @@ import { Button } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { changeIndex } from "../../store";
-import React from "react";
+import { React, useState } from "react";
+import Loader from "../Loader";
 
 export default function EmailSubmit() {
   const dispatch = useDispatch();
+  const [loader, setLoader] = useState(true);
   const { index, _id, registryType, email, registryReport, reportSummary } =
     useSelector((state) => {
       return {
@@ -21,6 +23,7 @@ export default function EmailSubmit() {
 
   const handleEmailSubmit = async () => {
     console.log("email sent");
+    setLoader(false);
     const response = await axios.post(
       `https://dvaa-smtp.onrender.com/${registryType}`,
       {
@@ -38,16 +41,19 @@ export default function EmailSubmit() {
     dispatch(changeIndex(parseInt(index + 1)));
   };
 
-  const handleOnSubmit = async () => {
-    console.log("email sent");
-    dispatch(changeIndex(parseInt(index + 1)));
-  };
-
   return (
-    <div className="backBtn">
-      <Button color="blue" className="btn3" onClick={handleEmailSubmit}>
-        Submit
-      </Button>
+    <div>
+      <div>{loader ? <Loader /> : ""}</div>
+      <div className="signin-start-registry mt-5">
+        <Button
+          color="blue"
+          className="btn"
+          variant="nextButton"
+          onClick={handleEmailSubmit}
+        >
+          <div>{loader ? <div>Submitting</div> : <div>Submit</div>}</div>
+        </Button>
+      </div>
     </div>
   );
 }

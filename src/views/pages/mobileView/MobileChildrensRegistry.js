@@ -31,12 +31,12 @@ export default function MobileChildrensRegistry() {
               <ChildrensAnswers />
             </Flex>
             <Flex className="panel-one-buttons">
-              {index < 15 ? <BackButton /> : null}
-              {index === 14 ? (
+              {index < 9 ? <BackButton /> : null}
+              {index === 8 ? (
                 <PostSubmit />
-              ) : index === 15 ? (
+              ) : index === 9 ? (
                 <EmailSubmit />
-              ) : index < 15 ? (
+              ) : index < 9 ? (
                 <NextButton />
               ) : null}
             </Flex>

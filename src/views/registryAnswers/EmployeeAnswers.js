@@ -154,7 +154,9 @@ function EmployeeAnswers() {
               exit="close"
             >
               <FormControl>
-                <FormLabel>List Individuals Directly Involved</FormLabel>
+                <FormLabel color="rgb(147,154,236)">
+                  List Individuals Directly Involved
+                </FormLabel>
                 <Input
                   type="text"
                   name="peopleInvolved"
@@ -182,9 +184,8 @@ function EmployeeAnswers() {
             >
               <Form>
                 <Form.Item>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel color="rgb(147,154,236)">Description</FormLabel>
                   <TextArea
-                    showCount
                     style={{
                       height: 100,
                       marginBottom: 24,
@@ -200,7 +201,7 @@ function EmployeeAnswers() {
                         })
                       )
                     }
-                    placeholder="Bullet Point of events"
+                    placeholder="Descriptions of events"
                   />
                 </Form.Item>
               </Form>
@@ -214,10 +215,15 @@ function EmployeeAnswers() {
               exit="close"
             >
               <FormControl>
-                <FormLabel>
+                <FormLabel color="rgb(147,154,236)">
                   List Individuals Who Physically Witnessed Event
                 </FormLabel>
                 <Input
+                  style={{
+                    height: 100,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
                   name="witnesses"
                   h={20}
@@ -243,10 +249,15 @@ function EmployeeAnswers() {
               exit="close"
             >
               <FormControl>
-                <FormLabel>
+                <FormLabel color="rgb(147,154,236)">
                   Brief description of direct outcome of incident
                 </FormLabel>
                 <Input
+                  style={{
+                    height: 100,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
                   h={20}
                   width={{ base: "12em", md: "14em", lg: "24em" }}
@@ -272,11 +283,16 @@ function EmployeeAnswers() {
               exit="close"
             >
               <FormControl>
-                <FormLabel>How did the incident effect your work</FormLabel>
+                <FormLabel color="rgb(147,154,236)">
+                  How did the incident effect your work
+                </FormLabel>
                 <Input
+                  style={{
+                    height: 100,
+                    marginBottom: 24,
+                    width: 400,
+                  }}
                   type="text"
-                  h={20}
-                  width={{ base: "12em", md: "14em", lg: "24em" }}
                   name="abilitiesAffected"
                   onChange={(e) =>
                     dispatch(
@@ -328,14 +344,17 @@ function EmployeeAnswers() {
               animate="visible"
               exit="close"
             >
+              <FormLabel color="rgb(147,154,236)">
+                How did it effect your personal life if any
+              </FormLabel>
               <Form>
                 <div>
                   <Form.Item>
                     <TextArea
                       style={{
-                        height: 120,
+                        height: 100,
                         marginBottom: 24,
-                        width: 300,
+                        width: 400,
                       }}
                       type="text"
                       name="personalAffect"
@@ -347,7 +366,7 @@ function EmployeeAnswers() {
                           })
                         )
                       }
-                      placeholder="Person1, Person2, etc..."
+                      placeholder="Detailed Description"
                     />
                   </Form.Item>
                 </div>
@@ -364,12 +383,14 @@ function EmployeeAnswers() {
               <Form>
                 <div>
                   <Form.Item>
+                    <FormLabel color="rgb(147,154,236)">
+                      Additional comment's you would like to add
+                    </FormLabel>
                     <TextArea
-                      showCount
                       style={{
-                        height: 120,
+                        height: 100,
                         marginBottom: 24,
-                        width: 300,
+                        width: 400,
                       }}
                       type="text"
                       name="additionalComments"
@@ -381,7 +402,7 @@ function EmployeeAnswers() {
                           })
                         )
                       }
-                      placeholder="Person1, Person2, etc..."
+                      placeholder="Anything we've missed that may be relevant.."
                     />
                   </Form.Item>
                 </div>
@@ -394,9 +415,7 @@ function EmployeeAnswers() {
               initial="hidden"
               animate="visible"
               exit="close"
-            >
-              <div>Submit Registry</div>
-            </ChakraBox>
+            ></ChakraBox>
           ) : questionIndex === 16 ? ( // Would you like information or support services available to you, such as senior services, legal advice, or counseling?
             <SubmissionComplete />
           ) : (

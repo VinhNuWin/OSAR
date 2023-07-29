@@ -24,7 +24,7 @@ export default function MobileEmployeeRegistry() {
         <Flex>
           <Flex className="panel-one-mobile" direction="column">
             <Flex className="header" />
-            <Flex className="panel-one-questions">
+            <Flex className="panel-one-questions ">
               <EmployeeQuestions />
             </Flex>
             <Flex className="panel-one-answers">

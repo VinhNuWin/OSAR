@@ -23,7 +23,7 @@ const formSlice = createSlice({
       "Assailants Race/Ethnicity", //16
       "Do you know the assailants name?", //17
       "Submit Registry", //18
-      "Rainn - Call 800.656.4673", //19
+      <h4>Rainn - Call 800.656.4673</h4>, //19
       "",
     ],
     generalForm: [
@@ -52,7 +52,7 @@ const formSlice = createSlice({
       "Do you have any visible bruises and/or marks", //9
       "Who is someone you feel safe with?", //10
       "Submit Registry", //11
-      <h5>Childhelp - Call 800.422.4453</h5>, //12
+      <h4>Childhelp - Call 800.422.4453</h4>, //12
     ],
     spouseForm: [
       "",
@@ -67,7 +67,7 @@ const formSlice = createSlice({
       "Has this occured before? If so, have you reported it in the past?", //9
       "Do you have any physical, digital, or other types of evidence of the abuse?", //10
       "Submit Registry", //11
-      "National Domestic Violence Hotline - Call 800.799.7233", //12
+      <h4>National Domestic Violence Hotline - Call 800.799.7233</h4>, //12
       "",
     ],
     elderlyForm: [
@@ -87,8 +87,8 @@ const formSlice = createSlice({
       "Do you feel safe in your current living situation?", //13
       "Submit Registry", //14
       <h4>
-        "National Domestic Violence Hotline - Find help and the resources you
-        need. Call 800.799.7233"
+        National Domestic Violence Hotline - Find help and the resources you
+        need. Call 800.799.7233
       </h4>, //15
       "",
     ],
@@ -109,7 +109,7 @@ const formSlice = createSlice({
       "How has the incident impacted you personally?", //13
       "Is there any additional information or comments you would like to add?", //14
       "Submit Registry", //15
-      "OSHA - Find help and the resources you need. Call 800.321.6742", //16
+      <h4>OSHA - Find help and the resources you need. Call 800.321.6742</h4>, //16
       "",
     ],
   },

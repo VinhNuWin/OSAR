@@ -95,7 +95,6 @@ function SignIn() {
                   Enter Your Email
                 </h2>
               </Flex>
-              <div className="loader">{loader ? <Loader /> : ""}</div>
               <Flex className="sign-in-element-email">
                 <FormControl isInvalid={isError}>
                   <InputGroup>
@@ -127,13 +126,24 @@ function SignIn() {
                 </FormControl>
                 <ThingsToConsider />
               </Flex>
+              <div className="loader">
+                {loader ? (
+                  <div>
+                    <Loader />
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
               <Flex className="signin-start-registry" direction="column">
                 <Button
-                  className="PrimaryButton"
+                  color="blue"
+                  className="btn"
+                  variant="nextButton"
                   type="submit"
                   onClick={addUser}
                 >
-                  Start Registry
+                  <div>{loader ? <div>Starting..</div> : "Start Registry"}</div>
                 </Button>
                 <Text className="signin-body" marginBottom={8}>
                   If you have questions or feedback email us at

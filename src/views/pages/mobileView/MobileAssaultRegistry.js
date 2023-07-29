@@ -6,6 +6,7 @@ import AssaultQuestions from "../../registryQuestions/AssaultQuestions";
 import AssaultAnswers from "../../registryAnswers/AssaultAnswers";
 import RegistryComplete from "../RegistryComplete";
 import PostSubmit from "../../../components/buttons/PostSubmit";
+import EmailSubmit from "../../../components/buttons/emailSubmit";
 import MissionStatement from "../../../components/modals/MissionStatement";
 
 export default function MobileAssaultRegistry() {
@@ -33,10 +34,12 @@ export default function MobileAssaultRegistry() {
               <AssaultAnswers />
             </Flex>
             <Flex className="panel-one-buttons">
-              {index < 19 ? <BackButton /> : null}
-              {index === 18 ? (
+              {index < 18 ? <BackButton /> : null}
+              {index === 17 ? (
                 <PostSubmit />
-              ) : index === 19 ? (
+              ) : index === 18 ? (
+                <EmailSubmit />
+              ) : index < 18 ? (
                 <NextButton />
               ) : null}
             </Flex>

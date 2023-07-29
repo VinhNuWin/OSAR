@@ -16,6 +16,7 @@ import { RegistrySelectButton } from "../../components/buttons/RegistrySelectBut
 
 export default function SelectYourRegistry() {
   const dispatch = useDispatch();
+  const [loader, setLoader] = useState(false);
 
   const { index, _id, registryType, registryId } = useSelector((state) => {
     return {
@@ -31,6 +32,7 @@ export default function SelectYourRegistry() {
 
   const handleRegistryInputs = async () => {
     console.log("patch request made");
+    setLoader(true);
     const response = await axios.patch(
       `https://osar-api.onrender.com/registry/${_id}`,
       {
@@ -60,7 +62,9 @@ export default function SelectYourRegistry() {
             <RegistrySelectButton />
             <Flex className="answer-element-continue">
               <Button className="btn" onClick={handleRegistryInputs}>
-                Continue
+                <div>
+                  {loader ? <div>Generating</div> : <div>Continue</div>}
+                </div>
               </Button>
             </Flex>
           </Flex>
