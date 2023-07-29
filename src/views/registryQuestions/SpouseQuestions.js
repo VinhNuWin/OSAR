@@ -19,22 +19,48 @@ export default function SpouseQuestions() {
   return (
     <Flex direction="column">
       <Flex wrap="nowrap" direction="column" className="questions">
-        <div className="index-summary-wrapper">
-          <div className="index-summary">Question</div>
-          <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
+          {questionIndex < 10 ? (
+            <div className="index-summary-wrapper">
+              <div className="index-summary">Question</div>
+
+              <motion.div
+                className="index-summary-component"
+                key={questionIndex}
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                exit="close"
+              >
+                {questionIndex}
+              </motion.div>
+
+              <div className="index-summary">of 9</div>
+            </div>
+          ) : questionIndex === 10 ? (
             <motion.div
-              className="index-summary-component"
+              className="index-summary-wrapper"
               key={questionIndex}
               variants={itemVariants}
               initial="hidden"
               animate="visible"
               exit="close"
             >
-              {questionIndex}
+              Registry Complete
             </motion.div>
-          </AnimatePresence>
-          <div className="index-summary">of 9</div>
-        </div>
+          ) : questionIndex === 11 ? (
+            <motion.div
+              className="index-summary-wrapper"
+              key={questionIndex}
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              exit="close"
+            >
+              For additional support please reach out
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
         <AnimatePresence mode="wait">
           <motion.h1
             className=""

@@ -356,7 +356,7 @@
 
 .index-summary-component {
   color: rgb(147, 154, 236);
-  /* border: 3px solid red; */
+  font-weight: 500;
   display: flex;
   width: 18px;
 }
