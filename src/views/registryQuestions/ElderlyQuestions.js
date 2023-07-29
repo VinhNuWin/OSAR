@@ -26,18 +26,18 @@ export default function ElderlyQuestions() {
           {questionIndex < 13 ? (
             <div className="index-summary-wrapper">
               <div className="index-summary">Question</div>
-
-              <motion.div
-                className="index-summary-component"
-                key={questionIndex}
-                variants={itemVariants}
-                initial="hidden"
-                animate="visible"
-                exit="close"
-              >
-                {questionIndex}
-              </motion.div>
-
+              <AnimatePresence mode="wait">
+                <motion.div
+                  className="index-summary-component"
+                  key={questionIndex}
+                  variants={itemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="close"
+                >
+                  {questionIndex}
+                </motion.div>
+              </AnimatePresence>
               <div className="index-summary">of 12</div>
             </div>
           ) : questionIndex === 13 ? (
