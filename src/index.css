@@ -300,6 +300,12 @@ textarea {
   h5 {
     font-size: 0.75rem;
   }
+  .selectRegistry-buttons-wrapper {
+    /* display: flex; */
+    /* border: 3px solid red; */
+    justify-content: center;
+    height: 80vh;
+  }
 }
 
 @media screen and (min-width: 569px) {
@@ -323,5 +329,10 @@ textarea {
   }
   h5 {
     font-size: 1rem;
+  }
+  .selectRegistry-buttons-wrapper {
+    justify-items: flex-start;
+    padding-left: 5%;
+    padding-top: 5%;
   }
 }

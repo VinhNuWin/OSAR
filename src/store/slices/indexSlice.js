@@ -3,15 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const indexSlice = createSlice({
   name: "indexes",
   initialState: {
-    index: 0,
+    index: 1,
     registry: {
-      email: "",
-      _id: "",
-      registryId: "",
+      email: "Vinhn3333@gmail.com",
+      _id: "64c5a2ea8fe07a29bd2e3547",
+      registryId: "64c5a2ea8fe07a29bd2e3547",
       registryType: "",
       anonymous: false,
       registryReport: {
-        registryId: "",
+        registryId: "64c5a2ea8fe07a29bd2e3547",
         immediateDangerOrMedicalAttention: false,
         fullName: "anon",
         date: "",

@@ -40,25 +40,25 @@ export default function MobileRegistrySelect() {
 
   const newIndex = index + 1;
 
-  const handleRegistryInputs = async () => {
-    console.log("patch request made");
-    const response = await axios.patch(
-      `https://osar-api.onrender.com/registry/${_id}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Method": "GET,PATCH,POST,DELETE",
-        },
-        registryId: registryId,
-        registryType: registryType,
-        _id: _id,
-      }
-    );
-    dispatch(changeIndex(parseInt(newIndex)));
-    console.log("index was changed");
-    console.log(response);
-  };
+  // const handleRegistryInputs = async () => {
+  //   console.log("patch request made");
+  //   const response = await axios.patch(
+  //     `https://osar-api.onrender.com/registry/${_id}`,
+  //     {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "Access-Control-Allow-Origin": "*",
+  //         "Access-Control-Allow-Method": "GET,PATCH,POST,DELETE",
+  //       },
+  //       registryId: registryId,
+  //       registryType: registryType,
+  //       _id: _id,
+  //     }
+  //   );
+  //   dispatch(changeIndex(parseInt(newIndex)));
+  //   console.log("index was changed");
+  //   console.log(response);
+  // };
 
   return (
     <Flex className="panel-one-mobile" direction="column">
@@ -69,9 +69,9 @@ export default function MobileRegistrySelect() {
         <Flex direction="column" className="selectRegistry-buttons-wrapper">
           <RegistrySelectButton />
           <Flex className="answer-element-continue">
-            <Button className="btn" onClick={handleRegistryInputs}>
+            {/* <Button className="btn" onClick={handleRegistryInputs}>
               Continue
-            </Button>
+            </Button> */}
           </Flex>
         </Flex>
       </div>

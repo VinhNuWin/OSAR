@@ -41,24 +41,24 @@ export const listVariants = {
       delayChildren: 0.1,
       staggerChildren: 0.15,
     },
-    close: {
-      opacity: 0,
-      x: -20,
-    },
+    // close: {
+    //   opacity: 0,
+    //   x: -20,
+    // },
   },
 };
 
 export const itemVariants = {
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 300, damping: 24 },
-  }),
-  hidden: (i) => ({
+  hidden: {
     opacity: 0,
     y: 20,
     transition: { duration: 0.2 },
-  }),
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 300, damping: 24 },
+  },
   close: {
     y: -20,
     opacity: 0,

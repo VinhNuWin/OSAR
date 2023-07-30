@@ -249,29 +249,7 @@ function SpouseAnswers() {
               animate="visible"
               exit="close"
             >
-              <FormLabel color="rgb(147,154,236)">
-                List any pieces of evidence you may have
-              </FormLabel>
-              <FormControl>
-                <Input
-                  style={{
-                    height: 100,
-                    marginBottom: 24,
-                    width: 400,
-                  }}
-                  type="text"
-                  name="evidence"
-                  onChange={(e) =>
-                    dispatch(
-                      updateRegistry({
-                        ...registryReport,
-                        [e.target.name]: e.target.value,
-                      })
-                    )
-                  }
-                  placeholder="Pictures of bruises, text messages, screenshots etc.."
-                />
-              </FormControl>
+              <BooleanYesNo name={"evidence"} />
             </ChakraBox>
           ) : questionIndex === 11 ? ( // Submit Registry
             <ChakraBox

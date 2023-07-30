@@ -182,13 +182,16 @@ function GeneralAnswers() {
               animate="visible"
               exit="close"
             >
+              <FormLabel color="rgb(147,154,236)" className="mt-5">
+                Additional comments you feel are important to your story
+              </FormLabel>
               <Form>
                 <div>
                   <Form.Item>
                     <TextArea
                       style={{
-                        height: 120,
-                        marginBottom: 24,
+                        height: 100,
+                        // marginBottom: 24,
                         width: 400,
                       }}
                       type="text"
@@ -201,7 +204,7 @@ function GeneralAnswers() {
                           })
                         )
                       }
-                      placeholder="Person1, Person2, etc..."
+                      placeholder="Specific circumstances, environment, misrepresentations, etc..."
                     />
                   </Form.Item>
                 </div>

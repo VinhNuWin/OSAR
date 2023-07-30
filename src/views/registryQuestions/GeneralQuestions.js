@@ -64,7 +64,7 @@ export default function GeneralQuestions() {
         </AnimatePresence>
         <AnimatePresence mode="wait">
           <motion.h1
-            className=""
+            className="questionContainer"
             key={generalIndex}
             variants={itemVariants}
             initial="hidden"

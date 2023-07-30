@@ -30,29 +30,29 @@ export default function SelectYourRegistry() {
   const newIndex = index + 1;
   const isError = registryType === "";
 
-  const handleRegistryInputs = async () => {
-    console.log("patch request made");
-    setLoader(true);
-    const response = await axios.patch(
-      `https://osar-api.onrender.com/registry/${_id}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Method": "GET,PATCH,POST,DELETE",
-        },
-        registryId: registryId,
-        registryType: registryType,
-        _id: _id,
-      }
-    );
-    dispatch(changeIndex(parseInt(newIndex)));
-    console.log(response);
-  };
+  // const handleRegistryInputs = async () => {
+  //   console.log("patch request made");
+  //   setLoader(true);
+  //   const response = await axios.patch(
+  //     `https://osar-api.onrender.com/registry/${_id}`,
+  //     {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "Access-Control-Allow-Origin": "*",
+  //         "Access-Control-Allow-Method": "GET,PATCH,POST,DELETE",
+  //       },
+  //       registryId: registryId,
+  //       registryType: registryType,
+  //       _id: _id,
+  //     }
+  //   );
+  //   dispatch(changeIndex(parseInt(newIndex)));
+  //   console.log(response);
+  // };
 
   return (
     <Flex className="dual-panel-wrapper">
-      <Flex className="panel-one " direction="column">
+      <Flex className="panel-one" direction="column">
         <Flex className="header" />
         <Heading className="selectRegistry-header" color="black" marginTop={10}>
           Select a Registry
@@ -61,11 +61,11 @@ export default function SelectYourRegistry() {
           <Flex direction="column" className="selectRegistry-buttons-wrapper">
             <RegistrySelectButton />
             <Flex className="answer-element-continue">
-              <Button className="btn" onClick={handleRegistryInputs}>
+              {/* <Button className="btn" onClick={handleRegistryInputs}>
                 <div>
                   {loader ? <div>Generating</div> : <div>Continue</div>}
                 </div>
-              </Button>
+              </Button> */}
             </Flex>
           </Flex>
         </div>
