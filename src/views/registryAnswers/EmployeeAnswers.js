@@ -1,37 +1,21 @@
 import { AnimatePresence, motion, isValidMotionProp } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
+import { updateRegistry } from "../../store";
+import { Form, DatePicker } from "antd";
 import {
-  updateIncident,
-  updateAssailant,
-  addSurvivor,
-  updateRegistry,
-} from "../../store";
-import { Form } from "antd";
-import {
-  Button,
-  Text,
-  Select,
   Input,
-  Flex,
   chakra,
   shouldForwardProp,
   FormControl,
   FormLabel,
+  useMediaQuery,
 } from "@chakra-ui/react";
-import AddressModal from "../../components/modals/AddressModal";
-import { CloseIcon, CheckIcon } from "@chakra-ui/icons";
 import {
   BooleanYesNo,
-  BooleanIfYesName,
-  DateAndTime,
+  DateTime,
   Address,
-  FullNameAndTitle,
 } from "../../components/buttons/RegistryResponseComponents.js";
-import BackButton from "../../components/buttons/BackButton";
-import RegistryComplete from "../pages/RegistryComplete";
-import NextButton from "../../components/buttons/NextButton";
-import NameModal from "../../components/modals/NameModal";
-import { listVariants, itemVariants } from "../../data/containerVariants";
+import { itemVariants } from "../../data/containerVariants";
 import SubmissionComplete from "../../components/SubmissionComplete";
 
 const ChakraBox = chakra(motion.div, {
@@ -40,6 +24,10 @@ const ChakraBox = chakra(motion.div, {
 });
 
 function EmployeeAnswers() {
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const isMediumDevice = useMediaQuery(
+    "only screen and (min-width : 769px) and (max-width : 992px)"
+  );
   const { index, registry, registryReport } = useSelector((state) => {
     return {
       index: state.index.index,
@@ -133,7 +121,18 @@ function EmployeeAnswers() {
               animate="visible"
               exit="close"
             >
-              <DateAndTime />
+              <div>
+                {isSmallDevice ? (
+                  <DatePicker
+                    onChange={(value) => {
+                      console.log(value);
+                      dispatch(updateRegistry({ date: value.$d }));
+                    }}
+                  />
+                ) : (
+                  <DateTime />
+                )}
+              </div>
             </ChakraBox>
           ) : questionIndex === 4 ? ( // Where did the incident take place
             <ChakraBox

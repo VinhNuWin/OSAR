@@ -1,27 +1,22 @@
 import { AnimatePresence, motion, isValidMotionProp } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { addFeedBack, updateRegistry } from "../../store";
-import { Form } from "antd";
+import { updateRegistry } from "../../store";
+import { Form, DatePicker, TimePicker } from "antd";
 import {
   Input,
-  Flex,
   FormControl,
   FormLabel,
-  Text,
   chakra,
   shouldForwardProp,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import {
-  BooleanYesNo,
-  DateAndTime,
   Address,
   FormInput,
   DateTime,
 } from "../../components/buttons/RegistryResponseComponents.js";
-import { listVariants, itemVariants } from "../../data/containerVariants";
+import { itemVariants } from "../../data/containerVariants";
 import SubmissionComplete from "../../components/SubmissionComplete";
-import MobileDatePicker from "../../components/MobileDatePicker";
-import MobileDateModal from "../../components/modals/MobileDateModal";
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) =>
@@ -29,10 +24,14 @@ const ChakraBox = chakra(motion.div, {
 });
 
 function GeneralAnswers() {
-  const { index, registry, registryReport } = useSelector((state) => {
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const isMediumDevice = useMediaQuery(
+    "only screen and (min-width : 769px) and (max-width : 992px)"
+  );
+
+  const { index, registryReport } = useSelector((state) => {
     return {
       index: state.index.index,
-      registry: state.index.registry,
       registryReport: state.index.registry.registryReport,
     };
   });
@@ -41,7 +40,7 @@ function GeneralAnswers() {
   const questionIndex = index;
   const TextArea = Input;
 
-  console.log(registry.registryReport);
+  console.log(registryReport);
   console.log(index);
 
   return (
@@ -85,10 +84,16 @@ function GeneralAnswers() {
               exit="close"
             >
               <div>
-                {/* <MobileDateModal /> */}
-                {/* <MobileDatePicker /> */}
-                <DateTime />
-                {/* <DateAndTime /> */}
+                {isSmallDevice ? (
+                  <DatePicker
+                    onChange={(value) => {
+                      console.log(value);
+                      dispatch(updateRegistry({ date: value.$d }));
+                    }}
+                  />
+                ) : (
+                  <DateTime />
+                )}
               </div>
             </ChakraBox>
           ) : questionIndex === 4 ? ( //Where did the incident occur?

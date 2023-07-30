@@ -25,6 +25,8 @@ import {
 import RegistryComplete from "../pages/RegistryComplete";
 import { listVariants, itemVariants } from "../../data/containerVariants";
 import SubmissionComplete from "../../components/SubmissionComplete";
+import { useMediaQuery } from "@chakra-ui/react";
+import { DatePicker } from "antd";
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) =>
@@ -32,6 +34,10 @@ const ChakraBox = chakra(motion.div, {
 });
 
 function AssaultAnswers() {
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const isMediumDevice = useMediaQuery(
+    "only screen and (min-width : 769px) and (max-width : 992px)"
+  );
   const { index, registryReport } = useSelector((state) => {
     return {
       index: state.index.index,
@@ -81,9 +87,18 @@ function AssaultAnswers() {
               animate="visible"
               exit="close"
             >
-              <motion.div>
-                <DateTime />
-              </motion.div>
+              <div>
+                {isSmallDevice ? (
+                  <DatePicker
+                    onChange={(value) => {
+                      console.log(value);
+                      dispatch(updateRegistry({ date: value.$d }));
+                    }}
+                  />
+                ) : (
+                  <DateTime />
+                )}
+              </div>
             </ChakraBox>
           ) : questionIndex === 4 ? ( // Do you remember where the incident occurred
             <ChakraBox

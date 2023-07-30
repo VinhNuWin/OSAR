@@ -47,7 +47,7 @@ export const RegistrySelectButton = () => {
       >
         <div className="btn-select-text">
           <h2>General</h2>
-          <h4>Anyone who needs a voice</h4>
+          <h5>Anyone who needs a voice</h5>
         </div>
       </Button>
     </div>,
@@ -59,7 +59,7 @@ export const RegistrySelectButton = () => {
     >
       <div className="btn-select-text">
         <h2>Employee</h2>
-        <h4>Workplace misconduct or harassment</h4>
+        <h5>Workplace misconduct or harassment</h5>
       </div>
     </Button>,
     <Button
@@ -70,7 +70,7 @@ export const RegistrySelectButton = () => {
     >
       <div className="btn-select-text">
         <h2>Spouse</h2>
-        <h4 className="">Intimate relationships experiencing domestic abuse</h4>
+        <h5 className="">Intimate relationships experiencing domestic abuse</h5>
       </div>
     </Button>,
     <Button
@@ -81,7 +81,7 @@ export const RegistrySelectButton = () => {
     >
       <div className="btn-select-text">
         <h2>Elderly</h2>
-        <h4>Seniors facing abuse and neglect</h4>
+        <h5>Seniors facing abuse and neglect</h5>
       </div>
     </Button>,
     <Button
@@ -92,7 +92,7 @@ export const RegistrySelectButton = () => {
     >
       <div className="btn-select-text">
         <h2>Assault</h2>
-        <h4>Survivors of physical, emotional, or sexual assault</h4>
+        <h5>Survivors of physical, emotional, or sexual assault</h5>
       </div>
     </Button>,
     <Button
@@ -103,7 +103,7 @@ export const RegistrySelectButton = () => {
     >
       <div className="btn-select-text">
         <h2>Children</h2>
-        <h4>Young individuals facing mistreatment or bullying</h4>
+        <h5>Young individuals facing mistreatment or bullying</h5>
       </div>
     </Button>,
   ];
@@ -111,7 +111,7 @@ export const RegistrySelectButton = () => {
   console.log(registryType);
 
   return (
-    <motion.div key="0" className={isSmallDevice ? "active" : ""}>
+    <motion.div key="79" className={isSmallDevice ? "active" : ""}>
       <motion.ul
         variants={listVariants}
         key="ul"
@@ -121,12 +121,7 @@ export const RegistrySelectButton = () => {
       >
         <AnimatePresence>
           {componentButtonArray.map((i, index) => (
-            <motion.li
-              i={i}
-              key={index}
-              variants={itemVariants}
-              // exit="close"
-            >
+            <motion.li i={i} key={index} variants={itemVariants} exit="close">
               {i}
             </motion.li>
           ))}

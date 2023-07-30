@@ -13,12 +13,14 @@ import {
 } from "@chakra-ui/react";
 import {
   BooleanYesNo,
-  DateAndTime,
+  DateTime,
   Address,
 } from "../../components/buttons/RegistryResponseComponents.js";
 import RegistryComplete from "../pages/RegistryComplete";
 import { listVariants, itemVariants } from "../../data/containerVariants";
 import SubmissionComplete from "../../components/SubmissionComplete";
+import { useMediaQuery } from "@chakra-ui/react";
+import { DatePicker } from "antd";
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) =>
@@ -26,6 +28,11 @@ const ChakraBox = chakra(motion.div, {
 });
 
 function ChildrensAnswers() {
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const isMediumDevice = useMediaQuery(
+    "only screen and (min-width : 769px) and (max-width : 992px)"
+  );
+
   const { index, registry, registryReport } = useSelector((state) => {
     return {
       index: state.index.index,
@@ -116,7 +123,18 @@ function ChildrensAnswers() {
               animate="visible"
               exit="close"
             >
-              <DateAndTime />
+              <div>
+                {isSmallDevice ? (
+                  <DatePicker
+                    onChange={(value) => {
+                      console.log(value);
+                      dispatch(updateRegistry({ date: value.$d }));
+                    }}
+                  />
+                ) : (
+                  <DateTime />
+                )}
+              </div>
             </ChakraBox>
           ) : questionIndex === 6 ? ( // Whats the name of the person we're talking about?
             <ChakraBox

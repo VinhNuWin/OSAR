@@ -44,6 +44,11 @@ h4 {
   color: rgb(147, 154, 236);
 }
 
+h5 {
+  font-size: 0.75rem;
+  color: rgb(147, 154, 236);
+}
+
 h2 {
   font-weight: 700;
   color: black;
@@ -292,6 +297,21 @@ textarea {
   .btn {
     width: 20vw;
   }
+  h5 {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 569px) {
+  .btn-registry-select {
+    width: 20vw;
+  }
+  .btn {
+    width: 10vw;
+  }
+  h5 {
+    font-size: 0.7rem;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -300,5 +320,8 @@ textarea {
   }
   .btn {
     width: 10vw;
+  }
+  h5 {
+    font-size: 1rem;
   }
 }

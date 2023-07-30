@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, isValidMotionProp } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRegistry } from "../../store";
-import { Form } from "antd";
+import { Form, DatePicker } from "antd";
 import {
   Input,
   Flex,
@@ -10,10 +10,11 @@ import {
   Text,
   chakra,
   shouldForwardProp,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import {
   BooleanYesNo,
-  DateAndTime,
+  DateTime,
   Address,
 } from "../../components/buttons/RegistryResponseComponents.js";
 import RegistryComplete from "../pages/RegistryComplete";
@@ -26,6 +27,11 @@ const ChakraBox = chakra(motion.div, {
 });
 
 function ElderlyAnswers() {
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const isMediumDevice = useMediaQuery(
+    "only screen and (min-width : 769px) and (max-width : 992px)"
+  );
+
   const { index, registry, registryReport } = useSelector((state) => {
     return {
       index: state.index.index,
@@ -80,7 +86,18 @@ function ElderlyAnswers() {
               animate="visible"
               exit="close"
             >
-              <DateAndTime />
+              <div>
+                {isSmallDevice ? (
+                  <DatePicker
+                    onChange={(value) => {
+                      console.log(value);
+                      dispatch(updateRegistry({ date: value.$d }));
+                    }}
+                  />
+                ) : (
+                  <DateTime />
+                )}
+              </div>
             </ChakraBox>
           ) : questionIndex === 4 ? ( // Where did the incident occur?
             <ChakraBox
