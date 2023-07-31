@@ -146,8 +146,7 @@ function SpouseAnswers() {
                 <Input
                   style={{
                     height: 100,
-                    marginBottom: 24,
-                    width: 400,
+                    width: "100%",
                   }}
                   type="text"
                   name="detailsOfIncident"
@@ -178,8 +177,7 @@ function SpouseAnswers() {
                 <Input
                   style={{
                     height: 100,
-                    marginBottom: 24,
-                    width: 400,
+                    width: "100%",
                   }}
                   type="text"
                   name="threatsOrActions"
@@ -212,8 +210,7 @@ function SpouseAnswers() {
                     <TextArea
                       style={{
                         height: 100,
-                        marginBottom: 24,
-                        width: 400,
+                        width: "100%",
                       }}
                       type="text"
                       name="witnesses"

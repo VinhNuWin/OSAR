@@ -66,7 +66,7 @@ export default function ElderlyQuestions() {
         </AnimatePresence>
         <AnimatePresence mode="wait">
           <motion.h1
-            className=""
+            className="question-container"
             key={elderlyIndex}
             variants={itemVariants}
             initial="hidden"

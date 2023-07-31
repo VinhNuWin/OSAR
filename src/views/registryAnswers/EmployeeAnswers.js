@@ -187,8 +187,7 @@ function EmployeeAnswers() {
                   <TextArea
                     style={{
                       height: 100,
-                      marginBottom: 24,
-                      width: 400,
+                      width: "100%",
                     }}
                     type="text"
                     name="detailsOfIncident"
@@ -220,8 +219,7 @@ function EmployeeAnswers() {
                 <Input
                   style={{
                     height: 100,
-                    marginBottom: 24,
-                    width: 400,
+                    width: "100%",
                   }}
                   type="text"
                   name="witnesses"
@@ -254,8 +252,7 @@ function EmployeeAnswers() {
                 <Input
                   style={{
                     height: 100,
-                    marginBottom: 24,
-                    width: 400,
+                    width: "100%",
                   }}
                   type="text"
                   h={20}
@@ -288,8 +285,7 @@ function EmployeeAnswers() {
                 <Input
                   style={{
                     height: 100,
-                    marginBottom: 24,
-                    width: 400,
+                    width: "100%",
                   }}
                   type="text"
                   name="abilitiesAffected"
@@ -352,8 +348,7 @@ function EmployeeAnswers() {
                     <TextArea
                       style={{
                         height: 100,
-                        marginBottom: 24,
-                        width: 400,
+                        width: "100%",
                       }}
                       type="text"
                       name="personalAffect"
@@ -388,8 +383,7 @@ function EmployeeAnswers() {
                     <TextArea
                       style={{
                         height: 100,
-                        marginBottom: 24,
-                        width: 400,
+                        width: "100%",
                       }}
                       type="text"
                       name="additionalComments"

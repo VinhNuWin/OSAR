@@ -63,7 +63,7 @@ export default function AssaultQuestions() {
         </AnimatePresence>
         <AnimatePresence mode="wait">
           <motion.h1
-            className=""
+            className="question-container"
             key={assaultIndex}
             variants={itemVariants}
             initial="hidden"

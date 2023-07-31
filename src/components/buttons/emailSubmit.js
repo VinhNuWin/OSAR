@@ -7,7 +7,7 @@ import Loader from "../Loader";
 
 export default function EmailSubmit() {
   const dispatch = useDispatch();
-  const [loader, setLoader] = useState(true);
+  const [loader, setLoader] = useState(false);
   const { index, _id, registryType, email, registryReport, reportSummary } =
     useSelector((state) => {
       return {
@@ -23,7 +23,7 @@ export default function EmailSubmit() {
 
   const handleEmailSubmit = async () => {
     console.log("email sent");
-    setLoader(false);
+    setLoader(true);
     const response = await axios.post(
       `https://dvaa-smtp.onrender.com/${registryType}`,
       {

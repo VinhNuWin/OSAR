@@ -9,6 +9,7 @@ body {
 html,
 body {
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 element {
@@ -28,7 +29,9 @@ li {
   font-weight: 500;
   color: rgb(47, 55, 71);
 }
-
+h1 {
+  overflow-wrap: normal;
+}
 h3 {
   color: rgb(147, 154, 236);
   font-weight: 500;
@@ -341,10 +344,14 @@ textarea {
   }
 }
 
-@media screen and (max-width: 400) {
+@media screen and (max-width: 400px) {
   h1 {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
     color: black;
+    overflow-wrap: break-word;
+  }
+  .question-container {
+    width: 200px;
   }
 }

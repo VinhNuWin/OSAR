@@ -132,7 +132,7 @@ function GeneralAnswers() {
                   type="text"
                   name="peopleInvolved"
                   h={20}
-                  width={{ base: "20em", md: "18em", lg: "24em" }}
+                  width={{ base: "20em", md: "20em", lg: "24em" }}
                   onChange={(e) =>
                     dispatch(
                       updateRegistry({
@@ -191,8 +191,7 @@ function GeneralAnswers() {
                     <TextArea
                       style={{
                         height: 100,
-                        // marginBottom: 24,
-                        width: 400,
+                        width: "100%",
                       }}
                       type="text"
                       name="additionalComments"

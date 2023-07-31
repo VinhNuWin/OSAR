@@ -63,7 +63,7 @@ export default function SpouseQuestions() {
         </AnimatePresence>
         <AnimatePresence mode="wait">
           <motion.h1
-            className=""
+            className="question-container"
             key={spouseIndex}
             variants={itemVariants}
             initial="hidden"

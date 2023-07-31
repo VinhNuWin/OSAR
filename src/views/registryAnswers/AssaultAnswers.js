@@ -174,9 +174,8 @@ function AssaultAnswers() {
                 </FormLabel>
                 <Input
                   style={{
-                    height: 120,
-                    marginBottom: 24,
-                    width: 400,
+                    height: 100,
+                    width: "100%",
                   }}
                   type="text"
                   name="detailsOfIncident"
@@ -208,9 +207,8 @@ function AssaultAnswers() {
                 </FormLabel>
                 <Input
                   style={{
-                    height: 120,
-                    marginBottom: 24,
-                    width: 400,
+                    height: 100,
+                    width: "100%",
                   }}
                   type="text"
                   name="areasAssaulted"

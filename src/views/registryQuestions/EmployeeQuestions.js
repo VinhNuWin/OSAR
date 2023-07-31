@@ -68,7 +68,7 @@ export default function EmployeeQuestions() {
         </AnimatePresence>
         <AnimatePresence mode="wait">
           <motion.h1
-            className=""
+            className="question-container"
             key={employeeIndex}
             variants={itemVariants}
             initial="hidden"

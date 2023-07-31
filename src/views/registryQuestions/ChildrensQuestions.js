@@ -63,7 +63,7 @@ export default function ChildrensQuestions() {
         </AnimatePresence>
         <AnimatePresence mode="wait">
           <motion.h1
-            className=""
+            className="question-container"
             key={childrensIndex}
             variants={itemVariants}
             initial="hidden"

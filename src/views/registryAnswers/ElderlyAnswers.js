@@ -124,8 +124,7 @@ function ElderlyAnswers() {
                 <Input
                   style={{
                     height: 100,
-                    marginBottom: 24,
-                    width: 400,
+                    width: "100%",
                   }}
                   type="text"
                   name="detailsOfIncident"
@@ -182,11 +181,9 @@ function ElderlyAnswers() {
                   <Form.Item>
                     <FormLabel color="rgb(147,154,236)">Relationship</FormLabel>
                     <TextArea
-                      maxLength={200}
                       style={{
                         height: 100,
-                        marginBottom: 24,
-                        width: 400,
+                        width: "100%",
                       }}
                       type="text"
                       name="relationToReporter"
@@ -219,8 +216,7 @@ function ElderlyAnswers() {
                 <Input
                   style={{
                     height: 100,
-                    marginBottom: 24,
-                    width: 400,
+                    width: "100%",
                   }}
                   type="text"
                   name="concerningThreatsOrActions"
@@ -253,8 +249,7 @@ function ElderlyAnswers() {
                 <Input
                   style={{
                     height: 100,
-                    marginBottom: 24,
-                    width: 400,
+                    width: "100%",
                   }}
                   type="text"
                   name="additionalIncidentsOfAbuse"
@@ -285,8 +280,7 @@ function ElderlyAnswers() {
                 <Input
                   style={{
                     height: 100,
-                    marginBottom: 24,
-                    width: 400,
+                    width: "100%",
                   }}
                   type="text"
                   name="witnesses"

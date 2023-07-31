@@ -18,8 +18,8 @@ export default function GeneralQuestions() {
   const questions = generalForm[generalIndex];
 
   return (
-    <Flex direction="column">
-      <Flex wrap="nowrap" direction="column" className="questions">
+    <Flex classname="" direction="column">
+      <Flex wrap="wrap" direction="column" className="questions-wrapper">
         <AnimatePresence mode="wait">
           {questionIndex < 9 ? (
             <div className="index-summary-wrapper">
@@ -64,7 +64,7 @@ export default function GeneralQuestions() {
         </AnimatePresence>
         <AnimatePresence mode="wait">
           <motion.h1
-            className="questionContainer"
+            className="question-container"
             key={generalIndex}
             variants={itemVariants}
             initial="hidden"
