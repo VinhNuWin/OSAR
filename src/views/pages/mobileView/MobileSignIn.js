@@ -33,7 +33,6 @@ import {
 import { EmailIcon } from "@chakra-ui/icons";
 import Loader from "../../../components/Loader";
 import ThingsToConsider from "../../../data/ThingsToConsider";
-import logo from "../../../images/logo.png";
 import MissionStatement from "../../../components/modals/MissionStatement";
 
 const ChakraBox = chakra(motion.div, {
@@ -141,8 +140,8 @@ function SignIn() {
                 <div>{loader ? <div>Starting..</div> : "Start Registry"}</div>
               </Button>
               <Text marginBottom={0}>
-                If you have questions or feedback email us at
-                info@documentedvoices.com
+                If you have questions or feedback please email us at
+                info@documentedvoices.org
               </Text>
             </Flex>
           </center>

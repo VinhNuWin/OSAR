@@ -136,18 +136,12 @@ function SignIn() {
                 )}
               </div>
               <Flex className="signin-start-registry" direction="column">
-                <Button
-                  color="blue"
-                  className="btn"
-                  variant="nextButton"
-                  type="submit"
-                  onClick={addUser}
-                >
+                <Button className="btn" type="submit" onClick={addUser} w="50%">
                   <div>{loader ? <div>Starting..</div> : "Start Registry"}</div>
                 </Button>
                 <Text className="signin-body" marginBottom={8}>
-                  If you have questions or feedback email us at
-                  info@documentedvoices.com
+                  If you have questions or feedback please email us at
+                  info@documentedvoices.org
                 </Text>
               </Flex>
             </center>

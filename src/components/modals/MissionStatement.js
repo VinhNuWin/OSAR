@@ -20,7 +20,6 @@ import {
 } from "@chakra-ui/react";
 import { useState, useRef } from "react";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
-import logo from "../../images/logo.png";
 
 export default function MissionStatement() {
   const OverlayTwo = () => (

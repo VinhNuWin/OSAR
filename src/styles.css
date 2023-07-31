@@ -3,7 +3,7 @@
   height: 75px;
   display: flex;
   align-self: center;
-  background-image: url("./images/logo.png");
+  background-image: url("./images/DV-design2.png");
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
@@ -132,14 +132,14 @@
 .panel-one-questions {
   /* border: 3px solid red; */
   height: 20vh;
-  width: 80%;
+  width: 60%;
   position: absolute;
   top: 20%;
   word-wrap: break-word;
   /* justify-self: center; */
   text-align: left;
-  /* left: 10%; */
-  right: 10%;
+  left: 18%;
+  /* right: 10%; */
 }
 
 .panel-one-answers {
