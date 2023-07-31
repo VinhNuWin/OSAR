@@ -137,7 +137,13 @@ function SignIn() {
               </div>
               <Flex className="signin-start-registry" direction="column">
                 <Button className="btn" type="submit" onClick={addUser} w="50%">
-                  <div>{loader ? <div>Starting..</div> : "Start Registry"}</div>
+                  <div>
+                    {loader ? (
+                      <div>Generating Registry...</div>
+                    ) : (
+                      "Start Registry"
+                    )}
+                  </div>
                 </Button>
                 <Text className="signin-body" marginBottom={8}>
                   If you have questions or feedback please email us at

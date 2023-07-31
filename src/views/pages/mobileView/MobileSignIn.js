@@ -137,7 +137,9 @@ function SignIn() {
             </Flex>
             <Flex className="signin-start-registry" direction="column">
               <Button className="btn" onClick={addUser} w="90%">
-                <div>{loader ? <div>Starting..</div> : "Start Registry"}</div>
+                <div>
+                  {loader ? <div>Generating Registry..</div> : "Start Registry"}
+                </div>
               </Button>
               <Text marginBottom={0}>
                 If you have questions or feedback please email us at

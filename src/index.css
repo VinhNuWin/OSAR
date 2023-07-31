@@ -23,12 +23,6 @@ img {
   padding: 2%;
 }
 
-h1 {
-  font-size: 26px;
-  font-weight: 600;
-  color: black;
-}
-
 li {
   font-size: 16px;
   font-weight: 500;
@@ -297,8 +291,13 @@ textarea {
   .btn {
     width: 20vw;
   }
-  h5 {
+  .h5 {
     font-size: 0.75rem;
+  }
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: black;
   }
   .selectRegistry-buttons-wrapper {
     /* display: flex; */
@@ -318,6 +317,11 @@ textarea {
   h5 {
     font-size: 0.7rem;
   }
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: black;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -334,5 +338,13 @@ textarea {
     justify-items: flex-start;
     padding-left: 5%;
     padding-top: 5%;
+  }
+}
+
+@media screen and (max-width: 400) {
+  h1 {
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
   }
 }
