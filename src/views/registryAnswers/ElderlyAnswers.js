@@ -65,7 +65,7 @@ function ElderlyAnswers() {
                     variant="flushed"
                     name="fullName"
                     placeholder="Full Name"
-                    width={{ base: "12em", md: "14em", lg: "20em" }}
+                    width={{ base: "14em", md: "16em", lg: "20em" }}
                     onChange={(e) =>
                       dispatch(
                         updateRegistry({
@@ -177,7 +177,7 @@ function ElderlyAnswers() {
               exit="close"
             >
               <Form>
-                <div>
+                <div className="">
                   <Form.Item>
                     <FormLabel color="rgb(147,154,236)">Relationship</FormLabel>
                     <TextArea

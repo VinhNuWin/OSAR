@@ -308,6 +308,9 @@ textarea {
     justify-content: center;
     height: 80vh;
   }
+  .panel-one-questions {
+    width: 100vw;
+  }
 }
 
 @media screen and (min-width: 569px) {
@@ -352,6 +355,6 @@ textarea {
     overflow-wrap: break-word;
   }
   .question-container {
-    width: 200px;
+    width: 300px;
   }
 }
