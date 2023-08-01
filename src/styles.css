@@ -67,7 +67,7 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  position: relative;
+  /* position: relative; */
 }
 .panel-two {
   margin: auto;
@@ -130,10 +130,10 @@
 }
 
 .panel-one-questions {
-  display: inline-block;
-  border: 3px solid red;
+  display: flex;
+  /* border: 3px solid red; */
   height: 30vh;
-  width: 100%;
+  /* width: 100%; */
   position: relative;
   top: 10%;
   word-wrap: break-word;
@@ -146,11 +146,15 @@
 
 .question-container {
   /* border: 3px solid red; */
-  display: grid;
+  display: flex;
   /* place-content: center; */
-  width: 90%;
-  height: 80%;
+  /* width: 90%; */
+  /* height: 80%; */
   /* min-width: 300px; */
+}
+.questions-wrapper {
+  width: 100%;
+  /* border: 3px solid red; */
 }
 
 .panel-one-answers {

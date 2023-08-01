@@ -354,7 +354,8 @@ textarea {
     color: black;
     overflow-wrap: break-word;
   }
-  .question-container {
-    width: 300px;
-  }
+  /* .question-container {
+    width: 100%;
+    border: 3px solid red;
+  } */
 }
