@@ -9,6 +9,10 @@ import {
   chakra,
   shouldForwardProp,
   FormLabel,
+  Editable,
+  EditableInput,
+  EditableTextarea,
+  EditablePreview,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -54,6 +58,42 @@ export const BooleanYesNo = (props) => {
           Yes
         </Button>
       </div>
+    </div>
+  );
+};
+
+export const FullName = () => {
+  const dispatch = useDispatch();
+  const { fullName, registryReport } = useSelector((state) => {
+    return {
+      fullName: state.index.registry.registryReport.fullName,
+      registryReport: state.index.registry.registryReport,
+    };
+  });
+
+  return (
+    <div>
+      <Editable
+        defaultValue={fullName}
+        variant="outline"
+        name="fullName"
+        color="grey"
+        placeholder="Full Name"
+        fontSize="20px"
+        width={{ base: "12em", md: "14em", lg: "20em" }}
+        onChange={(e) =>
+          dispatch(
+            updateRegistry({
+              ...registryReport,
+              [e.target.name]: e.target.value,
+            })
+          )
+        }
+      >
+        <EditablePreview />
+        {/* Here is the custom input */}
+        <Input as={EditableInput} />
+      </Editable>
     </div>
   );
 };
@@ -430,32 +470,6 @@ export const EthnicitySelect = () => {
           <option value="hispanic/latino">Hispanic or Latino</option>
         </Select>
       </FormControl>
-
-      {/* <Card>
-        <Select
-          placeholder="Ethnicity"
-          name="raceEthnicity"
-          onChange={(e) =>
-            dispatch(
-              updateRegistry({
-                ...registryReport,
-                raceEthnicity: e.target.value,
-              })
-            )
-          }
-        >
-          <option value="white">White</option>
-          <option value="black/african">Black or African American</option>
-          <option value="americanIndian/alaskanNative">
-            American Indian or Alaskan Native
-          </option>
-          <option value="hawaiian/pacificIslander">
-            Native Hawaiian or Pacific Islander
-          </option>
-          <option value="asian">Asian</option>
-          <option value="hispanic/latino">Hispanic or Latino</option>
-        </Select>
-      </Card> */}
     </div>
   );
 };

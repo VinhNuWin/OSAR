@@ -35,14 +35,23 @@ const ChakraBox = chakra(motion.div, {
 function SignIn() {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
+  const [anon, setAnon] = useState(false);
 
-  const { index, email, anonymous } = useSelector((state) => {
+  const { index, email, fullName } = useSelector((state) => {
     return {
       index: state.index.index,
       email: state.index.registry.email,
-      anonymous: state.index.registry.anonymous,
+      fullName: state.index.registry.registryReport.fullName,
     };
   });
+
+  // const handleAnon = (e) => {
+  //   setAnon(e.target.checked);
+
+  //   if (anon
+  //     ? dispatch(setAnonymous("anonymous"))
+  //   : dispatch(setAnonymous("")))
+  // }
 
   const isError = email === "";
 
@@ -70,7 +79,7 @@ function SignIn() {
     }
   };
 
-  console.log();
+  console.log(anon);
 
   return (
     <motion.div>
@@ -119,7 +128,8 @@ function SignIn() {
                   <Checkbox
                     m={2}
                     color="rgb(147,154,236)"
-                    onChange={(e) => dispatch(setAnonymous(!anonymous))}
+                    isChecked={anon}
+                    onChange={(e) => setAnon(e.target.checked)}
                   >
                     I would like to submit this report anonymously
                   </Checkbox>

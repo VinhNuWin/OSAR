@@ -13,7 +13,7 @@ const indexSlice = createSlice({
       registryReport: {
         registryId: "",
         immediateDangerOrMedicalAttention: false,
-        fullName: "anon",
+        fullName: "",
         date: "",
         incidentAddress: {
           streetAddress: "",
@@ -99,7 +99,7 @@ const indexSlice = createSlice({
       state.feedback = action.payload;
     },
     setAnonymous(state, action) {
-      state.registry.anonymous = action.payload;
+      state.registry.registryReport.fullName = action.payload;
     },
   },
 });

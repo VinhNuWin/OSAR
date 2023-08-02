@@ -14,6 +14,7 @@ import {
   Address,
   FormInput,
   DateTime,
+  FullName,
 } from "../../components/buttons/RegistryResponseComponents.js";
 import { itemVariants } from "../../data/containerVariants";
 import SubmissionComplete from "../../components/SubmissionComplete";
@@ -56,7 +57,8 @@ function GeneralAnswers() {
               exit="close"
             >
               <div>
-                <FormControl>
+                <FullName />
+                {/* <FormControl>
                   <Input
                     variant="flushed"
                     name="fullName"
@@ -72,7 +74,7 @@ function GeneralAnswers() {
                       )
                     }
                   />
-                </FormControl>
+                </FormControl> */}
               </div>
             </ChakraBox>
           ) : questionIndex === 3 ? ( // When did the incident happen?
