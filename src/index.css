@@ -324,7 +324,7 @@ textarea {
     font-size: 0.7rem;
   }
   h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: black;
   }
@@ -349,13 +349,9 @@ textarea {
 
 @media screen and (max-width: 400px) {
   h1 {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
     color: black;
     overflow-wrap: break-word;
   }
-  /* .question-container {
-    width: 100%;
-    border: 3px solid red;
-  } */
 }

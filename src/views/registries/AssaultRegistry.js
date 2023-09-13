@@ -27,7 +27,7 @@ export default function AssaultRegistry() {
         <Flex>
           <Flex className="panel-one" direction="column">
             <Flex className="header" />
-            <Flex className="panel-one-questions">
+            <Flex className="panel-one-questions border">
               <AssaultQuestions />
             </Flex>
             <Flex className="panel-one-answers">

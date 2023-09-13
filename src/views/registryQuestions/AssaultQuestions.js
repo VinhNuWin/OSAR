@@ -18,7 +18,11 @@ export default function AssaultQuestions() {
 
   return (
     <Flex direction="column">
-      <Flex wrap="nowrap" direction="column" className="questions">
+      <Flex
+        wrap="nowrap"
+        direction="column"
+        className="questions-wrapper border"
+      >
         <AnimatePresence mode="wait">
           {questionIndex < 17 ? (
             <div className="index-summary-wrapper">

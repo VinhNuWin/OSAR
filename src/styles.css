@@ -133,7 +133,7 @@
   display: flex;
   /* border: 3px solid red; */
   height: 30vh;
-  /* width: 100%; */
+  width: 100%;
   position: relative;
   top: 10%;
   word-wrap: break-word;
@@ -357,9 +357,9 @@
 
 .index-summary-wrapper {
   color: rgb(147, 154, 236);
-  font-weight: 600;
+  /* font-weight: 600; */
   display: flex;
-  width: 24rem;
+  /* border: 3px solid red; */
 }
 
 .index-summary {

@@ -57,8 +57,8 @@ function GeneralAnswers() {
               exit="close"
             >
               <div>
-                <FullName />
-                {/* <FormControl>
+                {/* <FullName /> */}
+                <FormControl>
                   <Input
                     variant="flushed"
                     name="fullName"
@@ -74,7 +74,7 @@ function GeneralAnswers() {
                       )
                     }
                   />
-                </FormControl> */}
+                </FormControl>
               </div>
             </ChakraBox>
           ) : questionIndex === 3 ? ( // When did the incident happen?

@@ -32,7 +32,7 @@ function HomePage() {
 
   return (
     <div>
-      <Flex></Flex>
+      {/* <Flex></Flex> */}
       <motion.div className="Homepage">
         {questionPageIndex === 0 ? (
           <center>
